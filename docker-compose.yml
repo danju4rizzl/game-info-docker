@@ -1,0 +1,72 @@
+services:
+  # Database (MariaDB is recommended by WordPress and works great on Windows)
+  db:
+    image: mariadb:10.11
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+      MARIADB_DATABASE: ${DB_NAME:-wordpress}
+      MARIADB_USER: ${DB_USER:-wordpress}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-wordpress}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'mysqladmin',
+          'ping',
+          '-h',
+          'localhost',
+          '-p${DB_ROOT_PASSWORD:-rootpass}'
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - wpnet
+
+  # WordPress (Apache + PHP 8.3)
+  wordpress:
+    image: wordpress:6.6-php8.3-apache
+    depends_on:
+      - db
+    ports:
+      - '8000:80'
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ${DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-wordpress}
+      WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
+      WORDPRESS_DEBUG: 'true'
+      # Allows direct filesystem writes so themes/plugins can be edited from Windows
+      WORDPRESS_CONFIG_EXTRA: |
+        define('FS_METHOD', 'direct');
+    # Bind-mount only wp-content for development so core stays managed by the image
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+    networks:
+      - wpnet
+
+  # phpMyAdmin for inspecting the DB during development (optional but handy)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    depends_on:
+      - db
+    ports:
+      - '8080:80'
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+      PMA_USER: ${DB_USER:-wordpress}
+      PMA_PASSWORD: ${DB_PASSWORD:-wordpress}
+    networks:
+      - wpnet
+
+networks:
+  wpnet:
+
+volumes:
+  db_data:
