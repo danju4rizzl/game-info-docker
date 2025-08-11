@@ -1,0 +1,17 @@
+{
+  "name": "game-info",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "up": "docker compose up -d",
+    "build": "mkdir wp-content && docker compose up -d",
+    "down": "docker compose down",
+    "reset": "docker compose down && docker volume rm game-info_db_data"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
