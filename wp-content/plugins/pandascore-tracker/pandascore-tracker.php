@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: PandaScore Tracker V1
+Plugin Name: Panda Score API Tracker
 Description: Fetches and displays PandaScore game scores via shortcode. Right-aligned by default.
-Version: 1.1
+Version: 1.3
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
