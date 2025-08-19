@@ -1,0 +1,6 @@
+.pandascore-scores { max-width: 320px; margin-left: auto; }
+.pandascore-list { list-style: none; padding: 0; margin: 0; }
+.pandascore-item { padding: 8px 12px; border-bottom: 1px solid #eee; }
+.pandascore-score { font-weight: 600; }
+.pandascore-time { font-size: 12px; color: #666; }
+.pandascore-error { color: #b00; }

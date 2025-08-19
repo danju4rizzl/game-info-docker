@@ -1,2 +1,5 @@
-# Ignore the wordpress folder
+# Ignore everything in the wp-content directory by default
 wp-content/*
+
+# But DON'T ignore the plugins directory
+!wp-content/plugins/
