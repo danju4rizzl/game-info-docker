@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: PandaScore Tracker
+Plugin Name: PandaScore Tracker V1
 Description: Fetches and displays PandaScore game scores via shortcode. Right-aligned by default.
-Version: 1.0
+Version: 1.1
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
@@ -10,6 +10,40 @@ Text Domain: pandascore-tracker
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+// Register activation and deactivation hooks
+// Note: Uninstall is handled by uninstall.php file
+register_activation_hook( __FILE__, 'pandascore_tracker_activate' );
+register_deactivation_hook( __FILE__, 'pandascore_tracker_deactivate' );
+
+/**
+ * Plugin activation hook
+ */
+function pandascore_tracker_activate() {
+    // Set default options on activation
+    $default_options = array(
+        'api_key' => '',
+        'version' => '1.1'
+    );
+
+    if ( ! get_option( 'pandascore_tracker_options' ) ) {
+        add_option( 'pandascore_tracker_options', $default_options );
+    }
+}
+
+/**
+ * Plugin deactivation hook
+ */
+function pandascore_tracker_deactivate() {
+    // Clear any cached data when plugin is deactivated
+    delete_transient( 'pandascore_tracker_matches' );
+    delete_transient( 'pandascore_tracker_api_cache' );
+
+    // Clear WordPress cache
+    wp_cache_flush();
+}
+
+
 
 class PandaScore_Tracker_Plugin {
     private $option_key = 'pandascore_tracker_options';
@@ -22,8 +56,14 @@ class PandaScore_Tracker_Plugin {
     }
 
     public function enqueue_assets() {
-        wp_register_style( 'pandascore-tracker-style', plugins_url( 'css/pandascore-tracker.css', __FILE__ ) );
-        wp_enqueue_style( 'pandascore-tracker-style' );
+        // Enqueue CSS with proper versioning for cache busting
+        wp_enqueue_style(
+            'pandascore-tracker-style',
+            plugins_url( 'css/pandascore-tracker.css', __FILE__ ),
+            array(),
+            '1.1',
+            'all'
+        );
     }
 
     public function admin_menu() {
@@ -94,43 +134,82 @@ class PandaScore_Tracker_Plugin {
         $atts = shortcode_atts( array(
             'game' => 'valorant',
             'limit' => 5,
-            'align' => 'right'
+            'align' => 'center',
+            'title' => 'UP-COMING'
         ), $atts, 'pandascore_tracker' );
 
         $matches = $this->fetch_matches( $atts['game'], $atts['limit'] );
         if ( is_wp_error( $matches ) ) {
-            return '<div class="pandascore-tracker pandascore-error" style="text-align:'.esc_attr($atts['align']).';">Error: '.esc_html( $matches->get_error_message() ).'</div>';
+            return '<div class="pandascore-error">Error: '.esc_html( $matches->get_error_message() ).'</div>';
         }
 
         if ( empty( $matches ) ) {
-            return '<div class="pandascore-tracker" style="text-align:'.esc_attr($atts['align']).';">No matches found.</div>';
+            return '<div class="pandascore-empty">No matches found for '.esc_html($atts['game']).'.</div>';
         }
 
-        $html = '<div class="pandascore-tracker" style="text-align:'.esc_attr($atts['align']).';">';
-        $html .= '<ul class="pandascore-list">';
+        $html = '<div class="pandascore-tracker">';
+        $html .= '<div class="pandascore-header">'.esc_html($atts['title']).'</div>';
+        $html .= '<div class="pandascore-matches">';
+
         foreach ( $matches as $m ) {
             $opponents = array();
+            $opponent_logos = array();
+
             if ( isset( $m['opponents'] ) && is_array( $m['opponents'] ) ) {
                 foreach ( $m['opponents'] as $o ) {
                     $name = isset( $o['opponent']['name'] ) ? $o['opponent']['name'] : 'Unknown';
+                    $logo = isset( $o['opponent']['image_url'] ) ? $o['opponent']['image_url'] : '';
                     $opponents[] = esc_html( $name );
+                    $opponent_logos[] = $logo;
                 }
             }
-            $score = '';
-            if ( isset( $m['results'] ) && is_array( $m['results'] ) ) {
-                $parts = array();
-                foreach ( $m['results'] as $r ) {
-                    $parts[] = isset( $r['score'] ) ? intval( $r['score'] ) : '';
+
+            // Format the match time
+            $match_time = '';
+            if ( isset( $m['begin_at'] ) && $m['begin_at'] ) {
+                $timestamp = strtotime( $m['begin_at'] );
+                if ( $timestamp ) {
+                    $match_time = date( 'H:i', $timestamp );
                 }
-                $score = implode( ' - ', $parts );
             }
-            $begin = isset( $m['begin_at'] ) ? esc_html( $m['begin_at'] ) : '';
-            $html .= '<li class="pandascore-item"><strong>'.implode( ' vs ', $opponents ).'</strong>';
-            if ( $score !== '' ) $html .= ' — <span class="pandascore-score">'.$score.'</span>';
-            if ( $begin ) $html .= ' <div class="pandascore-time">'.esc_html( $begin ).'</div>';
-            $html .= '</li>';
+
+            $html .= '<div class="pandascore-match">';
+
+            // Team 1
+            if ( isset( $opponents[0] ) ) {
+                $html .= '<div class="pandascore-team">';
+                $html .= '<div class="pandascore-time">' . esc_html( $match_time ) . '</div>';
+                if ( !empty( $opponent_logos[0] ) ) {
+                    $html .= '<img src="' . esc_url( $opponent_logos[0] ) . '" alt="' . esc_attr( $opponents[0] ) . '" class="pandascore-logo">';
+                } else {
+                    $html .= '<div class="pandascore-logo-placeholder"></div>';
+                }
+                $html .= '<span class="pandascore-name">' . esc_html( $opponents[0] ) . '</span>';
+                $html .= '<span class="pandascore-dash">-</span>';
+                $html .= '<span class="pandascore-dash">-</span>';
+                $html .= '</div>';
+            }
+
+            // Team 2
+            if ( isset( $opponents[1] ) ) {
+                $html .= '<div class="pandascore-team">';
+                $html .= '<div class="pandascore-time">' . esc_html( $match_time ) . '</div>';
+                if ( !empty( $opponent_logos[1] ) ) {
+                    $html .= '<img src="' . esc_url( $opponent_logos[1] ) . '" alt="' . esc_attr( $opponents[1] ) . '" class="pandascore-logo">';
+                } else {
+                    $html .= '<div class="pandascore-logo-placeholder"></div>';
+                }
+                $html .= '<span class="pandascore-name">' . esc_html( $opponents[1] ) . '</span>';
+                $html .= '<span class="pandascore-dash">-</span>';
+                $html .= '<span class="pandascore-dash">-</span>';
+                $html .= '</div>';
+            }
+
+            $html .= '</div>'; // Close match
         }
-        $html .= '</ul></div>';
+
+        $html .= '</div>'; // Close matches
+        $html .= '</div>'; // Close tracker
 
         return $html;
     }
