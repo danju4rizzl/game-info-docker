@@ -1,7 +1,3 @@
----
-type: "agent_requested"
-description: "Whenever working with Panda Scores API"
----
 Here are the pandascore api refrence page:
 "List additions
 get
@@ -72,8 +68,7 @@ VideogameID
 
 VideogameSlug"
 
-
-### Working with live API data 
+### Working with live API data
 
 Learn how to retrieve and connect to the real-time matches data feed using the WebSockets API.
 
@@ -81,6 +76,7 @@ Suggest Edits
 This guide will help you to retrieve matches that support real-time data and connect to the dedicated WebSockets.
 
 Connecting to WebSockets
+
 1. Retrieving matches that support real-time data
 
 Support for real-time data is enabled at the tournament level. When available, the tournament live_supported is true.
@@ -94,31 +90,30 @@ This endpoint returns a list of matches. Each match has a structure similar to t
 JSON
 
 {
-  "endpoints": [
-    {
-      "begin_at": null,
-      "expected_begin_at": "2021-08-13T11:34:59Z",
-      "last_active": null,
-      "match_id": 595477,
-      "open": true,
-      "type": "frames",
-      "url": "wss://live.pandascore.co/matches/595477"
-    },
-    {
-      "begin_at": null,
-      "expected_begin_at": "2021-08-13T11:34:59Z",
-      "last_active": null,
-      "match_id": 595477,
-      "open": true,
-      "type": "events",
-      "url": "wss://live.pandascore.co/matches/595477/events"
-    }
-  ],
-  "match": {
-    // Omitted for clarity
-  }
+"endpoints": [
+{
+"begin_at": null,
+"expected_begin_at": "2021-08-13T11:34:59Z",
+"last_active": null,
+"match_id": 595477,
+"open": true,
+"type": "frames",
+"url": "wss://live.pandascore.co/matches/595477"
+},
+{
+"begin_at": null,
+"expected_begin_at": "2021-08-13T11:34:59Z",
+"last_active": null,
+"match_id": 595477,
+"open": true,
+"type": "events",
+"url": "wss://live.pandascore.co/matches/595477/events"
 }
-2. Connecting to the real-time feeds
+],
+"match": {
+// Omitted for clarity
+}
+} 2. Connecting to the real-time feeds
 
 The previous JSON contains two endpoints: a Frames endpoint and an Events endpoint.
 
@@ -174,7 +169,6 @@ get
 https://api.pandascore.co/lives
 List currently running live matches, available from pandascore with live websocket data.
 
-
 Events recovery
 Learn how to use PandaScore WebSockets API to recover past real-time events.
 
@@ -191,10 +185,10 @@ When connected to the /matches/<matchID>/events WebSocket channel, the following
 JSON
 
 {
-  "type": "recover",
-  "payload": {
-    "game_id": <gameID>
-  }
+"type": "recover",
+"payload": {
+"game_id": <gameID>
+}
 }
 Node.js example
 
@@ -203,14 +197,15 @@ Node.js
 const socket = new WebSocket('wss://live.pandascore.co/matches/548763/events?token=YOUR_TOKEN')
 
 socket.onmessage = function (event) {
-	console.log(JSON.parse(event.data))
+console.log(JSON.parse(event.data))
 }
 
 socket.onopen = function (event) {
-  socket.send(JSON.stringify({"type":"recover","payload":{"game_id":211051}}))
+socket.send(JSON.stringify({"type":"recover","payload":{"game_id":211051}}))
 }
 
 ## Working with pagination Pagination
+
 Learn how to paginate results from the PandaScore REST API.
 
 Suggest Edits
@@ -221,13 +216,11 @@ The page[number] query parameter allows to request a specific page number.
 
 To get the second page of LoL champions, use the following URL:
 
-
 /lol/champions?page[number]=2
 Page size
 The page[size] query parameters allows to change the page size.
 
 To get LoL champions with only 10 items per page, use the following URL:
-
 
 /lol/champions?page[size]=10
 🚧
@@ -239,7 +232,6 @@ Navigating pages
 The Link header in the HTTP response contains data to navigate between pages.
 
 Requesting /matches/upcoming will give a response that contains the following Link header:
-
 
 <https://api.pandascore.co/matches/upcoming?page=18>; rel="last", <https://api.pandascore.co/matches/upcoming?page=2>; rel="next"
 As this response returned the first page, only the link to the next and last pages are provided. Depending on which page is requested, different links can be provided via the Link header:
@@ -255,7 +247,8 @@ X-Page — the current page number
 X-Per-Page — the current page length
 X-Total — the total count of items
 
-## Filtering and sorting: 
+## Filtering and sorting:
+
 "Filtering and sorting
 Learn how to use URL parameters to filter and sort results from the PandaScore REST API.
 
@@ -267,10 +260,8 @@ The filter query parameter is used to check for strict equality. Using the filte
 
 To get only LoL champions whose name is Brand, use the following URL:
 
-
 /lol/champions?filter[name]=Brand
 The filter parameter also accepts a list of comma-separated values. To get only LoL champions whose name is either Brand or Twitch, use the following URL:
-
 
 /lol/champions?filter[name]=Brand,Twitch
 📘
@@ -288,7 +279,6 @@ The search query parameter is used to check for string values that contain a giv
 
 To get only LoL champions whose name contains "twi", use the following URL:
 
-
 /lol/champions?search[name]=twi
 📘
 Notice
@@ -299,7 +289,6 @@ Range
 The range query parameter is used to check for numeric values that are between a given interval. Using the range[field]=0,100, you can filter out results where field is not between 0 and 100.
 
 To get only LoL champions whose HP are between 500 and 1000, use the following URL:
-
 
 /lol/champions?range[hp]=500,1000
 📘
@@ -327,6 +316,7 @@ Null values
 When sorting in ascending order, null values appear first. In descending order, null values come last."
 
 ## Disconnect: "Disconnections
+
 Learn how to handle PandaScore WebSockets API disconnections.
 
 Suggest Edits
@@ -338,16 +328,17 @@ PandaScore opens a WebSocket for each match that is covered with live data. When
 Client errors
 When the WebSocket closes because of a client error, an error code within the 4xxx range will be sent.
 
-Status Code	Definition
-4001 — Unauthorized	Missing token. See Authentication.
-4003 — Forbidden	Socket URL is not available with your plan. See Coverage.
-4029 — Too Many Connections	Maximum number of simultaneous connections to a match reached (3).
+Status Code Definition
+4001 — Unauthorized Missing token. See Authentication.
+4003 — Forbidden Socket URL is not available with your plan. See Coverage.
+4029 — Too Many Connections Maximum number of simultaneous connections to a match reached (3).
 Server errors
 When the WebSocket closes because of a server error, an error code within the 1xxx range will be sent. This code will be different from 1000, which is reserved for normal closure. These only happen because of issues on PandaScore's servers and should be rare.
 
 When you are disconnected because of such error, you should try to connect again. When using the Events API, you might also want to recover the missing events."
 
 ## Seasons :
+
 Seasons and circuits
 Learn the basics of how the major esports scene competitions articulate during the year.
 
@@ -387,6 +378,7 @@ The Overwatch esports scene revolves around its only Tier 1 competition, the Ove
 Learn more on Overwatch specifics here.
 
 ## League of Legends
+
 Learn how PandaScore handles scenarios specific to League of Legends esports.
 
 Suggest Edits
@@ -409,17 +401,17 @@ Making a request to /lol/champions?filter[name]=Sejuani to retrieve Sejuani gets
 JSON
 
 [
-  {
-    "attackdamage": 66,
-    "id": 2582,
-    // other fields are removed for clarity
-    "videogame_versions": [
-      "9.24.2",
-      "9.24.1",
-      "9.23.1",
-      "9.22.1"
-    ]
-  }
+{
+"attackdamage": 66,
+"id": 2582,
+// other fields are removed for clarity
+"videogame_versions": [
+"9.24.2",
+"9.24.1",
+"9.23.1",
+"9.22.1"
+]
+}
 ]
 The videogame_versions array show us that Sejuani was not updated from patch 9.22.1 to 9.24.2. The id 2582 will always return this version of Sejuani.
 
@@ -435,27 +427,27 @@ Making a request to https://api.pandascore.co/lol/versions/9.21.1/champions?filt
 JSON
 
 [
-  {
-    "attackdamage": 64,
-    "id": 2533,
-    // other fields are removed for clarity
-    "videogame_versions": [
-      "9.21.1",
-      "9.20.1",
-      "9.19.1",
-      "9.18.1",
-      "9.17.1",
-      "9.16.1",
-      "9.15.1",
-      "9.14.1",
-      "9.13.1"
-    ]
-  }
+{
+"attackdamage": 64,
+"id": 2533,
+// other fields are removed for clarity
+"videogame_versions": [
+"9.21.1",
+"9.20.1",
+"9.19.1",
+"9.18.1",
+"9.17.1",
+"9.16.1",
+"9.15.1",
+"9.14.1",
+"9.13.1"
+]
+}
 ]
 We can see that some fields have a different values here. In particular, this example shows that Sejuani's attack damage increased from 64 to 66 in patch 9.22.
 
-
 ## Authentication
+
 Learn how to authenticate to PandaScore REST and WebSockets APIs.
 
 Suggest Edits
@@ -476,9 +468,9 @@ You can authenticate by setting an Authorization HTTP header on your request wit
 cURL
 
 curl --request GET \
-     --url 'https://api.pandascore.co/videogames' \
-     --header 'Accept: application/json' \
-     --header 'Authorization: Bearer PLACEHOLDER_TOKEN_VALUE'
+ --url 'https://api.pandascore.co/videogames' \
+ --header 'Accept: application/json' \
+ --header 'Authorization: Bearer PLACEHOLDER_TOKEN_VALUE'
 URL Parameter
 
 Alternatively, you can also authenticate by passing your token via a token URL parameter.
@@ -486,8 +478,8 @@ Alternatively, you can also authenticate by passing your token via a token URL p
 cURL
 
 curl --request GET \
-     --url 'https://api.pandascore.co/videogames?token=PLACEHOLDER_TOKEN_VALUE' \
-     --header 'Accept: application/json' 
+ --url 'https://api.pandascore.co/videogames?token=PLACEHOLDER_TOKEN_VALUE' \
+ --header 'Accept: application/json'
 These examples use the All Video games > List video games endpoint.
 
 WebSockets API
@@ -497,8 +489,8 @@ Shell
 
 wscat -c "wss://live.pandascore.co/matches/595466?token=PLACEHOLDER_TOKEN_VALUE"
 
-
 ## Rate and connections limits
+
 Learn how rate limits and maximum connections can affect your PandaScore integrations.
 
 Suggest Edits
@@ -509,17 +501,18 @@ For more information on plans, see Pricing.
 REST API
 Usage of the REST API is restricted by a rate limit, i.e. a maximum number of requests per hour. In every API response, the number of remaining requests is available in the response X-Rate-Limit-Remaining HTTP header. Below is a table summary of the rate limit per hour for each plan:
 
-Plan Name	Rate Limit for the REST API
-Schedules, Results & Context Data	1k requests per hour
-Historical & Post-Match Data	10k requests per hour
-Real-time Data (Basic)	10k requests per hour
-Real-time Data (Pro)	10k requests per hour
+Plan Name Rate Limit for the REST API
+Schedules, Results & Context Data 1k requests per hour
+Historical & Post-Match Data 10k requests per hour
+Real-time Data (Basic) 10k requests per hour
+Real-time Data (Pro) 10k requests per hour
 Read more: REST API > Errors
 
 WebSockets API
 The WebSockets API is available to those on either the Real-time Data (Basic) or the Real-time Data (Pro) plans. Both of these plans allow a maximum of 3 simultaneous connections to a given match.
 
 ## Fundamentals
+
 Learn the fundamentals of the opinionated, flexible data structure PandaScore uses to map esports competitions across all video games.
 
 Suggest Edits
@@ -561,6 +554,7 @@ The International — 2018 — Playoffs — Final: OG vs PSG.LGD (5 games)
 In-game results should be retrieved via game-level endpoints (only available for video games supporting Historical Data).
 
 ## Introduction
+
 Get started with PandaScore APIs for real-time esports statistics.
 
 Data coverage
