@@ -2,7 +2,7 @@
 /*
 Plugin Name: Panda Score API Tracker
 Description: Fetches and displays PandaScore game scores via shortcode. Right-aligned by default.
-Version: 1.3
+Version: 1.4
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
@@ -53,17 +53,181 @@ class PandaScore_Tracker_Plugin {
         add_action( 'admin_init', array( $this, 'register_settings' ) );
         add_shortcode( 'pandascore_tracker', array( $this, 'shortcode_handler' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
     }
 
     public function enqueue_assets() {
-        // Enqueue CSS with proper versioning for cache busting
-        wp_enqueue_style(
-            'pandascore-tracker-style',
-            plugins_url( 'css/pandascore-tracker.css', __FILE__ ),
-            array(),
-            '1.1',
-            'all'
-        );
+        // Get the CSS file path
+        $css_file = plugin_dir_path( __FILE__ ) . 'css/pandascore-tracker.css';
+        $css_url = plugins_url( 'css/pandascore-tracker.css', __FILE__ );
+
+        // Always add inline styles as primary method to ensure compatibility
+        add_action( 'wp_head', array( $this, 'add_inline_styles' ), 5 );
+
+        // Also try to enqueue external CSS file if it exists (as backup)
+        if ( file_exists( $css_file ) ) {
+            wp_enqueue_style(
+                'pandascore-tracker-style',
+                $css_url,
+                array(),
+                '1.3',
+                'all'
+            );
+        }
+    }
+
+    public function add_inline_styles() {
+        ?>
+        <style type="text/css">
+        /* PandaScore Tracker Inline Styles */
+        .pandascore-tracker {
+            max-width: 320px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin: 20px auto;
+            border: 1px solid #333;
+        }
+        .pandascore-header {
+            background: #000;
+            color: #fff;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #333;
+        }
+        .pandascore-matches {
+            padding: 0;
+            background: #1a1a1a;
+        }
+        .pandascore-match {
+            border-bottom: 1px solid #333;
+        }
+        .pandascore-match:last-child {
+            border-bottom: none;
+        }
+        .pandascore-team {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: #2a2a2a;
+            border-bottom: 1px solid #333;
+            transition: background-color 0.2s ease;
+            min-height: 48px;
+        }
+        .pandascore-team:hover {
+            background: #333;
+        }
+        .pandascore-team:last-child {
+            border-bottom: none;
+        }
+        .pandascore-time {
+            color: #888;
+            font-size: 12px;
+            font-weight: 500;
+            min-width: 40px;
+            margin-right: 12px;
+            text-align: left;
+        }
+        .pandascore-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            margin-right: 12px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .pandascore-logo-placeholder {
+            width: 24px;
+            height: 24px;
+            background: #444;
+            border-radius: 4px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .pandascore-logo-placeholder::before {
+            content: '?';
+            color: #888;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .pandascore-name {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            flex: 1;
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .pandascore-dash {
+            color: #666;
+            font-size: 14px;
+            margin-left: 8px;
+            min-width: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .pandascore-error {
+            color: #ff4444;
+            background: #2a2a2a;
+            padding: 16px;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 320px;
+        }
+        .pandascore-empty {
+            color: #888;
+            background: #2a2a2a;
+            padding: 16px;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 320px;
+        }
+        @media (max-width: 480px) {
+            .pandascore-tracker {
+                max-width: 100%;
+                margin: 10px auto;
+                border-radius: 6px;
+            }
+            .pandascore-team {
+                padding: 10px 12px;
+                min-height: 44px;
+            }
+            .pandascore-name {
+                font-size: 13px;
+            }
+            .pandascore-time {
+                font-size: 11px;
+                min-width: 35px;
+                margin-right: 8px;
+            }
+            .pandascore-logo,
+            .pandascore-logo-placeholder {
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+            }
+            .pandascore-header {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+        }
+        </style>
+        <?php
     }
 
     public function admin_menu() {
