@@ -27,15 +27,100 @@ A modern WordPress plugin that fetches and displays esports match data from the 
 ## Configuration
 
 ### API Key Setup
-1. Get your free API key from [PandaScore](https://pandascore.co/)
+1. Get your free API key from [PandaScore Developers](https://pandascore.co/developers)
 2. Go to WordPress Admin → Settings → PandaScore Tracker
 3. Enter your API key and save
 
 ## Usage
 
+### Shortcode Parameters
+
+- **`game`**: Game type (valorant, lol, csgo, dota2, etc.) - default: 'lol'
+- **`limit`**: Number of matches to display (1-20) - default: 5
+- **`align`**: Text alignment (left, center, right) - default: 'center'
+- **`type`**: Match type - "upcoming", "live", or "mixed" - default: 'mixed'
+
 ### Basic Shortcode
 ```
 [pandascore_tracker]
+```
+
+### Advanced Examples
+```php
+// Live matches only
+[pandascore_tracker game="valorant" limit="5" type="live"]
+
+// Upcoming matches only
+[pandascore_tracker game="lol" limit="10" type="upcoming"]
+
+// Mixed display (live + upcoming)
+[pandascore_tracker game="csgo" limit="8" type="mixed"]
+```
+
+## Supported Games
+
+- **Valorant** (`valorant`)
+- **League of Legends** (`lol`)
+- **Counter-Strike: Global Offensive** (`csgo`)
+- **Dota 2** (`dota2`)
+- **Overwatch** (`overwatch`)
+- **Rainbow Six Siege** (`r6siege`)
+- **Rocket League** (`rl`)
+
+## Technical Features
+
+### Component Architecture
+The plugin uses a modern component-based architecture:
+- **Base Component**: Shared functionality (API calls, rendering)
+- **Live Scores Component**: WebSocket management and live match handling
+- **Upcoming Matches Component**: Upcoming match fetching and display
+- **Main Plugin Class**: WordPress integration and coordination
+
+### Real-time Updates
+- WebSocket connections for live score tracking
+- Automatic fallback to polling if WebSocket fails
+- Smart reconnection logic with exponential backoff
+
+### Security Features
+- Input sanitization and validation
+- API key format validation
+- Restricted proxy endpoints (PandaScore only)
+- Proper WordPress nonces and permissions
+
+## Requirements
+
+- **WordPress**: 5.0 or higher
+- **PHP**: 7.4 or higher
+- **PandaScore API Key**: Required for functionality
+- **Modern Browser**: For WebSocket support (live matches)
+
+## Troubleshooting
+
+### Common Issues
+
+1. **No matches displayed**
+   - Check your API key in Settings > PandaScore Tracker
+   - Verify the game parameter is correct
+   - Check browser console for JavaScript errors
+
+2. **Live updates not working**
+   - Ensure your browser supports WebSockets
+   - Check if your hosting provider blocks WebSocket connections
+   - Verify the API key has live data access
+
+3. **Styling issues**
+   - Check if your theme conflicts with plugin CSS
+   - Try different alignment settings
+   - Inspect browser developer tools for CSS conflicts
+
+### Debug Mode
+
+Enable WordPress debug mode to see detailed error messages:
+
+```php
+// In wp-config.php
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
 ```
 
 ### Advanced Usage

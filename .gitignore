@@ -3,3 +3,4 @@ wp-content/*
 
 # But DON'T ignore the plugins directory
 !wp-content/plugins/
+node_modules/

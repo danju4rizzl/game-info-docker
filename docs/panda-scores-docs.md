@@ -1,4 +1,4 @@
-Here are the pandascore api refrence page:
+Here are the pandascore api reference page:
 "List additions
 get
 https://api.pandascore.co/additions
@@ -560,7 +560,7 @@ Get started with PandaScore APIs for real-time esports statistics.
 Data coverage
 PandaScore provides historical and real-time statistics for 13 major esports titles, including League of Legends, Counter-Strike, DotA2 and Valorant. The level of data coverage falls under three main categories: fixtures data, historical data and real-time data. Fixtures and historical data are available via the REST API. Real-time in-game statistics are accessible via the Live API.
 
-To better understand the data categories available with the PandaScore APIs, this section summarises each, paired with a visual representation of example usage.
+To better understand the data categories available with the PandaScore APIs, this section summaries each, paired with a visual representation of example usage.
 
 Fixtures data
 Fixtures data provides an overview of esports competitions, schedules and results for all available matches.
@@ -569,7 +569,7 @@ Every match contains essential information such as the name, scheduled time, for
 
 Fixtures updates for matches are provided in real-time, informing when a match begins or ends, the final match score and the winning team.
 
-Utilising the fixtures plan, users can display real-time esports schedules and results, such as this:
+Utilizing the fixtures plan, users can display real-time esports schedules and results, such as this:
 
 1390
 Example of a finished match using data within the Fixtures only plan.
@@ -593,7 +593,7 @@ Post-game data is available in the Historical plan and above.
 Live data
 Live data delivers in-game statistics to users in real-time. This type of data is accessible via WebSockets within the Live API. There are two live data feeds available: frames and events.
 
-Live statistics may experience delay from the actual game server when applied or requested by the event organiser or its suppliers.
+Live statistics may experience delay from the actual game server when applied or requested by the event organizer or its suppliers.
 
 Frames
 

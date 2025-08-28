@@ -2,7 +2,7 @@
 /*
 Plugin Name: PandaScore Tracker
 Description: Fetches and displays PandaScore game scores via shortcode. Right-aligned by default.
-Version: 1.0
+Version: 1.1
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
@@ -24,151 +24,24 @@ class PandaScore_Tracker_Plugin {
     }
 
     public function enqueue_assets() {
-        // Register styles and scripts to be enqueued later if the shortcode is used.
-        $live_css_path = plugin_dir_path( __FILE__ ) . 'css/pandascore-live-tracker.css';
+        // Register Tailwind CSS via CDN with proper version and integrity
+        wp_register_style(
+            'tailwindcss-cdn',
+            'https://cdn.tailwindcss.com',
+            array(),
+            '4.1'
+        );
 
-        if ( file_exists( $live_css_path ) ) {
-            wp_register_style( 'pandascore-live-tracker-style', plugins_url( 'css/pandascore-live-tracker.css', __FILE__ ), array(), '1.0' );
-        } else {
-            // Fallback to inline styles if CSS file doesn't exist
-            // Note: This is a fallback. Creating the CSS file is recommended.
-            // We will add this inline style inside the shortcode handler if needed.
-        }
+        // Register custom styles for any additional styling needed
+        wp_register_style(
+            'pandascore-custom-style',
+            plugins_url( 'css/custom.css', __FILE__ ),
+            array( 'tailwindcss-cdn' ),
+            '1.0'
+        );
 
         // Register the WebSocket script
-        wp_register_script( 'pandascore-live-tracker-js', plugins_url( 'js/live-tracker.js', __FILE__ ), array(), '1.0', true );
-    }
-
-    private function get_inline_styles() {
-        return "
-        .pandascore-tracker {
-            max-width: 320px;
-            background: #1a1a1a;
-            border-radius: 8px;
-            overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            margin: 20px auto;
-            border: 1px solid #333;
-        }
-        .pandascore-live-indicator {
-            background: #ff4444;
-            color: white;
-            padding: 8px 16px;
-            font-size: 12px;
-            font-weight: bold;
-            text-align: left;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 1px solid #333;
-        }
-        .pandascore-section-header {
-            background: #000;
-            color: #ffa500;
-            padding: 12px 16px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #333;
-        }
-        .pandascore-matches {
-            padding: 0;
-            background: #1a1a1a;
-        }
-        .pandascore-match {
-            border-bottom: 1px solid #333;
-            background: #2a2a2a;
-            margin-bottom: 8px;
-        }
-        .pandascore-match.live {
-            background: rgba(255, 68, 68, 0.1);
-            border-left: 3px solid #ff4444;
-        }
-        .pandascore-team {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            background: #2a2a2a;
-            border-bottom: 1px solid #333;
-            min-height: 48px;
-        }
-        .pandascore-match.live .pandascore-team {
-            background: rgba(255, 68, 68, 0.05);
-        }
-        .pandascore-time {
-            color: #888;
-            font-size: 12px;
-            font-weight: 500;
-            min-width: 40px;
-            margin-right: 12px;
-        }
-        .pandascore-logo-placeholder {
-            width: 24px;
-            height: 24px;
-            background: #444;
-            border-radius: 4px;
-            margin-right: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .pandascore-logo-placeholder::before {
-            content: '?';
-            color: #888;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        .pandascore-name {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 500;
-            flex: 1;
-            text-transform: uppercase;
-        }
-        .pandascore-score {
-            color: #fff;
-            font-size: 16px;
-            font-weight: bold;
-            min-width: 24px;
-            text-align: center;
-            margin-left: 8px;
-        }
-        .pandascore-score.live {
-            background: rgba(76, 175, 80, 0.2);
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-        .pandascore-odds {
-            color: #ffa500;
-            font-size: 12px;
-            font-weight: 500;
-            margin-left: 8px;
-            min-width: 32px;
-            text-align: right;
-        }
-        .pandascore-error {
-            color: #ff4444;
-            background: #2a2a2a;
-            padding: 16px;
-            text-align: center;
-            font-size: 14px;
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 320px;
-        }
-        .pandascore-empty {
-            color: #888;
-            background: #2a2a2a;
-            padding: 16px;
-            text-align: center;
-            font-size: 14px;
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 320px;
-        }
-        ";
+        wp_register_script( 'pandascore-live-tracker-js', plugins_url( 'js/live-tracker.js', __FILE__ ), array(), '1.1', true );
     }
 
     public function admin_menu() {
@@ -274,23 +147,30 @@ class PandaScore_Tracker_Plugin {
 
     public function shortcode_handler( $atts ) {
         $atts = shortcode_atts( array(
-            'game' => 'lol',
+            'game' => 'csgo', // default game is csgo
             'limit' => 5,
             'align' => 'center',
             'type' => 'mixed' // 'live', 'upcoming', or 'mixed'
         ), $atts, 'pandascore_tracker' );
 
-        // Enqueue assets now that we know the shortcode is being used
-        if ( wp_style_is( 'pandascore-live-tracker-style', 'registered' ) ) {
-            wp_enqueue_style( 'pandascore-live-tracker-style' );
-        } else {
-            wp_add_inline_style( 'wp-block-library', $this->get_inline_styles() );
-        }
+        // Enqueue Tailwind CSS CDN and custom styles
+        wp_enqueue_style( 'tailwindcss-cdn' );
+        wp_enqueue_style( 'pandascore-custom-style' );
+
+        // Add Tailwind CSS script for better compatibility
+        wp_enqueue_script(
+            'tailwindcss-script',
+            'https://cdn.tailwindcss.com',
+            array(),
+            '3.4.0',
+            false
+        );
 
         // Reset live match IDs for this shortcode instance
         $this->live_match_ids = array();
 
-        $html = '<div class="pandascore-tracker" style="text-align:'.esc_attr($atts['align']).';">';
+        $align_class = $atts['align'] === 'left' ? 'text-left' : ($atts['align'] === 'right' ? 'text-right' : 'text-center');
+        $html = '<div class="pandascore-tracker font-inter ' . $align_class . '">';
 
         // Handle different types of displays
         if ( $atts['type'] === 'live' || $atts['type'] === 'mixed' ) {
@@ -325,8 +205,8 @@ class PandaScore_Tracker_Plugin {
             return ''; // Don't show error for live matches, just skip
         }
 
-        $html = '<div class="pandascore-live-indicator">LIVE</div>';
-        $html .= '<div class="pandascore-matches">';
+        $html = '<div class="bg-gray-500 text-white px-3 py-1 text-xs font-bold rounded uppercase mb-3 inline-block">LIVE</div>';
+        $html .= '<div class="flex flex-col gap-3">';
 
         foreach ( $live_matches as $live_data ) {
             if ( ! isset( $live_data['match'] ) ) continue;
@@ -344,133 +224,122 @@ class PandaScore_Tracker_Plugin {
         return $html;
     }
 
-    private function render_upcoming_matches( $game, $limit ) {
-        $upcoming_matches = $this->fetch_matches( $game, $limit );
 
-        if ( is_wp_error( $upcoming_matches ) ) {
-            return '<div class="pandascore-error">Error: '.esc_html( $upcoming_matches->get_error_message() ).'</div>';
-        }
-
-        if ( empty( $upcoming_matches ) ) {
-            return '<div class="pandascore-empty">No upcoming matches found.</div>';
-        }
-
-        $html = '<div class="pandascore-section-header upcoming">UP-COMING</div>';
-        $html .= '<div class="pandascore-matches">';
-
-        foreach ( $upcoming_matches as $match ) {
-            $html .= $this->render_match( $match, false );
-        }
-
-        $html .= '</div>';
-        return $html;
-    }
-
-    private function render_match( $match, $is_live = false ) {
+    private function render_match($match, $is_live = false) {
         $opponents = array();
         $opponent_logos = array();
         $scores = array();
         $opponent_ids = array();
 
         // Extract opponent data
-        if ( isset( $match['opponents'] ) && is_array( $match['opponents'] ) ) {
-            foreach ( $match['opponents'] as $o ) {
-                $name = isset( $o['opponent']['name'] ) ? $o['opponent']['name'] : 'NAME';
-                $logo = isset( $o['opponent']['image_url'] ) ? $o['opponent']['image_url'] : '';
-                $opponent_ids[] = isset( $o['opponent']['id'] ) ? $o['opponent']['id'] : null;
-                $opponents[] = esc_html( $name );
+        if (isset($match['opponents']) && is_array($match['opponents'])) {
+            foreach ($match['opponents'] as $o) {
+                $name = isset($o['opponent']['name']) ? $o['opponent']['name'] : 'NAME';
+                $logo = isset($o['opponent']['image_url']) ? $o['opponent']['image_url'] : '';
+                $opponent_ids[] = isset($o['opponent']['id']) ? $o['opponent']['id'] : null;
+                $opponents[] = esc_html($name);
                 $opponent_logos[] = $logo;
             }
         }
 
         // Extract scores
-        if ( isset( $match['results'] ) && is_array( $match['results'] ) ) {
-            foreach ( $match['results'] as $r ) {
-                $scores[] = isset( $r['score'] ) ? intval( $r['score'] ) : 0;
+        if (isset($match['results']) && is_array($match['results'])) {
+            foreach ($match['results'] as $r) {
+                $scores[] = isset($r['score']) ? intval($r['score']) : 0;
             }
         }
 
         // Ensure we have at least 2 opponents and scores
-        while ( count( $opponents ) < 2 ) {
+        while (count($opponents) < 2) {
             $opponents[] = 'NAME';
             $opponent_logos[] = '';
             $opponent_ids[] = null;
         }
-        while ( count( $scores ) < 2 ) {
+        while (count($scores) < 2) {
             $scores[] = $is_live ? rand(0, 2) : 0; // Random scores for live demo
         }
 
+        // Get league information
+        $league_name = isset($match['league']['name']) ? esc_html($match['league']['name']) : '';
+        $league_logo = isset($match['league']['image_url']) ? esc_url($match['league']['image_url']) : '';
+
         // Format time
         $match_time = '';
-        if ( isset( $match['begin_at'] ) && $match['begin_at'] && ! $is_live ) {
-            $timestamp = strtotime( $match['begin_at'] );
-            if ( $timestamp ) {
-                $match_time = date( 'H:i', $timestamp );
+        if (isset($match['begin_at']) && $match['begin_at'] && !$is_live) {
+            $timestamp = strtotime($match['begin_at']);
+            if ($timestamp) {
+                $match_time = date('H:i', $timestamp);
             }
         }
 
-        $match_id = isset( $match['id'] ) ? esc_attr( $match['id'] ) : '';
-        $html = '<div class="pandascore-match' . ( $is_live ? ' live' : '' ) . '" data-match-id="' . $match_id . '">';
+        $match_id = isset($match['id']) ? esc_attr($match['id']) : '';
 
-        // Team 1
-        $html .= '<div class="pandascore-team">';
-        if ( ! $is_live && $match_time ) {
-            $html .= '<div class="pandascore-time">' . esc_html( $match_time ) . '</div>';
+        // Start match card with Tailwind classes
+        $live_classes = $is_live ? 'border-l-4 border-red-500' : '';
+        $html = '<div class="bg-blue-500 rounded-xl p-3 my-2 shadow-lg font-inter text-white flex justify-between  max-w-sm w-full ' . $live_classes . '" data-match-id="' . $match_id . '">';
+
+        // League header
+        if ($league_logo) {
+            $html .= '<div class="bg-red-600 mb-2 p-2 rounded"><img src="' . $league_logo . '" alt="' . $league_name . '" class="w-10 h-10 object-contain"></div>';
         }
 
-        // Logo
-        if ( ! empty( $opponent_logos[0] ) ) {
-            $html .= '<img src="' . esc_url( $opponent_logos[0] ) . '" alt="' . esc_attr( $opponents[0] ) . '" class="pandascore-logo">';
+        // Match content
+        $html .= '<div class="flex flex-col gap-2">';
+
+        // Team 1 row
+        $html .= '<div class="flex items-center justify-between py-1">';
+        if (!empty($opponent_logos[0])) {
+            $html .= '<img src="' . esc_url($opponent_logos[0]) . '" alt="' . esc_attr($opponents[0]) . '" class="w-6 h-6 object-contain flex-shrink-0 mr-2">';
         } else {
-            $html .= '<div class="pandascore-logo-placeholder"></div>';
+            $html .= '<div class="w-6 h-6 bg-gray-700 rounded flex-shrink-0 mr-2"></div>';
         }
+        $html .= '<span class="text-sm font-medium truncate flex-1">' . esc_html($opponents[0]) . '</span>';
+        $score_classes = $is_live ? 'bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center score-updating' : 'bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center';
+        $html .= '<div class="' . $score_classes . '" data-opponent-id="' . (isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '') . '">' . intval($scores[0]) . '</div>';
+        $html .= '</div>';
 
-        $html .= '<span class="pandascore-name">' . esc_html( $opponents[0] ) . '</span>';
-
-        $opponent_1_id = isset( $opponent_ids[0] ) ? esc_attr( $opponent_ids[0] ) : '';
-        if ( $is_live || ( ! empty( $scores ) && $scores[0] > 0 ) ) {
-            $html .= '<span class="pandascore-score' . ( $is_live ? ' live' : '' ) . '" data-opponent-id="' . $opponent_1_id . '">' . intval( $scores[0] ) . '</span>';
+        // Team 2 row
+        $html .= '<div class="flex items-center justify-between py-1">';
+        if (!empty($opponent_logos[1])) {
+            $html .= '<img src="' . esc_url($opponent_logos[1]) . '" alt="' . esc_attr($opponents[1]) . '" class="w-6 h-6 object-contain flex-shrink-0 mr-2">';
         } else {
-            $html .= '<span class="pandascore-score">-</span>';
+            $html .= '<div class="w-6 h-6 bg-gray-700 rounded flex-shrink-0 mr-2"></div>';
+        }
+        $html .= '<span class="text-sm font-medium truncate flex-1">' . esc_html($opponents[1]) . '</span>';
+        $score_classes = $is_live ? 'bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center score-updating' : 'bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center';
+        $html .= '<div class="' . $score_classes . '" data-opponent-id="' . (isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '') . '">' . intval($scores[1]) . '</div>';
+        $html .= '</div>';
+
+        $html .= '</div>'; // Close match content
+
+        if ($match_time) {
+            $html .= '<div class="text-xs text-gray-300 text-center mt-2">' . esc_html($match_time) . '</div>';
         }
 
-        // Add odds for upcoming matches
-        if ( ! $is_live ) {
-            $html .= '<span class="pandascore-odds">' . number_format( rand(110, 550) / 100, 1 ) . '</span>';
+        $html .= '</div>'; // Close card
+
+        return $html;
+    }
+
+    private function render_upcoming_matches($game, $limit) {
+        $upcoming_matches = $this->fetch_matches($game, $limit);
+
+        if (is_wp_error($upcoming_matches)) {
+            return '<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">Error: '.esc_html($upcoming_matches->get_error_message()).'</div>';
+        }
+
+        if (empty($upcoming_matches)) {
+            return '<div class="bg-gray-100 border border-gray-300 text-gray-700 px-4 py-3 rounded">No upcoming matches found.</div>';
+        }
+
+        $html = '<div class="text-lg font-bold text-center mb-3 text-gray-200">Upcoming Matches</div>';
+        $html .= '<div class="flex flex-col gap-3">';
+
+        foreach ($upcoming_matches as $match) {
+            $html .= $this->render_match($match, false);
         }
 
         $html .= '</div>';
-
-        // Team 2
-        $html .= '<div class="pandascore-team">';
-        if ( ! $is_live && $match_time ) {
-            $html .= '<div class="pandascore-time">' . esc_html( $match_time ) . '</div>';
-        }
-
-        // Logo
-        if ( ! empty( $opponent_logos[1] ) ) {
-            $html .= '<img src="' . esc_url( $opponent_logos[1] ) . '" alt="' . esc_attr( $opponents[1] ) . '" class="pandascore-logo">';
-        } else {
-            $html .= '<div class="pandascore-logo-placeholder"></div>';
-        }
-
-        $html .= '<span class="pandascore-name">' . esc_html( $opponents[1] ) . '</span>';
-
-        $opponent_2_id = isset( $opponent_ids[1] ) ? esc_attr( $opponent_ids[1] ) : '';
-        if ( $is_live || ( ! empty( $scores ) && $scores[1] > 0 ) ) {
-            $html .= '<span class="pandascore-score' . ( $is_live ? ' live' : '' ) . '" data-opponent-id="' . $opponent_2_id . '">' . intval( $scores[1] ) . '</span>';
-        } else {
-            $html .= '<span class="pandascore-score">-</span>';
-        }
-
-        // Add odds for upcoming matches
-        if ( ! $is_live ) {
-            $html .= '<span class="pandascore-odds">' . number_format( rand(110, 550) / 100, 1 ) . '</span>';
-        }
-
-        $html .= '</div>';
-        $html .= '</div>'; // Close match
-
         return $html;
     }
 
