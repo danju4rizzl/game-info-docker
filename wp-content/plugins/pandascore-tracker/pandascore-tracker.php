@@ -276,15 +276,15 @@ class PandaScore_Tracker_Plugin {
 
         // Start match card with Tailwind classes
         $live_classes = $is_live ? 'border-l-4 border-red-500' : '';
-        $html = '<div class="bg-blue-500 rounded-xl p-3 my-2 shadow-lg font-inter text-white flex justify-between  max-w-sm w-full ' . $live_classes . '" data-match-id="' . $match_id . '">';
+        $html = '<div class="bg-slate-700 rounded-xl p-3  shadow-lg font-inter text-white flex justify-between items-center gap-5  max-w-sm w-full ' . $live_classes . '" data-match-id="' . $match_id . '">';
 
         // League header
         if ($league_logo) {
-            $html .= '<div class="bg-red-600 mb-2 p-2 rounded"><img src="' . $league_logo . '" alt="' . $league_name . '" class="w-10 h-10 object-contain"></div>';
+            $html .= '<div class="bg-slate-600 my-2 p-2 rounded"><img src="' . $league_logo . '" alt="' . $league_name . '" class="w-10 h-10 object-contain"></div>';
         }
 
         // Match content
-        $html .= '<div class="flex flex-col gap-2">';
+        $html .= '<div class="flex flex-col flex-1">';
 
         // Team 1 row
         $html .= '<div class="flex items-center justify-between py-1">';
@@ -294,7 +294,7 @@ class PandaScore_Tracker_Plugin {
             $html .= '<div class="w-6 h-6 bg-gray-700 rounded flex-shrink-0 mr-2"></div>';
         }
         $html .= '<span class="text-sm font-medium truncate flex-1">' . esc_html($opponents[0]) . '</span>';
-        $score_classes = $is_live ? 'bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center score-updating' : 'bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center';
+        $score_classes = $is_live ? 'bg-gray-400 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center score-updating' : 'bg-gray-400 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center';
         $html .= '<div class="' . $score_classes . '" data-opponent-id="' . (isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '') . '">' . intval($scores[0]) . '</div>';
         $html .= '</div>';
 
@@ -306,7 +306,7 @@ class PandaScore_Tracker_Plugin {
             $html .= '<div class="w-6 h-6 bg-gray-700 rounded flex-shrink-0 mr-2"></div>';
         }
         $html .= '<span class="text-sm font-medium truncate flex-1">' . esc_html($opponents[1]) . '</span>';
-        $score_classes = $is_live ? 'bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center score-updating' : 'bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center';
+        $score_classes = $is_live ? 'bg-gray-400 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center score-updating' : 'bg-gray-400 text-white px-2 py-1 rounded text-sm font-bold min-w-8 text-center';
         $html .= '<div class="' . $score_classes . '" data-opponent-id="' . (isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '') . '">' . intval($scores[1]) . '</div>';
         $html .= '</div>';
 
