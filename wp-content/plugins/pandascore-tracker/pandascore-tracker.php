@@ -237,8 +237,8 @@ class PandaScore_Tracker_Plugin {
         $league_logo = isset($match['league']['image_url']) ? esc_url($match['league']['image_url']) : '';
 
         $match_time = '';
-        if (isset($match['begin_at']) && $match['begin_at'] && !$is_live) {
-            $timestamp = strtotime($match['begin_at']);
+        if (isset($match['scheduled_at']) && $match['scheduled_at'] && !$is_live) {
+            $timestamp = strtotime($match['scheduled_at']);
             if ($timestamp) {
                 $match_time = date('H:i', $timestamp);
             }
@@ -248,11 +248,20 @@ class PandaScore_Tracker_Plugin {
 
         $html = '<div class="pandascore-match" style="background:#1a1a1e;color:#fff;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:10px; data-match-id="'.$match_id.'">';
 
+        // League logo and match time container
+        $html .= '<div style="display:flex;flex-direction:column;align-items:center;gap:5px;">';
+
         if ($league_logo) {
             $html .= '<div style="background:#FFC700;padding:5px;border-radius:6px;"><img src="' . $league_logo . '" alt="' . $league_name . '" style="width:40px;height:40px;object-fit:contain;"></div>';
         }else {
             $html .= '<div style="background:#FFC700;padding:5px;border-radius:6px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;">'. $league_name[0] .'</div>';
         }
+
+        if ($match_time) {
+            $html .= '<div style="font-size:12px;color:#FFC700;text-align:center;">'.esc_html($match_time).'</div>';
+        }
+
+        $html .= '</div>';
 
         $html .= '<div style="flex:1;display:flex;flex-direction:column;gap:5px;">';
 
@@ -275,10 +284,6 @@ class PandaScore_Tracker_Plugin {
         $html .= '</div>';
 
         $html .= '</div>';
-
-        if ($match_time) {
-            $html .= '<div style="font-size:12px;color:#bbb;text-align:center;">'.esc_html($match_time).'</div>';
-        }
 
         $html .= '</div>';
         return $html;
