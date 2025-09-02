@@ -246,7 +246,7 @@ class PandaScore_Tracker_Plugin {
 
         $match_id = isset($match['id']) ? esc_attr($match['id']) : '';
 
-        $html = '<div class="pandascore-match" style="background:#1a1a1e;color:#fff;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:10px; data-match-id="'.$match_id.'">';
+        $html = '<div class="pandascore-match" style="background:#1a1a1e;color:#fff;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:250px; data-match-id="'.$match_id.'">';
 
         // League logo and match time container
         $html .= '<div style="display:flex;flex-direction:column;align-items:center;gap:5px;">';
