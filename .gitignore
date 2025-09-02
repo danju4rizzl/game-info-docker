@@ -2,6 +2,6 @@
 wp-content/*
 
 # But DON'T ignore the plugins directory
-!wp-content/plugins/
+!wp-content/plugins/pandascore-tracker/
 node_modules/
 *.zip
