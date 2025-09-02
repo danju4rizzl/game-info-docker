@@ -244,11 +244,14 @@ class PandaScore_Tracker_Plugin {
             }
         }
 
+        // Determine if this is an upcoming match (not live and has scheduled time)
+        $is_upcoming = !$is_live && !empty($match_time);
+
         $match_id = isset($match['id']) ? esc_attr($match['id']) : '';
 
         $html = '<div class="pandascore-match" style="background:#1a1a1e;color:#fff;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:250px; data-match-id="'.$match_id.'">';
 
-        // League logo and match time container
+        // League logo container
         $html .= '<div style="display:flex;flex-direction:column;align-items:center;gap:5px;">';
 
         if ($league_logo) {
@@ -257,33 +260,63 @@ class PandaScore_Tracker_Plugin {
             $html .= '<div style="background:#FFC700;padding:5px;border-radius:6px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;">'. $league_name[0] .'</div>';
         }
 
-        if ($match_time) {
-            $html .= '<div style="font-size:12px;color:#FFC700;text-align:center;">'.esc_html($match_time).'</div>';
+        $html .= '</div>';
+
+        if ($is_upcoming) {
+            // For upcoming matches, show teams on left and match time centered on right
+            $html .= '<div style="flex:1;display:flex;align-items:center;justify-content:space-between;">';
+
+            // Teams container
+            $html .= '<div style="display:flex;flex-direction:column;gap:5px;flex:1;">';
+
+            // Team 1
+            $html .= '<div style="display:flex;align-items:center;">';
+            if (!empty($opponent_logos[0])) {
+                $html .= '<img src="'.esc_url($opponent_logos[0]).'" alt="'.esc_attr($opponents[0]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
+            }
+            $html .= '<span style="font-size:14px;">'.esc_html($opponents[0]).'</span>';
+            $html .= '</div>';
+
+            // Team 2
+            $html .= '<div style="display:flex;align-items:center;">';
+            if (!empty($opponent_logos[1])) {
+                $html .= '<img src="'.esc_url($opponent_logos[1]).'" alt="'.esc_attr($opponents[1]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
+            }
+            $html .= '<span style="font-size:14px;">'.esc_html($opponents[1]).'</span>';
+            $html .= '</div>';
+
+            $html .= '</div>'; // End teams container
+
+            // Match time centered on the right
+            $html .= '<div style="display:flex;align-items:center;justify-content:center;min-width:60px;">';
+            $html .= '<div style="background:#FFC700;color:#1a1a1e;padding:6px 12px;border-radius:4px;text-align:center;font-size:14px;font-weight:bold;">'.esc_html($match_time).'</div>';
+            $html .= '</div>';
+
+            $html .= '</div>'; // End main container
+        } else {
+            // For live/completed matches, show normal layout with scores
+            $html .= '<div style="flex:1;display:flex;flex-direction:column;gap:5px;">';
+
+            // Team 1
+            $html .= '<div style="display:flex;align-items:center;justify-content:space-between;">';
+            if (!empty($opponent_logos[0])) {
+                $html .= '<img src="'.esc_url($opponent_logos[0]).'" alt="'.esc_attr($opponents[0]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
+            }
+            $html .= '<span style="flex:1;font-size:14px;">'.esc_html($opponents[0]).'</span>';
+            $html .= '<div style="background:#707073;color:#fff;padding:3px 8px;border-radius:4px;min-width:20px;text-align:center;" data-opponent-id="'.(isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '').'">'.intval($scores[0]).'</div>';
+            $html .= '</div>';
+
+            // Team 2
+            $html .= '<div style="display:flex;align-items:center;justify-content:space-between;">';
+            if (!empty($opponent_logos[1])) {
+                $html .= '<img src="'.esc_url($opponent_logos[1]).'" alt="'.esc_attr($opponents[1]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
+            }
+            $html .= '<span style="flex:1;font-size:14px;">'.esc_html($opponents[1]).'</span>';
+            $html .= '<div style="background:#707073;color:#fff;padding:3px 8px;border-radius:4px;min-width:20px;text-align:center;" data-opponent-id="'.(isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '').'">'.intval($scores[1]).'</div>';
+            $html .= '</div>';
+
+            $html .= '</div>';
         }
-
-        $html .= '</div>';
-
-        $html .= '<div style="flex:1;display:flex;flex-direction:column;gap:5px;">';
-
-        // Team 1
-        $html .= '<div style="display:flex;align-items:center;justify-content:space-between;">';
-        if (!empty($opponent_logos[0])) {
-            $html .= '<img src="'.esc_url($opponent_logos[0]).'" alt="'.esc_attr($opponents[0]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-        }
-        $html .= '<span style="flex:1;font-size:14px;">'.esc_html($opponents[0]).'</span>';
-        $html .= '<div style="background:#707073;color:#fff;padding:3px 8px;border-radius:4px;min-width:20px;text-align:center;" data-opponent-id="'.(isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '').'">'.intval($scores[0]).'</div>';
-        $html .= '</div>';
-
-        // Team 2
-        $html .= '<div style="display:flex;align-items:center;justify-content:space-between;">';
-        if (!empty($opponent_logos[1])) {
-            $html .= '<img src="'.esc_url($opponent_logos[1]).'" alt="'.esc_attr($opponents[1]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-        }
-        $html .= '<span style="flex:1;font-size:14px;">'.esc_html($opponents[1]).'</span>';
-        $html .= '<div style="background:#707073;color:#fff;padding:3px 8px;border-radius:4px;min-width:20px;text-align:center;" data-opponent-id="'.(isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '').'">'.intval($scores[1]).'</div>';
-        $html .= '</div>';
-
-        $html .= '</div>';
 
         $html .= '</div>';
         return $html;
