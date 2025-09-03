@@ -204,16 +204,19 @@ class PandaScore_Tracker_Plugin {
 
     private function render_match($match, $is_live = false) {
         $opponents = array();
+        $acronyms = array();
         $opponent_logos = array();
         $scores = array();
         $opponent_ids = array();
 
         if (isset($match['opponents']) && is_array($match['opponents'])) {
             foreach ($match['opponents'] as $o) {
-                $name = isset($o['opponent']['name']) ? $o['opponent']['name'] : 'NAME';
+                $name = isset($o['opponent']['name']) ? $o['opponent']['name'] : 'Unknown Team';
+                $acronym = !empty($o['opponent']['acronym']) ? $o['opponent']['acronym'] : $name;
                 $logo = isset($o['opponent']['image_url']) ? $o['opponent']['image_url'] : '';
                 $opponent_ids[] = isset($o['opponent']['id']) ? $o['opponent']['id'] : null;
                 $opponents[] = esc_html($name);
+                $acronyms[] = esc_html($acronym);
                 $opponent_logos[] = $logo;
             }
         }
@@ -225,7 +228,8 @@ class PandaScore_Tracker_Plugin {
         }
 
         while (count($opponents) < 2) {
-            $opponents[] = 'NAME';
+            $opponents[] = 'Unknown Team';
+            $acronyms[] = 'Unknown Team';
             $opponent_logos[] = '';
             $opponent_ids[] = null;
         }
@@ -237,10 +241,12 @@ class PandaScore_Tracker_Plugin {
         $league_logo = isset($match['league']['image_url']) ? esc_url($match['league']['image_url']) : '';
 
         $match_time = '';
+        $match_day = '';
         if (isset($match['scheduled_at']) && $match['scheduled_at'] && !$is_live) {
             $timestamp = strtotime($match['scheduled_at']);
             if ($timestamp) {
                 $match_time = date('H:i', $timestamp);
+                $match_day = $this->get_match_day_display($timestamp);
             }
         }
 
@@ -256,7 +262,7 @@ class PandaScore_Tracker_Plugin {
 
         if ($league_logo) {
             $html .= '<div style="background:#FFC700;padding:5px;border-radius:6px;"><img src="' . $league_logo . '" alt="' . $league_name . '" style="width:40px;height:40px;object-fit:contain;"></div>';
-        }else {
+        } else {
             $html .= '<div style="background:#FFC700;padding:5px;border-radius:6px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;">'. $league_name[0] .'</div>';
         }
 
@@ -274,7 +280,7 @@ class PandaScore_Tracker_Plugin {
             if (!empty($opponent_logos[0])) {
                 $html .= '<img src="'.esc_url($opponent_logos[0]).'" alt="'.esc_attr($opponents[0]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
             }
-            $html .= '<span style="font-size:14px;">'.esc_html($opponents[0]).'</span>';
+            $html .= '<span style="font-size:14px;">'.esc_html($acronyms[0]).'</span>';
             $html .= '</div>';
 
             // Team 2
@@ -282,14 +288,19 @@ class PandaScore_Tracker_Plugin {
             if (!empty($opponent_logos[1])) {
                 $html .= '<img src="'.esc_url($opponent_logos[1]).'" alt="'.esc_attr($opponents[1]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
             }
-            $html .= '<span style="font-size:14px;">'.esc_html($opponents[1]).'</span>';
+            $html .= '<span style="font-size:14px;">'.esc_html($acronyms[1]).'</span>';
             $html .= '</div>';
 
             $html .= '</div>'; // End teams container
 
             // Match time centered on the right
             $html .= '<div style="display:flex;align-items:center;justify-content:center;min-width:60px;">';
-            $html .= '<div style="background:#FFC700;color:#1a1a1e;padding:6px 12px;border-radius:4px;text-align:center;font-size:14px;font-weight:bold;">'.esc_html($match_time).'</div>';
+            $html .= '<div style="background:#FFC700;color:#1a1a1e;padding:6px 12px;border-radius:4px;text-align:center;font-size:14px;font-weight:bold;display:flex;flex-direction:column;gap:2px;">';
+            $html .= '<div>'.esc_html($match_time).'</div>';
+            if (!empty($match_day)) {
+                $html .= '<div style="font-size:10px;font-weight:normal;opacity:0.8;">'.esc_html($match_day).'</div>';
+            }
+            $html .= '</div>';
             $html .= '</div>';
 
             $html .= '</div>'; // End main container
@@ -298,12 +309,13 @@ class PandaScore_Tracker_Plugin {
             $html .= '<div style="flex:1;display:flex;flex-direction:column;gap:5px;">';
 
             // Team 1
-            $html .= '<div style="display:flex;align-items:center;justify-content:space-between;">';
+            $html .= '<div style="display:flex;align-items:center;">';
             if (!empty($opponent_logos[0])) {
                 $html .= '<img src="'.esc_url($opponent_logos[0]).'" alt="'.esc_attr($opponents[0]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
             }
-            $html .= '<span style="flex:1;font-size:14px;">'.esc_html($opponents[0]).'</span>';
-            $html .= '<div style="background:#707073;color:#fff;padding:3px 8px;border-radius:4px;min-width:20px;text-align:center;" data-opponent-id="'.(isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '').'">'.intval($scores[0]).'</div>';
+            $html .= '<span style="flex:1;font-size:14px;">'.esc_html($acronyms[0]).'</span>';
+            // Score container for team 1
+            $html .= '<div style="background:#FFC700;color:#1a1a1e;padding:3px 14px;border-radius:4px;width:20px;display:flex;justify-content:center;" data-opponent-id="'.(isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '').'">'.intval($scores[0]).'</div>';
             $html .= '</div>';
 
             // Team 2
@@ -311,8 +323,9 @@ class PandaScore_Tracker_Plugin {
             if (!empty($opponent_logos[1])) {
                 $html .= '<img src="'.esc_url($opponent_logos[1]).'" alt="'.esc_attr($opponents[1]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
             }
-            $html .= '<span style="flex:1;font-size:14px;">'.esc_html($opponents[1]).'</span>';
-            $html .= '<div style="background:#707073;color:#fff;padding:3px 8px;border-radius:4px;min-width:20px;text-align:center;" data-opponent-id="'.(isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '').'">'.intval($scores[1]).'</div>';
+            $html .= '<span style="flex:1;font-size:14px;">'.esc_html($acronyms[1]).'</span>';
+            // Score container for team 2
+            $html .= '<div style="background:#FFC700;color:#1a1a1e;padding:3px 14px;border-radius:4px;width:20px;display:flex;justify-content;" data-opponent-id="'.(isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '').'">'.intval($scores[1]).'</div>';
             $html .= '</div>';
 
             $html .= '</div>';
@@ -320,6 +333,20 @@ class PandaScore_Tracker_Plugin {
 
         $html .= '</div>';
         return $html;
+    }
+
+    private function get_match_day_display($timestamp) {
+        $today = strtotime('today');
+        $tomorrow = strtotime('tomorrow');
+        $match_date = strtotime(date('Y-m-d', $timestamp));
+
+        if ($match_date == $today) {
+            return 'Today';
+        } elseif ($match_date == $tomorrow) {
+            return 'Tomorrow';
+        } else {
+            return date('M j', $timestamp);
+        }
     }
 
     private function render_upcoming_matches($game, $limit) {
