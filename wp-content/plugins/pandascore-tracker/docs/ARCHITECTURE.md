@@ -1,82 +1,163 @@
-# PandaScore Tracker Plugin Architecture
+# PandaScore Tracker Plugin Architecture v2.0
 
 ## Overview
 
-The PandaScore Tracker plugin has been refactored from a monolithic structure into a component-based architecture to improve maintainability, separation of concerns, and code reusability.
+The PandaScore Tracker plugin has been completely refactored from a monolithic 376-line class into a modern component-based architecture. This new structure improves maintainability, separation of concerns, code reusability, and follows WordPress and PHP best practices.
 
 ## Architecture Components
 
 ### 1. Base Component (`PandaScore_Base_Component`)
 
-**Purpose**: Abstract base class containing shared functionality across all components.
+**Purpose**: Abstract base class providing shared functionality across all components.
+
+**Location**: `includes/class-pandascore-base-component.php`
 
 **Key Features**:
+- API key management with validation
+- Standardized API request handling with caching
+- Error logging and debugging utilities
+- Data sanitization and validation
+- Cache management with WordPress transients
+- Common utility methods for time formatting
 
-- API key management
-- Common API request handling
-- Match rendering utilities
-- Match statistics display logic
+**Core Methods**:
+- `get_api_key()`: Secure API key retrieval from WordPress options
+- `make_api_request($endpoint, $query_args, $use_cache)`: Authenticated API requests with built-in caching
+- `sanitize_match_data($match)`: Comprehensive data sanitization
+- `format_match_time($scheduled_at)`: Human-readable time formatting
+- `clear_cache($endpoint, $query_args)`: Granular cache management
+- `log_error($message, $context)`: Centralized error logging
 
-**Methods**:
+### 2. API Handler Component (`PandaScore_API_Handler`)
 
-- `get_api_key()`: Retrieves API key from WordPress options
-- `make_api_request($endpoint, $query_args)`: Makes authenticated requests to PandaScore API
-- `get_match_stat_display($match, $is_live)`: Formats match statistics for display
-- `render_match($match, $is_live)`: Renders individual match cards with teams, scores, and logos
+**Purpose**: Centralized API communication with advanced features.
 
-### 2. Live Scores Component (`PandaScore_Live_Scores_Component`)
-
-**Purpose**: Handles all live match functionality including WebSocket management and real-time updates.
-
-**Key Features**:
-
-- Live match fetching from PandaScore API
-- WebSocket endpoint management for real-time updates
-- Live match rendering with real-time indicators
-- Match ID tracking for JavaScript integration
-
-**Methods**:
-
-- `fetch_live_matches($game, $limit)`: Fetches live matches from API
-- `render_live_matches($game, $limit)`: Renders live matches section with indicators
-- `get_live_match_ids()`: Returns array of live match IDs for WebSocket tracking
-- `get_ws_matches()`: Returns WebSocket configuration for JavaScript
-- `reset_live_data()`: Clears tracking data between shortcode instances
-- `debug_live_data($game)`: Debug utility for live match data
-
-### 3. Upcoming Matches Component (`PandaScore_Upcoming_Matches_Component`)
-
-**Purpose**: Handles upcoming match functionality with simplified API calls.
+**Location**: `includes/class-pandascore-api-handler.php`
 
 **Key Features**:
+- Rate limiting (60 requests/minute) with automatic throttling
+- Comprehensive caching with WordPress transients
+- Multi-endpoint support (live matches, upcoming matches, match details)
+- Game filtering and validation
+- Enhanced error handling with detailed logging
+- API health monitoring and status reporting
 
-- Upcoming match fetching from game-specific endpoints
-- Clean separation from live match logic
-- Error handling for upcoming matches
+**Core Methods**:
+- `fetch_live_matches($limit, $game)`: Live matches with optional game filtering
+- `fetch_upcoming_matches($game, $limit)`: Game-specific upcoming matches
+- `fetch_match_details($match_id)`: Detailed match information
+- `fetch_available_games()`: Supported games list with caching
+- `get_api_status()`: Comprehensive API health check
+- `clear_all_cache()`: Complete cache invalidation
 
-**Methods**:
+### 3. Renderer Component (`PandaScore_Renderer`)
 
-- `fetch_upcoming_matches($game, $limit)`: Fetches upcoming matches for specific game
-- `render_upcoming_matches($game, $limit)`: Renders upcoming matches section
+**Purpose**: Template-based rendering with theme override support.
 
-### 4. Main Plugin Class (`PandaScore_Tracker_Plugin`)
-
-**Purpose**: Coordinates components and handles WordPress integration.
+**Location**: `includes/class-pandascore-renderer.php`
 
 **Key Features**:
+- Template system with theme override capability
+- Separation of HTML from PHP logic
+- Consistent data processing for display
+- Fallback content for missing templates
+- Responsive design support
+- Accessibility-compliant markup
 
-- Component instantiation and management
+**Core Methods**:
+- `render_live_matches_section($matches, $args)`: Complete live section rendering
+- `render_upcoming_matches_section($matches, $args)`: Upcoming matches section
+- `render_match_card($match, $args)`: Individual match card with full customization
+- `render_error_message($message, $type)`: Consistent error display
+- `load_template($template_name, $data)`: Template loading with theme override support
+
+### 4. Settings Management Component (`PandaScore_Settings`)
+
+**Purpose**: Complete admin interface and configuration management.
+
+**Location**: `includes/class-pandascore-settings.php`
+
+**Key Features**:
+- Comprehensive settings API integration
+- Field validation and sanitization
+- API key testing and validation
+- Admin interface with contextual help
+- Settings export/import capability
+- Cache management controls
+
+**Core Methods**:
+- `add_admin_menu()`: WordPress admin menu integration
+- `register_settings()`: Settings API registration with validation
+- `sanitize_settings($input)`: Comprehensive input sanitization
+- `render_settings_page()`: Complete admin interface
+- `get_setting($key, $default)`: Safe setting retrieval
+- `update_setting($key, $value)`: Setting updates with validation
+
+### 5. Live Scores Component (`PandaScore_Live_Scores`)
+
+**Purpose**: Live match functionality with WebSocket management.
+
+**Location**: `includes/class-pandascore-live-scores.php`
+
+**Key Features**:
+- Live match fetching with game filtering
+- WebSocket URL generation and management
+- Real-time match tracking
+- JavaScript integration data preparation
+- Live match statistics and debugging
+- Team-specific filtering
+
+**Core Methods**:
+- `render_live_matches($limit, $game, $args)`: Complete live section rendering
+- `get_live_match_ids()`: JavaScript integration support
+- `get_websocket_matches()`: WebSocket configuration data
+- `reset_live_data()`: Clean state management between instances
+- `get_live_matches_for_teams($team_ids, $limit)`: Team-specific filtering
+- `debug_live_data($game)`: Development and troubleshooting utilities
+
+### 6. Upcoming Matches Component (`PandaScore_Upcoming_Matches`)
+
+**Purpose**: Upcoming match functionality with advanced filtering.
+
+**Location**: `includes/class-pandascore-upcoming-matches.php`
+
+**Key Features**:
+- Game-specific upcoming match fetching
+- Time-based filtering (today, this week, date ranges)
+- Multi-game support with unified sorting
+- Team-specific filtering
+- Match processing and validation
+- Statistics and analytics
+
+**Core Methods**:
+- `render_upcoming_matches($game, $limit, $args)`: Complete upcoming section
+- `get_upcoming_matches_multi_game($games, $limit_per_game)`: Multi-game support
+- `get_todays_matches($game, $limit)`: Today's matches filtering
+- `get_this_weeks_matches($game, $limit)`: Weekly match filtering
+- `get_upcoming_matches_for_teams($game, $team_ids, $limit)`: Team filtering
+- `get_upcoming_statistics($games)`: Comprehensive statistics
+
+### 7. Main Plugin Class (`PandaScore_Tracker_Plugin`)
+
+**Purpose**: Component coordination and WordPress integration only.
+
+**Location**: `pandascore-tracker.php`
+
+**Key Features**:
+- Component instantiation and lifecycle management
 - WordPress hooks and shortcode registration
-- Asset management (CSS/JS)
-- Admin interface and settings
+- Asset management with intelligent loading
+- Plugin activation/deactivation handling
+- Singleton pattern implementation
+- Component access interface
 
-**Methods**:
-
-- `__construct()`: Initializes components and WordPress hooks
-- `shortcode_handler($atts)`: Processes shortcode and coordinates components
-- `enqueue_assets()`: Manages CSS and JavaScript loading
-- `register_rest_routes()`: Sets up REST API endpoints
-- Admin methods: `admin_menu()`, `register_settings()`, `settings_page()`
+**Core Methods**:
+- `load_dependencies()`: Component file loading
+- `init_components()`: Component instantiation
+- `shortcode_handler($atts)`: Shortcode processing and component coordination
+- `enqueue_assets()`: Conditional asset loading
+- `get_component($component)`: Component access interface
+- `activate()` / `deactivate()`: Plugin lifecycle management
 
 ## Data Flow
 

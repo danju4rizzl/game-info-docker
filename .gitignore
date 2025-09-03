@@ -2,6 +2,15 @@
 wp-content/*
 
 # But DON'T ignore the plugins directory
+!wp-content/plugins/
+
+# Ignore all plugins by default
+wp-content/plugins/*
+
+# But DON'T ignore the pandascore tracker plugin and its contents
 !wp-content/plugins/pandascore-tracker/
+!wp-content/plugins/pandascore-tracker/**
+
+# Other ignores
 node_modules/
 *.zip

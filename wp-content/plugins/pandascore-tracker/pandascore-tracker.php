@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: PandaScore Tracker
-Description: Fetches and displays PandaScore game scores via shortcode.
-Version: 1.1 (No Tailwind)
+Description: Fetches and displays PandaScore game scores via shortcode with component-based architecture.
+Version: 2.0.0
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
@@ -11,366 +11,252 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+// Define plugin constants
+define( 'PANDASCORE_TRACKER_VERSION', '2.0.0' );
+define( 'PANDASCORE_TRACKER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'PANDASCORE_TRACKER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
+/**
+ * Main Plugin Class - Coordinates components and handles WordPress integration
+ */
 class PandaScore_Tracker_Plugin {
-    private $option_key = 'pandascore_tracker_options';
 
-    private $live_match_ids = array();
+    /**
+     * Component instances
+     */
+    private $api_handler;
+    private $renderer;
+    private $settings;
+    private $live_scores;
+    private $upcoming_matches;
 
+    /**
+     * Constructor - Initialize plugin
+     */
     public function __construct() {
-        add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-        add_action( 'admin_init', array( $this, 'register_settings' ) );
+        $this->load_dependencies();
+        $this->init_components();
+        $this->init_hooks();
+    }
+
+    /**
+     * Load required component files
+     */
+    private function load_dependencies() {
+        require_once PANDASCORE_TRACKER_PLUGIN_DIR . 'includes/class-pandascore-base-component.php';
+        require_once PANDASCORE_TRACKER_PLUGIN_DIR . 'includes/class-pandascore-api-handler.php';
+        require_once PANDASCORE_TRACKER_PLUGIN_DIR . 'includes/class-pandascore-renderer.php';
+        require_once PANDASCORE_TRACKER_PLUGIN_DIR . 'includes/class-pandascore-settings.php';
+        require_once PANDASCORE_TRACKER_PLUGIN_DIR . 'includes/class-pandascore-live-scores.php';
+        require_once PANDASCORE_TRACKER_PLUGIN_DIR . 'includes/class-pandascore-upcoming-matches.php';
+    }
+
+    /**
+     * Initialize component instances
+     */
+    private function init_components() {
+        $this->api_handler = new PandaScore_API_Handler();
+        $this->renderer = new PandaScore_Renderer();
+        $this->settings = new PandaScore_Settings();
+        $this->live_scores = new PandaScore_Live_Scores();
+        $this->upcoming_matches = new PandaScore_Upcoming_Matches();
+    }
+
+    /**
+     * Initialize WordPress hooks
+     */
+    private function init_hooks() {
+        add_action( 'init', array( $this, 'load_textdomain' ) );
         add_shortcode( 'pandascore_tracker', array( $this, 'shortcode_handler' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+
+        // Plugin lifecycle hooks
+        register_activation_hook( __FILE__, array( $this, 'activate' ) );
+        register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
     }
 
+    /**
+     * Load plugin text domain for translations
+     */
+    public function load_textdomain() {
+        load_plugin_textdomain(
+            'pandascore-tracker',
+            false,
+            dirname( plugin_basename( __FILE__ ) ) . '/languages/'
+        );
+    }
+
+    /**
+     * Enqueue frontend assets
+     */
     public function enqueue_assets() {
-        // Only custom style (no Tailwind)
+        // Register base CSS
         wp_register_style(
-            'pandascore-custom-style',
-            plugins_url( 'css/custom.css', __FILE__ ),
+            'pandascore-base-style',
+            PANDASCORE_TRACKER_PLUGIN_URL . 'assets/css/pandascore-base.css',
             array(),
-            '1.0'
+            PANDASCORE_TRACKER_VERSION
         );
 
-        // Register the WebSocket script
-        wp_register_script( 'pandascore-live-tracker-js', plugins_url( 'js/live-tracker.js', __FILE__ ), array(), '1.1', true );
+        // Register JavaScript for live tracking
+        wp_register_script(
+            'pandascore-live-tracker',
+            PANDASCORE_TRACKER_PLUGIN_URL . 'assets/js/live-tracker.js',
+            array(),
+            PANDASCORE_TRACKER_VERSION,
+            true
+        );
     }
 
-    public function admin_menu() {
-        add_options_page( 'PandaScore Tracker', 'PandaScore Tracker', 'manage_options', 'pandascore-tracker', array( $this, 'settings_page' ) );
+    /**
+     * Get default shortcode attributes from settings
+     *
+     * @return array Default attributes
+     */
+    private function get_default_shortcode_attributes() {
+        return array(
+            'game'  => $this->settings->get_setting( 'default_game', 'valorant' ),
+            'limit' => $this->settings->get_setting( 'default_limit', 5 ),
+            'align' => $this->settings->get_setting( 'default_align', 'center' ),
+            'type'  => $this->settings->get_setting( 'default_type', 'mixed' )
+        );
     }
 
-    public function register_settings() {
-        register_setting( $this->option_key, $this->option_key );
-        add_settings_section( 'pandascore_main', 'PandaScore Settings', null, 'pandascore-tracker' );
-        add_settings_field( 'api_key', 'API Key', array( $this, 'field_api_key' ), 'pandascore-tracker', 'pandascore_main' );
-    }
-
-    public function field_api_key() {
-        $opts = get_option( $this->option_key );
-        $val = isset( $opts['api_key'] ) ? esc_attr( $opts['api_key'] ) : '';
-        echo '<input type="text" name="'.$this->option_key.'[api_key]" value="'.$val.'" style="width:100%;">';
-    }
-
-    public function settings_page() {
-        ?>
-        <div class="wrap">
-            <h1>PandaScore Tracker</h1>
-            <form method="post" action="options.php">
-                <?php
-                settings_fields( $this->option_key );
-                do_settings_sections( 'pandascore-tracker' );
-                submit_button();
-                ?>
-            </form>
-            <h3>Shortcode Usage</h3>
-            <p><strong>Basic usage:</strong> <code>[pandascore_tracker game="valorant" limit="5" align="right"]</code></p>
-            <p><strong>Live matches:</strong> <code>[pandascore_tracker type="live" limit="5"]</code></p>
-            <p><strong>Mixed (live + upcoming):</strong> <code>[pandascore_tracker type="mixed" game="valorant" limit="10"]</code></p>
-
-            <h4>Parameters:</h4>
-            <ul>
-                <li><strong>game:</strong> Game type (valorant, lol, csgo, dota2, etc.)</li>
-                <li><strong>limit:</strong> Number of matches to display (default: 5)</li>
-                <li><strong>align:</strong> Text alignment (left, center, right) (default: right)</li>
-                <li><strong>type:</strong> Match type - "upcoming" (default), "live", or "mixed"</li>
-            </ul>
-        </div>
-        <?php
-    }
-
-    private function get_api_key() {
-        $opts = get_option( $this->option_key );
-        return isset( $opts['api_key'] ) ? trim( $opts['api_key'] ) : '';
-    }
-
-    private function fetch_matches( $game, $limit ) {
-        $api_key = $this->get_api_key();
-        if ( ! $api_key ) return new WP_Error( 'no_api_key', 'PandaScore API key not set' );
-
-        $url = add_query_arg( array(
-            'page[size]' => intval( $limit ),
-            'sort' => '-begin_at'
-        ), "https://api.pandascore.co/{$game}/matches" );
-
-        $response = wp_remote_get( $url, array(
-            'timeout' => 15,
-            'headers' => array(
-                'Authorization' => 'Bearer ' . $api_key,
-            )
-        ) );
-
-        if ( is_wp_error( $response ) ) return $response;
-        $code = wp_remote_retrieve_response_code( $response );
-        if ( $code !== 200 ) return new WP_Error( 'api_error', 'PandaScore API returned code '.$code );
-
-        $body = wp_remote_retrieve_body( $response );
-        $data = json_decode( $body, true );
-        if ( json_last_error() !== JSON_ERROR_NONE ) return new WP_Error( 'json_error', 'Invalid JSON from API' );
-
-        return $data;
-    }
-
-    private function fetch_live_matches( $limit ) {
-        $api_key = $this->get_api_key();
-        if ( ! $api_key ) return new WP_Error( 'no_api_key', 'PandaScore API key not set' );
-
-        $url = add_query_arg( array(
-            'page[size]' => intval( $limit )
-        ), "https://api.pandascore.co/lives" );
-
-        $response = wp_remote_get( $url, array(
-            'timeout' => 15,
-            'headers' => array(
-                'Authorization' => 'Bearer ' . $api_key,
-            )
-        ) );
-
-        if ( is_wp_error( $response ) ) return $response;
-        $code = wp_remote_retrieve_response_code( $response );
-        if ( $code !== 200 ) return new WP_Error( 'api_error', 'PandaScore API returned code '.$code );
-
-        $body = wp_remote_retrieve_body( $response );
-        $data = json_decode( $body, true );
-        if ( json_last_error() !== JSON_ERROR_NONE ) return new WP_Error( 'json_error', 'Invalid JSON from API' );
-
-        return $data;
-    }
-
+    /**
+     * Handle shortcode rendering
+     *
+     * @param array $atts Shortcode attributes
+     * @return string HTML output
+     */
     public function shortcode_handler( $atts ) {
-        $atts = shortcode_atts( array(
-            'game' => 'csgo',
-            'limit' => 5,
-            'align' => 'center',
-            'type' => 'mixed'
-        ), $atts, 'pandascore_tracker' );
+        // Get default attributes from settings
+        $defaults = $this->get_default_shortcode_attributes();
 
-        // Only enqueue custom CSS
-        wp_enqueue_style( 'pandascore-custom-style' );
+        $atts = shortcode_atts( $defaults, $atts, 'pandascore_tracker' );
 
-        $this->live_match_ids = array();
+        // Sanitize attributes
+        $game = sanitize_text_field( $atts['game'] );
+        $limit = max( 1, min( 50, intval( $atts['limit'] ) ) );
+        $align = in_array( $atts['align'], array( 'left', 'center', 'right' ) ) ? $atts['align'] : 'center';
+        $type = in_array( $atts['type'], array( 'live', 'upcoming', 'mixed' ) ) ? $atts['type'] : 'mixed';
 
-        $align_style = "text-align:{$atts['align']};";
-        $html = '<div class="pandascore-tracker" style="'.$align_style.'">';
-
-        if ( $atts['type'] === 'live' || $atts['type'] === 'mixed' ) {
-            $html .= $this->render_live_matches( $atts['limit'] );
+        // Debug output (only if WP_DEBUG is enabled)
+        if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+            $debug_info = array(
+                'defaults_from_settings' => $defaults,
+                'final_attributes' => array(
+                    'game' => $game,
+                    'limit' => $limit,
+                    'align' => $align,
+                    'type' => $type
+                )
+            );
+            error_log( '[PandaScore Debug] Shortcode attributes: ' . wp_json_encode( $debug_info ) );
         }
 
-        if ( $atts['type'] === 'upcoming' || $atts['type'] === 'mixed' ) {
-            $html .= $this->render_upcoming_matches( $atts['game'], $atts['limit'] );
+        // Enqueue base styles
+        wp_enqueue_style( 'pandascore-base-style' );
+
+        // Reset live data for this instance
+        $this->live_scores->reset_live_data();
+
+        // Build container
+        $container_style = "text-align: {$align};";
+        $html = '<div class="pandascore-tracker" style="' . esc_attr( $container_style ) . '">';
+
+        // Render sections based on type
+        if ( $type === 'live' || $type === 'mixed' ) {
+            $html .= $this->live_scores->render_live_matches( $limit, $game );
         }
 
-        if ( ! empty( $this->live_match_ids ) ) {
-            wp_enqueue_script( 'pandascore-live-tracker-js' );
-            wp_localize_script( 'pandascore-live-tracker-js', 'pandaScoreLiveTracker', array(
-                'apiKey'       => $this->get_api_key(),
-                'matchIds'     => array_unique( $this->live_match_ids ),
-                'websocketUrl' => 'wss://websocket.pandascore.co/ws'
+        if ( $type === 'upcoming' || $type === 'mixed' ) {
+            $html .= $this->upcoming_matches->render_upcoming_matches( $game, $limit );
+        }
+
+        // Handle JavaScript for live matches
+        if ( $this->live_scores->has_live_matches() ) {
+            wp_enqueue_script( 'pandascore-live-tracker' );
+            wp_localize_script( 'pandascore-live-tracker', 'pandaScoreLiveTracker', array(
+                'apiKey'    => $this->settings->get_setting( 'api_key', '' ),
+                'matchIds'  => $this->live_scores->get_live_match_ids(),
+                'wsMatches' => $this->live_scores->get_websocket_matches(),
             ) );
         }
 
-        $this->live_match_ids = array();
-
         $html .= '</div>';
         return $html;
     }
 
-    private function render_live_matches( $limit ) {
-        $live_matches = $this->fetch_live_matches( $limit );
+    /**
+     * Plugin activation hook
+     */
+    public function activate() {
+        // Set default options
+        $default_options = array(
+            'api_key'        => '',
+            'default_game'   => 'valorant',
+            'default_limit'  => 5,
+            'default_type'   => 'mixed',
+            'default_align'  => 'center',
+            'cache_enabled'  => true,
+            'cache_duration' => 300,
+        );
 
-        if ( is_wp_error( $live_matches ) || empty( $live_matches ) ) {
-            return '';
-        }
+        add_option( 'pandascore_tracker_options', $default_options );
 
-        $html = '<div style="font-weight:600;display:flex;align-items:center;margin-bottom:10px;text-align:left;font-family:inter;color:#FFC700">
-        <span style="background:#FFC700;border-radius:100%;width:8px;height:8px;display:inline-block;margin:0 7px;"> </span>LIVE</div>';
-        $html .= '<div style="display:flex;flex-direction:column;gap:10px;">';
-
-        foreach ( $live_matches as $live_data ) {
-            if ( ! isset( $live_data['match'] ) ) continue;
-
-            if ( isset( $live_data['match']['id'] ) ) {
-                $this->live_match_ids[] = $live_data['match']['id'];
-            }
-
-            $match = $live_data['match'];
-            $html .= $this->render_match( $match, true );
-        }
-
-        $html .= '</div>';
-        return $html;
-    }
-
-    private function render_match($match, $is_live = false) {
-        $opponents = array();
-        $acronyms = array();
-        $opponent_logos = array();
-        $scores = array();
-        $opponent_ids = array();
-
-        if (isset($match['opponents']) && is_array($match['opponents'])) {
-            foreach ($match['opponents'] as $o) {
-                $name = isset($o['opponent']['name']) ? $o['opponent']['name'] : 'Unknown Team';
-                $acronym = !empty($o['opponent']['acronym']) ? $o['opponent']['acronym'] : $name;
-                $logo = isset($o['opponent']['image_url']) ? $o['opponent']['image_url'] : '';
-                $opponent_ids[] = isset($o['opponent']['id']) ? $o['opponent']['id'] : null;
-                $opponents[] = esc_html($name);
-                $acronyms[] = esc_html($acronym);
-                $opponent_logos[] = $logo;
-            }
-        }
-
-        if (isset($match['results']) && is_array($match['results'])) {
-            foreach ($match['results'] as $r) {
-                $scores[] = isset($r['score']) ? intval($r['score']) : 0;
-            }
-        }
-
-        while (count($opponents) < 2) {
-            $opponents[] = 'Unknown Team';
-            $acronyms[] = 'Unknown Team';
-            $opponent_logos[] = '';
-            $opponent_ids[] = null;
-        }
-        while (count($scores) < 2) {
-            $scores[] = $is_live ? rand(0, 2) : 0;
-        }
-
-        $league_name = isset($match['league']['name']) ? esc_html($match['league']['name']) : '';
-        $league_logo = isset($match['league']['image_url']) ? esc_url($match['league']['image_url']) : '';
-
-        $match_time = '';
-        $match_day = '';
-        if (isset($match['scheduled_at']) && $match['scheduled_at'] && !$is_live) {
-            $timestamp = strtotime($match['scheduled_at']);
-            if ($timestamp) {
-                $match_time = date('H:i', $timestamp);
-                $match_day = $this->get_match_day_display($timestamp);
-            }
-        }
-
-        // Determine if this is an upcoming match (not live and has scheduled time)
-        $is_upcoming = !$is_live && !empty($match_time);
-
-        $match_id = isset($match['id']) ? esc_attr($match['id']) : '';
-
-        $html = '<div class="pandascore-match" style="background:#1a1a1e;color:#fff;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:250px; data-match-id="'.$match_id.'">';
-
-        // League logo container
-        $html .= '<div style="display:flex;flex-direction:column;align-items:center;gap:5px;">';
-
-        if ($league_logo) {
-            $html .= '<div style="background:#FFC700;padding:5px;border-radius:6px;"><img src="' . $league_logo . '" alt="' . $league_name . '" style="width:40px;height:40px;object-fit:contain;"></div>';
-        } else {
-            $html .= '<div style="background:#FFC700;padding:5px;border-radius:6px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;">'. $league_name[0] .'</div>';
-        }
-
-        $html .= '</div>';
-
-        if ($is_upcoming) {
-            // For upcoming matches, show teams on left and match time centered on right
-            $html .= '<div style="flex:1;display:flex;align-items:center;justify-content:space-between;">';
-
-            // Teams container
-            $html .= '<div style="display:flex;flex-direction:column;gap:5px;flex:1;">';
-
-            // Team 1
-            $html .= '<div style="display:flex;align-items:center;">';
-            if (!empty($opponent_logos[0])) {
-                $html .= '<img src="'.esc_url($opponent_logos[0]).'" alt="'.esc_attr($opponents[0]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-            }
-            $html .= '<span style="font-size:14px;">'.esc_html($acronyms[0]).'</span>';
-            $html .= '</div>';
-
-            // Team 2
-            $html .= '<div style="display:flex;align-items:center;">';
-            if (!empty($opponent_logos[1])) {
-                $html .= '<img src="'.esc_url($opponent_logos[1]).'" alt="'.esc_attr($opponents[1]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-            }
-            $html .= '<span style="font-size:14px;">'.esc_html($acronyms[1]).'</span>';
-            $html .= '</div>';
-
-            $html .= '</div>'; // End teams container
-
-            // Match time centered on the right
-            $html .= '<div style="display:flex;align-items:center;justify-content:center;min-width:60px;">';
-            $html .= '<div style="background:#FFC700;color:#1a1a1e;padding:6px 12px;border-radius:4px;text-align:center;font-size:14px;font-weight:bold;display:flex;flex-direction:column;gap:2px;">';
-            $html .= '<div>'.esc_html($match_time).'</div>';
-            if (!empty($match_day)) {
-                $html .= '<div style="font-size:10px;font-weight:normal;opacity:0.8;">'.esc_html($match_day).'</div>';
-            }
-            $html .= '</div>';
-            $html .= '</div>';
-
-            $html .= '</div>'; // End main container
-        } else {
-            // For live/completed matches, show normal layout with scores
-            $html .= '<div style="flex:1;display:flex;flex-direction:column;gap:5px;">';
-
-            // Team 1
-            $html .= '<div style="display:flex;align-items:center;">';
-            if (!empty($opponent_logos[0])) {
-                $html .= '<img src="'.esc_url($opponent_logos[0]).'" alt="'.esc_attr($opponents[0]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-            }
-            $html .= '<span style="flex:1;font-size:14px;">'.esc_html($acronyms[0]).'</span>';
-            // Score container for team 1
-            $html .= '<div style="background:#FFC700;color:#1a1a1e;padding:3px 14px;border-radius:4px;width:20px;display:flex;justify-content:center;" data-opponent-id="'.(isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '').'">'.intval($scores[0]).'</div>';
-            $html .= '</div>';
-
-            // Team 2
-            $html .= '<div style="display:flex;align-items:center;justify-content:space-between;">';
-            if (!empty($opponent_logos[1])) {
-                $html .= '<img src="'.esc_url($opponent_logos[1]).'" alt="'.esc_attr($opponents[1]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-            }
-            $html .= '<span style="flex:1;font-size:14px;">'.esc_html($acronyms[1]).'</span>';
-            // Score container for team 2
-            $html .= '<div style="background:#FFC700;color:#1a1a1e;padding:3px 14px;border-radius:4px;width:20px;display:flex;justify-content;" data-opponent-id="'.(isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '').'">'.intval($scores[1]).'</div>';
-            $html .= '</div>';
-
-            $html .= '</div>';
-        }
-
-        $html .= '</div>';
-        return $html;
-    }
-
-    private function get_match_day_display($timestamp) {
-        $today = strtotime('today');
-        $tomorrow = strtotime('tomorrow');
-        $match_date = strtotime(date('Y-m-d', $timestamp));
-
-        if ($match_date == $today) {
-            return 'Today';
-        } elseif ($match_date == $tomorrow) {
-            return 'Tomorrow';
-        } else {
-            return date('M j', $timestamp);
+        // Clear any existing cache
+        if ( $this->api_handler ) {
+            $this->api_handler->clear_all_cache();
         }
     }
 
-    private function render_upcoming_matches($game, $limit) {
-        $upcoming_matches = $this->fetch_matches($game, $limit);
+    /**
+     * Plugin deactivation hook
+     */
+    public function deactivate() {
+        // Clear cache on deactivation
+        $this->api_handler->clear_all_cache();
+    }
 
-        if (is_wp_error($upcoming_matches)) {
-            return '<div style="background:#f8d7da;border:1px solid #f5c2c7;color:#842029;padding:10px;border-radius:6px;">Error: '.esc_html($upcoming_matches->get_error_message()).'</div>';
+    /**
+     * Get plugin instance (singleton pattern)
+     *
+     * @return PandaScore_Tracker_Plugin
+     */
+    public static function get_instance() {
+        static $instance = null;
+
+        if ( null === $instance ) {
+            $instance = new self();
         }
 
-        if (empty($upcoming_matches)) {
-            return '<div style="background:#eee;border:1px solid #ccc;color:#333;padding:10px;border-radius:6px;">No upcoming matches found.</div>';
+        return $instance;
+    }
+
+    /**
+     * Get component instance
+     *
+     * @param string $component Component name
+     * @return object|null Component instance or null if not found
+     */
+    public function get_component( $component ) {
+        switch ( $component ) {
+            case 'api_handler':
+                return $this->api_handler;
+            case 'renderer':
+                return $this->renderer;
+            case 'settings':
+                return $this->settings;
+            case 'live_scores':
+                return $this->live_scores;
+            case 'upcoming_matches':
+                return $this->upcoming_matches;
+            default:
+                return null;
         }
-
-        $html = '<div style="font-weight:600;margin-bottom:10px;text-align:left;font-family:inter;color:#FFC700">UPCOMING</div>';
-        $html .= '<div style="display:flex;flex-direction:column;gap:10px;min-width: 250px;">';
-
-        foreach ($upcoming_matches as $match) {
-            $html .= $this->render_match($match, false);
-        }
-
-        $html .= '</div>';
-        return $html;
     }
 
 }
 
-new PandaScore_Tracker_Plugin();
+// Initialize the plugin at the right time
+add_action( 'plugins_loaded', array( 'PandaScore_Tracker_Plugin', 'get_instance' ) );
