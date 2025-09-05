@@ -392,7 +392,7 @@ class PandaScore_Tracker_Plugin {
                 $fallback_letter = '?';
             }
 
-            return '<div class="pandascore-team-logo-placeholder" title="' . esc_attr( $team_name ) . '">' . esc_html( $fallback_letter ) . '</div>';
+            return '<div class="pandascore-team-logo-placeholder" title="Unknown Team">' . esc_html( $fallback_letter ) . '</div>';
         }
     }
 
@@ -520,9 +520,9 @@ class PandaScore_Tracker_Plugin {
         $html .= '<div class="pandascore-league-container">';
 
         if ($league_logo) {
-            $html .= '<div class="pandascore-league-logo"><img src="' . $league_logo . '" alt="' . $league_name . '"></div>';
+            $html .= '<div class="pandascore-league-logo"><img src="' . $league_logo . '" alt="' . $league_name . '"  title="' . esc_html($league_name) . '"></div>';
         } else {
-            $html .= '<div class="pandascore-league-placeholder">'. (!empty($league_name) ? $league_name[0] : 'L') .'</div>';
+            $html .= '<div class="pandascore-league-placeholder" title="' . esc_html($league_name) . '"> '. (!empty($league_name) ? $league_name[0] : 'L') .'</div>';
         }
 
         $html .= '</div>';
@@ -538,7 +538,7 @@ class PandaScore_Tracker_Plugin {
             $html .= '<div class="pandascore-team">';
             $html .= '<div class="pandascore-team-info">';
             $html .= $this->get_team_logo_html( $opponent_logos[0], $opponents[0], $acronyms[0] );
-            $html .= '<span class="pandascore-team-name">'.esc_html($acronyms[0]).'</span>';
+            $html .= '<span class="pandascore-team-name" title="'.esc_attr($opponents[0]).'">'.esc_html($acronyms[0]).'</span>';
             $html .= '</div>';
             $html .= '</div>';
 
@@ -546,7 +546,7 @@ class PandaScore_Tracker_Plugin {
             $html .= '<div class="pandascore-team">';
             $html .= '<div class="pandascore-team-info">';
             $html .= $this->get_team_logo_html( $opponent_logos[1], $opponents[1], $acronyms[1] );
-            $html .= '<span class="pandascore-team-name">'.esc_html($acronyms[1]).'</span>';
+            $html .= '<span class="pandascore-team-name" title="'.esc_attr($opponents[1]).'">'.esc_html($acronyms[1]).'</span>';
             $html .= '</div>';
             $html .= '</div>';
 
@@ -571,7 +571,7 @@ class PandaScore_Tracker_Plugin {
             $html .= '<div class="pandascore-team with-score">';
             $html .= '<div class="pandascore-team-info">';
             $html .= $this->get_team_logo_html( $opponent_logos[0], $opponents[0], $acronyms[0] );
-            $html .= '<span class="pandascore-team-name">'.esc_html($acronyms[0]).'</span>';
+            $html .= '<span class="pandascore-team-name" title="'.esc_attr($opponents[0]).'">'.esc_html($acronyms[0]).'</span>';
             $html .= '</div>';
             // Score container for team 1
             $html .= '<div class="pandascore-score" data-opponent-id="'.(isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '').'">'.intval($scores[0]).'</div>';
@@ -581,7 +581,7 @@ class PandaScore_Tracker_Plugin {
             $html .= '<div class="pandascore-team with-score">';
             $html .= '<div class="pandascore-team-info">';
             $html .= $this->get_team_logo_html( $opponent_logos[1], $opponents[1], $acronyms[1] );
-            $html .= '<span class="pandascore-team-name">'.esc_html($acronyms[1]).'</span>';
+            $html .= '<span class="pandascore-team-name" title="'.esc_attr($opponents[1]).'">'.esc_html($acronyms[1]).'</span>';
             $html .= '</div>';
             // Score container for team 2
             $html .= '<div class="pandascore-score" data-opponent-id="'.(isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '').'">'.intval($scores[1]).'</div>';
