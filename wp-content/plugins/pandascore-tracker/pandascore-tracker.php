@@ -34,6 +34,15 @@ class PandaScore_Tracker_Plugin {
 
         // Register the WebSocket script
         wp_register_script( 'pandascore-live-tracker-js', plugins_url( 'js/live-tracker.js', __FILE__ ), array(), '1.1', true );
+
+        // Register new script for timezone conversion
+        wp_register_script(
+            'pandascore-timezone-js',
+            plugins_url( 'js/timezone-converter.js', __FILE__ ),
+            array(),
+            '1.0',
+            true
+        );
     }
 
     /**
@@ -431,6 +440,9 @@ class PandaScore_Tracker_Plugin {
             ) );
         }
 
+        // Enqueue timezone script
+        wp_enqueue_script( 'pandascore-timezone-js' );
+
         $this->live_match_ids = array();
 
         $html .= '</div>';
@@ -501,20 +513,26 @@ class PandaScore_Tracker_Plugin {
 
         $match_time = '';
         $match_day = '';
+        $scheduled_at = '';
         if (isset($match['scheduled_at']) && $match['scheduled_at'] && !$is_live) {
             $timestamp = strtotime($match['scheduled_at']);
             if ($timestamp) {
-                $match_time = date('H:i', $timestamp);
-                $match_day = $this->get_match_day_display($timestamp);
+                $scheduled_at = $match['scheduled_at']; // Store raw UTC time
             }
         }
 
         // Determine if this is an upcoming match (not live and has scheduled time)
-        $is_upcoming = !$is_live && !empty($match_time);
+        $is_upcoming = !$is_live && !empty($scheduled_at);
 
         $match_id = isset($match['id']) ? esc_attr($match['id']) : '';
 
-        $html = '<div class="pandascore-match" data-match-id="'.$match_id.'">';
+        $html = '<div class="pandascore-match" data-match-id="' . $match_id . '"';
+
+        if ($is_upcoming) {
+            $html .= ' data-scheduled-at="' . esc_attr($scheduled_at) . '"';
+        }
+
+        $html .= '>';
 
         // League logo container
         $html .= '<div class="pandascore-league-container">';
@@ -522,7 +540,7 @@ class PandaScore_Tracker_Plugin {
         if ($league_logo) {
             $html .= '<div class="pandascore-league-logo"><img src="' . $league_logo . '" alt="' . $league_name . '"  title="' . esc_html($league_name) . '"></div>';
         } else {
-            $html .= '<div class="pandascore-league-placeholder" title="' . esc_html($league_name) . '"> '. (!empty($league_name) ? $league_name[0] : 'L') .'</div>';
+            $html .= '<div class="pandascore-league-placeholder" title="' . esc_html($league_name) . '"> ' . (!empty($league_name) ? $league_name[0] : 'L') . '</div>';
         }
 
         $html .= '</div>';
@@ -537,28 +555,26 @@ class PandaScore_Tracker_Plugin {
             // Team 1
             $html .= '<div class="pandascore-team">';
             $html .= '<div class="pandascore-team-info">';
-            $html .= $this->get_team_logo_html( $opponent_logos[0], $opponents[0], $acronyms[0] );
-            $html .= '<span class="pandascore-team-name" title="'.esc_attr($opponents[0]).'">'.esc_html($acronyms[0]).'</span>';
+            $html .= $this->get_team_logo_html($opponent_logos[0], $opponents[0], $acronyms[0]);
+            $html .= '<span class="pandascore-team-name" title="' . esc_attr($opponents[0]) . '">' . esc_html($acronyms[0]) . '</span>';
             $html .= '</div>';
             $html .= '</div>';
 
             // Team 2
             $html .= '<div class="pandascore-team">';
             $html .= '<div class="pandascore-team-info">';
-            $html .= $this->get_team_logo_html( $opponent_logos[1], $opponents[1], $acronyms[1] );
-            $html .= '<span class="pandascore-team-name" title="'.esc_attr($opponents[1]).'">'.esc_html($acronyms[1]).'</span>';
+            $html .= $this->get_team_logo_html($opponent_logos[1], $opponents[1], $acronyms[1]);
+            $html .= '<span class="pandascore-team-name" title="' . esc_attr($opponents[1]) . '">' . esc_html($acronyms[1]) . '</span>';
             $html .= '</div>';
             $html .= '</div>';
 
             $html .= '</div>'; // End teams container
 
-            // Match time centered on the right
+            // Match time centered on the right (placeholder for JS)
             $html .= '<div class="pandascore-time-container">';
             $html .= '<div class="pandascore-time-badge">';
-            $html .= '<div>'.esc_html($match_time).'</div>';
-            if (!empty($match_day)) {
-                $html .= '<div class="pandascore-time-day">'.esc_html($match_day).'</div>';
-            }
+            $html .= '<div class="pandascore-time">Loading...</div>';
+            $html .= '<div class="pandascore-time-day">Loading...</div>';
             $html .= '</div>';
             $html .= '</div>';
 
@@ -570,21 +586,21 @@ class PandaScore_Tracker_Plugin {
             // Team 1
             $html .= '<div class="pandascore-team with-score">';
             $html .= '<div class="pandascore-team-info">';
-            $html .= $this->get_team_logo_html( $opponent_logos[0], $opponents[0], $acronyms[0] );
-            $html .= '<span class="pandascore-team-name" title="'.esc_attr($opponents[0]).'">'.esc_html($acronyms[0]).'</span>';
+            $html .= $this->get_team_logo_html($opponent_logos[0], $opponents[0], $acronyms[0]);
+            $html .= '<span class="pandascore-team-name" title="' . esc_attr($opponents[0]) . '">' . esc_html($acronyms[0]) . '</span>';
             $html .= '</div>';
             // Score container for team 1
-            $html .= '<div class="pandascore-score" data-opponent-id="'.(isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '').'">'.intval($scores[0]).'</div>';
+            $html .= '<div class="pandascore-score" data-opponent-id="' . (isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '') . '">' . intval($scores[0]) . '</div>';
             $html .= '</div>';
 
             // Team 2
             $html .= '<div class="pandascore-team with-score">';
             $html .= '<div class="pandascore-team-info">';
-            $html .= $this->get_team_logo_html( $opponent_logos[1], $opponents[1], $acronyms[1] );
-            $html .= '<span class="pandascore-team-name" title="'.esc_attr($opponents[1]).'">'.esc_html($acronyms[1]).'</span>';
+            $html .= $this->get_team_logo_html($opponent_logos[1], $opponents[1], $acronyms[1]);
+            $html .= '<span class="pandascore-team-name" title="' . esc_attr($opponents[1]) . '">' . esc_html($acronyms[1]) . '</span>';
             $html .= '</div>';
             // Score container for team 2
-            $html .= '<div class="pandascore-score" data-opponent-id="'.(isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '').'">'.intval($scores[1]).'</div>';
+            $html .= '<div class="pandascore-score" data-opponent-id="' . (isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '') . '">' . intval($scores[1]) . '</div>';
             $html .= '</div>';
 
             $html .= '</div>';
@@ -612,7 +628,7 @@ class PandaScore_Tracker_Plugin {
         $upcoming_matches = $this->fetch_upcoming_matches($game, $limit);
 
         if (is_wp_error($upcoming_matches)) {
-            return '<div class="pandascore-error">Error: '.esc_html($upcoming_matches->get_error_message()).'</div>';
+            return '<div class="pandascore-error">Error: ' . esc_html($upcoming_matches->get_error_message()) . '</div>';
         }
 
         if (empty($upcoming_matches)) {
