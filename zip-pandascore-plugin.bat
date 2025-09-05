@@ -3,9 +3,9 @@ REM PandaScore Tracker Plugin Packaging Script (Batch Version)
 REM This script creates a distributable ZIP file of the PandaScore Tracker WordPress plugin
 
 echo.
-echo ========================================
-echo  PandaScore Tracker Plugin Packager
-echo ========================================
+echo ===================================================
+echo  PandaScore Tracker Plugin Packager - by Deejay Dev
+echo ===================================================
 echo.
 
 REM Set variables
@@ -35,6 +35,21 @@ if exist "%PLUGIN_DIR%\css" (
     echo   - CSS directory found
 ) else (
     echo   - WARNING: CSS directory not found
+)
+if exist "%PLUGIN_DIR%\js" (
+    echo   - JS directory found
+) else (
+    echo   - WARNING: JS directory not found
+)
+if exist "%PLUGIN_DIR%\README.md" (
+    echo   - README.md found
+) else (
+    echo   - WARNING: README.md not found
+)
+if exist "%PLUGIN_DIR%\uninstall.php" (
+    echo   - uninstall.php found
+) else (
+    echo   - WARNING: uninstall.php not found
 )
 
 echo.
@@ -69,34 +84,37 @@ if exist "%PLUGIN_DIR%\css" (
     echo   - Copied CSS directory
 )
 
-REM Create a simple README.txt
-echo Creating README.txt...
-(
-echo PandaScore Tracker WordPress Plugin
-echo ===================================
-echo.
-echo Installation Instructions:
-echo 1. Upload via WordPress Admin ^> Plugins ^> Add New ^> Upload Plugin
-echo 2. Or extract to your /wp-content/plugins/pandascore-tracker/ directory
-echo 3. Activate the plugin through the 'Plugins' menu in WordPress
-echo 4. Go to Settings ^> PandaScore Tracker to configure your API key
-echo 5. Use the shortcode [pandascore_tracker] in your posts or pages
-echo.
-echo Shortcode Usage:
-echo [pandascore_tracker game="valorant" limit="5" title="UPCOMING MATCHES"]
-echo.
-echo Parameters:
-echo - game: Game type ^(default: "valorant"^)
-echo - limit: Number of matches to display ^(default: 5^)
-echo - title: Header title ^(default: "UP-COMING"^)
-echo.
-echo Version: 1.0
-echo Author: Deejay Dev
-echo.
-echo For support, contact the developer.
-) > "%TEMP_DIR%\README.txt"
+REM Copy JS directory if it exists
+if exist "%PLUGIN_DIR%\js" (
+    xcopy "%PLUGIN_DIR%\js" "%TEMP_DIR%\js" /e /i /q >nul
+    echo   - Copied JS directory
+)
 
-echo   - Created README.txt
+REM Copy README.md if it exists
+if exist "%PLUGIN_DIR%\README.md" (
+    copy "%PLUGIN_DIR%\README.md" "%TEMP_DIR%\" >nul
+    echo   - Copied README.md
+) else (
+    echo   - WARNING: README.md not found, creating basic README.txt
+    REM Create a simple README.txt as fallback
+    (
+    echo PandaScore Tracker WordPress Plugin
+    echo ===================================
+    echo.
+    echo Installation Instructions:
+    echo 1. Upload via WordPress Admin ^> Plugins ^> Add New ^> Upload Plugin
+    echo 2. Or extract to your /wp-content/plugins/pandascore-tracker/ directory
+    echo 3. Activate the plugin through the 'Plugins' menu in WordPress
+    echo 4. Go to Settings ^> PandaScore Tracker to configure your API key
+    echo 5. Use the shortcode [pandascore_tracker] in your posts or pages
+    echo.
+    echo Version: 1.0
+    echo Author: Deejay Dev
+    echo.
+    echo For support, contact the developer.
+    ) > "%TEMP_DIR%\README.txt"
+    echo   - Created fallback README.txt
+)
 
 echo.
 echo [4/4] Creating ZIP archive...

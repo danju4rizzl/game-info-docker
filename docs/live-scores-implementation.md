@@ -7,7 +7,7 @@ This document describes the implementation of live scores functionality in the P
 ## Features Added
 
 ### 1. Live Match Support
-- **Live Matches Endpoint**: Uses PandaScore's `/lives` endpoint to fetch currently running matches
+- **Live Matches Endpoint**: Uses PandaScore's `/{game}/matches/running` endpoint to fetch currently running matches for specific games
 - **Real-time Scores via WebSockets**: Connects to `wss://live.pandascore.co/matches/{match_id}/events?token=YOUR_TOKEN` for each live match
 - **Recovery Support**: Sends `{type: 'recover', payload: { game_id }}` after connection per the docs
 - **Intelligent Reconnection**: Exponential backoff with retry limits and non-retryable code detection
@@ -441,17 +441,17 @@ if (defined('WP_DEBUG') && WP_DEBUG) {
 
 #### Live Matches Endpoint
 ```php
-private function fetch_live_matches( $limit ) {
-    $url = "https://api.pandascore.co/lives";
-    // Returns array of live match objects with WebSocket endpoints
+private function fetch_live_matches( $game, $limit ) {
+    $url = "https://api.pandascore.co/{$game}/matches/running";
+    // Returns array of currently running match objects for specific game
 }
 ```
 
-#### Regular Matches Endpoint
+#### Upcoming Matches Endpoint
 ```php
-private function fetch_matches( $game, $limit ) {
-    $url = "https://api.pandascore.co/{$game}/matches";
-    // Returns array of upcoming/recent match objects
+private function fetch_upcoming_matches( $game, $limit ) {
+    $url = "https://api.pandascore.co/{$game}/matches/upcoming";
+    // Returns array of upcoming match objects for specific game
 }
 ```
 

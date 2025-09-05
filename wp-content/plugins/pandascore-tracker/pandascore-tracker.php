@@ -27,7 +27,7 @@ class PandaScore_Tracker_Plugin {
         // Only custom style (no Tailwind)
         wp_register_style(
             'pandascore-custom-style',
-            plugins_url( 'css/custom.css', __FILE__ ),
+            plugins_url( 'css/index.css', __FILE__ ),
             array(),
             '1.0'
         );
@@ -48,203 +48,20 @@ class PandaScore_Tracker_Plugin {
     /**
      * Output internal CSS styles for the plugin
      */
-    private function get_internal_styles() {
-        return '
-        <style>
-        .pandascore-tracker {
-            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    public function get_internal_styles() {
+        $css_file_path = plugin_dir_path( __FILE__ ) . 'css/index.css';
+
+        if ( ! file_exists( $css_file_path ) ) {
+            return '<style>/* PandaScore Tracker: CSS file not found */</style>';
         }
 
-        .pandascore-tracker.align-left { text-align: left; }
-        .pandascore-tracker.align-center { text-align: center; }
-        .pandascore-tracker.align-right { text-align: right; }
+        $css_content = file_get_contents( $css_file_path );
 
-        .pandascore-api-key-input {
-            width: 100%;
+        if ( $css_content === false ) {
+            return '<style>/* PandaScore Tracker: Could not read CSS file */</style>';
         }
 
-        .pandascore-section-header {
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: left;
-            font-family: Inter, sans-serif;
-            color: #FFC700;
-            display: flex;
-            align-items: center;
-        }
-
-        .pandascore-live-indicator {
-            background: #FFC700;
-            border-radius: 100%;
-            width: 8px;
-            height: 8px;
-            display: inline-block;
-            margin: 0 7px;
-        }
-
-        .pandascore-matches-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-width: 250px;
-        }
-
-        .pandascore-match {
-            background: #1D1C26;
-            color: #fff;
-            padding: 10px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            min-width: 250px;
-        }
-
-        .pandascore-league-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .pandascore-league-logo {
-            background: #FFC700;
-            padding: 8px 5px 0px 5px;
-            border-radius: 6px;
-        }
-
-        .pandascore-league-logo img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-        }
-
-        .pandascore-league-placeholder {
-            background: #FFC700;
-            padding: 5px;
-            border-radius: 6px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1D1C26;
-            font-weight: bold;
-        }
-
-        .pandascore-match-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .pandascore-match-content.live-layout {
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .pandascore-teams-container {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            flex: 1;
-        }
-
-        .pandascore-team {
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-
-        .pandascore-team.with-score {
-            justify-content: space-between;
-        }
-
-        .pandascore-team-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .pandascore-team-logo {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-            margin-right: 5px;
-        }
-
-        .pandascore-team-logo-placeholder {
-            width: 24px;
-            height: 24px;
-            background: #FFC700;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 5px;
-            font-size: 10px;
-            font-weight: bold;
-            color: #1D1C26;
-            flex-shrink: 0;
-        }
-
-        .pandascore-team-name {
-            font-size: 14px;
-        }
-
-        .pandascore-score {
-            background: #FFC700;
-            color: #1D1C26;
-            padding: 3px 14px;
-            border-radius: 4px;
-            width: 20px;
-            display: flex;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .pandascore-time-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 60px;
-        }
-
-        .pandascore-time-badge {
-            background: #FFC700;
-            color: #1D1C26;
-            padding: 2px 8px;
-            border-radius: 4px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pandascore-time-day {
-            font-size: 10px;
-            font-weight: normal;
-            opacity: 0.8;
-        }
-
-        .pandascore-error {
-            background: #f8d7da;
-            border: 1px solid #f5c2c7;
-            color: #842029;
-            padding: 10px;
-            border-radius: 6px;
-        }
-
-        .pandascore-no-matches {
-            background: #eee;
-            border: 1px solid #ccc;
-            color: #333;
-            padding: 10px;
-            border-radius: 6px;
-        }
-        </style>';
+        return '<style>' . $css_content . '</style>';
     }
 
     public function admin_menu() {
@@ -297,36 +114,44 @@ class PandaScore_Tracker_Plugin {
     }
 
     private function get_league_ids() {
-        $api_key = $this->get_api_key();
-        if ( ! $api_key ) return new WP_Error( 'no_api_key', 'PandaScore API key not set' );
+        $transient_key = 'pandascore_league_ids';
+        $league_ids = get_transient( $transient_key );
 
-        $url = add_query_arg( array(
-            'filter[name]' => 'LPL,LEC'
-        ), 'https://api.pandascore.co/leagues' );
+        if ( false === $league_ids ) {
+            $api_key = $this->get_api_key();
+            if ( ! $api_key ) return new WP_Error( 'no_api_key', 'PandaScore API key not set' );
 
-        $response = wp_remote_get( $url, array(
-            'timeout' => 15,
-            'headers' => array(
-                'Authorization' => 'Bearer ' . $api_key,
-            )
-        ) );
+            $url = add_query_arg( array(
+                'filter[name]' => 'LPL,LEC'
+            ), 'https://api.pandascore.co/leagues' );
 
-        if ( is_wp_error( $response ) ) return $response;
-        $code = wp_remote_retrieve_response_code( $response );
-        if ( $code !== 200 ) return new WP_Error( 'api_error', 'PandaScore API returned code '.$code );
+            $response = wp_remote_get( $url, array(
+                'timeout' => 15,
+                'headers' => array(
+                    'Authorization' => 'Bearer ' . $api_key,
+                )
+            ) );
 
-        $body = wp_remote_retrieve_body( $response );
-        $data = json_decode( $body, true );
-        if ( json_last_error() !== JSON_ERROR_NONE ) return new WP_Error( 'json_error', 'Invalid JSON from API' );
+            if ( is_wp_error( $response ) ) return $response;
+            $code = wp_remote_retrieve_response_code( $response );
+            if ( $code !== 200 ) return new WP_Error( 'api_error', 'PandaScore API returned code '.$code );
 
-        $league_ids = array(4786, 5345, 5346); // LCK, LTA North, LTA South
-        foreach ( $data as $league ) {
-            if ( in_array( $league['name'], array( 'LPL', 'LEC' ) ) && isset( $league['id'] ) ) {
-                $league_ids[] = $league['id'];
+            $body = wp_remote_retrieve_body( $response );
+            $data = json_decode( $body, true );
+            if ( json_last_error() !== JSON_ERROR_NONE ) return new WP_Error( 'json_error', 'Invalid JSON from API' );
+
+            $league_ids = array(4786, 5345, 5346); // LCK, LTA North, LTA South
+            foreach ( $data as $league ) {
+                if ( in_array( $league['name'], array( 'LPL', 'LEC' ) ) && isset( $league['id'] ) ) {
+                    $league_ids[] = $league['id'];
+                }
             }
+
+            $league_ids = array_unique( $league_ids );
+            set_transient( $transient_key, $league_ids, DAY_IN_SECONDS ); // Cache for 24 hours
         }
 
-        return array_unique( $league_ids );
+        return $league_ids;
     }
 
     /**
@@ -338,6 +163,13 @@ class PandaScore_Tracker_Plugin {
      * @return array|WP_Error The API response data or WP_Error on failure
      */
     private function make_api_call( $game, $limit, $endpoint ) {
+        $transient_key = 'pandascore_' . $game . '_' . $endpoint . '_' . $limit;
+        $cached_data = get_transient( $transient_key );
+
+        if ( false !== $cached_data ) {
+            return $cached_data;
+        }
+
         $api_key = $this->get_api_key();
         if ( ! $api_key ) return new WP_Error( 'no_api_key', 'PandaScore API key not set' );
 
@@ -367,6 +199,10 @@ class PandaScore_Tracker_Plugin {
         $body = wp_remote_retrieve_body( $response );
         $data = json_decode( $body, true );
         if ( json_last_error() !== JSON_ERROR_NONE ) return new WP_Error( 'json_error', 'Invalid JSON from API' );
+
+        // Set expiration based on endpoint
+        $expiration = ( $endpoint === 'running' ) ? 60 : 300; // 1 min for live, 5 min for upcoming
+        set_transient( $transient_key, $data, $expiration );
 
         return $data;
     }
