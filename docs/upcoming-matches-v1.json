@@ -1,0 +1,2720 @@
+[
+  {
+    "id": 5418,
+    "name": "NNO Cup",
+    "url": null,
+    "slug": "league-of-legends-nno-cup",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-07-15T10:45:12Z",
+    "series": [
+      {
+        "id": 9514,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-15T14:00:00Z",
+        "end_at": "2025-07-26T21:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-nno-cup-3-2025",
+        "modified_at": "2025-07-15T10:45:12Z",
+        "league_id": 5418,
+        "season": "3",
+        "full_name": "Season 3 2025"
+      }
+    ],
+    "image_url": null
+  },
+  {
+    "id": 5377,
+    "name": "Circuito Desafiante",
+    "url": null,
+    "slug": "league-of-legends-circuito-desafiante",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-03-13T13:31:09Z",
+    "series": [
+      {
+        "id": 9137,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-03-17T20:00:00Z",
+        "end_at": "2025-06-10T00:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-circuito-desafiante-split-1-2025",
+        "modified_at": "2025-03-12T14:43:58Z",
+        "league_id": 5377,
+        "season": "Split 1",
+        "full_name": "Split 1 2025"
+      },
+      {
+        "id": 9515,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-21T20:00:00Z",
+        "end_at": "2025-09-13T01:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-circuito-desafiante-split-2-2025",
+        "modified_at": "2025-08-13T07:46:49Z",
+        "league_id": 5377,
+        "season": "Split 2",
+        "full_name": "Split 2 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5377/circuito_desafiante_logo-png"
+  },
+  {
+    "id": 5375,
+    "name": "Asia Masters",
+    "url": null,
+    "slug": "league-of-legends-asia-masters",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-03-05T09:25:01Z",
+    "series": [
+      {
+        "id": 9128,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-03-05T04:00:00Z",
+        "end_at": "2025-07-18T12:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-asia-masters-2025",
+        "modified_at": "2025-06-25T07:12:08Z",
+        "league_id": 5375,
+        "season": null,
+        "full_name": "2025"
+      }
+    ],
+    "image_url": null
+  },
+  {
+    "id": 5369,
+    "name": "First Stand",
+    "url": null,
+    "slug": "league-of-legends-first-stand",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-02-16T07:39:23Z",
+    "series": [
+      {
+        "id": 9074,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-03-10T08:00:00Z",
+        "end_at": "2025-03-16T11:28:00Z",
+        "winner_id": 2883,
+        "winner_type": "Team",
+        "slug": "league-of-legends-first-stand-2025",
+        "modified_at": "2025-03-16T18:00:03Z",
+        "league_id": 5369,
+        "season": null,
+        "full_name": "2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5369/first_stand_logo-png"
+  },
+  {
+    "id": 5366,
+    "name": "Road Of Legends",
+    "url": null,
+    "slug": "league-of-legends-road-of-legends",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-02-07T08:35:54Z",
+    "series": [
+      {
+        "id": 9015,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-02-11T18:00:00Z",
+        "end_at": "2025-03-06T21:00:00Z",
+        "winner_id": 132494,
+        "winner_type": "Team",
+        "slug": "league-of-legends-road-of-legends-winter-2025",
+        "modified_at": "2025-05-08T20:11:58Z",
+        "league_id": 5366,
+        "season": "Winter",
+        "full_name": "Winter 2025"
+      },
+      {
+        "id": 9180,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-03-25T18:00:00Z",
+        "end_at": "2025-05-24T21:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-road-of-legends-spring-2025",
+        "modified_at": "2025-05-10T18:51:09Z",
+        "league_id": 5366,
+        "season": "Spring",
+        "full_name": "Spring 2025"
+      },
+      {
+        "id": 9484,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-15T17:00:00Z",
+        "end_at": "2025-08-28T19:52:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-road-of-legends-summer-2025",
+        "modified_at": "2025-08-31T10:33:05Z",
+        "league_id": 5366,
+        "season": "Summer",
+        "full_name": "Summer 2025"
+      },
+      {
+        "id": 9629,
+        "name": "Season Finals",
+        "year": 2025,
+        "begin_at": "2025-09-02T16:00:00Z",
+        "end_at": "2025-09-13T14:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-road-of-legends-season-finals-2025",
+        "modified_at": "2025-08-31T10:33:14Z",
+        "league_id": 5366,
+        "season": null,
+        "full_name": "Season Finals 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5366/transip_road_of_legends_logo-png"
+  },
+  {
+    "id": 5358,
+    "name": "Rift Legends",
+    "url": null,
+    "slug": "league-of-legends-rift-legends",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-01-23T15:53:10Z",
+    "series": [
+      {
+        "id": 8958,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-01-28T16:00:00Z",
+        "end_at": "2025-03-09T19:33:00Z",
+        "winner_id": 127550,
+        "winner_type": "Team",
+        "slug": "league-of-legends-rift-legends-winter-2025",
+        "modified_at": "2025-03-09T21:16:56Z",
+        "league_id": 5358,
+        "season": "Winter",
+        "full_name": "Winter 2025"
+      },
+      {
+        "id": 9229,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-04-07T22:00:00Z",
+        "end_at": "2025-05-18T17:00:00Z",
+        "winner_id": 127550,
+        "winner_type": "Team",
+        "slug": "league-of-legends-rift-legends-spring-2025",
+        "modified_at": "2025-05-19T15:10:36Z",
+        "league_id": 5358,
+        "season": "Spring",
+        "full_name": "Spring 2025"
+      },
+      {
+        "id": 9520,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-22T15:00:00Z",
+        "end_at": "2025-09-07T15:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-rift-legends-summer-2025",
+        "modified_at": "2025-08-24T19:03:09Z",
+        "league_id": 5358,
+        "season": "Summer",
+        "full_name": "Summer 2025"
+      }
+    ],
+    "image_url": null
+  },
+  {
+    "id": 5355,
+    "name": "HLL",
+    "url": null,
+    "slug": "league-of-legends-hll",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-01-14T14:06:04Z",
+    "series": [
+      {
+        "id": 8886,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-01-21T14:00:00Z",
+        "end_at": "2025-03-02T14:03:00Z",
+        "winner_id": 129409,
+        "winner_type": "Team",
+        "slug": "league-of-legends-gll-winter-2025",
+        "modified_at": "2025-07-15T09:54:39Z",
+        "league_id": 5355,
+        "season": "Winter",
+        "full_name": "Winter 2025"
+      },
+      {
+        "id": 9165,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-04-01T13:00:00Z",
+        "end_at": "2025-06-01T15:00:00Z",
+        "winner_id": 129409,
+        "winner_type": "Team",
+        "slug": "league-of-legends-hll-spring-2025",
+        "modified_at": "2025-07-15T09:54:22Z",
+        "league_id": 5355,
+        "season": "Spring",
+        "full_name": "Spring 2025"
+      },
+      {
+        "id": 9513,
+        "name": "Super Cup",
+        "year": 2025,
+        "begin_at": "2025-07-15T13:00:00Z",
+        "end_at": "2025-07-27T15:44:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-hll-super-cup-summer-2025",
+        "modified_at": "2025-07-27T16:43:33Z",
+        "league_id": 5355,
+        "season": "Summer",
+        "full_name": "Super Cup Summer 2025"
+      },
+      {
+        "id": 9624,
+        "name": "Season Finals",
+        "year": 2025,
+        "begin_at": "2025-08-28T13:00:00Z",
+        "end_at": "2025-09-14T14:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-hll-season-finals-2025",
+        "modified_at": "2025-08-29T06:34:42Z",
+        "league_id": 5355,
+        "season": null,
+        "full_name": "Season Finals 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5355/hellenic_legends_league_logo-png"
+  },
+  {
+    "id": 5351,
+    "name": "LCP",
+    "url": null,
+    "slug": "league-of-legends-lcp",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-01-06T09:48:59Z",
+    "series": [
+      {
+        "id": 8857,
+        "name": "Season Kickoff",
+        "year": 2025,
+        "begin_at": "2025-01-17T10:00:00Z",
+        "end_at": "2025-02-23T19:00:00Z",
+        "winner_id": 130355,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lcp-season-kickoff-2025",
+        "modified_at": "2025-04-08T14:52:25Z",
+        "league_id": 5351,
+        "season": null,
+        "full_name": "Season Kickoff 2025"
+      },
+      {
+        "id": 9232,
+        "name": "Mid Season",
+        "year": 2025,
+        "begin_at": "2025-04-19T09:30:00Z",
+        "end_at": "2025-06-08T13:59:00Z",
+        "winner_id": 130355,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lcp-mid-season-2025",
+        "modified_at": "2025-07-15T07:19:23Z",
+        "league_id": 5351,
+        "season": null,
+        "full_name": "Mid Season 2025"
+      },
+      {
+        "id": 9507,
+        "name": "Season Finals",
+        "year": 2025,
+        "begin_at": "2025-07-26T09:30:00Z",
+        "end_at": "2025-09-21T14:30:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lcp-season-finals-2025",
+        "modified_at": "2025-08-24T14:05:03Z",
+        "league_id": 5351,
+        "season": null,
+        "full_name": "Season Finals 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5351/lcp_logo-png"
+  },
+  {
+    "id": 5347,
+    "name": "LTA",
+    "url": null,
+    "slug": "league-of-legends-lta",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-12-29T13:38:39Z",
+    "series": [
+      {
+        "id": 8988,
+        "name": "Split 1",
+        "year": 2025,
+        "begin_at": "2025-02-15T21:00:00Z",
+        "end_at": "2025-02-24T02:00:00Z",
+        "winner_id": 390,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lta-split-1-2025",
+        "modified_at": "2025-04-15T06:56:13Z",
+        "league_id": 5347,
+        "season": null,
+        "full_name": "Split 1 2025"
+      },
+      {
+        "id": 9610,
+        "name": "Championship",
+        "year": 2025,
+        "begin_at": "2025-09-12T23:00:00Z",
+        "end_at": "2025-09-29T04:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lta-championship-2025",
+        "modified_at": "2025-08-26T07:08:33Z",
+        "league_id": 5347,
+        "season": null,
+        "full_name": "Championship 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5347/lta_logo-png"
+  },
+  {
+    "id": 5346,
+    "name": "LTA South",
+    "url": null,
+    "slug": "league-of-legends-lta-south",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-12-29T13:26:16Z",
+    "series": [
+      {
+        "id": 8833,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-01-25T19:00:00Z",
+        "end_at": "2025-02-10T01:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lta-south-split-1-2025",
+        "modified_at": "2024-12-29T13:37:12Z",
+        "league_id": 5346,
+        "season": "Split 1",
+        "full_name": "Split 1 2025"
+      },
+      {
+        "id": 9198,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-04-05T16:00:00Z",
+        "end_at": "2025-06-15T18:37:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lta-south-split-2-2025",
+        "modified_at": "2025-06-16T19:40:07Z",
+        "league_id": 5346,
+        "season": "Split 2",
+        "full_name": "Split 2 2025"
+      },
+      {
+        "id": 9487,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-26T15:00:00Z",
+        "end_at": "2025-09-07T22:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lta-south-split-3-2025",
+        "modified_at": "2025-07-10T21:24:29Z",
+        "league_id": 5346,
+        "season": "Split 3",
+        "full_name": "Split 3 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5346/lta_south_logo-png"
+  },
+  {
+    "id": 5345,
+    "name": "LTA North",
+    "url": null,
+    "slug": "league-of-legends-lta-north",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-12-29T13:25:51Z",
+    "series": [
+      {
+        "id": 8832,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-01-25T21:00:00Z",
+        "end_at": "2025-02-10T02:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lta-north-split-1-2025",
+        "modified_at": "2025-02-14T07:07:48Z",
+        "league_id": 5345,
+        "season": "Split 1",
+        "full_name": "Split 1 2025"
+      },
+      {
+        "id": 9197,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-04-05T20:00:00Z",
+        "end_at": "2025-06-16T00:32:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lta-north-split-2-2025",
+        "modified_at": "2025-06-16T19:42:31Z",
+        "league_id": 5345,
+        "season": "Split 2",
+        "full_name": "Split 2 2025"
+      },
+      {
+        "id": 9488,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-26T20:00:00Z",
+        "end_at": "2025-09-08T05:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lta-north-2025",
+        "modified_at": "2025-07-13T07:59:43Z",
+        "league_id": 5345,
+        "season": "Split 3",
+        "full_name": "Split 3 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5345/lta_north_logo-png"
+  },
+  {
+    "id": 5312,
+    "name": "T-esports Championship",
+    "url": null,
+    "slug": "league-of-legends-t-esports-championship",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-10-29T14:22:42Z",
+    "series": [
+      {
+        "id": 8108,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-10-30T17:00:00Z",
+        "end_at": "2024-11-17T19:00:00Z",
+        "winner_id": 135761,
+        "winner_type": "Team",
+        "slug": "league-of-legends-t-esports-championship-3-2024",
+        "modified_at": "2024-11-17T15:30:00Z",
+        "league_id": 5312,
+        "season": "3",
+        "full_name": "Season 3 2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5312/t-esports_championship_logo-png"
+  },
+  {
+    "id": 5301,
+    "name": "Hitpoint Winter",
+    "url": null,
+    "slug": "league-of-legends-hitopint-winter",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-10-08T14:33:49Z",
+    "series": [
+      {
+        "id": 8034,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-09-30T15:00:00Z",
+        "end_at": "2024-11-03T23:00:00Z",
+        "winner_id": 3344,
+        "winner_type": "Team",
+        "slug": "league-of-legends-hitopint-winter-2024",
+        "modified_at": "2024-11-05T10:08:11Z",
+        "league_id": 5301,
+        "season": null,
+        "full_name": "2024"
+      }
+    ],
+    "image_url": null
+  },
+  {
+    "id": 5292,
+    "name": "Americas Challengers",
+    "url": null,
+    "slug": "league-of-legends-americas-challengers",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-09-04T15:53:55Z",
+    "series": [
+      {
+        "id": 7919,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-09-14T16:00:00Z",
+        "end_at": "2024-09-22T01:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-americas-challengers-2024",
+        "modified_at": "2024-09-10T15:05:16Z",
+        "league_id": 5292,
+        "season": null,
+        "full_name": "2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5292/americas_challengers-png"
+  },
+  {
+    "id": 5262,
+    "name": "Esports World Cup",
+    "url": null,
+    "slug": "league-of-legends-esports-world-cup",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-06-17T11:54:39Z",
+    "series": [
+      {
+        "id": 7681,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-07-03T22:00:00Z",
+        "end_at": "2024-07-07T20:14:00Z",
+        "winner_id": 126061,
+        "winner_type": "Team",
+        "slug": "league-of-legends-esports-world-cup-2024",
+        "modified_at": "2024-07-08T07:32:50Z",
+        "league_id": 5262,
+        "season": null,
+        "full_name": "2024"
+      },
+      {
+        "id": 9459,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-16T08:00:00Z",
+        "end_at": "2025-07-20T16:06:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-esports-world-cup-2025",
+        "modified_at": "2025-07-20T17:23:07Z",
+        "league_id": 5262,
+        "season": null,
+        "full_name": "2025"
+      }
+    ],
+    "image_url": null
+  },
+  {
+    "id": 5248,
+    "name": "Legends Cup",
+    "url": null,
+    "slug": "league-of-legends-legends-cup",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-05-20T09:11:31Z",
+    "series": [
+      {
+        "id": 7555,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-05-20T09:00:00Z",
+        "end_at": "2024-06-09T14:00:00Z",
+        "winner_id": 134951,
+        "winner_type": "Team",
+        "slug": "league-of-legends-legends-cup-2024",
+        "modified_at": "2024-06-17T14:57:03Z",
+        "league_id": 5248,
+        "season": null,
+        "full_name": "2024"
+      },
+      {
+        "id": 8229,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-11-15T08:00:00Z",
+        "end_at": "2024-12-08T15:00:00Z",
+        "winner_id": 134951,
+        "winner_type": "Team",
+        "slug": "league-of-legends-legends-cup-2-2024",
+        "modified_at": "2024-12-08T18:05:26Z",
+        "league_id": 5248,
+        "season": "2",
+        "full_name": "Season 2 2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5248/legend_cup-png"
+  },
+  {
+    "id": 5211,
+    "name": "LIT",
+    "url": null,
+    "slug": "league-of-legends-lit",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-01-03T16:28:56Z",
+    "series": [
+      {
+        "id": 7035,
+        "name": null,
+        "year": 2024,
+        "begin_at": "2024-01-25T18:00:00Z",
+        "end_at": "2024-03-29T22:00:00Z",
+        "winner_id": 132446,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lit-spring-2024",
+        "modified_at": "2024-04-17T21:10:10Z",
+        "league_id": 5211,
+        "season": "Spring",
+        "full_name": "Spring 2024"
+      },
+      {
+        "id": 7561,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-05-23T17:00:00Z",
+        "end_at": "2024-07-25T19:00:00Z",
+        "winner_id": 128406,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lit-summer-2024",
+        "modified_at": "2024-07-31T14:58:40Z",
+        "league_id": 5211,
+        "season": "Summer",
+        "full_name": "Summer 2024"
+      },
+      {
+        "id": 8919,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-01-21T23:00:00Z",
+        "end_at": "2025-03-09T19:42:00Z",
+        "winner_id": 128406,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lit-winter-2025",
+        "modified_at": "2025-03-09T20:54:32Z",
+        "league_id": 5211,
+        "season": "Winter",
+        "full_name": "Winter 2025"
+      },
+      {
+        "id": 9183,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-04-03T16:00:00Z",
+        "end_at": "2025-05-23T21:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lit-spring-2025",
+        "modified_at": "2025-04-17T07:03:30Z",
+        "league_id": 5211,
+        "season": "Spring",
+        "full_name": "Spring 2025"
+      },
+      {
+        "id": 9492,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-14T16:00:00Z",
+        "end_at": "2025-09-14T22:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lit-summer-2025",
+        "modified_at": "2025-07-26T12:12:37Z",
+        "league_id": 5211,
+        "season": "Summer",
+        "full_name": "Summer 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5211/lit_2024_logo-png"
+  },
+  {
+    "id": 5210,
+    "name": "KCX3: Karmine Corp vs The World",
+    "url": null,
+    "slug": "league-of-legends-kcx3-karmine-corp-vs-the-world",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-01-03T11:19:40Z",
+    "series": [
+      {
+        "id": 7032,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-09-16T22:15:00Z",
+        "end_at": "2023-01-17T00:15:00Z",
+        "winner_id": 128268,
+        "winner_type": "Team",
+        "slug": "league-of-legends-kcx3-karmine-corp-vs-the-world-2023",
+        "modified_at": "2024-03-15T17:18:47Z",
+        "league_id": 5210,
+        "season": null,
+        "full_name": "2023"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5210/kcx_3_allmode-png"
+  },
+  {
+    "id": 5184,
+    "name": "Red Bull League of Its Own",
+    "url": null,
+    "slug": "league-of-legends-red-bull-league-of-its-own",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-12-26T22:19:42Z",
+    "series": [
+      {
+        "id": 6961,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-12-09T12:00:00Z",
+        "end_at": "2023-12-09T21:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-red-bull-league-of-its-own-2023",
+        "modified_at": "2023-12-01T12:41:44Z",
+        "league_id": 5184,
+        "season": null,
+        "full_name": "2023"
+      },
+      {
+        "id": 8788,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-12-15T14:15:00Z",
+        "end_at": "2024-12-15T22:57:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-red-bull-league-of-its-own-2024",
+        "modified_at": "2024-12-16T07:24:52Z",
+        "league_id": 5184,
+        "season": null,
+        "full_name": "2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5184/red_bull_league_of_its_own_allmode-png"
+  },
+  {
+    "id": 5183,
+    "name": "Superdome",
+    "url": null,
+    "slug": "league-of-legends-superdome",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-12-26T22:20:15Z",
+    "series": [
+      {
+        "id": 6959,
+        "name": "Cairo",
+        "year": 2023,
+        "begin_at": "2023-11-29T13:00:00Z",
+        "end_at": "2023-12-02T20:53:00Z",
+        "winner_id": 131055,
+        "winner_type": "Team",
+        "slug": "league-of-legends-superdome-cairo-2023",
+        "modified_at": "2023-12-03T10:24:05Z",
+        "league_id": 5183,
+        "season": null,
+        "full_name": "Cairo 2023"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5183/800px-superdome_2023_cairo_allmode-png"
+  },
+  {
+    "id": 5182,
+    "name": "Esports Shanghai Masters",
+    "url": null,
+    "slug": "league-of-legends-esports-shanghai-masters",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-12-26T22:20:48Z",
+    "series": [
+      {
+        "id": 6958,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-12-01T11:00:00Z",
+        "end_at": "2023-12-02T11:30:00Z",
+        "winner_id": 405,
+        "winner_type": "Team",
+        "slug": "league-of-legends-esports-shanghai-masters-2023",
+        "modified_at": "2023-12-02T17:05:08Z",
+        "league_id": 5182,
+        "season": null,
+        "full_name": "2023"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5182/esports_shanghai_masters_logo_allmode-png"
+  },
+  {
+    "id": 5158,
+    "name": "MEG",
+    "url": null,
+    "slug": "league-of-legends-meg",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-12-26T22:25:03Z",
+    "series": [
+      {
+        "id": 6834,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-10-24T18:00:00Z",
+        "end_at": "2023-11-05T16:30:00Z",
+        "winner_id": 161,
+        "winner_type": "Team",
+        "slug": "league-of-legends-meg-2023",
+        "modified_at": "2023-11-06T02:53:55Z",
+        "league_id": 5158,
+        "season": null,
+        "full_name": "2023"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5158/multiplatform_esports_games_lightmode-png"
+  },
+  {
+    "id": 5147,
+    "name": "Elite Series Benelux Masters",
+    "url": null,
+    "slug": "league-of-legends-elite-series-benelux-masters",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-12-26T22:28:12Z",
+    "series": [
+      {
+        "id": 6788,
+        "name": "Champions Stage",
+        "year": 2023,
+        "begin_at": "2023-11-06T17:30:00Z",
+        "end_at": "2023-11-11T23:00:00Z",
+        "winner_id": 133264,
+        "winner_type": "Team",
+        "slug": "league-of-legends-elite-series-benelux-masters-champions-stage-2023",
+        "modified_at": "2023-12-26T22:28:22Z",
+        "league_id": 5147,
+        "season": null,
+        "full_name": "Champions Stage 2023"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5147/800px-elite_series_benelux_masters_lightmode-png"
+  },
+  {
+    "id": 5146,
+    "name": "Sigma Cup",
+    "url": null,
+    "slug": "league-of-legends-sigma-cup",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-11-05T11:00:43Z",
+    "series": [
+      {
+        "id": 8120,
+        "name": "Gauntlet",
+        "year": 2024,
+        "begin_at": "2024-11-05T16:00:00Z",
+        "end_at": "2024-11-10T18:15:00Z",
+        "winner_id": 130176,
+        "winner_type": "Team",
+        "slug": "league-of-legends-sigma-cup-gauntlet-2024",
+        "modified_at": "2024-11-11T23:57:14Z",
+        "league_id": 5146,
+        "season": null,
+        "full_name": "Gauntlet 2024"
+      },
+      {
+        "id": 8736,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-11-22T13:00:00Z",
+        "end_at": "2024-11-23T21:00:00Z",
+        "winner_id": 135722,
+        "winner_type": "Team",
+        "slug": "league-of-legends-sigma-cup-2024",
+        "modified_at": "2024-11-24T11:59:49Z",
+        "league_id": 5146,
+        "season": null,
+        "full_name": "2024"
+      }
+    ],
+    "image_url": null
+  },
+  {
+    "id": 5141,
+    "name": "Prime Pokal",
+    "url": null,
+    "slug": "league-of-legends-prime-pokal",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-12-26T22:26:13Z",
+    "series": [
+      {
+        "id": 6734,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-10-16T16:00:00Z",
+        "end_at": "2023-11-01T19:21:00Z",
+        "winner_id": 126832,
+        "winner_type": "Team",
+        "slug": "league-of-legends-prime-pokal-2023",
+        "modified_at": "2023-12-26T22:27:16Z",
+        "league_id": 5141,
+        "season": null,
+        "full_name": "2023"
+      },
+      {
+        "id": 8050,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-10-14T15:00:00Z",
+        "end_at": "2024-10-25T21:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-prime-pokal-2024",
+        "modified_at": "2024-10-10T21:20:50Z",
+        "league_id": 5141,
+        "season": null,
+        "full_name": "2024"
+      },
+      {
+        "id": 9502,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-05-02T16:00:00Z",
+        "end_at": "2025-08-30T21:00:00Z",
+        "winner_id": 125905,
+        "winner_type": "Team",
+        "slug": "league-of-legends-prime-pokal-2025",
+        "modified_at": "2025-08-31T07:49:35Z",
+        "league_id": 5141,
+        "season": null,
+        "full_name": "2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5141/440px-prime_league_lightmode-png"
+  },
+  {
+    "id": 5051,
+    "name": "TCL Division 2",
+    "url": null,
+    "slug": "league-of-legends-tcl-division-2",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-04-17T19:01:14Z",
+    "series": [
+      {
+        "id": 6222,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-06-20T16:00:00Z",
+        "end_at": "2023-08-25T20:00:00Z",
+        "winner_id": 133480,
+        "winner_type": "Team",
+        "slug": "league-of-legends-tcl-division-2-summer-2023",
+        "modified_at": "2023-09-08T09:19:40Z",
+        "league_id": 5051,
+        "season": "Summer",
+        "full_name": "Summer 2023"
+      },
+      {
+        "id": 7362,
+        "name": null,
+        "year": 2024,
+        "begin_at": "2024-03-27T17:00:00Z",
+        "end_at": "2024-04-03T20:33:00Z",
+        "winner_id": 134706,
+        "winner_type": "Team",
+        "slug": "league-of-legends-tcl-division-2-winter-2024",
+        "modified_at": "2024-04-12T09:48:21Z",
+        "league_id": 5051,
+        "season": "Winter",
+        "full_name": "Winter 2024"
+      },
+      {
+        "id": 7780,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-07-21T15:00:00Z",
+        "end_at": "2024-07-28T21:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-tcl-division-2-summer-2024",
+        "modified_at": "2024-07-23T16:45:02Z",
+        "league_id": 5051,
+        "season": "Summer",
+        "full_name": "Summer 2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5051/ezgif-5-3a8f4231b5-png"
+  },
+  {
+    "id": 5049,
+    "name": "LRS",
+    "url": null,
+    "slug": "league-of-legends-lrs",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-03-25T15:11:45Z",
+    "series": [
+      {
+        "id": 9184,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-03-23T19:00:00Z",
+        "end_at": "2025-06-05T01:00:00Z",
+        "winner_id": 136723,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lrs-split-1-2025",
+        "modified_at": "2025-06-16T07:22:35Z",
+        "league_id": 5049,
+        "season": "Split 1",
+        "full_name": "Split 1 2025"
+      },
+      {
+        "id": 9516,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-15T19:00:00Z",
+        "end_at": "2025-09-11T00:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lrs-split-2-2025",
+        "modified_at": "2025-07-16T09:21:07Z",
+        "league_id": 5049,
+        "season": "Split 2",
+        "full_name": "Split 2 2025"
+      }
+    ],
+    "image_url": null
+  },
+  {
+    "id": 5048,
+    "name": "LRN",
+    "url": null,
+    "slug": "league-of-legends-lrn",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2025-03-25T15:58:49Z",
+    "series": [
+      {
+        "id": 9185,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-03-24T20:00:00Z",
+        "end_at": "2025-06-04T00:37:00Z",
+        "winner_id": 1636,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lrn-split-1-2025",
+        "modified_at": "2025-06-06T17:02:56Z",
+        "league_id": 5048,
+        "season": "Split 1",
+        "full_name": "Split 1 2025"
+      }
+    ],
+    "image_url": null
+  },
+  {
+    "id": 5013,
+    "name": "European Pro League",
+    "url": "https://eplesports.com/",
+    "slug": "league-of-legends-european-pro-league",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-06-08T11:03:20Z",
+    "series": [
+      {
+        "id": 6025,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-06-08T08:00:00Z",
+        "end_at": "2023-07-03T14:00:00Z",
+        "winner_id": 127550,
+        "winner_type": "Team",
+        "slug": "league-of-legends-european-pro-league-2023",
+        "modified_at": "2024-06-30T07:01:35Z",
+        "league_id": 5013,
+        "season": "1",
+        "full_name": "Season 1 2023"
+      },
+      {
+        "id": 7719,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-06-21T10:00:00Z",
+        "end_at": "2024-07-13T14:00:00Z",
+        "winner_id": 127550,
+        "winner_type": "Team",
+        "slug": "league-of-legends-european-pro-league-2-2024",
+        "modified_at": "2024-07-13T14:21:29Z",
+        "league_id": 5013,
+        "season": "2",
+        "full_name": "Season 2 2024"
+      },
+      {
+        "id": 7928,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-09-02T10:00:00Z",
+        "end_at": "2024-09-23T12:30:00Z",
+        "winner_id": 127550,
+        "winner_type": "Team",
+        "slug": "league-of-legends-european-pro-league-3-2024",
+        "modified_at": "2024-09-24T07:07:34Z",
+        "league_id": 5013,
+        "season": "3",
+        "full_name": "Season 3 2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5013/european_pro_league-png"
+  },
+  {
+    "id": 5012,
+    "name": "Asian Games",
+    "url": null,
+    "slug": "league-of-legends-asian-games",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-06-02T09:33:46Z",
+    "series": [
+      {
+        "id": 6001,
+        "name": "East",
+        "year": 2022,
+        "begin_at": "2023-06-15T06:00:00Z",
+        "end_at": "2023-06-17T13:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-asian-games-east-2023",
+        "modified_at": "2023-06-01T23:07:36Z",
+        "league_id": 5012,
+        "season": null,
+        "full_name": "East 2022"
+      },
+      {
+        "id": 5999,
+        "name": "Southeast",
+        "year": 2022,
+        "begin_at": "2023-06-16T04:00:00Z",
+        "end_at": "2023-06-18T10:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-asian-games-southeast-2023",
+        "modified_at": "2023-06-01T23:07:27Z",
+        "league_id": 5012,
+        "season": null,
+        "full_name": "Southeast 2022"
+      },
+      {
+        "id": 6002,
+        "name": "West",
+        "year": 2022,
+        "begin_at": "2023-06-19T04:00:00Z",
+        "end_at": "2023-06-21T09:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-asian-games-west-2023",
+        "modified_at": "2023-06-01T23:07:20Z",
+        "league_id": 5012,
+        "season": null,
+        "full_name": "West 2022"
+      },
+      {
+        "id": 6000,
+        "name": "South & Central",
+        "year": 2022,
+        "begin_at": "2023-06-21T08:00:00Z",
+        "end_at": "2023-06-22T13:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-asian-games-south-central-2023",
+        "modified_at": "2023-06-01T23:07:11Z",
+        "league_id": 5012,
+        "season": null,
+        "full_name": "South & Central 2022"
+      },
+      {
+        "id": 5998,
+        "name": null,
+        "year": 2022,
+        "begin_at": "2023-09-25T01:00:00Z",
+        "end_at": "2023-09-29T16:00:00Z",
+        "winner_id": 133694,
+        "winner_type": "Team",
+        "slug": "league-of-legends-asian-games-2022",
+        "modified_at": "2023-11-15T15:34:43Z",
+        "league_id": 5012,
+        "season": "",
+        "full_name": "2022"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5012/asian_game_2022_logo-png"
+  },
+  {
+    "id": 5007,
+    "name": "Ignis Cup",
+    "url": null,
+    "slug": "league-of-legends-ignis-cup",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-12-26T22:29:12Z",
+    "series": [
+      {
+        "id": 5926,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-05-25T20:00:00Z",
+        "end_at": "2023-06-09T21:00:00Z",
+        "winner_id": 133172,
+        "winner_type": "Team",
+        "slug": "league-of-legends-ignis-cup-2023",
+        "modified_at": "2023-08-13T13:30:00Z",
+        "league_id": 5007,
+        "season": "Opening",
+        "full_name": "Opening 2023"
+      },
+      {
+        "id": 6501,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-10-04T22:00:00Z",
+        "end_at": "2023-10-27T22:00:00Z",
+        "winner_id": 133175,
+        "winner_type": "Team",
+        "slug": "league-of-legends-ignis-cup-closing-2023",
+        "modified_at": "2023-10-29T20:52:38Z",
+        "league_id": 5007,
+        "season": "Closing",
+        "full_name": "Closing 2023"
+      },
+      {
+        "id": 7422,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-05-07T16:00:00Z",
+        "end_at": "2024-05-24T21:00:00Z",
+        "winner_id": 133175,
+        "winner_type": "Team",
+        "slug": "league-of-legends-ignis-cup-split-1-2024",
+        "modified_at": "2024-09-02T12:31:37Z",
+        "league_id": 5007,
+        "season": "Split 1",
+        "full_name": "Split 1 2024"
+      },
+      {
+        "id": 7918,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-08-29T16:00:00Z",
+        "end_at": "2024-09-22T21:00:00Z",
+        "winner_id": 133174,
+        "winner_type": "Team",
+        "slug": "league-of-legends-ignis-cup-split-2-2024",
+        "modified_at": "2024-09-24T14:03:28Z",
+        "league_id": 5007,
+        "season": "Split 2",
+        "full_name": "Split 2 2024"
+      },
+      {
+        "id": 8121,
+        "name": "Split 3",
+        "year": 2024,
+        "begin_at": "2024-11-07T22:00:00Z",
+        "end_at": "2024-11-16T22:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-ignis-cup-split-3-2024",
+        "modified_at": "2024-11-05T14:46:05Z",
+        "league_id": 5007,
+        "season": null,
+        "full_name": "Split 3 2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/5007/735px-ignis_cup_lightmode-png"
+  },
+  {
+    "id": 4996,
+    "name": "EMEA Masters",
+    "url": null,
+    "slug": "league-of-legends-emea-masters",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-04-01T08:10:00Z",
+    "series": [
+      {
+        "id": 5828,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-04-04T15:00:00Z",
+        "end_at": "2023-04-29T20:00:00Z",
+        "winner_id": 126066,
+        "winner_type": "Team",
+        "slug": "league-of-legends-european-masters-spring-2023",
+        "modified_at": "2023-08-07T14:49:35Z",
+        "league_id": 4996,
+        "season": "Spring",
+        "full_name": "Spring 2023"
+      },
+      {
+        "id": 6502,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-08-14T15:00:00Z",
+        "end_at": "2023-09-08T22:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-emea-masters-summer-2023",
+        "modified_at": "2023-08-18T12:31:51Z",
+        "league_id": 4996,
+        "season": "Summer",
+        "full_name": "Summer 2023"
+      },
+      {
+        "id": 7420,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-04-15T15:00:00Z",
+        "end_at": "2024-04-28T21:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-emea-masters-spring-2024",
+        "modified_at": "2024-04-18T07:03:07Z",
+        "league_id": 4996,
+        "season": "Spring",
+        "full_name": "Spring 2024"
+      },
+      {
+        "id": 7806,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-07-31T15:00:00Z",
+        "end_at": "2024-08-30T21:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-emea-masters-summer-2024",
+        "modified_at": "2024-08-05T09:53:38Z",
+        "league_id": 4996,
+        "season": "Summer",
+        "full_name": "Summer 2024"
+      },
+      {
+        "id": 9133,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-03-17T16:00:00Z",
+        "end_at": "2025-03-23T22:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-emea-masters-winter-2025",
+        "modified_at": "2025-03-11T12:01:01Z",
+        "league_id": 4996,
+        "season": "Winter",
+        "full_name": "Winter 2025"
+      },
+      {
+        "id": 9369,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-06-03T15:00:00Z",
+        "end_at": "2025-06-21T17:24:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-emea-masters-spring-2025",
+        "modified_at": "2025-06-22T11:31:53Z",
+        "league_id": 4996,
+        "season": "Spring",
+        "full_name": "Spring 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4996/emea_masters_2023-png"
+  },
+  {
+    "id": 4969,
+    "name": "LVP SL 2nd Division",
+    "url": null,
+    "slug": "league-of-legends-lvp-sl-2nd-division",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-04-18T08:20:55Z",
+    "series": [
+      {
+        "id": 5593,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-01-18T17:00:00Z",
+        "end_at": "2023-04-03T18:29:00Z",
+        "winner_id": 131751,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lvp-sl-2nd-division-spring-2023",
+        "modified_at": "2023-07-23T14:56:46Z",
+        "league_id": 4969,
+        "season": "Spring",
+        "full_name": "Spring 2023"
+      },
+      {
+        "id": 6059,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-05-31T16:00:00Z",
+        "end_at": "2023-08-11T19:12:00Z",
+        "winner_id": 131751,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lvp-sl-2nd-division-summer-2023",
+        "modified_at": "2023-08-12T20:04:52Z",
+        "league_id": 4969,
+        "season": "Summer",
+        "full_name": "Summer 2023"
+      },
+      {
+        "id": 7115,
+        "name": null,
+        "year": 2024,
+        "begin_at": "2024-01-19T17:00:00Z",
+        "end_at": "2024-03-24T22:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lvp-sl-2nd-division-spring-2024",
+        "modified_at": "2024-04-12T09:46:24Z",
+        "league_id": 4969,
+        "season": "Spring",
+        "full_name": "Spring 2024"
+      },
+      {
+        "id": 7586,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-05-24T16:00:00Z",
+        "end_at": "2024-08-04T19:42:00Z",
+        "winner_id": 135013,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lvp-sl-2nd-division-summer-2024",
+        "modified_at": "2024-08-04T20:12:14Z",
+        "league_id": 4969,
+        "season": "Summer",
+        "full_name": "Summer 2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4969/ezgif-5-9177431f45-png"
+  },
+  {
+    "id": 4962,
+    "name": "Arabian League",
+    "url": "https://iac.leagueoflegends.com/en",
+    "slug": "league-of-legends-arabian-league",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-01-18T11:49:31Z",
+    "series": [
+      {
+        "id": 5543,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-01-25T17:00:00Z",
+        "end_at": "2023-03-30T21:06:00Z",
+        "winner_id": 131055,
+        "winner_type": "Team",
+        "slug": "league-of-legends-arabian-league-spring-2023",
+        "modified_at": "2023-03-30T21:07:06Z",
+        "league_id": 4962,
+        "season": "Spring",
+        "full_name": "Spring 2023"
+      },
+      {
+        "id": 6018,
+        "name": "",
+        "year": 2023,
+        "begin_at": "2023-06-13T17:00:00Z",
+        "end_at": "2023-08-11T20:11:00Z",
+        "winner_id": 131053,
+        "winner_type": "Team",
+        "slug": "league-of-legends-arabian-league-summer-2023",
+        "modified_at": "2023-10-09T08:40:34Z",
+        "league_id": 4962,
+        "season": "Summer",
+        "full_name": "Summer 2023"
+      },
+      {
+        "id": 7169,
+        "name": null,
+        "year": 2024,
+        "begin_at": "2024-02-01T17:00:00Z",
+        "end_at": "2024-04-05T20:57:00Z",
+        "winner_id": 131057,
+        "winner_type": "Team",
+        "slug": "league-of-legends-arabian-league-spring-2024",
+        "modified_at": "2024-05-17T10:21:14Z",
+        "league_id": 4962,
+        "season": "Spring",
+        "full_name": "Spring 2024"
+      },
+      {
+        "id": 7543,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-05-23T17:00:00Z",
+        "end_at": "2024-06-28T21:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-arabian-league-summer-2024",
+        "modified_at": "2024-05-17T10:49:12Z",
+        "league_id": 4962,
+        "season": "Summer",
+        "full_name": "Summer 2024"
+      },
+      {
+        "id": 9004,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-02-14T16:00:00Z",
+        "end_at": "2025-03-07T22:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-arabian-league-winter-2025",
+        "modified_at": "2025-02-16T08:15:42Z",
+        "league_id": 4962,
+        "season": "Winter",
+        "full_name": "Winter 2025"
+      },
+      {
+        "id": 9236,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-04-09T16:00:00Z",
+        "end_at": "2025-05-23T19:00:00Z",
+        "winner_id": 131055,
+        "winner_type": "Team",
+        "slug": "league-of-legends-arabian-league-spring-2025",
+        "modified_at": "2025-05-23T19:58:46Z",
+        "league_id": 4962,
+        "season": "Spring",
+        "full_name": "Spring 2025"
+      },
+      {
+        "id": 9512,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-14T16:00:00Z",
+        "end_at": "2025-08-19T18:56:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-arabian-league-summer-2025",
+        "modified_at": "2025-08-19T21:46:49Z",
+        "league_id": 4962,
+        "season": "Summer",
+        "full_name": "Summer 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4962/arabian_league-png"
+  },
+  {
+    "id": 4961,
+    "name": "North American Challengers League",
+    "url": null,
+    "slug": "league-of-legends-north-american-challengers-league",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2023-01-16T21:45:20Z",
+    "series": [
+      {
+        "id": 5532,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-01-21T21:00:00Z",
+        "end_at": "2023-04-03T00:03:00Z",
+        "winner_id": 132604,
+        "winner_type": "Team",
+        "slug": "league-of-legends-north-american-challengers-league-spring-2023",
+        "modified_at": "2023-05-29T15:44:06Z",
+        "league_id": 4961,
+        "season": "Spring",
+        "full_name": "Spring 2023"
+      },
+      {
+        "id": 5989,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-06-10T20:00:00Z",
+        "end_at": "2023-08-09T23:44:00Z",
+        "winner_id": 133267,
+        "winner_type": "Team",
+        "slug": "league-of-legends-north-american-challengers-league-summer-2023",
+        "modified_at": "2023-08-10T14:05:31Z",
+        "league_id": 4961,
+        "season": "Summer",
+        "full_name": "Summer 2023"
+      },
+      {
+        "id": 7097,
+        "name": null,
+        "year": 2024,
+        "begin_at": "2024-01-21T01:00:00Z",
+        "end_at": "2024-04-02T01:15:00Z",
+        "winner_id": 132607,
+        "winner_type": "Team",
+        "slug": "league-of-legends-north-american-challengers-league-spring-2024",
+        "modified_at": "2024-07-23T08:54:08Z",
+        "league_id": 4961,
+        "season": "Spring",
+        "full_name": "Spring 2024"
+      },
+      {
+        "id": 7680,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-06-16T00:00:00Z",
+        "end_at": "2024-09-09T03:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-north-american-challengers-league-summer-2024",
+        "modified_at": "2024-09-07T11:04:06Z",
+        "league_id": 4961,
+        "season": "Summer",
+        "full_name": "Summer 2024"
+      },
+      {
+        "id": 8927,
+        "name": "Split 1",
+        "year": 2025,
+        "begin_at": "2025-03-25T23:00:00Z",
+        "end_at": "2025-06-07T02:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-north-american-challengers-league-split-1-2025",
+        "modified_at": "2025-05-10T14:10:26Z",
+        "league_id": 4961,
+        "season": null,
+        "full_name": "Split 1 2025"
+      },
+      {
+        "id": 9493,
+        "name": "Split 2",
+        "year": 2025,
+        "begin_at": "2025-07-17T21:00:00Z",
+        "end_at": "2025-09-13T02:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-north-american-challengers-league-split-2-2025",
+        "modified_at": "2025-08-09T10:08:15Z",
+        "league_id": 4961,
+        "season": null,
+        "full_name": "Split 2 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4961/nacl_full_logo-png"
+  },
+  {
+    "id": 4953,
+    "name": "Season Kickoff",
+    "url": null,
+    "slug": "league-of-legends-season-kickoff",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2024-04-17T20:20:07Z",
+    "series": [
+      {
+        "id": 5485,
+        "name": "Korea",
+        "year": 2023,
+        "begin_at": "2023-01-10T09:30:00Z",
+        "end_at": "2023-01-10T12:30:00Z",
+        "winner_id": 132501,
+        "winner_type": "Team",
+        "slug": "league-of-legends-season-kickoff-korea-2023",
+        "modified_at": "2023-01-12T07:13:14Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "Korea 2023"
+      },
+      {
+        "id": 5487,
+        "name": "Vietnam",
+        "year": 2023,
+        "begin_at": "2023-01-10T13:00:00Z",
+        "end_at": "2023-01-10T14:56:00Z",
+        "winner_id": 132505,
+        "winner_type": "Team",
+        "slug": "league-of-legends-season-kickoff-vietnam-2023",
+        "modified_at": "2023-01-12T07:32:48Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "Vietnam 2023"
+      },
+      {
+        "id": 5489,
+        "name": "Brazil",
+        "year": 2023,
+        "begin_at": "2023-01-10T16:00:00Z",
+        "end_at": "2023-01-10T19:00:00Z",
+        "winner_id": 132509,
+        "winner_type": "Team",
+        "slug": "league-of-legends-season-kickoff-brazil-2023",
+        "modified_at": "2023-01-12T07:16:12Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "Brazil 2023"
+      },
+      {
+        "id": 5494,
+        "name": "North America",
+        "year": 2023,
+        "begin_at": "2023-01-10T19:00:00Z",
+        "end_at": "2023-01-10T22:00:00Z",
+        "winner_id": 132554,
+        "winner_type": "Team",
+        "slug": "league-of-legends-season-kickoff-north-america-2023",
+        "modified_at": "2023-01-12T07:13:56Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "North America 2023"
+      },
+      {
+        "id": 5493,
+        "name": "Japan",
+        "year": 2023,
+        "begin_at": "2023-01-11T07:00:00Z",
+        "end_at": "2023-01-11T10:12:00Z",
+        "winner_id": 132546,
+        "winner_type": "Team",
+        "slug": "league-of-legends-season-kickoff-japan-2023",
+        "modified_at": "2023-01-12T07:18:48Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "Japan 2023"
+      },
+      {
+        "id": 5483,
+        "name": "China",
+        "year": 2023,
+        "begin_at": "2023-01-11T10:00:00Z",
+        "end_at": "2023-01-11T13:00:00Z",
+        "winner_id": 132518,
+        "winner_type": "Team",
+        "slug": "league-of-legends-season-kickoff-china-2023",
+        "modified_at": "2023-01-12T07:34:26Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "China 2023"
+      },
+      {
+        "id": 5486,
+        "name": "Pacific",
+        "year": 2023,
+        "begin_at": "2023-01-11T13:00:00Z",
+        "end_at": "2023-01-11T14:54:00Z",
+        "winner_id": 132503,
+        "winner_type": "Team",
+        "slug": "league-of-legends-season-kickoff-pacific-2023",
+        "modified_at": "2023-01-12T07:13:33Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "Pacific 2023"
+      },
+      {
+        "id": 5484,
+        "name": "EMEA",
+        "year": 2023,
+        "begin_at": "2023-01-11T16:00:00Z",
+        "end_at": "2023-01-11T19:00:00Z",
+        "winner_id": 132499,
+        "winner_type": "Team",
+        "slug": "league-of-legends-season-kickoff-emea-2023",
+        "modified_at": "2023-01-12T07:12:52Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "EMEA 2023"
+      },
+      {
+        "id": 5488,
+        "name": "Latin America",
+        "year": 2023,
+        "begin_at": "2023-01-11T19:00:00Z",
+        "end_at": "2023-01-11T22:00:00Z",
+        "winner_id": 132507,
+        "winner_type": "Team",
+        "slug": "league-of-legends-season-kickoff-latin-america-2023",
+        "modified_at": "2023-01-12T07:21:02Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "Latin America 2023"
+      },
+      {
+        "id": 7048,
+        "name": "Korea",
+        "year": 2024,
+        "begin_at": "2024-01-09T09:00:00Z",
+        "end_at": "2024-01-09T13:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-season-kickoff-korea-2024",
+        "modified_at": "2024-01-05T10:10:36Z",
+        "league_id": 4953,
+        "season": null,
+        "full_name": "Korea 2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4953/ezgif-3-0d13af5176-png"
+  },
+  {
+    "id": 4943,
+    "name": "Weibo Cup",
+    "url": "https://weibo.com/u/7463091283",
+    "slug": "league-of-legends-weibo-cup",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-12-29T21:41:25Z",
+    "series": [
+      {
+        "id": 5443,
+        "name": null,
+        "year": 2022,
+        "begin_at": "2022-12-30T06:00:00Z",
+        "end_at": "2023-01-06T13:24:00Z",
+        "winner_id": 129972,
+        "winner_type": "Team",
+        "slug": "league-of-legends-weibo-cup-2022",
+        "modified_at": "2023-01-08T16:34:05Z",
+        "league_id": 4943,
+        "season": null,
+        "full_name": "2022"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4943/weibo_cup_2022-png"
+  },
+  {
+    "id": 4928,
+    "name": "Choque de Reinos",
+    "url": null,
+    "slug": "league-of-legends-choque-de-reinos",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-12-15T12:46:15Z",
+    "series": [
+      {
+        "id": 5384,
+        "name": null,
+        "year": 2022,
+        "begin_at": "2022-12-14T22:00:00Z",
+        "end_at": "2022-12-19T01:00:00Z",
+        "winner_id": 132320,
+        "winner_type": "Team",
+        "slug": "league-of-legends-choque-de-reinos-2022",
+        "modified_at": "2022-12-19T00:55:40Z",
+        "league_id": 4928,
+        "season": null,
+        "full_name": "2022"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4928/choque_de_reinos-png"
+  },
+  {
+    "id": 4916,
+    "name": "LA Comic Con Invitational",
+    "url": null,
+    "slug": "league-of-legends-la-comic-con-invitational",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-11-27T13:28:30Z",
+    "series": [
+      {
+        "id": 5317,
+        "name": null,
+        "year": 2022,
+        "begin_at": "2022-11-08T23:00:00Z",
+        "end_at": "2022-12-05T00:29:00Z",
+        "winner_id": 130635,
+        "winner_type": "Team",
+        "slug": "league-of-legends-la-comic-con-invitational-2022",
+        "modified_at": "2022-12-05T20:24:20Z",
+        "league_id": 4916,
+        "season": null,
+        "full_name": "2022"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4916/la_comic_con_allmode-png"
+  },
+  {
+    "id": 4899,
+    "name": "Prime League Super Cup",
+    "url": null,
+    "slug": "league-of-legends-prime-league-super-cup",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-10-30T18:14:30Z",
+    "series": [
+      {
+        "id": 5229,
+        "name": null,
+        "year": 2022,
+        "begin_at": "2022-11-01T16:00:00Z",
+        "end_at": "2022-11-12T20:10:00Z",
+        "winner_id": 130247,
+        "winner_type": "Team",
+        "slug": "league-of-legends-prime-league-super-cup-2022",
+        "modified_at": "2022-11-12T21:08:57Z",
+        "league_id": 4899,
+        "season": null,
+        "full_name": "2022"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4899/strauss_prime_leaguelogo_square-png"
+  },
+  {
+    "id": 4888,
+    "name": "Coupe de France",
+    "url": null,
+    "slug": "league-of-legends-coupe-de-france",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-10-18T09:49:40Z",
+    "series": [
+      {
+        "id": 5193,
+        "name": null,
+        "year": 2022,
+        "begin_at": "2022-10-17T11:00:00Z",
+        "end_at": "2022-11-11T21:06:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-coupe-de-france-2022",
+        "modified_at": "2022-11-15T22:16:50Z",
+        "league_id": 4888,
+        "season": null,
+        "full_name": "2022"
+      },
+      {
+        "id": 6706,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-09-26T16:00:00Z",
+        "end_at": "2023-11-01T22:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-coupe-de-france-2023",
+        "modified_at": "2023-09-22T13:49:37Z",
+        "league_id": 4888,
+        "season": null,
+        "full_name": "2023"
+      },
+      {
+        "id": 7952,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-09-16T16:00:00Z",
+        "end_at": "2024-10-23T17:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-coupe-de-france-2024",
+        "modified_at": "2024-09-17T07:06:06Z",
+        "league_id": 4888,
+        "season": null,
+        "full_name": "2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4888/coupe_de_france_2022-png"
+  },
+  {
+    "id": 4864,
+    "name": "Asia Star Challengers Invitational",
+    "url": null,
+    "slug": "league-of-legends-asia-star-challengers-invitational",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-09-07T13:38:42Z",
+    "series": [
+      {
+        "id": 5047,
+        "name": "",
+        "year": 2022,
+        "begin_at": "2022-09-11T22:00:00Z",
+        "end_at": "2022-09-25T12:33:00Z",
+        "winner_id": 3457,
+        "winner_type": "Team",
+        "slug": "league-of-legends-asia-star-challengers-invitational-2022",
+        "modified_at": "2022-09-25T14:51:12Z",
+        "league_id": 4864,
+        "season": null,
+        "full_name": "2022"
+      },
+      {
+        "id": 6559,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-09-03T06:00:00Z",
+        "end_at": "2023-09-15T14:40:00Z",
+        "winner_id": 128344,
+        "winner_type": "Team",
+        "slug": "league-of-legends-asia-star-challengers-invitational-2023",
+        "modified_at": "2023-09-15T14:48:52Z",
+        "league_id": 4864,
+        "season": null,
+        "full_name": "2023"
+      },
+      {
+        "id": 7939,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-09-08T07:00:00Z",
+        "end_at": "2024-09-22T11:00:00Z",
+        "winner_id": 128348,
+        "winner_type": "Team",
+        "slug": "league-of-legends-asia-star-challengers-invitational-2024",
+        "modified_at": "2024-09-22T11:29:24Z",
+        "league_id": 4864,
+        "season": null,
+        "full_name": "2024"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4864/asci_2022_logo-png"
+  },
+  {
+    "id": 4795,
+    "name": "Elements League",
+    "url": null,
+    "slug": "league-of-legends-elements-league",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-05-31T11:48:41Z",
+    "series": [
+      {
+        "id": 4735,
+        "name": "Closing",
+        "year": 2022,
+        "begin_at": "2022-05-23T23:00:00Z",
+        "end_at": "2022-05-28T05:50:00Z",
+        "winner_id": 131141,
+        "winner_type": "Team",
+        "slug": "league-of-legends-elements-league-closing-2022",
+        "modified_at": "2022-08-14T11:23:50Z",
+        "league_id": 4795,
+        "season": null,
+        "full_name": "Closing 2022"
+      },
+      {
+        "id": 5518,
+        "name": "Opening",
+        "year": 2023,
+        "begin_at": "2023-01-14T00:00:00Z",
+        "end_at": "2023-03-25T03:00:00Z",
+        "winner_id": 131141,
+        "winner_type": "Team",
+        "slug": "league-of-legends-elements-league-opening-2023",
+        "modified_at": "2023-07-23T13:39:41Z",
+        "league_id": 4795,
+        "season": null,
+        "full_name": "Opening 2023"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4795/elements_league-png"
+  },
+  {
+    "id": 4789,
+    "name": "LHE",
+    "url": null,
+    "slug": "league-of-legends-entel-honor-league",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-05-23T18:12:46Z",
+    "series": [
+      {
+        "id": 4701,
+        "name": "Closing",
+        "year": 2022,
+        "begin_at": "2022-05-16T22:00:00Z",
+        "end_at": "2022-07-19T02:10:00Z",
+        "winner_id": 144,
+        "winner_type": "Team",
+        "slug": "league-of-legends-entel-honor-league-closing-2022",
+        "modified_at": "2022-07-19T20:27:44Z",
+        "league_id": 4789,
+        "season": null,
+        "full_name": "Closing 2022"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4789/liga_honor_entel-png"
+  },
+  {
+    "id": 4788,
+    "name": "Intel Arabian Cup",
+    "url": null,
+    "slug": "league-of-legends-intel-arabian-cup",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-05-23T12:42:10Z",
+    "series": [
+      {
+        "id": 4700,
+        "name": "Prestige Division",
+        "year": 2022,
+        "begin_at": "2022-05-20T16:00:00Z",
+        "end_at": "2022-07-24T19:04:00Z",
+        "winner_id": 131058,
+        "winner_type": "Team",
+        "slug": "league-of-legends-intel-arabian-cup-prestige-division-1-2022",
+        "modified_at": "2022-12-16T10:11:40Z",
+        "league_id": 4788,
+        "season": "1",
+        "full_name": "Prestige Division season 1 2022"
+      },
+      {
+        "id": 4934,
+        "name": "Prestige Division",
+        "year": 2022,
+        "begin_at": "2022-08-05T16:00:00Z",
+        "end_at": "2022-09-25T21:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-intel-arabian-cup-prestige-division-2-2022",
+        "modified_at": "2022-09-16T09:23:40Z",
+        "league_id": 4788,
+        "season": "2",
+        "full_name": "Prestige Division season 2 2022"
+      },
+      {
+        "id": 5125,
+        "name": "Last Chance Qualifier",
+        "year": 2022,
+        "begin_at": "2022-09-30T16:00:00Z",
+        "end_at": "2022-10-08T21:00:00Z",
+        "winner_id": null,
+        "winner_type": null,
+        "slug": "league-of-legends-intel-arabian-cup-last-chance-qualifier-2022",
+        "modified_at": "2022-10-01T08:56:04Z",
+        "league_id": 4788,
+        "season": null,
+        "full_name": "Last Chance Qualifier 2022"
+      },
+      {
+        "id": 5165,
+        "name": "Grand Finals",
+        "year": 2022,
+        "begin_at": "2022-10-14T16:00:00Z",
+        "end_at": "2022-12-03T20:29:00Z",
+        "winner_id": 131055,
+        "winner_type": "Team",
+        "slug": "league-of-legends-intel-arabian-cup-grand-finals-2022",
+        "modified_at": "2022-12-03T21:08:22Z",
+        "league_id": 4788,
+        "season": null,
+        "full_name": "Grand Finals 2022"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4788/intel_arabian_cup-png"
+  },
+  {
+    "id": 4787,
+    "name": "LMF",
+    "url": null,
+    "slug": "league-of-legends-lmf",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-05-23T09:46:57Z",
+    "series": [
+      {
+        "id": 4698,
+        "name": "Closing",
+        "year": 2022,
+        "begin_at": "2022-05-18T21:00:00Z",
+        "end_at": "2022-07-30T01:43:00Z",
+        "winner_id": 131047,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lmf-closing-2022",
+        "modified_at": "2022-07-30T01:47:01Z",
+        "league_id": 4787,
+        "season": null,
+        "full_name": "Closing 2022"
+      },
+      {
+        "id": 5274,
+        "name": "Super Copa Flow",
+        "year": 2022,
+        "begin_at": "2022-11-17T22:00:00Z",
+        "end_at": "2022-12-02T01:21:00Z",
+        "winner_id": 131047,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lmf-super-copa-flow-2022",
+        "modified_at": "2022-12-04T15:09:34Z",
+        "league_id": 4787,
+        "season": null,
+        "full_name": "Super Copa Flow 2022"
+      },
+      {
+        "id": 5536,
+        "name": "Opening",
+        "year": 2023,
+        "begin_at": "2023-01-19T21:00:00Z",
+        "end_at": "2023-03-31T23:55:00Z",
+        "winner_id": 131049,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lmf-opening-2023",
+        "modified_at": "2023-04-02T09:12:38Z",
+        "league_id": 4787,
+        "season": null,
+        "full_name": "Opening 2023"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4787/Liga_Master_Flow_2020.png"
+  },
+  {
+    "id": 4786,
+    "name": "LCK Academy",
+    "url": null,
+    "slug": "league-of-legends-lck-academy-series",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-08-12T14:24:00Z",
+    "series": [
+      {
+        "id": 4696,
+        "name": "1st Championship",
+        "year": 2022,
+        "begin_at": "2022-05-28T02:00:00Z",
+        "end_at": "2022-05-29T10:48:00Z",
+        "winner_id": 131039,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lck-academy-series-1st-championship-2022",
+        "modified_at": "2023-08-09T09:09:39Z",
+        "league_id": 4786,
+        "season": null,
+        "full_name": "1st Championship 2022"
+      },
+      {
+        "id": 5287,
+        "name": "2nd Championship",
+        "year": 2022,
+        "begin_at": "2022-11-19T02:00:00Z",
+        "end_at": "2022-11-20T09:37:00Z",
+        "winner_id": 132099,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lck-academy-series-2nd-championship-2022",
+        "modified_at": "2022-11-20T19:41:57Z",
+        "league_id": 4786,
+        "season": null,
+        "full_name": "2nd Championship 2022"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4786/lck_academy_series_2021_lightmode-png"
+  },
+  {
+    "id": 4785,
+    "name": "DDH",
+    "url": "https://ddh.lvp.global/mx/",
+    "slug": "league-of-legends-division-of-honor",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-05-23T18:11:59Z",
+    "series": [
+      {
+        "id": 4690,
+        "name": "Closing",
+        "year": 2022,
+        "begin_at": "2022-05-19T00:00:00Z",
+        "end_at": "2022-08-07T03:54:00Z",
+        "winner_id": 131026,
+        "winner_type": "Team",
+        "slug": "league-of-legends-division-of-honor-closing-2022",
+        "modified_at": "2022-08-07T14:59:23Z",
+        "league_id": 4785,
+        "season": "",
+        "full_name": "Closing 2022"
+      },
+      {
+        "id": 5511,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-01-13T01:00:00Z",
+        "end_at": "2023-03-31T05:55:00Z",
+        "winner_id": 131033,
+        "winner_type": "Team",
+        "slug": "league-of-legends-division-of-honor-opening-2023",
+        "modified_at": "2023-03-31T21:44:14Z",
+        "league_id": 4785,
+        "season": "Opening",
+        "full_name": "Opening 2023"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4785/ddh_2020_mexico-png"
+  },
+  {
+    "id": 4783,
+    "name": "SEA Games",
+    "url": null,
+    "slug": "league-of-legends-sea-games",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-08-12T14:23:59Z",
+    "series": [
+      {
+        "id": 4676,
+        "name": "31",
+        "year": 2021,
+        "begin_at": "2022-05-20T03:00:00Z",
+        "end_at": "2022-05-22T09:12:00Z",
+        "winner_id": 131007,
+        "winner_type": "Team",
+        "slug": "league-of-legends-sea-games-31-2021",
+        "modified_at": "2022-05-22T09:13:44Z",
+        "league_id": 4783,
+        "season": null,
+        "full_name": "31 2021"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4783/Sea_Games_31.png"
+  },
+  {
+    "id": 4743,
+    "name": "LFL Division 2",
+    "url": "https://division2lol.fr",
+    "slug": "league-of-legends-lfl-division-2",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "current_version": "15.17.1",
+      "slug": "league-of-legends"
+    },
+    "modified_at": "2022-02-10T18:55:30Z",
+    "series": [
+      {
+        "id": 4385,
+        "name": null,
+        "year": 2022,
+        "begin_at": "2022-01-17T17:00:00Z",
+        "end_at": "2022-04-05T20:13:00Z",
+        "winner_id": 126752,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lfl-division-2-spring-2022",
+        "modified_at": "2022-04-05T20:14:52Z",
+        "league_id": 4743,
+        "season": "Spring",
+        "full_name": "Spring 2022"
+      },
+      {
+        "id": 4704,
+        "name": null,
+        "year": 2022,
+        "begin_at": "2022-05-30T16:00:00Z",
+        "end_at": "2022-08-16T18:34:00Z",
+        "winner_id": 126751,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lfl-division-2-summer-2022",
+        "modified_at": "2022-08-16T18:35:37Z",
+        "league_id": 4743,
+        "season": "Summer",
+        "full_name": "Summer 2022"
+      },
+      {
+        "id": 5465,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-01-10T18:00:00Z",
+        "end_at": "2023-04-02T21:00:00Z",
+        "winner_id": 132417,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lfl-division-2-spring-2023",
+        "modified_at": "2024-01-17T12:54:58Z",
+        "league_id": 4743,
+        "season": "Spring",
+        "full_name": "Spring 2023"
+      },
+      {
+        "id": 5956,
+        "name": null,
+        "year": 2023,
+        "begin_at": "2023-05-23T16:00:00Z",
+        "end_at": "2023-08-13T21:00:00Z",
+        "winner_id": 132417,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lfl-division-2-summer-2023",
+        "modified_at": "2024-01-17T12:54:11Z",
+        "league_id": 4743,
+        "season": "Summer",
+        "full_name": "Summer 2023"
+      },
+      {
+        "id": 7118,
+        "name": null,
+        "year": 2024,
+        "begin_at": "2024-01-19T17:00:00Z",
+        "end_at": "2024-04-09T20:06:00Z",
+        "winner_id": 134337,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lfl-division-2-spring-2024",
+        "modified_at": "2024-04-12T09:47:07Z",
+        "league_id": 4743,
+        "season": "Spring",
+        "full_name": "Spring 2024"
+      },
+      {
+        "id": 7541,
+        "name": "",
+        "year": 2024,
+        "begin_at": "2024-05-21T16:00:00Z",
+        "end_at": "2024-08-04T18:10:00Z",
+        "winner_id": 134337,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lfl-division-2-summer-2024",
+        "modified_at": "2024-08-04T20:11:38Z",
+        "league_id": 4743,
+        "season": "Summer",
+        "full_name": "Summer 2024"
+      },
+      {
+        "id": 8837,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-01-10T23:00:00Z",
+        "end_at": "2025-03-09T15:30:00Z",
+        "winner_id": 134336,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lfl-division-2-winter-2025",
+        "modified_at": "2025-03-09T21:21:55Z",
+        "league_id": 4743,
+        "season": "Winter",
+        "full_name": "Winter 2025"
+      },
+      {
+        "id": 9262,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-04-12T10:00:00Z",
+        "end_at": "2025-06-08T15:00:00Z",
+        "winner_id": 136079,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lfl-division-2-spring-2025",
+        "modified_at": "2025-06-08T13:37:23Z",
+        "league_id": 4743,
+        "season": "Spring",
+        "full_name": "Spring 2025"
+      },
+      {
+        "id": 9535,
+        "name": "",
+        "year": 2025,
+        "begin_at": "2025-07-19T10:00:00Z",
+        "end_at": "2025-09-14T15:00:00Z",
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "league-of-legends-lfl-division-2-summers-2025",
+        "modified_at": "2025-08-15T17:32:23Z",
+        "league_id": 4743,
+        "season": "Summers",
+        "full_name": "Summers 2025"
+      }
+    ],
+    "image_url": "https://cdn.pandascore.co/images/league/image/4743/LFL_Division_2.png"
+  }
+]
