@@ -36,6 +36,208 @@ class PandaScore_Tracker_Plugin {
         wp_register_script( 'pandascore-live-tracker-js', plugins_url( 'js/live-tracker.js', __FILE__ ), array(), '1.1', true );
     }
 
+    /**
+     * Output internal CSS styles for the plugin
+     */
+    private function get_internal_styles() {
+        return '
+        <style>
+        .pandascore-tracker {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .pandascore-tracker.align-left { text-align: left; }
+        .pandascore-tracker.align-center { text-align: center; }
+        .pandascore-tracker.align-right { text-align: right; }
+
+        .pandascore-api-key-input {
+            width: 100%;
+        }
+
+        .pandascore-section-header {
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: left;
+            font-family: Inter, sans-serif;
+            color: #FFC700;
+            display: flex;
+            align-items: center;
+        }
+
+        .pandascore-live-indicator {
+            background: #FFC700;
+            border-radius: 100%;
+            width: 8px;
+            height: 8px;
+            display: inline-block;
+            margin: 0 7px;
+        }
+
+        .pandascore-matches-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 250px;
+        }
+
+        .pandascore-match {
+            background: #1D1C26;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            min-width: 250px;
+        }
+
+        .pandascore-league-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .pandascore-league-logo {
+            background: #FFC700;
+            padding: 8px 5px 0px 5px;
+            border-radius: 6px;
+        }
+
+        .pandascore-league-logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .pandascore-league-placeholder {
+            background: #FFC700;
+            padding: 5px;
+            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1D1C26;
+            font-weight: bold;
+        }
+
+        .pandascore-match-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pandascore-match-content.live-layout {
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .pandascore-teams-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .pandascore-team {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .pandascore-team.with-score {
+            justify-content: space-between;
+        }
+
+        .pandascore-team-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .pandascore-team-logo {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            margin-right: 5px;
+        }
+
+        .pandascore-team-logo-placeholder {
+            width: 24px;
+            height: 24px;
+            background: #FFC700;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+            font-size: 10px;
+            font-weight: bold;
+            color: #1D1C26;
+            flex-shrink: 0;
+        }
+
+        .pandascore-team-name {
+            font-size: 14px;
+        }
+
+        .pandascore-score {
+            background: #FFC700;
+            color: #1D1C26;
+            padding: 3px 14px;
+            border-radius: 4px;
+            width: 20px;
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .pandascore-time-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 60px;
+        }
+
+        .pandascore-time-badge {
+            background: #FFC700;
+            color: #1D1C26;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pandascore-time-day {
+            font-size: 10px;
+            font-weight: normal;
+            opacity: 0.8;
+        }
+
+        .pandascore-error {
+            background: #f8d7da;
+            border: 1px solid #f5c2c7;
+            color: #842029;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .pandascore-no-matches {
+            background: #eee;
+            border: 1px solid #ccc;
+            color: #333;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        </style>';
+    }
+
     public function admin_menu() {
         add_options_page( 'PandaScore Tracker', 'PandaScore Tracker', 'manage_options', 'pandascore-tracker', array( $this, 'settings_page' ) );
     }
@@ -49,10 +251,11 @@ class PandaScore_Tracker_Plugin {
     public function field_api_key() {
         $opts = get_option( $this->option_key );
         $val = isset( $opts['api_key'] ) ? esc_attr( $opts['api_key'] ) : '';
-        echo '<input type="text" name="'.$this->option_key.'[api_key]" value="'.$val.'" style="width:100%;">';
+        echo '<input type="text" name="'.$this->option_key.'[api_key]" value="'.$val.'" class="pandascore-api-key-input">';
     }
 
     public function settings_page() {
+        echo $this->get_internal_styles();
         ?>
         <div class="wrap">
             <h1>PandaScore Tracker</h1>
@@ -167,6 +370,32 @@ class PandaScore_Tracker_Plugin {
         return $this->make_api_call( $game, $limit, 'running' );
     }
 
+    /**
+     * Generate team logo HTML with fallback placeholder
+     *
+     * @param string $logo_url The team logo URL
+     * @param string $team_name The team name for alt text and fallback
+     * @param string $acronym The team acronym for fallback display
+     * @return string HTML for team logo or placeholder
+     */
+    private function get_team_logo_html( $logo_url, $team_name, $acronym ) {
+        if ( !empty( $logo_url ) ) {
+            return '<img src="' . esc_url( $logo_url ) . '" alt="' . esc_attr( $team_name ) . '" class="pandascore-team-logo">';
+        } else {
+            // Create fallback using first letter of acronym or team name
+            $fallback_letter = '';
+            if ( !empty( $acronym ) && $acronym !== 'N/A' ) {
+                $fallback_letter = strtoupper( substr( $acronym, 0, 1 ) );
+            } elseif ( !empty( $team_name ) && $team_name !== 'N/A' ) {
+                $fallback_letter = strtoupper( substr( $team_name, 0, 1 ) );
+            } else {
+                $fallback_letter = '?';
+            }
+
+            return '<div class="pandascore-team-logo-placeholder" title="' . esc_attr( $team_name ) . '">' . esc_html( $fallback_letter ) . '</div>';
+        }
+    }
+
     public function shortcode_handler( $atts ) {
         $atts = shortcode_atts( array(
             'game' => 'lol',
@@ -180,8 +409,10 @@ class PandaScore_Tracker_Plugin {
 
         $this->live_match_ids = array();
 
-        $align_style = "text-align:{$atts['align']};";
-        $html = '<div class="pandascore-tracker" style="'.$align_style.'">';
+        // Add internal styles and main container with alignment class
+        $align_class = 'align-' . esc_attr( $atts['align'] );
+        $html = $this->get_internal_styles();
+        $html .= '<div class="pandascore-tracker ' . $align_class . '">';
 
         if ( $atts['type'] === 'live' || $atts['type'] === 'mixed' ) {
             $html .= $this->render_live_matches( $atts['game'], $atts['limit'] );
@@ -213,9 +444,9 @@ class PandaScore_Tracker_Plugin {
             return '';
         }
 
-        $html = '<div style="font-weight:600;display:flex;align-items:center;margin-bottom:10px;text-align:left;font-family:inter;color:#FFC700">
-        <span style="background:#FFC700;border-radius:100%;width:8px;height:8px;display:inline-block;margin:0 7px;"> </span>LIVE</div>';
-        $html .= '<div style="display:flex;flex-direction:column;gap:10px;">';
+        $html = '<div class="pandascore-section-header">';
+        $html .= '<span class="pandascore-live-indicator"></span>LIVE</div>';
+        $html .= '<div class="pandascore-matches-container">';
 
         foreach ( $live_matches as $match ) {
             // Store live match ID for tracking
@@ -239,7 +470,7 @@ class PandaScore_Tracker_Plugin {
 
         if (isset($match['opponents']) && is_array($match['opponents'])) {
             foreach ($match['opponents'] as $o) {
-                $name = isset($o['opponent']['name']) ? $o['opponent']['name'] : 'Unknown Team';
+                $name = isset($o['opponent']['name']) ? $o['opponent']['name'] : 'N/A';
                 $acronym = !empty($o['opponent']['acronym']) ? $o['opponent']['acronym'] : $name;
                 $logo = isset($o['opponent']['image_url']) ? $o['opponent']['image_url'] : '';
                 $opponent_ids[] = isset($o['opponent']['id']) ? $o['opponent']['id'] : null;
@@ -256,8 +487,8 @@ class PandaScore_Tracker_Plugin {
         }
 
         while (count($opponents) < 2) {
-            $opponents[] = 'Unknown Team';
-            $acronyms[] = 'Unknown Team';
+            $opponents[] = 'N/A';
+            $acronyms[] = 'N/A';
             $opponent_logos[] = '';
             $opponent_ids[] = null;
         }
@@ -283,50 +514,50 @@ class PandaScore_Tracker_Plugin {
 
         $match_id = isset($match['id']) ? esc_attr($match['id']) : '';
 
-        $html = '<div class="pandascore-match" style="background:#1D1C26;color:#fff;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:250px; data-match-id="'.$match_id.'">';
+        $html = '<div class="pandascore-match" data-match-id="'.$match_id.'">';
 
         // League logo container
-        $html .= '<div style="display:flex;flex-direction:column;align-items:center;gap:5px;">';
+        $html .= '<div class="pandascore-league-container">';
 
         if ($league_logo) {
-            $html .= '<div style="background:#FFC700;padding:8px 5px 0px 5px;border-radius:6px;"><img src="' . $league_logo . '" alt="' . $league_name . '" style="width:40px;height:40px;object-fit:contain;"></div>';
+            $html .= '<div class="pandascore-league-logo"><img src="' . $league_logo . '" alt="' . $league_name . '"></div>';
         } else {
-            $html .= '<div style="background:#FFC700;padding:5px;border-radius:6px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;">'. $league_name[0] .'</div>';
+            $html .= '<div class="pandascore-league-placeholder">'. (!empty($league_name) ? $league_name[0] : 'L') .'</div>';
         }
 
         $html .= '</div>';
 
         if ($is_upcoming) {
             // For upcoming matches, show teams on left and match time centered on right
-            $html .= '<div style="flex:1;display:flex;align-items:center;justify-content:space-between;">';
+            $html .= '<div class="pandascore-match-content">';
 
             // Teams container
-            $html .= '<div style="display:flex;flex-direction:column;gap:5px;flex:1;">';
+            $html .= '<div class="pandascore-teams-container">';
 
             // Team 1
-            $html .= '<div style="display:flex;align-items:center;">';
-            if (!empty($opponent_logos[0])) {
-                $html .= '<img src="'.esc_url($opponent_logos[0]).'" alt="'.esc_attr($opponents[0]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-            }
-            $html .= '<span style="font-size:14px;">'.esc_html($acronyms[0]).'</span>';
+            $html .= '<div class="pandascore-team">';
+            $html .= '<div class="pandascore-team-info">';
+            $html .= $this->get_team_logo_html( $opponent_logos[0], $opponents[0], $acronyms[0] );
+            $html .= '<span class="pandascore-team-name">'.esc_html($acronyms[0]).'</span>';
+            $html .= '</div>';
             $html .= '</div>';
 
             // Team 2
-            $html .= '<div style="display:flex;align-items:center;">';
-            if (!empty($opponent_logos[1])) {
-                $html .= '<img src="'.esc_url($opponent_logos[1]).'" alt="'.esc_attr($opponents[1]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-            }
-            $html .= '<span style="font-size:14px;">'.esc_html($acronyms[1]).'</span>';
+            $html .= '<div class="pandascore-team">';
+            $html .= '<div class="pandascore-team-info">';
+            $html .= $this->get_team_logo_html( $opponent_logos[1], $opponents[1], $acronyms[1] );
+            $html .= '<span class="pandascore-team-name">'.esc_html($acronyms[1]).'</span>';
+            $html .= '</div>';
             $html .= '</div>';
 
             $html .= '</div>'; // End teams container
 
             // Match time centered on the right
-            $html .= '<div style="display:flex;align-items:center;justify-content:center;min-width:60px;">';
-            $html .= '<div style="background:#FFC700;color:#1D1C26;padding:2px 8px;border-radius:4px;text-align:center;font-size:14px;font-weight:bold;display:flex;flex-direction:column;">';
+            $html .= '<div class="pandascore-time-container">';
+            $html .= '<div class="pandascore-time-badge">';
             $html .= '<div>'.esc_html($match_time).'</div>';
             if (!empty($match_day)) {
-                $html .= '<div style="font-size:10px;font-weight:normal;opacity:0.8;">'.esc_html($match_day).'</div>';
+                $html .= '<div class="pandascore-time-day">'.esc_html($match_day).'</div>';
             }
             $html .= '</div>';
             $html .= '</div>';
@@ -334,30 +565,26 @@ class PandaScore_Tracker_Plugin {
             $html .= '</div>'; // End main container
         } else {
             // For live/completed matches, show normal layout with scores
-            $html .= '<div style="flex:1;display:flex;flex-direction:column;gap:5px;">';
+            $html .= '<div class="pandascore-match-content live-layout">';
 
             // Team 1
-            $html .= '<div style="display:flex;align-items:center;justify-content:space-between;">';
-            $html .= '<div style="display:flex;align-items:center;">';
-            if (!empty($opponent_logos[0])) {
-                $html .= '<img src="'.esc_url($opponent_logos[0]).'" alt="'.esc_attr($opponents[0]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-            }
-            $html .= '<span style="font-size:14px;">'.esc_html($acronyms[0]).'</span>';
+            $html .= '<div class="pandascore-team with-score">';
+            $html .= '<div class="pandascore-team-info">';
+            $html .= $this->get_team_logo_html( $opponent_logos[0], $opponents[0], $acronyms[0] );
+            $html .= '<span class="pandascore-team-name">'.esc_html($acronyms[0]).'</span>';
             $html .= '</div>';
             // Score container for team 1
-            $html .= '<div style="background:#FFC700;color:#1D1C26;padding:3px 14px;border-radius:4px;width:20px;display:flex;justify-content:center;" data-opponent-id="'.(isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '').'">'.intval($scores[0]).'</div>';
+            $html .= '<div class="pandascore-score" data-opponent-id="'.(isset($opponent_ids[0]) ? esc_attr($opponent_ids[0]) : '').'">'.intval($scores[0]).'</div>';
             $html .= '</div>';
 
             // Team 2
-            $html .= '<div style="display:flex;align-items:center;justify-content:space-between;">';
-            $html .= '<div style="display:flex;align-items:center;">';
-            if (!empty($opponent_logos[1])) {
-                $html .= '<img src="'.esc_url($opponent_logos[1]).'" alt="'.esc_attr($opponents[1]).'" style="width:24px;height:24px;object-fit:contain;margin-right:5px;">';
-            }
-            $html .= '<span style="font-size:14px;">'.esc_html($acronyms[1]).'</span>';
+            $html .= '<div class="pandascore-team with-score">';
+            $html .= '<div class="pandascore-team-info">';
+            $html .= $this->get_team_logo_html( $opponent_logos[1], $opponents[1], $acronyms[1] );
+            $html .= '<span class="pandascore-team-name">'.esc_html($acronyms[1]).'</span>';
             $html .= '</div>';
             // Score container for team 2
-            $html .= '<div style="background:#FFC700;color:#1D1C26;padding:3px 14px;border-radius:4px;width:20px;display:flex;justify-content:center;" data-opponent-id="'.(isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '').'">'.intval($scores[1]).'</div>';
+            $html .= '<div class="pandascore-score" data-opponent-id="'.(isset($opponent_ids[1]) ? esc_attr($opponent_ids[1]) : '').'">'.intval($scores[1]).'</div>';
             $html .= '</div>';
 
             $html .= '</div>';
@@ -385,15 +612,15 @@ class PandaScore_Tracker_Plugin {
         $upcoming_matches = $this->fetch_upcoming_matches($game, $limit);
 
         if (is_wp_error($upcoming_matches)) {
-            return '<div style="background:#f8d7da;border:1px solid #f5c2c7;color:#842029;padding:10px;border-radius:6px;">Error: '.esc_html($upcoming_matches->get_error_message()).'</div>';
+            return '<div class="pandascore-error">Error: '.esc_html($upcoming_matches->get_error_message()).'</div>';
         }
 
         if (empty($upcoming_matches)) {
-            return '<div style="background:#eee;border:1px solid #ccc;color:#333;padding:10px;border-radius:6px;">No upcoming matches found.</div>';
+            return '<div class="pandascore-no-matches">No upcoming matches found.</div>';
         }
 
-        $html = '<div style="font-weight:600;margin-bottom:10px;text-align:left;font-family:inter;color:#FFC700">UPCOMING</div>';
-        $html .= '<div style="display:flex;flex-direction:column;gap:10px;min-width: 250px;">';
+        $html = '<div class="pandascore-section-header">UPCOMING</div>';
+        $html .= '<div class="pandascore-matches-container">';
 
         foreach ($upcoming_matches as $match) {
             $html .= $this->render_match($match, false);
