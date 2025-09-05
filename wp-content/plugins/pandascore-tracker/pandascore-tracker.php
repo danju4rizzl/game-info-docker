@@ -84,13 +84,62 @@ class PandaScore_Tracker_Plugin {
         return isset( $opts['api_key'] ) ? trim( $opts['api_key'] ) : '';
     }
 
-    private function fetch_upcoming_matches( $game, $limit ) {
+    private function get_league_ids() {
         $api_key = $this->get_api_key();
         if ( ! $api_key ) return new WP_Error( 'no_api_key', 'PandaScore API key not set' );
 
         $url = add_query_arg( array(
+            'filter[name]' => 'LPL,LEC'
+        ), 'https://api.pandascore.co/leagues' );
+
+        $response = wp_remote_get( $url, array(
+            'timeout' => 15,
+            'headers' => array(
+                'Authorization' => 'Bearer ' . $api_key,
+            )
+        ) );
+
+        if ( is_wp_error( $response ) ) return $response;
+        $code = wp_remote_retrieve_response_code( $response );
+        if ( $code !== 200 ) return new WP_Error( 'api_error', 'PandaScore API returned code '.$code );
+
+        $body = wp_remote_retrieve_body( $response );
+        $data = json_decode( $body, true );
+        if ( json_last_error() !== JSON_ERROR_NONE ) return new WP_Error( 'json_error', 'Invalid JSON from API' );
+
+        $league_ids = array(4786, 5345, 5346); // LCK, LTA North, LTA South
+        foreach ( $data as $league ) {
+            if ( in_array( $league['name'], array( 'LPL', 'LEC' ) ) && isset( $league['id'] ) ) {
+                $league_ids[] = $league['id'];
+            }
+        }
+
+        return array_unique( $league_ids );
+    }
+
+    /**
+     * Private helper method to make API calls to PandaScore
+     *
+     * @param string $game The game type (e.g., 'lol', 'valorant', 'csgo')
+     * @param int $limit Number of matches to fetch
+     * @param string $endpoint The API endpoint type ('upcoming' or 'running')
+     * @return array|WP_Error The API response data or WP_Error on failure
+     */
+    private function make_api_call( $game, $limit, $endpoint ) {
+        $api_key = $this->get_api_key();
+        if ( ! $api_key ) return new WP_Error( 'no_api_key', 'PandaScore API key not set' );
+
+        $query_args = array(
             'page[size]' => intval( $limit )
-        ), "https://api.pandascore.co/{$game}/matches/upcoming" );
+        );
+
+        if ( strtolower( $game ) === 'lol' ) {
+            $league_ids = $this->get_league_ids();
+            if ( is_wp_error( $league_ids ) ) return $league_ids;
+            $query_args['filter[league_id]'] = implode( ',', $league_ids );
+        }
+
+        $url = add_query_arg( $query_args, "https://api.pandascore.co/{$game}/matches/{$endpoint}" );
 
         $response = wp_remote_get( $url, array(
             'timeout' => 15,
@@ -110,30 +159,12 @@ class PandaScore_Tracker_Plugin {
         return $data;
     }
 
+    private function fetch_upcoming_matches( $game, $limit ) {
+        return $this->make_api_call( $game, $limit, 'upcoming' );
+    }
+
     private function fetch_live_matches( $game, $limit ) {
-        $api_key = $this->get_api_key();
-        if ( ! $api_key ) return new WP_Error( 'no_api_key', 'PandaScore API key not set' );
-
-        $url = add_query_arg( array(
-            'page[size]' => intval( $limit )
-        ), "https://api.pandascore.co/{$game}/matches/running" );
-
-        $response = wp_remote_get( $url, array(
-            'timeout' => 15,
-            'headers' => array(
-                'Authorization' => 'Bearer ' . $api_key,
-            )
-        ) );
-
-        if ( is_wp_error( $response ) ) return $response;
-        $code = wp_remote_retrieve_response_code( $response );
-        if ( $code !== 200 ) return new WP_Error( 'api_error', 'PandaScore API returned code '.$code );
-
-        $body = wp_remote_retrieve_body( $response );
-        $data = json_decode( $body, true );
-        if ( json_last_error() !== JSON_ERROR_NONE ) return new WP_Error( 'json_error', 'Invalid JSON from API' );
-
-        return $data;
+        return $this->make_api_call( $game, $limit, 'running' );
     }
 
     public function shortcode_handler( $atts ) {
