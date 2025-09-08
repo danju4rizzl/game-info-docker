@@ -1,28 +1,56 @@
-# PandaScore Tracker Plugin Architecture
+# PandaScore Tracker Plugin Architecture (v1.2.0)
 
 ## Overview
 
-The PandaScore Tracker plugin has been refactored from a monolithic structure into a component-based architecture to improve maintainability, separation of concerns, and code reusability.
+The PandaScore Tracker plugin has been completely refactored from a monolithic structure into a modern, component-based architecture following WordPress best practices and SOLID principles. This refactoring improves maintainability, separation of concerns, code reusability, and extensibility while maintaining full backward compatibility.
+
+## Core Architecture Principles
+
+### SOLID Principles Implementation
+
+1. **Single Responsibility Principle (SRP)**: Each class has one reason to change
+   - `PandaScore_API_Handler`: Only handles API interactions
+   - `PandaScore_Cache_Manager`: Only manages caching operations
+   - `PandaScore_Match_Renderer`: Only handles match display logic
+   - `PandaScore_Admin`: Only handles admin interface
+   - `PandaScore_Frontend`: Only handles frontend display
+
+2. **Open/Closed Principle (OCP)**: Classes are open for extension, closed for modification
+   - Base component class allows extension without modification
+   - Plugin loader supports adding new components
+   - Template system allows customization without code changes
+
+3. **Liskov Substitution Principle (LSP)**: Derived classes are substitutable for base classes
+   - All components extend `PandaScore_Base_Component` consistently
+   - Interface contracts are maintained across implementations
+
+4. **Interface Segregation Principle (ISP)**: Components depend only on what they use
+   - Each component has focused, specific responsibilities
+   - Dependencies are injected only where needed
+
+5. **Dependency Inversion Principle (DIP)**: Depend on abstractions, not concretions
+   - Components depend on the base component abstraction
+   - Plugin loader manages dependency injection
 
 ## Architecture Components
 
 ### 1. Base Component (`PandaScore_Base_Component`)
 
-**Purpose**: Abstract base class containing shared functionality across all components.
+**Purpose**: Abstract base class providing shared functionality and utilities for all components.
 
 **Key Features**:
+- API key management and validation
+- Plugin options handling
+- Error logging and debugging utilities
+- Input sanitization and validation
+- Cache key generation
+- WordPress integration helpers
 
-- API key management
-- Common API request handling
-- Match rendering utilities
-- Match statistics display logic
-
-**Methods**:
-
-- `get_api_key()`: Retrieves API key from WordPress options
-- `make_api_request($endpoint, $query_args)`: Makes authenticated requests to PandaScore API
-- `get_match_stat_display($match, $is_live)`: Formats match statistics for display
-- `render_match($match, $is_live)`: Renders individual match cards with teams, scores, and logos
+**Core Methods**:
+- `get_api_key()`: Secure API key retrieval
+- `sanitize_shortcode_attributes($atts)`: Input validation
+- `log_error($message, $context)`: Centralized error logging
+- `generate_cache_key($base_key, $params)`: Consistent cache key generation
 
 ### 2. Live Scores Component (`PandaScore_Live_Scores_Component`)
 
