@@ -19,6 +19,7 @@ class PandaScore_Tracker_Plugin {
     public function __construct() {
         add_action( 'admin_menu', array( $this, 'admin_menu' ) );
         add_action( 'admin_init', array( $this, 'register_settings' ) );
+        add_action( 'admin_init', array( $this, 'handle_cache_clear' ) );
         add_shortcode( 'pandascore_tracker', array( $this, 'shortcode_handler' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
     }
@@ -74,6 +75,37 @@ class PandaScore_Tracker_Plugin {
         add_settings_field( 'api_key', 'API Key', array( $this, 'field_api_key' ), 'pandascore-tracker', 'pandascore_main' );
     }
 
+    public function handle_cache_clear() {
+        if ( isset( $_POST['pandascore_clear_cache'] ) &&
+             isset( $_POST['pandascore_cache_nonce'] ) &&
+             wp_verify_nonce( $_POST['pandascore_cache_nonce'], 'pandascore_clear_cache' ) &&
+             current_user_can( 'manage_options' ) ) {
+
+            // Clear league IDs cache
+            delete_transient( 'pandascore_league_ids' );
+
+            // Clear all match caches (we'll clear common game types)
+            $games = array( 'lol', 'valorant', 'csgo', 'dota2' );
+            $endpoints = array( 'upcoming', 'running' );
+            $limits = array( 5, 10, 15, 20 ); // Common limits
+
+            foreach ( $games as $game ) {
+                foreach ( $endpoints as $endpoint ) {
+                    foreach ( $limits as $limit ) {
+                        delete_transient( 'pandascore_' . $game . '_' . $endpoint . '_' . $limit );
+                    }
+                }
+            }
+
+            // Add admin notice
+            add_action( 'admin_notices', array( $this, 'cache_cleared_notice' ) );
+        }
+    }
+
+    public function cache_cleared_notice() {
+        echo '<div class="notice notice-success is-dismissible"><p><strong>PandaScore Tracker:</strong> Cache cleared successfully!</p></div>';
+    }
+
     public function field_api_key() {
         $opts = get_option( $this->option_key );
         $val = isset( $opts['api_key'] ) ? esc_attr( $opts['api_key'] ) : '';
@@ -92,6 +124,14 @@ class PandaScore_Tracker_Plugin {
                 submit_button();
                 ?>
             </form>
+
+            <h3>Cache Management</h3>
+            <p>Clear cached data to refresh league information and match data immediately.</p>
+            <form method="post" action="">
+                <?php wp_nonce_field( 'pandascore_clear_cache', 'pandascore_cache_nonce' ); ?>
+                <input type="submit" name="pandascore_clear_cache" class="button button-secondary" value="Clear Cache" onclick="return confirm('Are you sure you want to clear all cached data? This will refresh league and match information.');">
+            </form>
+
             <h3>Shortcode Usage</h3>
             <p><strong>Basic usage:</strong> <code>[pandascore_tracker game="valorant" limit="5" align="right"]</code></p>
             <p><strong>Live matches:</strong> <code>[pandascore_tracker type="live" limit="5"]</code></p>
@@ -104,6 +144,17 @@ class PandaScore_Tracker_Plugin {
                 <li><strong>align:</strong> Text alignment (left, center, right) (default: right)</li>
                 <li><strong>type:</strong> Match type - "upcoming" (default), "live", or "mixed"</li>
             </ul>
+
+            <h4>League Filtering (LoL only):</h4>
+            <p>When using <code>game="lol"</code>, matches are automatically filtered to show only these leagues:</p>
+            <ul>
+                <li><strong>LCK</strong> - League of Legends Champions Korea</li>
+                <li><strong>LTA North</strong> - League of Legends EMEA Championship North</li>
+                <li><strong>LTA South</strong> - League of Legends EMEA Championship South</li>
+                <li><strong>LPL</strong> - League of Legends Pro League</li>
+                <li><strong>LEC</strong> - League of Legends European Championship</li>
+            </ul>
+            <p><em>Note: League IDs are fetched dynamically from PandaScore API and cached for 24 hours. Use "Clear Cache" above to refresh immediately.</em></p>
         </div>
         <?php
     }
@@ -121,8 +172,9 @@ class PandaScore_Tracker_Plugin {
             $api_key = $this->get_api_key();
             if ( ! $api_key ) return new WP_Error( 'no_api_key', 'PandaScore API key not set' );
 
+            // Fetch all 5 league IDs dynamically via API
             $url = add_query_arg( array(
-                'filter[name]' => 'LPL,LEC'
+                'filter[name]' => 'LCK,LTA North,LTA South,LPL,LEC'
             ), 'https://api.pandascore.co/leagues' );
 
             $response = wp_remote_get( $url, array(
@@ -132,21 +184,33 @@ class PandaScore_Tracker_Plugin {
                 )
             ) );
 
-            if ( is_wp_error( $response ) ) return $response;
-            $code = wp_remote_retrieve_response_code( $response );
-            if ( $code !== 200 ) return new WP_Error( 'api_error', 'PandaScore API returned code '.$code );
+            $league_ids = array(); // Start with empty array
 
-            $body = wp_remote_retrieve_body( $response );
-            $data = json_decode( $body, true );
-            if ( json_last_error() !== JSON_ERROR_NONE ) return new WP_Error( 'json_error', 'Invalid JSON from API' );
+            // Process API response if successful
+            if ( ! is_wp_error( $response ) ) {
+                $code = wp_remote_retrieve_response_code( $response );
+                if ( $code === 200 ) {
+                    $body = wp_remote_retrieve_body( $response );
+                    $data = json_decode( $body, true );
+                    if ( json_last_error() === JSON_ERROR_NONE && is_array( $data ) ) {
+                        // Target leagues we want to include
+                        $target_leagues = array( 'LCK', 'LTA North', 'LTA South', 'LPL', 'LEC' );
 
-            $league_ids = array(4786, 5345, 5346); // LCK, LTA North, LTA South
-            foreach ( $data as $league ) {
-                if ( in_array( $league['name'], array( 'LPL', 'LEC' ) ) && isset( $league['id'] ) ) {
-                    $league_ids[] = $league['id'];
+                        foreach ( $data as $league ) {
+                            if ( in_array( $league['name'], $target_leagues ) && isset( $league['id'] ) ) {
+                                $league_ids[] = $league['id'];
+                            }
+                        }
+                    }
                 }
             }
 
+            // If API call failed or returned no results, return error
+            if ( empty( $league_ids ) ) {
+                return new WP_Error( 'no_leagues', 'Could not fetch league IDs from PandaScore API' );
+            }
+
+            // Ensure we have unique IDs and cache the results
             $league_ids = array_unique( $league_ids );
             set_transient( $transient_key, $league_ids, DAY_IN_SECONDS ); // Cache for 24 hours
         }
