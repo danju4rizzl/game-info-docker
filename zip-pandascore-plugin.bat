@@ -41,6 +41,21 @@ if exist "%PLUGIN_DIR%\js" (
 ) else (
     echo   - WARNING: JS directory not found
 )
+if exist "%PLUGIN_DIR%\templates" (
+    echo   - Templates directory found
+) else (
+    echo   - WARNING: Templates directory not found
+)
+if exist "%PLUGIN_DIR%\includes" (
+    echo   - Includes directory found
+) else (
+    echo   - WARNING: Includes directory not found
+)
+if exist "%PLUGIN_DIR%\docs" (
+    echo   - Docs directory found
+) else (
+    echo   - WARNING: Docs directory not found
+)
 if exist "%PLUGIN_DIR%\README.md" (
     echo   - README.md found
 ) else (
@@ -88,6 +103,24 @@ REM Copy JS directory if it exists
 if exist "%PLUGIN_DIR%\js" (
     xcopy "%PLUGIN_DIR%\js" "%TEMP_DIR%\js" /e /i /q >nul
     echo   - Copied JS directory
+)
+
+REM Copy Templates directory if it exists
+if exist "%PLUGIN_DIR%\templates" (
+    xcopy "%PLUGIN_DIR%\templates" "%TEMP_DIR%\templates" /e /i /q >nul
+    echo   - Copied Templates directory
+)
+
+REM Copy Includes directory if it exists
+if exist "%PLUGIN_DIR%\includes" (
+    xcopy "%PLUGIN_DIR%\includes" "%TEMP_DIR%\includes" /e /i /q >nul
+    echo   - Copied Includes directory
+)
+
+REM Copy Docs directory if it exists
+if exist "%PLUGIN_DIR%\docs" (
+    xcopy "%PLUGIN_DIR%\docs" "%TEMP_DIR%\docs" /e /i /q >nul
+    echo   - Copied Docs directory
 )
 
 REM Copy README.md if it exists

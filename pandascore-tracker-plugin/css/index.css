@@ -1,0 +1,204 @@
+/* Custom styles for PandaScore Tracker using Tailwind CSS */
+
+/* Custom font import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.pandascore-tracker {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+}
+
+.pandascore-tracker.align-left {
+  text-align: left;
+}
+.pandascore-tracker.align-center {
+  text-align: center;
+}
+.pandascore-tracker.align-right {
+  text-align: right;
+}
+
+.pandascore-api-key-input {
+  width: 100%;
+}
+
+.pandascore-section-header {
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: left;
+  font-family: Inter, sans-serif;
+  color: #ffc700;
+  display: flex;
+  align-items: center;
+}
+
+.pandascore-live-indicator {
+  background: #ffc700;
+  border-radius: 100%;
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  margin: 0 7px;
+}
+
+.pandascore-matches-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 250px;
+}
+
+.pandascore-match {
+  background: #1d1c26;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 250px;
+}
+
+.pandascore-league-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.pandascore-league-logo {
+  background: #ffc700;
+  padding: 8px 5px 0px 5px;
+  border-radius: 6px;
+}
+
+.pandascore-league-logo img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.pandascore-league-placeholder {
+  background: #ffc700;
+  padding: 5px;
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1d1c26;
+  font-weight: bold;
+}
+
+.pandascore-match-content {
+  flex: 1;
+  display: flex;
+}
+
+.pandascore-match-content.live-layout {
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pandascore-teams-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.pandascore-team {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.pandascore-team.with-score {
+  justify-content: space-between;
+}
+
+.pandascore-team-info {
+  display: flex;
+  align-items: center;
+}
+
+.pandascore-team-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  margin-right: 5px;
+}
+
+.pandascore-team-logo-placeholder {
+  width: 24px;
+  height: 24px;
+  background: #ffc700;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1d1c26;
+  flex-shrink: 0;
+}
+
+.pandascore-team-name {
+  font-size: 14px;
+}
+
+.pandascore-score {
+  width: 30px;
+  background: #ffc700;
+  color: #1d1c26;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.pandascore-time-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+}
+
+.pandascore-time-badge {
+  background: #ffc700;
+  color: #1d1c26;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.pandascore-time-day {
+  font-size: 10px;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+.pandascore-error {
+  background: #f8d7da;
+  border: 1px solid #f5c2c7;
+  color: #842029;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.pandascore-no-matches {
+  background: #eee;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 10px;
+  border-radius: 6px;
+}
