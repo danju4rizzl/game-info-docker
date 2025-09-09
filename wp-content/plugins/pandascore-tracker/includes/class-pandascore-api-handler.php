@@ -255,6 +255,7 @@ class PandaScore_API_Handler extends PandaScore_Base_Component {
 
     /**
      * Get cache expiration time based on endpoint
+     * Reduced times to prevent conflicts with site-wide caching
      *
      * @param string $endpoint API endpoint
      * @return int Cache expiration in seconds
@@ -262,15 +263,15 @@ class PandaScore_API_Handler extends PandaScore_Base_Component {
     private function get_cache_expiration( $endpoint ) {
         // Live/running matches have shorter cache time
         if ( strpos( $endpoint, '/running' ) !== false ) {
-            return 60; // 1 minute
+            return 30; // 30 seconds (reduced from 1 minute)
         }
 
-        // League data can be cached longer
+        // League data can be cached longer but not too long
         if ( strpos( $endpoint, 'leagues' ) !== false ) {
-            return DAY_IN_SECONDS; // 24 hours
+            return 3600 * 6; // 6 hours (reduced from 24 hours)
         }
 
         // Default cache time for upcoming matches
-        return 300; // 5 minutes
+        return 120; // 2 minutes (reduced from 5 minutes)
     }
 }

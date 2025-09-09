@@ -26,20 +26,37 @@ class PandaScore_Cache_Manager extends PandaScore_Base_Component {
      *
      * @var string
      */
-    private $cache_prefix = 'pandascore_';
+    private $cache_prefix = 'pandascore_api_';
 
     /**
      * Default cache expiration time in seconds
      *
      * @var int
      */
-    private $default_expiration = 300; // 5 minutes
+    private $default_expiration = 180; // 3 minutes (reduced from 5)
 
     /**
      * Constructor
      */
     public function __construct() {
         parent::__construct();
+
+        // Add cache-busting hooks to prevent conflicts with other caching systems
+        add_action( 'wp_login', array( $this, 'clear_user_specific_cache' ) );
+        add_action( 'wp_logout', array( $this, 'clear_user_specific_cache' ) );
+    }
+
+    /**
+     * Clear any user-specific cache (defensive measure)
+     * This ensures our plugin cache doesn't interfere with user sessions
+     */
+    public function clear_user_specific_cache() {
+        // Our plugin doesn't cache user-specific data, but this is a defensive measure
+        // to ensure we don't accidentally interfere with other caching systems
+
+        // Only clear if we have cached data that might be user-specific
+        // (Currently we don't, but this is future-proofing)
+        return true;
     }
 
     /**
@@ -265,21 +282,22 @@ class PandaScore_Cache_Manager extends PandaScore_Base_Component {
 
     /**
      * Get cache expiration time for different data types
+     * Reduced times to prevent conflicts with site-wide caching
      *
      * @param string $data_type Type of data being cached
      * @return int Expiration time in seconds
      */
     public function get_expiration_time( $data_type ) {
         $expiration_times = array(
-            'live_matches'     => 60,           // 1 minute
-            'upcoming_matches' => 300,          // 5 minutes
-            'league_ids'       => DAY_IN_SECONDS, // 24 hours
-            'team_data'        => HOUR_IN_SECONDS, // 1 hour
-            'tournament_data'  => HOUR_IN_SECONDS * 6, // 6 hours
+            'live_matches'     => 30,           // 30 seconds (reduced from 1 minute)
+            'upcoming_matches' => 120,          // 2 minutes (reduced from 5 minutes)
+            'league_ids'       => HOUR_IN_SECONDS * 6, // 6 hours (reduced from 24 hours)
+            'team_data'        => HOUR_IN_SECONDS / 2,  // 30 minutes (reduced from 1 hour)
+            'tournament_data'  => HOUR_IN_SECONDS * 2,  // 2 hours (reduced from 6 hours)
         );
-        
-        return isset( $expiration_times[ $data_type ] ) 
-            ? $expiration_times[ $data_type ] 
+
+        return isset( $expiration_times[ $data_type ] )
+            ? $expiration_times[ $data_type ]
             : $this->default_expiration;
     }
 

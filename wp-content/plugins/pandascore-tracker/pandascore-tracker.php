@@ -2,7 +2,7 @@
 /*
 Plugin Name: PandaScore Tracker
 Description: Fetches and displays PandaScore game scores via shortcode.
-Version: 1.2.0 (Refactored Architecture)
+Version: 1.2.0
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
