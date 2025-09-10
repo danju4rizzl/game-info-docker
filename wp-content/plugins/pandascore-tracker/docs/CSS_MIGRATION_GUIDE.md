@@ -2,9 +2,29 @@
 
 ## Overview
 
-The PandaScore Tracker plugin has migrated from monolithic CSS files to a component-based CSS architecture. This guide explains the changes and how to migrate custom styles.
+The PandaScore Tracker plugin has migrated from inline styles to external CSS files for better maintainability and performance. This guide explains the changes and how to work with the new CSS architecture.
 
-## New CSS Architecture
+## Latest Migration (v1.1)
+
+### Inline Styles to External CSS
+**Date**: Current update
+**Change**: Moved all inline styles from `get_internal_styles()` method to `css/index.css` file
+
+### Before (Inline Styles)
+```php
+// Styles were embedded directly in PHP
+private function get_internal_styles() {
+    return '<style>/* All CSS here */</style>';
+}
+```
+
+### After (External CSS)
+```
+css/
+└── index.css                   # All plugin styles in external file
+```
+
+## Previous CSS Architecture
 
 ### Before (Legacy)
 ```
@@ -23,7 +43,32 @@ css/
 └── pandascore-live-tracker.css # DEPRECATED: Legacy styles
 ```
 
-## CSS File Breakdown
+## Current CSS Implementation
+
+### css/index.css
+**Contains all plugin styles in a single external file:**
+- `.pandascore-tracker` - Main container with alignment options
+- `.pandascore-section-header` - Section headers for live/upcoming matches
+- `.pandascore-live-indicator` - Live match indicator with animation
+- `.pandascore-matches-container` - Container for match listings
+- `.pandascore-match` - Individual match cards
+- `.pandascore-league-container` - League logo containers
+- `.pandascore-team` - Team display components
+- `.pandascore-team-logo` - Team logos and placeholders
+- `.pandascore-score` - Score displays for live matches
+- `.pandascore-time-container` - Time/date displays for upcoming matches
+- `.pandascore-error` - Error state styling
+- `.pandascore-no-matches` - Empty state styling
+- `.pandascore-api-key-input` - Admin settings input styling
+
+### Benefits of External CSS
+- **Better Performance**: CSS is cached by browsers and CDNs
+- **Cleaner PHP Code**: Removes large inline style blocks from PHP
+- **Easier Maintenance**: CSS can be edited without touching PHP
+- **Better Development**: Syntax highlighting and CSS tools work properly
+- **Smaller HTML**: No inline styles in rendered output
+
+## CSS File Breakdown (Legacy Component-Based Architecture)
 
 ### 1. pandascore-base.css
 **Contains shared styles used by all components:**
@@ -61,13 +106,48 @@ css/
 
 ## Migration Steps
 
-### For Theme Developers
+### Current Implementation (v1.1)
+
+1. **CSS Enqueuing**
+   ```php
+   // Current implementation
+   wp_enqueue_style('pandascore-tracker-style', plugins_url('css/index.css', __FILE__), [], '1.1');
+   ```
+
+2. **No More Inline Styles**
+   ```php
+   // Old way (removed)
+   private function get_internal_styles() {
+       return '<style>/* CSS here */</style>';
+   }
+
+   // New way - styles are automatically loaded from index.css
+   // No inline styles needed
+   ```
+
+3. **Custom CSS Overrides**
+   ```css
+   /* All existing selectors continue to work */
+   .pandascore-tracker {
+       /* Your custom styles */
+   }
+
+   .pandascore-live-indicator {
+       /* Your custom live indicator styles */
+   }
+
+   .pandascore-match {
+       /* Your custom match card styles */
+   }
+   ```
+
+### For Theme Developers (Legacy Component-Based)
 
 1. **Update CSS Dependencies**
    ```php
    // Old way
    wp_enqueue_style( 'pandascore-live-tracker-style' );
-   
+
    // New way - load only what you need
    wp_enqueue_style( 'pandascore-base-style' );
    wp_enqueue_style( 'pandascore-live-scores-style' ); // If using live matches
@@ -78,7 +158,7 @@ css/
    ```css
    /* Old selectors still work but are deprecated */
    .pandascore-live-indicator { /* ... */ }
-   
+
    /* New component-specific selectors are preferred */
    .pandascore-live-indicator { /* Live scores component */ }
    .pandascore-section-header.upcoming { /* Upcoming matches component */ }

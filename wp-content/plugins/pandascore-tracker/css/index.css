@@ -1,196 +1,215 @@
-/* Custom styles for PandaScore Tracker using Tailwind CSS */
-
-/* Import Tailwind CSS from CDN as fallback */
-@import url('https://cdn.tailwindcss.com');
+/* Custom styles for PandaScore Tracker */
 
 /* Custom font import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-/* Animation for score updates */
+/* Animation for live indicator */
 @keyframes pulse-red {
-  0%,
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
   100% {
-    background-color: rgb(239 68 68);
-  }
-  50% {
-    background-color: rgb(220 38 38);
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
   }
 }
 
-.score-updating {
-  animation: pulse-red 1s ease-in-out infinite;
-}
-
-/* Ensure proper font fallback */
-.font-inter {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    sans-serif;
-}
-
-/* Fallback styles in case Tailwind CDN doesn't load */
+/* PandaScore Tracker Styles */
 .pandascore-tracker {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    sans-serif;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
 }
 
-/* Essential fallback utilities */
-.bg-red-500 {
-  background-color: #ef4444;
+.pandascore-tracker.align-left {
+    text-align: left;
 }
-.bg-red-600 {
-  background-color: #dc2626;
+
+.pandascore-tracker.align-right {
+    text-align: right;
 }
-.bg-gray-700 {
-  background-color: #374151;
+
+.pandascore-api-key-input {
+    width: 100%;
 }
-.bg-green-500 {
-  background-color: #10b981;
+
+.pandascore-section-header {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #FFC700;
+    display: flex;
+    align-items: center;
 }
-.text-white {
-  color: #ffffff;
+.pandascore-live-indicator {
+  background: #FFC700; /* Tailwind red-500 */
+  border-radius: 100%;
+  width: 8px;
+  height: 8px;
+  margin: 0 7px;
+  position: relative;
 }
-.text-gray-200 {
-  color: #e5e7eb;
-}
-.text-gray-300 {
-  color: #d1d5db;
-}
-.rounded-xl {
-  border-radius: 0.75rem;
-}
-.rounded {
-  border-radius: 0.25rem;
-}
-.p-3 {
-  padding: 0.75rem;
-}
-.p-2 {
-  padding: 0.5rem;
-}
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-.mb-3 {
-  margin-bottom: 0.75rem;
-}
-.mr-2 {
-  margin-right: 0.5rem;
-}
-.mt-2 {
-  margin-top: 0.5rem;
-}
-.w-6 {
-  width: 1.5rem;
-}
-.h-6 {
-  height: 1.5rem;
-}
-.w-10 {
-  width: 2.5rem;
-}
-.h-10 {
-  height: 2.5rem;
-}
-.w-full {
+
+.pandascore-live-indicator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 100%;
+  height: 100%;
+  background: #FFC700;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-red 1.5s infinite;
 }
-.max-w-sm {
-  max-width: 350px;
+
+.pandascore-matches-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 250px;
 }
-.min-w-8 {
-  min-width: 2rem;
+
+.pandascore-match {
+    background: #1D1C26;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
-.flex {
-  display: flex;
+
+.pandascore-league-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
-.flex-col {
-  flex-direction: column;
+
+.pandascore-league-logo, .pandascore-league-placeholder {
+    background: #FFC700;
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
 }
-.flex-1 {
-  flex: 1 1 0%;
+
+.pandascore-league-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
-.flex-shrink-0 {
-  flex-shrink: 0;
+
+.pandascore-league-placeholder {
+    color: #1D1C26;
+    font-weight: bold;
 }
-.items-center {
-  align-items: center;
+
+.pandascore-match-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.justify-between {
-  justify-content: space-between;
+
+.pandascore-match-content.live-layout {
+    flex-direction: column;
+    gap: 5px;
 }
-.gap-2 {
-  gap: 0.5rem;
+
+.pandascore-teams-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
 }
-.gap-3 {
-  gap: 0.75rem;
+
+.pandascore-team {
+    display: flex;
+    align-items: center;
 }
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
+
+.pandascore-team.with-score {
+    justify-content: space-between;
 }
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+
+.pandascore-team-info {
+    display: flex;
+    align-items: center;
 }
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+
+.pandascore-team-logo, .pandascore-team-logo-placeholder {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    flex-shrink: 0;
 }
-.font-medium {
-  font-weight: 500;
+
+.pandascore-team-logo-placeholder {
+    background: #FFC700;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: #1D1C26;
 }
-.font-bold {
-  font-weight: 700;
+
+.pandascore-team-name {
+    font-size: 14px;
 }
-.text-center {
-  text-align: center;
+
+.pandascore-score {
+  font-size: 18px;
+    background: #FFC700;
+    color: #1D1C26;
+    padding: 3px 14px;
+    border-radius: 4px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
 }
-.text-left {
-  text-align: left;
+
+.pandascore-time-container {
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
 }
-.text-right {
-  text-align: right;
+
+.pandascore-time-badge {
+    background: #FFC700;
+    color: #1D1C26;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
 }
-.uppercase {
-  text-transform: uppercase;
+
+.pandascore-time-day {
+    font-size: 10px;
+    font-weight: normal;
+    opacity: 0.8;
 }
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+.pandascore-error {
+    background: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #842029;
+    padding: 10px;
+    border-radius: 6px;
 }
-.object-contain {
-  object-fit: contain;
+
+.pandascore-no-matches {
+    background: #eee;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 10px;
+    border-radius: 6px;
 }
-.shadow-lg {
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-}
-.border-l-4 {
-  border-left-width: 4px;
-}
-.border-red-500 {
-  border-color: #ef4444;
-}
-.inline-block {
-  display: inline-block;
-}
+
