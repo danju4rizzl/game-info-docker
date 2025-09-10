@@ -233,7 +233,8 @@
     justify-content: center;
     cursor: pointer;
     padding: 6px;
-    transition: transform 0.2s ease, background 0.2s;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, background 0.2s, border-color 0.2s;
 }
 
 .pandascore-league-filter img {
@@ -245,4 +246,29 @@
 .pandascore-league-filter.active {
     background: var(--brand-color);
     transform: scale(1.1);
+}
+
+/* League-specific active border colors */
+.pandascore-league-filter[data-league-name="LCK"].active {
+    border-color: #FFFFFF;
+}
+
+.pandascore-league-filter[data-league-name="LPL"].active {
+    border-color: #F60909;
+}
+
+.pandascore-league-filter[data-league-name="LEC"].active {
+    border-color: #00E5BE;
+}
+
+.pandascore-league-filter[data-league-name="LTA North"].active {
+    border-color: #B3A27F;
+}
+
+.pandascore-league-filter[data-league-name="LTA South"].active {
+    border-color: #B3A27F;
+}
+
+.pandascore-league-filter[data-league-name="OTHER LEAGUES"].active {
+    border-color: var(--brand-color);
 }
