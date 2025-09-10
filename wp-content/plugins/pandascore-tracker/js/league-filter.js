@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Define the specific leagues we're filtering for
   const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South']
+  const ltaLeagues = ['LTA North', 'LTA South']
 
   // Initialize default state: show only main 5 leagues, hide OTHER LEAGUES
   function initializeDefaultState() {
@@ -58,6 +59,9 @@ document.addEventListener('DOMContentLoaded', function () {
         match.style.display = 'none'
       }
     })
+
+    // Update container visibility after filtering
+    updateContainerVisibility()
   }
 
   // Filter matches for a specific league
@@ -81,6 +85,13 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           match.style.display = 'flex'
         }
+      } else if (selectedLeague === 'LTA') {
+        // Show matches from both LTA North and LTA South
+        if (ltaLeagues.includes(matchLeagueName)) {
+          match.style.display = 'flex'
+        } else {
+          match.style.display = 'none'
+        }
       } else {
         // Show matches from the selected specific league only
         if (matchLeagueName === selectedLeague) {
@@ -90,6 +101,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
     })
+
+    // Update container visibility after filtering
+    updateContainerVisibility()
+  }
+
+  // Update container visibility based on visible matches
+  function updateContainerVisibility() {
+    const liveContainer = document.querySelector('.pandascore-live-container')
+    const upcomingContainer = document.querySelector(
+      '.pandascore-upcoming-container'
+    )
+
+    if (liveContainer) {
+      const liveMatches = liveContainer.querySelectorAll('.pandascore-match')
+      const visibleLiveMatches = Array.from(liveMatches).filter(
+        (match) => match.style.display !== 'none'
+      )
+      liveContainer.style.display =
+        visibleLiveMatches.length > 0 ? 'block' : 'none'
+    }
+
+    if (upcomingContainer) {
+      const upcomingMatches =
+        upcomingContainer.querySelectorAll('.pandascore-match')
+      const visibleUpcomingMatches = Array.from(upcomingMatches).filter(
+        (match) => match.style.display !== 'none'
+      )
+      upcomingContainer.style.display =
+        visibleUpcomingMatches.length > 0 ? 'block' : 'none'
+    }
   }
 
   // Add click event listeners to filters
@@ -113,4 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize the default state on page load
   initializeDefaultState()
+
+  // Update container visibility after initialization
+  updateContainerVisibility()
 })

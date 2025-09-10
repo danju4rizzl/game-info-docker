@@ -81,15 +81,20 @@ class PandaScore_Tracker_Plugin {
 
     // 🔹 NEW: Render league filters row
     private function render_league_filters() {
-        // Define the specific leagues we want to show
-        $leagues = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South'];
+        // Define the specific leagues we want to show (consolidated LTA)
+        $leagues = ['LCK', 'LPL', 'LEC', 'LTA'];
 
         $html = '<div class="pandascore-league-filters">';
 
         // Add specific league buttons with local images
         foreach ($leagues as $league_name) {
-            // Convert league name to filename format
-            $filename = str_replace(' ', '-', strtoupper($league_name)) . '-logo.png';
+            // Handle special case for LTA (use LTA-NORTH image as representative)
+            if ($league_name === 'LTA') {
+                $filename = 'LTA-NORTH-logo.png';
+            } else {
+                // Convert league name to filename format
+                $filename = str_replace(' ', '-', strtoupper($league_name)) . '-logo.png';
+            }
             $image_url = plugins_url('images/' . $filename, __FILE__);
 
             $html .= '<div class="pandascore-league-filter" data-league-name="' . esc_attr($league_name) . '" title="' . esc_attr($league_name) . '">';
@@ -237,11 +242,22 @@ class PandaScore_Tracker_Plugin {
         // 🔹 Render league filters first
         $html .= $this->render_league_filters();
 
+        // 🔹 Create grouped containers for live and upcoming matches
         if (in_array($atts['type'], ['live', 'mixed'])) {
-            $html .= $this->render_matches($atts['game'], $atts['limit'], true);
+            $live_content = $this->render_matches($atts['game'], $atts['limit'], true);
+            if (!empty($live_content)) {
+                $html .= '<div class="pandascore-live-container">';
+                $html .= $live_content;
+                $html .= '</div>';
+            }
         }
         if (in_array($atts['type'], ['upcoming', 'mixed'])) {
-            $html .= $this->render_matches($atts['game'], $atts['limit'], false);
+            $upcoming_content = $this->render_matches($atts['game'], $atts['limit'], false);
+            if (!empty($upcoming_content)) {
+                $html .= '<div class="pandascore-upcoming-container">';
+                $html .= $upcoming_content;
+                $html .= '</div>';
+            }
         }
 
         if ($this->live_match_ids) {
