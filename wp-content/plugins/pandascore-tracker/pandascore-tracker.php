@@ -2,7 +2,7 @@
 /*
 Plugin Name: PandaScore Tracker
 Description: Fetches and displays PandaScore game scores via shortcode.
-Version: 1.1 (No Tailwind)
+Version: 1.2 (League Filter Added)
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
@@ -23,9 +23,10 @@ class PandaScore_Tracker_Plugin {
     }
 
     public function enqueue_assets() {
-        wp_register_style('pandascore-tracker-style', plugins_url('css/index.css', __FILE__), [], '1.1');
-        wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', __FILE__), [], '1.1', true);
+        wp_register_style('pandascore-tracker-style', plugins_url('css/index.css', __FILE__), [], '1.2');
+        wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', __FILE__), [], '1.2', true);
         wp_register_script('pandascore-timezone-js', plugins_url('js/timezone-converter.js', __FILE__), [], '1.0', true);
+        wp_register_script('pandascore-league-filter-js', plugins_url('js/league-filter.js', __FILE__), [], '1.0', true);
     }
 
     public function admin_menu() {
@@ -80,7 +81,7 @@ class PandaScore_Tracker_Plugin {
         $api_key = $this->get_api_key();
         if (!$api_key) return new WP_Error('no_api_key', 'PandaScore API key not set');
 
-        $leagues = ['LCK', 'LTA North', 'LTA South', 'LPL', 'LEC'];
+        $leagues = ['LCK', 'LPL', 'LEC','LTA North', 'LTA South' ];
         $url = add_query_arg(['filter[name]' => implode(',', $leagues)], 'https://api.pandascore.co/leagues');
         $response = wp_remote_get($url, [
             'timeout' => 15,
@@ -102,11 +103,40 @@ class PandaScore_Tracker_Plugin {
             }
         }
 
-        if (empty($league_ids)) {
-            return new WP_Error('no_leagues', 'No matching leagues found for LCK, LTA North, LTA South, LPL, LEC');
+        return array_unique($league_ids);
+    }
+
+    // 🔹 NEW: Render league filters row
+    private function render_league_filters($game) {
+        $league_ids = $this->get_league_ids();
+        if (is_wp_error($league_ids)) {
+            return '<div class="pandascore-error">Error loading leagues</div>';
         }
 
-        return array_unique($league_ids);
+        $api_key = $this->get_api_key();
+        $url = add_query_arg(['filter[id]' => implode(',', $league_ids)], 'https://api.pandascore.co/leagues');
+        $response = wp_remote_get($url, [
+            'timeout' => 15,
+            'headers' => ['Authorization' => 'Bearer ' . $api_key]
+        ]);
+
+        if (is_wp_error($response)) return '';
+        $data = json_decode(wp_remote_retrieve_body($response), true);
+        if (json_last_error() !== JSON_ERROR_NONE) return '';
+
+        $html = '<div class="pandascore-league-filters">';
+   
+
+        foreach ($data as $league) {
+            $league_id = esc_attr($league['id']);
+            $league_name = esc_html($league['name']);
+            $logo = esc_url($league['image_url']);
+            $html .= '<div class="pandascore-league-filter" data-league-id="' . $league_id . '" title="' . $league_name . '">';
+            $html .= '<img src="' . $logo . '" alt="' . $league_name . '">';
+            $html .= '</div>';
+        }
+        $html .= '</div>';
+        return $html;
     }
 
     private function make_api_call($game, $limit, $endpoint) {
@@ -183,10 +213,12 @@ class PandaScore_Tracker_Plugin {
 
         $league_name = esc_html($match['league']['name'] ?? '');
         $league_logo = esc_url($match['league']['image_url'] ?? '');
+        $league_id = esc_attr($match['league']['id'] ?? '');
         $scheduled_at = $match['scheduled_at'] ?? '';
         $is_upcoming = !$is_live && $scheduled_at;
 
-        $html = '<div class="pandascore-match" data-match-id="' . esc_attr($match['id'] ?? '') . ($is_upcoming ? '" data-scheduled-at="' . esc_attr($scheduled_at) : '') . '">';
+        // 🔹 Added data-league-id for filtering
+        $html = '<div class="pandascore-match" data-league-id="' . $league_id . '" data-match-id="' . esc_attr($match['id'] ?? '') . ($is_upcoming ? '" data-scheduled-at="' . esc_attr($scheduled_at) : '') . '">';
         $html .= '<div class="pandascore-league-container">';
         $html .= $league_logo ? '<div class="pandascore-league-logo"><img src="' . $league_logo . '" alt="' . $league_name . '" title="' . $league_name . '"></div>'
                              : '<div class="pandascore-league-placeholder" title="' . $league_name . '">' . ($league_name ? $league_name[0] : 'L') . '</div>';
@@ -230,9 +262,13 @@ class PandaScore_Tracker_Plugin {
         $atts = shortcode_atts(['game' => 'lol', 'limit' => 5, 'align' => 'center', 'type' => 'mixed'], $atts, 'pandascore_tracker');
         wp_enqueue_style('pandascore-tracker-style');
         wp_enqueue_script('pandascore-timezone-js');
+        wp_enqueue_script('pandascore-league-filter-js'); // 🔹 enqueue filter script
 
         $this->live_match_ids = [];
         $html = '<div class="pandascore-tracker align-' . esc_attr($atts['align']) . '">';
+
+        // 🔹 Render league filters first
+        $html .= $this->render_league_filters($atts['game']);
 
         if (in_array($atts['type'], ['live', 'mixed'])) {
             $html .= $this->render_matches($atts['game'], $atts['limit'], 'live', true);

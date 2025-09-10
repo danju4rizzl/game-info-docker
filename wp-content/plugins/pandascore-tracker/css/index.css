@@ -1,10 +1,15 @@
 /* Custom styles for PandaScore Tracker */
+:root {
+ --brand-color: #FFC700;
+ --brand-bg: #2F2E37;
+ --brand-white: #FFF;
 
+}
 /* Custom font import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* Animation for live indicator */
-@keyframes pulse-red {
+@keyframes live-pulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
@@ -36,12 +41,12 @@
 .pandascore-section-header {
     font-weight: 600;
     margin-bottom: 10px;
-    color: #FFC700;
+    color: var(--brand-color);
     display: flex;
     align-items: center;
 }
 .pandascore-live-indicator {
-  background: #FFC700; /* Tailwind red-500 */
+  background: var(--brand-color); 
   border-radius: 100%;
   width: 8px;
   height: 8px;
@@ -56,10 +61,10 @@
   left: 50%;
   width: 100%;
   height: 100%;
-  background: #FFC700;
+  background: var(--brand-color);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  animation: pulse-red 1.5s infinite;
+  animation: live-pulse 1.5s infinite;
 }
 
 .pandascore-matches-container {
@@ -70,8 +75,8 @@
 }
 
 .pandascore-match {
-    background: #1D1C26;
-    color: #fff;
+    background: var(--brand-bg);
+    color: var(--brand-white);
     padding: 10px;
     border-radius: 8px;
     display: flex;
@@ -86,7 +91,7 @@
 }
 
 .pandascore-league-logo, .pandascore-league-placeholder {
-    background: #FFC700;
+    background: var(--brand-color);
     border-radius: 6px;
     width: 40px;
     height: 40px;
@@ -103,7 +108,7 @@
 }
 
 .pandascore-league-placeholder {
-    color: #1D1C26;
+    color: var(--brand-bg);
     font-weight: bold;
 }
 
@@ -148,14 +153,14 @@
 }
 
 .pandascore-team-logo-placeholder {
-    background: #FFC700;
+    background: var(--brand-color);
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 10px;
     font-weight: bold;
-    color: #1D1C26;
+    color: var(--brand-bg);
 }
 
 .pandascore-team-name {
@@ -164,8 +169,8 @@
 
 .pandascore-score {
   font-size: 18px;
-    background: #FFC700;
-    color: #1D1C26;
+    background: var(--brand-color);
+    color: var(--brand-bg);
     padding: 3px 14px;
     border-radius: 4px;
     width: 20px;
@@ -181,8 +186,7 @@
 }
 
 .pandascore-time-badge {
-    background: #FFC700;
-    color: #1D1C26;
+    color: var(--brand-color);
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 14px;
@@ -213,3 +217,32 @@
     border-radius: 6px;
 }
 
+.pandascore-league-filters {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+}
+
+.pandascore-league-filter {
+    background: var(--brand-bg);
+    border-radius: 6px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 6px;
+    transition: transform 0.2s ease, background 0.2s;
+}
+
+.pandascore-league-filter img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.pandascore-league-filter.active {
+    background: var(--brand-color);
+    transform: scale(1.1);
+}
