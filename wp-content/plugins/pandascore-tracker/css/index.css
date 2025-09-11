@@ -1,9 +1,18 @@
 /* Custom styles for PandaScore Tracker */
 :root {
- --brand-color: #FFC700;
- --brand-bg: #2F2E37;
- --brand-white: #FFF;
-
+  --brand-color: #ffc700;
+  --brand-bg: #2f2e37;
+  --brand-container-bg: #1d1c26;
+  --brand-white: #fff;
+  --brand-red: #f60909;
+  --brand-light-red: #f5c2c7;
+  --brand-lighter-red: #f8d7da;
+  --brand-dark-red: #842029;
+  --brand-teal: #00e5be;
+  --brand-brown: #b3a27f;
+  --brand-light-grey: #eeeeee;
+  --brand-lighter-grey: #cccccc;
+  --brand-dark-grey: #333333;
 }
 /* Custom font import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -22,31 +31,35 @@
 
 /* PandaScore Tracker Styles */
 .pandascore-tracker {
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    text-align: center;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  background-color: var(--brand-container-bg);
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
 }
 
 .pandascore-tracker.align-left {
-    text-align: left;
+  text-align: left;
 }
 
 .pandascore-tracker.align-right {
-    text-align: right;
+  text-align: right;
 }
 
 .pandascore-api-key-input {
-    width: 100%;
+  width: 100%;
 }
 
 .pandascore-section-header {
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--brand-color);
-    display: flex;
-    align-items: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--brand-color);
+  display: flex;
+  align-items: center;
 }
 .pandascore-live-indicator {
-  background: var(--brand-color); 
+  background: var(--brand-color);
   border-radius: 100%;
   width: 8px;
   height: 8px;
@@ -55,7 +68,7 @@
 }
 
 .pandascore-live-indicator::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -70,209 +83,214 @@
 /* Grouped containers for live and upcoming matches */
 .pandascore-live-container,
 .pandascore-upcoming-container {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .pandascore-live-container:last-child,
 .pandascore-upcoming-container:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .pandascore-matches-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 250px;
 }
 
 .pandascore-match {
-    background: var(--brand-bg);
-    color: var(--brand-white);
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  background: var(--brand-bg);
+  color: var(--brand-white);
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .pandascore-league-container {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.pandascore-league-logo, .pandascore-league-placeholder {
-    background: var(--brand-color);
-    border-radius: 6px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
+.pandascore-league-logo,
+.pandascore-league-placeholder {
+  background: var(--brand-color);
+  border-radius: 6px;
+  width: 60px; /* Increased from 40px to 60px */
+  height: 60px; /* Increased from 40px to 60px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
 }
 
 .pandascore-league-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .pandascore-league-placeholder {
-    color: var(--brand-bg);
-    font-weight: bold;
+  color: var(--brand-bg);
+  font-weight: bold;
 }
 
 .pandascore-match-content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .pandascore-match-content.live-layout {
-    flex-direction: column;
-    gap: 5px;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .pandascore-teams-container {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
 }
 
 .pandascore-team {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .pandascore-team.with-score {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .pandascore-team-info {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.pandascore-team-logo, .pandascore-team-logo-placeholder {
-    width: 24px;
-    height: 24px;
-    margin-right: 5px;
-    flex-shrink: 0;
+.pandascore-team-logo,
+.pandascore-team-logo-placeholder {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  flex-shrink: 0;
 }
 
 .pandascore-team-logo-placeholder {
-    background: var(--brand-color);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: bold;
-    color: var(--brand-bg);
+  background: var(--brand-color);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--brand-bg);
 }
 
 .pandascore-team-name {
-    font-size: 14px;
+  font-size: 16px;
 }
 
 .pandascore-score {
-  font-size: 18px;
-    background: var(--brand-color);
-    color: var(--brand-bg);
-    padding: 3px 14px;
-    border-radius: 4px;
-    width: 20px;
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
+  background: var(--brand-color);
+  color: var(--brand-bg);
+  padding: 3px 14px;
+  border-radius: 4px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
 }
 
 .pandascore-time-container {
-    min-width: 60px;
-    display: flex;
-    justify-content: center;
+  font-size: 16px;
+  min-width: 60px;
+  display: flex;
+  justify-content: center;
 }
 
 .pandascore-time-badge {
-    color: var(--brand-color);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
+  color: var(--brand-color);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
 }
 
 .pandascore-time-day {
-    font-size: 10px;
-    font-weight: normal;
-    opacity: 0.8;
+  font-size: 10px;
+  font-weight: normal;
+  opacity: 0.8;
 }
 
 .pandascore-error {
-    background: #f8d7da;
-    border: 1px solid #f5c2c7;
-    color: #842029;
-    padding: 10px;
-    border-radius: 6px;
+  background: var(--brand-lighter-red);
+  border: 1px solid var(--brand-light-red);
+  color: var(--brand-dark-red);
+  padding: 10px;
+  border-radius: 6px;
 }
 
 .pandascore-no-matches {
-    background: #eee;
-    border: 1px solid #ccc;
-    color: #333;
-    padding: 10px;
-    border-radius: 6px;
+  background: var(--brand-light-grey);
+  border: 1px solid var(--brand-lighter-grey);
+  color: var(--brand-dark-grey);
+  padding: 10px;
+  border-radius: 6px;
 }
 
 .pandascore-league-filters {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-bottom: 20px;
-    width: 250px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 20px;
+  width: 250px;
 }
 
 .pandascore-league-filter {
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 3px solid transparent;
-    transition: transform 0.2s ease, background 0.2s, border-color 0.2s;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: transform 0.2s ease, background 0.2s, border-color 0.2s;
+  width: 60px !important;
+  height: 46px !important;
 }
 
 .pandascore-league-filter img {
-    width: 50px;
-    height: 50px;
-    object-fit: fill;
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: contain;
 }
 
 .pandascore-league-filter.active {
-    transform: scale(1.1);
+  /* Style the leagues active states */
+  /* transform: scale(1.1); */
 }
 
 /* League-specific active border colors */
-.pandascore-league-filter[data-league-name="LCK"].active {
-    border-color: #FFFFFF;
+.pandascore-league-filter[data-league-name='LCK'].active {
+  border-color: var(--brand-white);
 }
 
-.pandascore-league-filter[data-league-name="LPL"].active {
-    border-color: #F60909;
+.pandascore-league-filter[data-league-name='LPL'].active {
+  border-color: var(--brand-red);
 }
 
-.pandascore-league-filter[data-league-name="LEC"].active {
-    border-color: #00E5BE;
+.pandascore-league-filter[data-league-name='LEC'].active {
+  border-color: var(--brand-teal);
 }
 
-.pandascore-league-filter[data-league-name="LTA"].active {
-    border-color: #B3A27F;
+.pandascore-league-filter[data-league-name='LTA'].active {
+  border-color: var(--brand-brown);
 }
 
-.pandascore-league-filter[data-league-name="OTHER LEAGUES"].active {
-    border-color: var(--brand-color);
+.pandascore-league-filter[data-league-name='OTHER LEAGUES'].active {
+  border-color: var(--brand-color);
 }

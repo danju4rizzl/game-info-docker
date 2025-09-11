@@ -237,7 +237,7 @@ class PandaScore_Tracker_Plugin {
         wp_enqueue_script('pandascore-league-filter-js'); // 🔹 enqueue filter script
 
         $this->live_match_ids = [];
-        $html = '<div class="pandascore-tracker align-' . esc_attr($atts['align']) . '">';
+        $html = '<div class="pandascore-tracker" >';
 
         // 🔹 Render league filters first
         $html .= $this->render_league_filters();
