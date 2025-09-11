@@ -1,5 +1,9 @@
+/* Custom font import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 /* Custom styles for PandaScore Tracker */
 :root {
+    /* Brand Colors */
   --brand-color: #ffc700;
   --brand-bg: #2f2e37;
   --brand-container-bg: #1d1c26;
@@ -13,9 +17,11 @@
   --brand-light-grey: #eeeeee;
   --brand-lighter-grey: #cccccc;
   --brand-dark-grey: #333333;
+   /* Brand Font Size */
+  --brand-font-md: 16px;
+  --brand-font-sm: 12px;
 }
-/* Custom font import */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 
 /* Animation for live indicator */
 @keyframes live-pulse {
@@ -60,6 +66,7 @@
   color: var(--brand-color);
   display: flex;
   align-items: center;
+  font-size: var(--brand-font-md);
 }
 .pandascore-live-indicator {
   background: var(--brand-color);
@@ -150,6 +157,7 @@
 .pandascore-match-content.live-layout {
   flex-direction: column;
   gap: 5px;
+  padding-right: 10px;
 }
 
 .pandascore-teams-container {
@@ -193,23 +201,25 @@
 }
 
 .pandascore-team-name {
-  font-size: 16px;
+  font-size: var(--brand-font-md);
   color: var(--brand-white);
 }
 
 .pandascore-score {
   background: var(--brand-color);
-  color: var(--brand-bg);
-  padding: 3px 14px;
-  border-radius: 4px;
-  width: 20px;
+  font-size: var(--brand-font-md);
+  width: 25px;
+  height: 25px;
   display: flex;
   justify-content: center;
   font-weight: bold;
+  color: var(--brand-bg);
+  padding: 3px 14px;
+  border-radius: 4px;
 }
 
 .pandascore-time-container {
-  font-size: 16px;
+  font-size: var(--brand-font-md);
   min-width: 60px;
   display: flex;
   justify-content: center;
@@ -217,7 +227,7 @@
 
 .pandascore-time-badge {
   color: var(--brand-color);
-  font-size: 16px;
+  font-size: var(--brand-font-md);
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -225,7 +235,7 @@
 }
 
 .pandascore-time-day {
-  font-size: 12px;
+  font-size: var(--brand-font-sm);
   font-weight: normal;
   opacity: 0.8;
 }
@@ -265,6 +275,7 @@
   transition: transform 0.2s ease, background 0.2s, border-color 0.2s;
   width: 60px !important;
   height: 46px !important;
+  padding: 22.5px 0px;
 }
 
 .pandascore-league-filter img {

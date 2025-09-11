@@ -105,6 +105,48 @@ function updateContainerVisibility() {
 }
 ```
 
+## Date Formatting Fix
+
+### Problem Solved
+Previously, upcoming matches were showing actual dates (like "Sep 12", "Sep 13") instead of user-friendly "Today" labels for matches scheduled on the current date.
+
+### Root Cause
+The original date comparison logic in `timezone-converter.js` was using `setHours(0, 0, 0, 0)` and `getTime()` comparison, which could fail due to timezone handling inconsistencies when creating new Date objects.
+
+### Solution
+Updated the `getLocalDayDisplay()` function to compare individual date components (year, month, day) instead of timestamp comparison:
+
+```javascript
+function getLocalDayDisplay(date) {
+    // Get today's date components in local timezone
+    const today = new Date();
+    const todayYear = today.getFullYear();
+    const todayMonth = today.getMonth();
+    const todayDate = today.getDate();
+
+    // Get match date components in local timezone
+    const matchDate = new Date(date);
+    const matchYear = matchDate.getFullYear();
+    const matchMonth = matchDate.getMonth();
+    const matchDay = matchDate.getDate();
+
+    // Compare individual components instead of timestamps
+    if (matchYear === todayYear && matchMonth === todayMonth && matchDay === todayDate) {
+        return 'Today';
+    } else if (/* tomorrow comparison */) {
+        return 'Tomorrow';
+    } else {
+        return matchDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+}
+```
+
+### Benefits
+- **Accurate Today Detection**: Matches scheduled for the current date now properly display "Today"
+- **Timezone Resilient**: Works correctly across different user timezones
+- **Consistent Behavior**: Reliable date comparison regardless of daylight saving time changes
+- **Debug Support**: Added console logging for troubleshooting date formatting issues
+
 ## Implementation Details
 
 ### PHP Changes
