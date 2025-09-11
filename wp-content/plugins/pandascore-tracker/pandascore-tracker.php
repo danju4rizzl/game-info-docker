@@ -77,8 +77,6 @@ class PandaScore_Tracker_Plugin {
         return isset($opts['api_key']) ? trim($opts['api_key']) : '';
     }
 
-
-
     // 🔹 NEW: Render league filters row
     private function render_league_filters() {
         // Define the specific leagues we want to show (consolidated LTA)
@@ -237,12 +235,13 @@ class PandaScore_Tracker_Plugin {
         wp_enqueue_script('pandascore-league-filter-js'); // 🔹 enqueue filter script
 
         $this->live_match_ids = [];
-        $html = '<div class="pandascore-tracker" >';
+        $html = '<div class="pandascore-tracker align-' . esc_attr($atts['align']) . '">';
 
         // 🔹 Render league filters first
         $html .= $this->render_league_filters();
 
         // 🔹 Create grouped containers for live and upcoming matches
+        $html .= '<div class="pandascore-matches-wrapper">';
         if (in_array($atts['type'], ['live', 'mixed'])) {
             $live_content = $this->render_matches($atts['game'], $atts['limit'], true);
             if (!empty($live_content)) {
@@ -259,6 +258,7 @@ class PandaScore_Tracker_Plugin {
                 $html .= '</div>';
             }
         }
+        $html .= '</div>';
 
         if ($this->live_match_ids) {
             wp_enqueue_script('pandascore-live-tracker-js');
