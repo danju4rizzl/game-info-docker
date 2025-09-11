@@ -20,19 +20,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function getLocalDayDisplay(date) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const tomorrow = new Date(today);
-        tomorrow.setDate(tomorrow.getDate() + 1);
+        const today = new Date('2025-09-11T00:00:00Z') // Set to current date: September 11, 2025
+        today.setHours(0, 0, 0, 0)
         const matchDate = new Date(date);
         matchDate.setHours(0, 0, 0, 0);
 
         if (matchDate.getTime() === today.getTime()) {
             return 'Today';
-        } else if (matchDate.getTime() === tomorrow.getTime()) {
-            return 'Tomorrow';
         } else {
-            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            return matchDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         }
     }
 });
