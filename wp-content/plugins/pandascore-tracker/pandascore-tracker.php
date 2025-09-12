@@ -88,10 +88,10 @@ class PandaScore_Tracker_Plugin {
         foreach ($leagues as $league_name) {
             // Handle special case for LTA (use LTA-NORTH image as representative)
             if ($league_name === 'LTA') {
-                $filename = 'LTA-NORTH-logo.png';
+                $filename = 'LTA-NORTH-logo.svg';
             } else {
                 // Convert league name to filename format
-                $filename = str_replace(' ', '-', strtoupper($league_name)) . '-logo.png';
+                $filename = str_replace(' ', '-', strtoupper($league_name)) . '-logo.svg';
             }
             $image_url = plugins_url('images/' . $filename, __FILE__);
 
@@ -100,8 +100,9 @@ class PandaScore_Tracker_Plugin {
             $html .= '</div>';
         }
 
-        // Add "OTHER LEAGUES" button
-        $other_leagues_image = plugins_url('images/OTHERS-LEAGUES-logo.png', __FILE__);
+        // Add "OTHER LEAGUES" button using the same pattern
+        $other_leagues_filename = 'OTHERS-LEAGUES-logo.svg';
+        $other_leagues_image = plugins_url('images/' . $other_leagues_filename, __FILE__);
         $html .= '<div class="pandascore-league-filter" data-league-name="OTHER LEAGUES" title="OTHER LEAGUES">';
         $html .= '<img src="' . esc_url($other_leagues_image) . '" alt="OTHER LEAGUES">';
         $html .= '</div>';

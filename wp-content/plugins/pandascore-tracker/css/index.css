@@ -3,7 +3,7 @@
 
 /* Custom styles for PandaScore Tracker */
 :root {
-    /* Brand Colors */
+  /* Brand Colors */
   --brand-color: #ffc700;
   --brand-bg: #2f2e37;
   --brand-container-bg: #1d1c26;
@@ -17,11 +17,12 @@
   --brand-light-grey: #eeeeee;
   --brand-lighter-grey: #cccccc;
   --brand-dark-grey: #333333;
-   /* Brand Font Size */
+  /* Brand Font Sizes */
   --brand-font-md: 16px;
   --brand-font-sm: 12px;
+  /* Sidebar Sizes */
+  --brand-sidebar: 250px;
 }
-
 
 /* Animation for live indicator */
 @keyframes live-pulse {
@@ -36,13 +37,22 @@
 }
 
 /* PandaScore Tracker Styles */
+.pandascore-tracker * {
+  /* We use this to debug the entire widget css */
+  /* outline: 1px solid red; */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .pandascore-tracker {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     sans-serif;
   background-color: var(--brand-container-bg);
-  padding: 20px 0px;
+  padding: 15px 0px;
   border-radius: 8px;
-  min-width: 300px;
+  width: var(--brand-sidebar);
+  max-width: var(--brand-sidebar);
 }
 
 .pandascore-tracker.align-left {
@@ -57,7 +67,7 @@
   width: 100%;
 }
 .pandascore-matches-wrapper {
-  padding: 0px 20px;
+  padding: 0px 15px;
 }
 
 .pandascore-section-header {
@@ -94,6 +104,7 @@
 .pandascore-live-container,
 .pandascore-upcoming-container {
   margin-bottom: 20px;
+  padding: 2px 4px;
 }
 
 .pandascore-live-container:last-child,
@@ -105,17 +116,18 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-width: 250px;
+  width: 100%;
 }
 
 .pandascore-match {
   background: var(--brand-bg);
   color: var(--brand-white);
-  padding: 10px;
+  padding: 8px;
   border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  width: 100%;
 }
 
 .pandascore-league-container {
@@ -128,12 +140,13 @@
 .pandascore-league-placeholder {
   background: var(--brand-color);
   border-radius: 6px;
-  width: 60px; /* Increased from 40px to 60px */
-  height: 60px; /* Increased from 40px to 60px */
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: 6px;
+  flex-shrink: 0;
 }
 
 .pandascore-league-logo img {
@@ -157,13 +170,13 @@
 .pandascore-match-content.live-layout {
   flex-direction: column;
   gap: 5px;
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 .pandascore-teams-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   width: 100%;
 }
 
@@ -203,6 +216,10 @@
 .pandascore-team-name {
   font-size: var(--brand-font-md);
   color: var(--brand-white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
 }
 
 .pandascore-score {
@@ -220,9 +237,10 @@
 
 .pandascore-time-container {
   font-size: var(--brand-font-md);
-  min-width: 60px;
+  min-width: 50px;
   display: flex;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .pandascore-time-badge {
@@ -258,11 +276,10 @@
 
 .pandascore-league-filters {
   display: flex;
-  justify-content: center;
-  gap: 5px;
+  justify-content: space-evenly;
   margin: 0px auto;
-  max-width: 285px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  padding: 0px 5px;
 }
 
 .pandascore-league-filter {
@@ -271,38 +288,25 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   transition: transform 0.2s ease, background 0.2s, border-color 0.2s;
   width: 50px !important;
   height: 50px !important;
-  padding: 4px;
-  box-sizing: border-box;
 }
 
 .pandascore-league-filter img {
   width: 100% !important;
   height: 100% !important;
   object-fit: contain;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 
 .pandascore-league-filter.active {
-  transform: scale(1.05);
 }
 
 /* League-specific active border colors */
-.pandascore-league-filter[data-league-name='LCK'].active {
-  border-color: var(--brand-white);
-}
-
+.pandascore-league-filter[data-league-name='LCK'].active,
 .pandascore-league-filter[data-league-name='LCK']:hover {
-  border-color: var(--brand-white)!important;
+  border-color: var(--brand-white);
 }
 
 .pandascore-league-filter[data-league-name='LPL'].active,
@@ -324,3 +328,15 @@
 .pandascore-league-filter[data-league-name='OTHER LEAGUES']:hover {
   border-color: var(--brand-color);
 }
+
+/* Helper Classes */
+.lol-py-md {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.lol-px-md {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
