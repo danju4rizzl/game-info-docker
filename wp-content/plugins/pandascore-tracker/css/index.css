@@ -274,19 +274,26 @@
   border: 3px solid transparent;
   transition: transform 0.2s ease, background 0.2s, border-color 0.2s;
   width: 50px !important;
-  height: 38px !important;
-  padding: 18px 0px;
+  height: 50px !important;
+  padding: 4px;
+  box-sizing: border-box;
 }
 
 .pandascore-league-filter img {
-  width: 40px !important;
-  height: 40px !important;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .pandascore-league-filter.active {
-  /* Style the leagues active states */
-  /* transform: scale(1.1); */
+  transform: scale(1.05);
 }
 
 /* League-specific active border colors */
