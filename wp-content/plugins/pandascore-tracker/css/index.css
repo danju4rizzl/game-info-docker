@@ -273,14 +273,14 @@
   cursor: pointer;
   border: 3px solid transparent;
   transition: transform 0.2s ease, background 0.2s, border-color 0.2s;
-  width: 60px !important;
-  height: 46px !important;
-  padding: 22.5px 0px;
+  width: 50px !important;
+  height: 38px !important;
+  padding: 18px 0px;
 }
 
 .pandascore-league-filter img {
-  width: 50px !important;
-  height: 50px !important;
+  width: 40px !important;
+  height: 40px !important;
   object-fit: contain;
 }
 
@@ -294,18 +294,26 @@
   border-color: var(--brand-white);
 }
 
-.pandascore-league-filter[data-league-name='LPL'].active {
+.pandascore-league-filter[data-league-name='LCK']:hover {
+  border-color: var(--brand-white)!important;
+}
+
+.pandascore-league-filter[data-league-name='LPL'].active,
+.pandascore-league-filter[data-league-name='LPL']:hover {
   border-color: var(--brand-red);
 }
 
-.pandascore-league-filter[data-league-name='LEC'].active {
+.pandascore-league-filter[data-league-name='LEC'].active,
+.pandascore-league-filter[data-league-name='LEC']:hover {
   border-color: var(--brand-teal);
 }
 
-.pandascore-league-filter[data-league-name='LTA'].active {
+.pandascore-league-filter[data-league-name='LTA'].active,
+.pandascore-league-filter[data-league-name='LTA']:hover {
   border-color: var(--brand-brown);
 }
 
-.pandascore-league-filter[data-league-name='OTHER LEAGUES'].active {
+.pandascore-league-filter[data-league-name='OTHER LEAGUES'].active,
+.pandascore-league-filter[data-league-name='OTHER LEAGUES']:hover {
   border-color: var(--brand-color);
 }
