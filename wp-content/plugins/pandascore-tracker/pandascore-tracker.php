@@ -86,9 +86,9 @@ class PandaScore_Tracker_Plugin {
 
         // Add specific league buttons with local images
         foreach ($leagues as $league_name) {
-            // Handle special case for LTA (use LTA-NORTH image as representative)
+            // Handle special case for LTA (use LTA logo as representative for both North and South)
             if ($league_name === 'LTA') {
-                $filename = 'LTA-NORTH-logo.svg';
+                $filename = 'LTA-logo.svg';
             } else {
                 // Convert league name to filename format
                 $filename = str_replace(' ', '-', strtoupper($league_name)) . '-logo.svg';

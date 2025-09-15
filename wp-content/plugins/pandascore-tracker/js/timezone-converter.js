@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function getLocalDayDisplay(date) {
-        const today = new Date('2025-09-11T00:00:00Z') // Set to current date: September 11, 2025
+        const today = new Date()
         today.setHours(0, 0, 0, 0)
         const matchDate = new Date(date);
         matchDate.setHours(0, 0, 0, 0);
