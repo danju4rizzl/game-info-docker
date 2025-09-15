@@ -162,7 +162,7 @@ class PandaScore_Tracker_Plugin {
         $opponents = ['N/A', 'N/A'];
         $acronyms = ['N/A', 'N/A'];
         $logos = ['', ''];
-        $scores = [$is_live ? rand(0, 2) : 0, $is_live ? rand(0, 2) : 0];
+        $scores = [0, 0];
         $opponent_ids = [null, null];
 
         if (isset($match['opponents']) && is_array($match['opponents'])) {
@@ -230,10 +230,10 @@ class PandaScore_Tracker_Plugin {
     }
 
     public function shortcode_handler($atts) {
-        $atts = shortcode_atts(['game' => 'lol', 'limit' => 5, 'align' => 'center', 'type' => 'mixed'], $atts, 'pandascore_tracker');
+        $atts = shortcode_atts(['game' => 'lol', 'limit' => 100, 'align' => 'center', 'type' => 'mixed'], $atts, 'pandascore_tracker');
         wp_enqueue_style('pandascore-tracker-style');
         wp_enqueue_script('pandascore-timezone-js');
-        wp_enqueue_script('pandascore-league-filter-js'); // 🔹 enqueue filter script
+        wp_enqueue_script('pandascore-league-filter-js'); 
 
         $this->live_match_ids = [];
         $html = '<div class="pandascore-tracker align-' . esc_attr($atts['align']) . '">';

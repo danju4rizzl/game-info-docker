@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Define the specific leagues we're filtering for
   const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South']
   const ltaLeagues = ['LTA North', 'LTA South']
+  const MAX_DISPLAY = 8
 
   // Initialize default state: show only main 5 leagues, hide OTHER LEAGUES
   function initializeDefaultState() {
@@ -60,7 +61,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     })
 
-    // Update container visibility after filtering
+    // Enforce max visible per section, then update container visibility
+    enforceDisplayLimit()
     updateContainerVisibility()
   }
 
@@ -102,7 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     })
 
-    // Update container visibility after filtering
+    // Enforce max visible per section, then update container visibility
+    enforceDisplayLimit()
     updateContainerVisibility()
   }
 
@@ -133,6 +136,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  // Enforce max number of visible matches per section
+  function enforceDisplayLimit() {
+    const applyCap = (selector) => {
+      const container = document.querySelector(selector)
+      if (!container) return
+      const matches = Array.from(
+        container.querySelectorAll('.pandascore-match')
+      )
+      const visible = matches.filter((m) => m.style.display !== 'none')
+      visible.forEach((m, idx) => {
+        m.style.display = idx < MAX_DISPLAY ? 'flex' : 'none'
+      })
+    }
+    applyCap('.pandascore-live-container')
+    applyCap('.pandascore-upcoming-container')
+  }
+
   // Add click event listeners to filters
   filters.forEach((filter) => {
     filter.addEventListener('click', () => {
@@ -155,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize the default state on page load
   initializeDefaultState()
 
-  // Update container visibility after initialization
+  // Enforce max visible per section and update visibility after initialization
+  enforceDisplayLimit()
   updateContainerVisibility()
 })
