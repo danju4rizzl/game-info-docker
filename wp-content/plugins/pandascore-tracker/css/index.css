@@ -292,12 +292,17 @@
   transition: transform 0.2s ease, background 0.2s, border-color 0.2s;
   width: 50px !important;
   height: 50px !important;
+  overflow: hidden;
 }
 
 .pandascore-league-filter img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain;
+  object-fit: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
 }
 
 .pandascore-league-filter.active {
@@ -339,4 +344,3 @@
   padding-left: 10px;
   padding-right: 10px;
 }
-
