@@ -58,14 +58,13 @@ class PandaScore_Tracker_Plugin {
                 ?>
             </form>
             <h3>Shortcode Usage</h3>
-            <p><strong>Basic usage:</strong> <code>[pandascore_tracker game="valorant" limit="5" align="right"]</code></p>
-            <p><strong>Live matches:</strong> <code>[pandascore_tracker type="live" limit="5"]</code></p>
-            <p><strong>Mixed (live + upcoming):</strong> <code>[pandascore_tracker type="mixed" game="valorant" limit="10"]</code></p>
+            <p><strong>Basic usage:</strong> <code>[pandascore_tracker]</code>
+        </p>
+            <p><strong>Live matches:</strong> <code>[pandascore_tracker type="live"]</code></p>
+            <p><strong>Mixed (live + upcoming):</strong> <code>[pandascore_tracker type="mixed" game="lol"]</code></p>
             <h4>Parameters:</h4>
             <ul>
                 <li><strong>game:</strong> Game type (valorant, lol, csgo, dota2, etc.)</li>
-                <li><strong>limit:</strong> Number of matches to display (default: 5)</li>
-                <li><strong>align:</strong> Text alignment (left, center, right) (default: center)</li>
                 <li><strong>type:</strong> Match type - "upcoming" (default), "live", or "mixed"</li>
             </ul>
         </div>
