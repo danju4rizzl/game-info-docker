@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const matches = document.querySelectorAll('.pandascore-match')
 
   // Define the specific leagues we're filtering for
-  const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South']
+  const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA', 'LTA South']
   const ltaLeagues = ['LTA North', 'LTA South']
   const MAX_DISPLAY = 8
 
@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Show only matches from the 5 main leagues
       if (specificLeagues.includes(matchLeagueName)) {
+        console.log(specificLeagues)
+        console.log(matchLeagueName)
         match.style.display = 'flex'
       } else {
         match.style.display = 'none'
@@ -86,13 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
           match.style.display = 'none'
         } else {
           match.style.display = 'flex'
-        }
-      } else if (selectedLeague === 'LTA') {
-        // Show matches from both LTA North and LTA South
-        if (ltaLeagues.includes(matchLeagueName)) {
-          match.style.display = 'flex'
-        } else {
-          match.style.display = 'none'
         }
       } else {
         // Show matches from the selected specific league only

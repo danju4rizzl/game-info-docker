@@ -207,6 +207,10 @@ For support, feature requests, or bug reports:
 
 ## Changelog
 
+### Version 1.2.1
+- UI: Replaced unknown team label text from `N/A` to `TBD` (and updated placeholder logic to avoid using the letter "T").
+
+
 ### Version 1.1
 - Modern dark theme UI
 - Improved responsive design

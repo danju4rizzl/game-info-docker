@@ -1,7 +1,4 @@
-// cspell:ignore pandascore retryable
-;(function () {
-  'use strict'
-
+document.addEventListener('DOMContentLoaded', function () {
   /**
    * PandaScore Live Tracker - Modern WebSocket Implementation
    * Handles real-time score updates with proper error handling and reconnection logic
@@ -57,9 +54,7 @@
 
     const separator = baseUrl.includes('?') ? '&' : '?'
     const timestamp = Date.now()
-    return `${baseUrl}${separator}token=${encodeURIComponent(
-      apiKey
-    )}&t=${timestamp}`
+    return `${baseUrl}${separator}token=${encodeURIComponent(apiKey)}&t=${timestamp}`
   }
 
   async function fetchMatchResults(matchId) {
@@ -424,4 +419,4 @@
 
   // Initialize connections for all live matches
   wsMatches.forEach((match) => createConnection(match))
-})()
+})

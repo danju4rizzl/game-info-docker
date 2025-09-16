@@ -67,7 +67,7 @@
   width: 100%;
 }
 .pandascore-matches-wrapper {
-  padding: 0px 15px;
+  padding: 0px 7px;
 }
 
 .pandascore-section-header {
@@ -104,7 +104,6 @@
 .pandascore-live-container,
 .pandascore-upcoming-container {
   margin-bottom: 20px;
-  padding: 2px 4px;
 }
 
 .pandascore-live-container:last-child,
@@ -209,7 +208,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: bold;
   color: var(--brand-bg);
 }

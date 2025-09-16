@@ -96,7 +96,7 @@ class PandaScore_Tracker_Plugin {
         }
 
         // Add "OTHER LEAGUES" button using the same pattern
-        $other_leagues_filename = 'OTHERS-LEAGUES-logo.svg';
+        $other_leagues_filename = 'OTHERS-LEAGUES-logo.png';
         $other_leagues_image = plugins_url('images/' . $other_leagues_filename, __FILE__);
         $html .= '<div class="pandascore-league-filter" data-league-name="OTHER LEAGUES" title="OTHER LEAGUES">';
         $html .= '<img src="' . esc_url($other_leagues_image) . '" alt="OTHER LEAGUES">';
@@ -136,7 +136,7 @@ class PandaScore_Tracker_Plugin {
         if ($logo_url) {
             return '<img src="' . esc_url($logo_url) . '" alt="' . esc_attr($team_name) . '" class="pandascore-team-logo">';
         }
-        $fallback_letter = strtoupper($acronym && $acronym !== 'N/A' ? $acronym[0] : ($team_name && $team_name !== 'N/A' ? $team_name[0] : '?'));
+        $fallback_letter = strtoupper(($acronym && $acronym !== 'TBD' && $acronym !== 'N/A') ? $acronym[0] : (($team_name && $team_name !== 'TBD' && $team_name !== 'N/A') ? $team_name[0] : '?'));
         return '<div class="pandascore-team-logo-placeholder" title="Unknown Team">' . esc_html($fallback_letter) . '</div>';
     }
 
@@ -154,8 +154,8 @@ class PandaScore_Tracker_Plugin {
     }
 
     private function render_match($match, $is_live = false) {
-        $opponents = ['N/A', 'N/A'];
-        $acronyms = ['N/A', 'N/A'];
+        $opponents = ['TBD', 'TBD'];
+        $acronyms = ['TBD', 'TBD'];
         $logos = ['', ''];
         $scores = [0, 0];
         $opponent_ids = [null, null];
@@ -163,7 +163,7 @@ class PandaScore_Tracker_Plugin {
         if (isset($match['opponents']) && is_array($match['opponents'])) {
             foreach ($match['opponents'] as $i => $o) {
                 if ($i < 2) {
-                    $opponents[$i] = isset($o['opponent']['name']) ? esc_html($o['opponent']['name']) : 'N/A';
+                    $opponents[$i] = isset($o['opponent']['name']) ? esc_html($o['opponent']['name']) : 'TBD';
                     $acronyms[$i] = !empty($o['opponent']['acronym']) ? esc_html($o['opponent']['acronym']) : $opponents[$i];
                     $logos[$i] = $o['opponent']['image_url'] ?? '';
                     $opponent_ids[$i] = $o['opponent']['id'] ?? null;
