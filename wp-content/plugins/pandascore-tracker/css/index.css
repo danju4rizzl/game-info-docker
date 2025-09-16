@@ -300,11 +300,9 @@
 .pandascore-league-filter img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: none;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
+  object-fit: contain;
+  background: var(--brand-bg);
+  padding: 2px;
 }
 
 .pandascore-league-filter.active {
