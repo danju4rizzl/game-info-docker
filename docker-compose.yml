@@ -29,7 +29,7 @@ services:
 
   # WordPress (Apache + PHP 8.3)
   wordpress:
-    image: wordpress:6.6-php8.3-apache
+    image: wordpress:6.8.2-php8.3-apache
     depends_on:
       - db
     ports:
