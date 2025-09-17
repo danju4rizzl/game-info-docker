@@ -27,6 +27,7 @@ class PandaScore_Tracker_Plugin {
         wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', __FILE__), [], '1.2', true);
         wp_register_script('pandascore-timezone-js', plugins_url('js/timezone-converter.js', __FILE__), [], '1.0', true);
         wp_register_script('pandascore-league-filter-js', plugins_url('js/league-filter.js', __FILE__), [], '1.0', true);
+        wp_register_script('pandascore-date-filter-js', plugins_url('js/date-filter.js', __FILE__), [], '1.0', true);
     }
 
     public function admin_menu() {
@@ -75,6 +76,29 @@ class PandaScore_Tracker_Plugin {
         $opts = get_option($this->option_key);
         return isset($opts['api_key']) ? trim($opts['api_key']) : '';
     }
+    // 🔹 NEW: Render date filters (Today + next 6 days)
+    private function render_date_filters() {
+        $dates = [];
+        $now = current_time('timestamp'); // WP localized timestamp
+        for ($i = 0; $i < 7; $i++) {
+            $ts = $now + DAY_IN_SECONDS * $i;
+            $dates[] = [
+                'label' => $i === 0 ? __('Today', 'pandascore-tracker') : date_i18n('M j', $ts),
+                'iso'   => date_i18n('Y-m-d', $ts),
+            ];
+        }
+
+        $html = '<div class="pandascore-date-filters">';
+        foreach ($dates as $idx => $d) {
+            $active = $idx === 0 ? ' active' : '';
+            $html .= '<div class="pandascore-date-filter' . $active . '" data-date-iso="' . esc_attr($d['iso']) . '">';
+            $html .= esc_html($d['label']);
+            $html .= '</div>';
+        }
+        $html .= '</div>';
+        return $html;
+    }
+
 
     // 🔹 NEW: Render league filters row
     private function render_league_filters() {
@@ -227,12 +251,14 @@ class PandaScore_Tracker_Plugin {
         $atts = shortcode_atts(['game' => 'lol', 'limit' => 100, 'align' => 'center', 'type' => 'mixed'], $atts, 'pandascore_tracker');
         wp_enqueue_style('pandascore-tracker-style');
         wp_enqueue_script('pandascore-timezone-js');
-        wp_enqueue_script('pandascore-league-filter-js'); 
+        wp_enqueue_script('pandascore-league-filter-js');
+        wp_enqueue_script('pandascore-date-filter-js');
 
         $this->live_match_ids = [];
         $html = '<div class="pandascore-tracker align-' . esc_attr($atts['align']) . '">';
 
-        // 🔹 Render league filters first
+        // 🔹 Render date filters first, then league filters
+        $html .= $this->render_date_filters();
         $html .= $this->render_league_filters();
 
         // 🔹 Create grouped containers for live and upcoming matches

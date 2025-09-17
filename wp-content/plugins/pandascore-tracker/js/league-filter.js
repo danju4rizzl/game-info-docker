@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Enforce max visible per section, then update container visibility
     enforceDisplayLimit()
     updateContainerVisibility()
+    document.dispatchEvent(new CustomEvent('pandascore:league-filter-changed'))
   }
 
   // Filter matches for a specific league
@@ -102,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Enforce max visible per section, then update container visibility
     enforceDisplayLimit()
     updateContainerVisibility()
+    document.dispatchEvent(new CustomEvent('pandascore:league-filter-changed'))
   }
 
   // Update container visibility based on visible matches
@@ -146,6 +148,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     applyCap('.pandascore-live-container')
     applyCap('.pandascore-upcoming-container')
+    // React to external filter changes (e.g., date filter)
+    document.addEventListener('pandascore:filters-updated', () => {
+      enforceDisplayLimit()
+      updateContainerVisibility()
+    })
   }
 
   // Add click event listeners to filters

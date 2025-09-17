@@ -275,6 +275,47 @@
   border-radius: 6px;
 }
 
+/* Date filter strip */
+.pandascore-date-filters {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(7, 1fr);
+  margin: 0px auto 5px;
+  padding: 0 7px;
+  overflow: hidden;
+  overflow-x: scroll; /* Keep horizontal scrolling */
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.pandascore-date-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.pandascore-date-filter {
+  background: var(--brand-bg);
+  color: var(--brand-light-grey);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 8px 1px;
+  font-size: 8px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pandascore-date-filter.active,
+.pandascore-date-filter:hover {
+  border-color: var(--brand-color);
+  color: var(--brand-color);
+}
+
+/* League filter styles */
 .pandascore-league-filters {
   display: flex;
   justify-content: space-evenly;
