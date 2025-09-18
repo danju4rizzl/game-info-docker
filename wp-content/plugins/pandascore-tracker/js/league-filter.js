@@ -148,12 +148,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     applyCap('.pandascore-live-container')
     applyCap('.pandascore-upcoming-container')
-    // React to external filter changes (e.g., date filter)
-    document.addEventListener('pandascore:filters-updated', () => {
-      enforceDisplayLimit()
-      updateContainerVisibility()
-    })
   }
+
+  // Allow external reset to default main leagues (used by date filter toggle-off)
+  document.addEventListener('pandascore:reset-league-default', () => {
+    filters.forEach((f) => f.classList.remove('active'))
+    showMainLeaguesMatches()
+  })
+
+  // React to external filter changes (e.g., date filter) — attach once globally
+  document.addEventListener('pandascore:filters-updated', () => {
+    enforceDisplayLimit()
+    updateContainerVisibility()
+  })
+
+  // Reapply current league selection without changing active state (used when date filter is cleared)
+  document.addEventListener('pandascore:reapply-league', () => {
+    const active = document.querySelector('.pandascore-league-filter.active')
+    if (active) {
+      const selectedLeague = active.getAttribute('data-league-name')
+      filterByLeague(selectedLeague)
+    } else {
+      showMainLeaguesMatches()
+    }
+  })
 
   // Add click event listeners to filters
   filters.forEach((filter) => {

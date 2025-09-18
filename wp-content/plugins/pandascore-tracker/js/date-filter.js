@@ -72,6 +72,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   dateButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
+      const isActive = btn.classList.contains('active')
+
+      if (isActive) {
+        // Toggle OFF: clear active date only and reapply current league selection
+        dateButtons.forEach((b) => b.classList.remove('active'))
+        document.dispatchEvent(new CustomEvent('pandascore:reapply-league'))
+        document.dispatchEvent(new CustomEvent('pandascore:filters-updated'))
+        return
+      }
+
+      // Toggle ON: activate this date and filter
       dateButtons.forEach((b) => b.classList.remove('active'))
       btn.classList.add('active')
       const ymd = btn.getAttribute('data-date-iso')
@@ -80,8 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // Apply default (Today) on load
-  const active =
-    document.querySelector('.pandascore-date-filter.active') || dateButtons[0]
+  const active = document.querySelector('.pandascore-date-filter.active')
   if (active) {
     const ymd = active.getAttribute('data-date-iso')
     applyDateFilter(ymd)

@@ -89,9 +89,9 @@ class PandaScore_Tracker_Plugin {
         }
 
         $html = '<div class="pandascore-date-filters">';
-        foreach ($dates as $idx => $d) {
-            $active = $idx === 0 ? ' active' : '';
-            $html .= '<div class="pandascore-date-filter' . $active . '" data-date-iso="' . esc_attr($d['iso']) . '">';
+        foreach ($dates as $d) {
+            // No default active date; user must toggle to filter by date
+            $html .= '<div class="pandascore-date-filter" data-date-iso="' . esc_attr($d['iso']) . '">';
             $html .= esc_html($d['label']);
             $html .= '</div>';
         }

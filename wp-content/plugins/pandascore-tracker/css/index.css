@@ -297,16 +297,18 @@
   border: 2px solid transparent;
   border-radius: 8px;
   padding: 8px 1px;
-  font-size: 8px;
+  font-size: 10px;
+  font-weight: bold;
   line-height: 1;
   cursor: pointer;
   user-select: none;
   display: flex;
   gap: 5px;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   align-items: center;
   justify-content: center;
+  transition: border-color 0.8s ease, color 0.8s ease;
 }
 
 .pandascore-date-filter.active,
@@ -331,7 +333,8 @@
   justify-content: center;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: transform 0.2s ease, background 0.2s, border-color 0.2s;
+  border-radius: 8px;
+  transition: transform 0.8s ease, background 0.8s, border-color 0.8s;
   width: 50px !important;
   height: 50px !important;
   overflow: hidden;
