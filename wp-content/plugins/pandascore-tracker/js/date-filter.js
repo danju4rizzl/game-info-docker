@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function getActiveLeague() {
-    const activeBtn = document.querySelector(
-      '.pandascore-league-filter.active'
-    )
+    const activeBtn = document.querySelector('.pandascore-league-filter.active')
     return activeBtn ? activeBtn.getAttribute('data-league-name') : null
   }
 
@@ -101,6 +99,71 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('pandascore:league-filter-changed', () => {
     const current = document.querySelector('.pandascore-date-filter.active')
     if (current) applyDateFilter(current.getAttribute('data-date-iso'))
+  })
+
+  // Enable drag-to-scroll on the date filters container (desktop + touch)
+  const dateStrips = Array.from(
+    document.querySelectorAll('.pandascore-date-filters')
+  )
+
+  dateStrips.forEach((container) => {
+    let isDown = false
+    let startX = 0
+    let startScrollLeft = 0
+    let dragged = false
+
+    const onPointerDown = (e) => {
+      // For mouse: only left button; allow touch/pen
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      isDown = true
+      dragged = false
+      startX = e.clientX
+      startScrollLeft = container.scrollLeft
+      container.classList.add('is-dragging')
+      if (container.setPointerCapture) {
+        try {
+          container.setPointerCapture(e.pointerId)
+        } catch (_) {}
+      }
+      e.preventDefault()
+    }
+
+    const onPointerMove = (e) => {
+      if (!isDown) return
+      const dx = e.clientX - startX
+      if (Math.abs(dx) > 3) dragged = true
+      container.scrollLeft = startScrollLeft - dx
+    }
+
+    const endDrag = (e) => {
+      if (!isDown) return
+      isDown = false
+      container.classList.remove('is-dragging')
+      if (container.releasePointerCapture) {
+        try {
+          container.releasePointerCapture(e.pointerId)
+        } catch (_) {}
+      }
+    }
+
+    container.addEventListener('pointerdown', onPointerDown)
+    container.addEventListener('pointermove', onPointerMove)
+    container.addEventListener('pointerup', endDrag)
+    container.addEventListener('pointercancel', endDrag)
+    container.addEventListener('pointerleave', endDrag)
+
+    // Prevent accidental click on a date after dragging
+    container.addEventListener(
+      'click',
+      (e) => {
+        if (dragged) {
+          e.preventDefault()
+          e.stopPropagation()
+          dragged = false
+        }
+      },
+      true
+    )
   })
 })
 

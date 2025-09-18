@@ -284,6 +284,15 @@
   padding: 0 7px;
   overflow: hidden;
   overflow-x: scroll; /* Keep horizontal scrolling */
+  cursor: grab; /* Visual feedback for draggable area */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  touch-action: pan-y; /* Allow vertical page scroll, we handle horizontal drag */
+}
+
+/* While dragging */
+.pandascore-date-filters.is-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 
 /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
