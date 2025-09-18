@@ -119,31 +119,25 @@ document.addEventListener('DOMContentLoaded', () => {
       dragged = false
       startX = e.clientX
       startScrollLeft = container.scrollLeft
-      container.classList.add('is-dragging')
-      if (container.setPointerCapture) {
-        try {
-          container.setPointerCapture(e.pointerId)
-        } catch (_) {}
-      }
-      e.preventDefault()
     }
 
     const onPointerMove = (e) => {
       if (!isDown) return
       const dx = e.clientX - startX
-      if (Math.abs(dx) > 3) dragged = true
-      container.scrollLeft = startScrollLeft - dx
+      if (Math.abs(dx) > 3 && !dragged) {
+        dragged = true
+        container.classList.add('is-dragging')
+      }
+      if (dragged) {
+        container.scrollLeft = startScrollLeft - dx
+        e.preventDefault()
+      }
     }
 
-    const endDrag = (e) => {
+    const endDrag = () => {
       if (!isDown) return
       isDown = false
       container.classList.remove('is-dragging')
-      if (container.releasePointerCapture) {
-        try {
-          container.releasePointerCapture(e.pointerId)
-        } catch (_) {}
-      }
     }
 
     container.addEventListener('pointerdown', onPointerDown)
