@@ -155,6 +155,61 @@ class PandaScore_Tracker_Plugin {
         return $data;
     }
 
+    /**
+     * Build a wsMatches array for the front-end, augmenting known live match IDs
+     * with WebSocket endpoints when available from the /lives endpoint.
+     * Always returns at least objects with { match_id } so that the JS can
+     * initiate connections and fall back to polling if needed.
+     */
+    private function get_ws_matches_payload($matchIds = []) {
+        $api_key = $this->get_api_key();
+        $matchIds = array_values(array_unique(array_map('intval', (array) $matchIds)));
+        if (empty($matchIds) || !$api_key) return [];
+
+        $payload = [];
+        // Initialize with bare match_id entries
+        foreach ($matchIds as $id) {
+            $payload[(string) $id] = [ 'match_id' => $id ];
+        }
+
+        // Try to enrich from /lives
+        $response = wp_remote_get('https://api.pandascore.co/lives', [
+            'timeout' => 15,
+            'headers' => ['Authorization' => 'Bearer ' . $api_key]
+        ]);
+        if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+            $lives = json_decode(wp_remote_retrieve_body($response), true);
+            if (json_last_error() === JSON_ERROR_NONE && is_array($lives)) {
+                foreach ($lives as $item) {
+                    $match = isset($item['match']) ? $item['match'] : null;
+                    $mid = $match['id'] ?? ($item['match_id'] ?? null);
+                    if (!$mid) continue;
+                    if (!isset($payload[(string) $mid])) continue; // only care for rendered matches
+
+                    $events_url = null; $frames_url = null; $game_ids = [];
+                    if (!empty($item['endpoints']) && is_array($item['endpoints'])) {
+                        foreach ($item['endpoints'] as $ep) {
+                            if (($ep['type'] ?? '') === 'events') $events_url = $ep['url'] ?? null;
+                            if (($ep['type'] ?? '') === 'frames') $frames_url = $ep['url'] ?? null;
+                        }
+                    }
+                    if (!empty($match['games']) && is_array($match['games'])) {
+                        foreach ($match['games'] as $g) {
+                            if (isset($g['id'])) $game_ids[] = intval($g['id']);
+                        }
+                    }
+
+                    $payload[(string) $mid]['events_url'] = $events_url;
+                    $payload[(string) $mid]['frames_url'] = $frames_url;
+                    if (!empty($game_ids)) $payload[(string) $mid]['game_ids'] = $game_ids;
+                }
+            }
+        }
+
+        // Return as a numeric array
+        return array_values($payload);
+    }
+
     private function get_team_logo_html($logo_url, $team_name, $acronym) {
         if ($logo_url) {
             return '<img src="' . esc_url($logo_url) . '" alt="' . esc_attr($team_name) . '" class="pandascore-team-logo">';
@@ -283,10 +338,10 @@ class PandaScore_Tracker_Plugin {
 
         if ($this->live_match_ids) {
             wp_enqueue_script('pandascore-live-tracker-js');
+            $wsMatches = $this->get_ws_matches_payload($this->live_match_ids);
             wp_localize_script('pandascore-live-tracker-js', 'pandaScoreLiveTracker', [
                 'apiKey' => $this->get_api_key(),
-                'matchIds' => array_unique($this->live_match_ids),
-                'websocketUrl' => 'wss://websocket.pandascore.co/ws'
+                'wsMatches' => $wsMatches,
             ]);
         }
 
