@@ -2,10 +2,53 @@ document.addEventListener('DOMContentLoaded', function () {
   const filters = document.querySelectorAll('.pandascore-league-filter')
   const matches = document.querySelectorAll('.pandascore-match')
 
-  // Define the specific leagues we're filtering for
-  const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA', 'LTA South']
+  // Define the specific leagues we're filtering for (default visible set)
+  const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South']
   const ltaLeagues = ['LTA North', 'LTA South']
   const MAX_DISPLAY = 8
+
+  // Helpers: sorting
+  const leaguePriority = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South']
+  function getLeagueName(match) {
+    const img = match.querySelector('.pandascore-league-container img')
+    return img ? img.alt : ''
+  }
+  function sortByScheduledAtAsc(a, b) {
+    const ta = a.getAttribute('data-scheduled-at')
+    const tb = b.getAttribute('data-scheduled-at')
+    if (!ta && !tb) return 0
+    if (!ta) return 1
+    if (!tb) return -1
+    return new Date(ta) - new Date(tb)
+  }
+  function sortLiveMatches() {
+    const liveContainer = document.querySelector(
+      '.pandascore-live-container .pandascore-matches-container'
+    )
+    if (!liveContainer) return
+    const items = Array.from(
+      liveContainer.querySelectorAll('.pandascore-match')
+    )
+    items.sort((a, b) => {
+      const la = getLeagueName(a)
+      const lb = getLeagueName(b)
+      const pa = leaguePriority.includes(la) ? leaguePriority.indexOf(la) : 999
+      const pb = leaguePriority.includes(lb) ? leaguePriority.indexOf(lb) : 999
+      if (pa !== pb) return pa - pb
+      // Secondary: scheduled time if available
+      return sortByScheduledAtAsc(a, b)
+    })
+    items.forEach((el) => liveContainer.appendChild(el))
+  }
+  function sortUpcomingMatches() {
+    const upContainer = document.querySelector(
+      '.pandascore-upcoming-container .pandascore-matches-container'
+    )
+    if (!upContainer) return
+    const items = Array.from(upContainer.querySelectorAll('.pandascore-match'))
+    items.sort(sortByScheduledAtAsc)
+    items.forEach((el) => upContainer.appendChild(el))
+  }
 
   // Initialize default state: show only main 5 leagues, hide OTHER LEAGUES
   function initializeDefaultState() {
@@ -37,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ensure no filters are active initially
     filters.forEach((f) => f.classList.remove('active'))
+
+    // Initial sort
+    sortLiveMatches()
+    sortUpcomingMatches()
   }
 
   // Show matches from the 5 main leagues (default state)
@@ -55,8 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Show only matches from the 5 main leagues
       if (specificLeagues.includes(matchLeagueName)) {
-        console.log(specificLeagues)
-        console.log(matchLeagueName)
         match.style.display = 'flex'
       } else {
         match.style.display = 'none'
@@ -64,6 +109,8 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     // Enforce max visible per section, then update container visibility
+    sortLiveMatches()
+    sortUpcomingMatches()
     enforceDisplayLimit()
     updateContainerVisibility()
     document.dispatchEvent(new CustomEvent('pandascore:league-filter-changed'))
@@ -90,17 +137,21 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           match.style.display = 'flex'
         }
+      } else if (selectedLeague === 'LTA') {
+        // Show both LTA North and LTA South
+        match.style.display = ltaLeagues.includes(matchLeagueName)
+          ? 'flex'
+          : 'none'
       } else {
         // Show matches from the selected specific league only
-        if (matchLeagueName === selectedLeague) {
-          match.style.display = 'flex'
-        } else {
-          match.style.display = 'none'
-        }
+        match.style.display =
+          matchLeagueName === selectedLeague ? 'flex' : 'none'
       }
     })
 
     // Enforce max visible per section, then update container visibility
+    sortLiveMatches()
+    sortUpcomingMatches()
     enforceDisplayLimit()
     updateContainerVisibility()
     document.dispatchEvent(new CustomEvent('pandascore:league-filter-changed'))
@@ -158,6 +209,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // React to external filter changes (e.g., date filter) — attach once globally
   document.addEventListener('pandascore:filters-updated', () => {
+    sortLiveMatches()
+    sortUpcomingMatches()
     enforceDisplayLimit()
     updateContainerVisibility()
   })

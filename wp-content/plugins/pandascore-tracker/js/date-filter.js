@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   )
   if (dateButtons.length === 0) return
 
-  const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA', 'LTA South']
+  const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South']
   const ltaLeagues = ['LTA North', 'LTA South']
 
   const getYMD = (d) => {
@@ -40,6 +40,23 @@ document.addEventListener('DOMContentLoaded', () => {
     return name === activeLeague
   }
 
+  function sortUpcomingMatches() {
+    const upContainer = document.querySelector(
+      '.pandascore-upcoming-container .pandascore-matches-container'
+    )
+    if (!upContainer) return
+    const items = Array.from(upContainer.querySelectorAll('.pandascore-match'))
+    items.sort((a, b) => {
+      const ta = a.getAttribute('data-scheduled-at')
+      const tb = b.getAttribute('data-scheduled-at')
+      if (!ta && !tb) return 0
+      if (!ta) return 1
+      if (!tb) return -1
+      return new Date(ta) - new Date(tb)
+    })
+    items.forEach((el) => upContainer.appendChild(el))
+  }
+
   function applyDateFilter(selectedYMD) {
     const upcomingContainer = document.querySelector(
       '.pandascore-upcoming-container'
@@ -64,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
       m.style.display = matchesDate && passesLeague ? 'flex' : 'none'
     })
 
-    // Let other scripts (league filter) update caps/visibility
+    // Sort visible upcoming matches by time, then notify others
+    sortUpcomingMatches()
     document.dispatchEvent(new CustomEvent('pandascore:filters-updated'))
   }
 
