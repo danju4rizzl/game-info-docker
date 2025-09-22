@@ -1,422 +1,319 @@
 document.addEventListener('DOMContentLoaded', function () {
   /**
-   * PandaScore Live Tracker - Modern WebSocket Implementation
-   * Handles real-time score updates with proper error handling and reconnection logic
+   * Improved PandaScore Live Tracker
+   * Handles WebSocket connections more reliably with proper error handling
    */
 
   // Configuration
   const CONFIG = {
-    MAX_RETRIES: 5,
-    BASE_RETRY_DELAY: 2000,
-    MAX_RETRY_DELAY: 30000,
-    POLL_INTERVAL: 20000,
-    NON_RETRY_CODES: new Set([1000, 4001, 4003, 4029])
+    MAX_RETRIES: 3,
+    RETRY_DELAY: 5000,
+    POLL_INTERVAL: 15000,
+    NON_RETRY_CODES: [1000, 4001, 4003, 4029] // Codes that shouldn't trigger reconnection
   }
 
   // Validate environment
   if (typeof pandaScoreLiveTracker === 'undefined') {
-    console.error('[PandaScore] Localized data not found.')
+    console.log('[PandaScore] No live tracking data available')
     return
   }
 
   const { apiKey, wsMatches } = pandaScoreLiveTracker
 
   if (!apiKey?.trim()) {
-    console.error('[PandaScore] API key is missing or invalid.')
+    console.error('[PandaScore] API key is missing')
     return
   }
 
   if (!Array.isArray(wsMatches) || wsMatches.length === 0) {
-    console.info('[PandaScore] No live matches to track.')
+    console.log('[PandaScore] No live matches to track')
     return
   }
 
+  console.log(`[PandaScore] Starting tracker for ${wsMatches.length} matches`)
+
   // State management
   const connections = new Map()
-  const lastResults = new Map()
+  const retryAttempts = new Map()
 
   /**
-   * Utility Functions
+   * Build WebSocket URL properly
    */
-  function buildWebSocketUrl(match, useFrames = false) {
-    let baseUrl
-
-    if (useFrames && match.frames_url?.length) {
-      baseUrl = match.frames_url
-    } else if (!useFrames && match.events_url?.length) {
-      baseUrl = match.events_url
-    } else if (match.frames_url?.length) {
-      baseUrl = match.frames_url
-    } else {
-      // Final fallback to generic frames endpoint
-      baseUrl = `wss://live.pandascore.co/matches/${match.match_id}`
-    }
-
-    const separator = baseUrl.includes('?') ? '&' : '?'
-    const timestamp = Date.now()
-    return `${baseUrl}${separator}token=${encodeURIComponent(apiKey)}&t=${timestamp}`
+  function buildWebSocketUrl(matchId) {
+    return `wss://live.pandascore.co/matches/${matchId}?token=${encodeURIComponent(apiKey)}`
   }
 
-  async function fetchMatchResults(matchId) {
-    try {
-      const url = `https://api.pandascore.co/matches/${matchId}?token=${encodeURIComponent(
-        apiKey
-      )}`
-      const response = await fetch(url, {
-        headers: { Accept: 'application/json' }
+  /**
+   * Update match scores in the DOM
+   */
+  function updateMatchScores(matchId, matchData) {
+    const matchElement = document.querySelector(`[data-match-id="${matchId}"]`)
+    if (!matchElement) {
+      console.warn(`[PandaScore] Match element not found: ${matchId}`)
+      return
+    }
+
+    // Update scores if available
+    if (matchData.results && Array.isArray(matchData.results)) {
+      matchData.results.forEach((result, index) => {
+        const opponentId = result.team_id || result.opponent_id
+        if (!opponentId) return
+
+        const scoreElement = matchElement.querySelector(
+          `[data-opponent-id="${opponentId}"]`
+        )
+        if (scoreElement) {
+          const newScore = parseInt(result.score, 10) || 0
+          const currentScore = parseInt(scoreElement.textContent, 10) || 0
+
+          if (newScore !== currentScore) {
+            scoreElement.textContent = newScore
+
+            // Add visual feedback for score changes
+            scoreElement.classList.add('score-updating')
+            setTimeout(() => {
+              scoreElement.classList.remove('score-updating')
+            }, 1000)
+
+            console.log(
+              `[PandaScore] Score updated for match ${matchId}: ${newScore}`
+            )
+          }
+        }
       })
+    }
+
+    // Update match status if finished
+    if (matchData.status === 'finished') {
+      console.log(`[PandaScore] Match ${matchId} finished, stopping tracking`)
+      stopTracking(matchId)
+    }
+  }
+
+  /**
+   * Fetch match data via REST API
+   */
+  async function fetchMatchData(matchId) {
+    try {
+      const response = await fetch(
+        `https://api.pandascore.co/matches/${matchId}?token=${encodeURIComponent(
+          apiKey
+        )}`
+      )
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        console.warn(
+          `[PandaScore] HTTP ${response.status} for match ${matchId}`
+        )
+        return null
       }
 
       const data = await response.json()
-      if (data) {
-        updateDomWithMatchData(matchId, data)
-      }
+      updateMatchScores(matchId, data)
+      return data
     } catch (error) {
       console.warn(
-        `[PandaScore] Failed to fetch results for match ${matchId}:`,
+        `[PandaScore] Fetch failed for match ${matchId}:`,
         error.message
       )
+      return null
     }
-  }
-
-  function updateDomWithMatchData(matchId, matchData) {
-    const key = String(matchId)
-    const previousData = lastResults.get(key)
-
-    // Skip update if data hasn't changed
-    if (
-      previousData &&
-      JSON.stringify(previousData) === JSON.stringify(matchData)
-    ) {
-      return
-    }
-
-    lastResults.set(key, matchData)
-
-    const matchElement = document.querySelector(
-      `.pandascore-match[data-match-id='${matchId}'], .ps-card[data-match-id='${matchId}']`
-    )
-
-    if (!matchElement) {
-      console.warn(`[PandaScore] Match element not found for ID: ${matchId}`)
-      return
-    }
-
-    // Update scores and team information
-    if (matchData.results && Array.isArray(matchData.results)) {
-      updateScores(matchElement, matchData.results)
-    }
-
-    // Update team names and logos if available
-    if (matchData.opponents && Array.isArray(matchData.opponents)) {
-      updateTeamInfo(matchElement, matchData.opponents)
-    }
-
-    // Update win/lose states based on current scores
-    updateWinLoseStates(matchElement, matchData.results)
-
-    // Update odds with some variation for live matches
-    updateOdds(matchElement)
-  }
-
-  function updateScores(matchElement, results) {
-    results.forEach((result) => {
-      const opponentId = result.team_id || result.opponent_id
-      if (!opponentId) return
-
-      const score = Number.isInteger(result.score)
-        ? result.score
-        : parseInt(result.score, 10)
-      const scoreElement = matchElement.querySelector(
-        `[data-opponent-id='${opponentId}']`
-      )
-
-      if (scoreElement) {
-        const newScore = Number.isNaN(score) ? '-' : String(score)
-        if (scoreElement.textContent !== newScore) {
-          scoreElement.textContent = newScore
-          scoreElement.classList.add('score-updating')
-
-          // Add visual feedback for score changes with Tailwind classes
-          scoreElement.classList.remove('bg-gray-700')
-          scoreElement.classList.add('bg-green-500')
-          setTimeout(() => {
-            scoreElement.classList.remove('bg-green-500')
-            scoreElement.classList.add('bg-gray-700')
-          }, 1000)
-        }
-      }
-    })
-  }
-
-  function updateTeamInfo(matchElement, opponents) {
-    opponents.forEach((opponent, index) => {
-      const teamName = opponent.opponent?.name || opponent.name || 'NAME'
-      const teamLogo = opponent.opponent?.image_url || opponent.image_url || ''
-
-      // Update team name
-      const teamNameElements = matchElement.querySelectorAll(
-        '.text-sm.font-medium.truncate.flex-1'
-      )
-      if (teamNameElements[index]) {
-        teamNameElements[index].textContent = teamName
-      }
-
-      // Update team logo
-      const teamLogoElements = matchElement.querySelectorAll(
-        '.w-6.h-6.object-contain.flex-shrink-0.mr-2'
-      )
-      if (teamLogoElements[index] && teamLogo) {
-        if (teamLogoElements[index].tagName === 'IMG') {
-          teamLogoElements[index].src = teamLogo
-          teamLogoElements[index].alt = teamName
-        } else {
-          // Replace div with img
-          const img = document.createElement('img')
-          img.className = 'w-6 h-6 object-contain flex-shrink-0 mr-2'
-          img.src = teamLogo
-          img.alt = teamName
-          teamLogoElements[index].parentNode.replaceChild(
-            img,
-            teamLogoElements[index]
-          )
-        }
-      }
-    })
-  }
-
-  function updateOdds(matchElement) {
-    const oddsElements = matchElement.querySelectorAll('.ps-odds')
-    oddsElements.forEach((oddsElement) => {
-      // Generate slightly varying odds for live matches to simulate real-time changes
-      const baseOdds = parseFloat(oddsElement.textContent) || 2.5
-      const variation = (Math.random() - 0.5) * 0.4 // ±0.2 variation
-      const newOdds = Math.max(1.1, Math.min(10.0, baseOdds + variation))
-
-      const formattedOdds = newOdds.toFixed(1)
-      if (oddsElement.textContent !== formattedOdds) {
-        oddsElement.textContent = formattedOdds
-
-        // Add brief highlight for odds changes
-        oddsElement.style.transition = 'color 0.3s ease'
-        oddsElement.style.color = '#ffa500'
-        setTimeout(() => {
-          oddsElement.style.color = ''
-        }, 800)
-      }
-    })
-  }
-
-  function updateWinLoseStates(matchElement, results) {
-    if (!results || results.length < 2) return
-
-    const scores = results.map((r) =>
-      Number.isInteger(r.score) ? r.score : parseInt(r.score, 10)
-    )
-    const team1Win = scores[0] > scores[1]
-    const team2Win = scores[1] > scores[0]
-
-    // Update score element classes
-    results.forEach((result, index) => {
-      const opponentId = result.team_id || result.opponent_id
-      const scoreElement = matchElement.querySelector(
-        `[data-opponent-id='${opponentId}']`
-      )
-
-      if (scoreElement) {
-        // Remove existing win/lose classes
-        scoreElement.classList.remove('win', 'lose')
-
-        // Add appropriate class
-        if (index === 0 && team1Win) {
-          scoreElement.classList.add('win')
-        } else if (index === 1 && team2Win) {
-          scoreElement.classList.add('win')
-        } else if ((index === 0 && team2Win) || (index === 1 && team1Win)) {
-          scoreElement.classList.add('lose')
-        }
-      }
-    })
   }
 
   /**
-   * Connection Management with Smart Fallback
+   * Create WebSocket connection with proper error handling
    */
-  function createConnection(match, attempt = 0, useFrames = false) {
-    if (attempt >= CONFIG.MAX_RETRIES) {
-      console.warn(
-        `[PandaScore] Max retries reached for match ${match.match_id}`
-      )
-
-      // If we haven't tried polling fallback yet, enable it
-      if (!match.use_polling_fallback) {
-        console.info(
-          `[PandaScore] Enabling polling-only mode for match ${match.match_id}`
-        )
-        match.use_polling_fallback = true
-        startPollingFallback(match)
-      }
-      return
-    }
-
-    const url = buildWebSocketUrl(match, useFrames)
-    let socket
+  function createWebSocketConnection(matchId) {
+    const wsUrl = buildWebSocketUrl(matchId)
+    let ws
     let pollTimer = null
 
-    console.log(
-      `[PandaScore] Attempting connection to match ${match.match_id} (${
-        useFrames ? 'frames' : 'events'
-      } endpoint)`
-    )
+    console.log(`[PandaScore] Connecting to match ${matchId}`)
 
     try {
-      socket = new WebSocket(url)
+      ws = new WebSocket(wsUrl)
     } catch (error) {
       console.error(
-        `[PandaScore] Failed to create WebSocket for match ${match.match_id}:`,
+        `[PandaScore] Failed to create WebSocket for ${matchId}:`,
         error
       )
-      scheduleReconnect(match, attempt + 1, useFrames)
+      scheduleRetry(matchId)
       return
     }
 
-    connections.set(match.match_id, socket)
+    // Store connection
+    connections.set(matchId, { socket: ws, pollTimer: null })
 
-    socket.onopen = function () {
-      console.log(`[PandaScore] Connected to match ${match.match_id}`)
+    ws.onopen = function (event) {
+      console.log(`[PandaScore] Connected to match ${matchId}`)
 
-      // Send recovery request if available
-      if (match.events_url && match.game_ids?.length) {
-        const lastGameId = match.game_ids[match.game_ids.length - 1]
-        try {
-          socket.send(
-            JSON.stringify({
-              type: 'recover',
-              payload: { game_id: lastGameId }
-            })
-          )
-        } catch (error) {
-          console.warn(
-            `[PandaScore] Failed to send recovery for match ${match.match_id}`
-          )
-        }
-      }
+      // Reset retry counter on successful connection
+      retryAttempts.delete(matchId)
 
-      // Initial sync and start polling
-      fetchMatchResults(match.match_id)
+      // Initial data fetch
+      fetchMatchData(matchId)
 
-      // Use more frequent polling for live matches (every 5 seconds)
-      const pollInterval = 5000
-      pollTimer = setInterval(
-        () => fetchMatchResults(match.match_id),
-        pollInterval
-      )
+      // Start periodic polling as backup (less frequent than before)
+      pollTimer = setInterval(() => {
+        fetchMatchData(matchId)
+      }, CONFIG.POLL_INTERVAL)
+
+      // Update connection object
+      connections.set(matchId, { socket: ws, pollTimer: pollTimer })
     }
 
-    socket.onmessage = function (event) {
+    ws.onmessage = function (event) {
       try {
-        const message = JSON.parse(event.data)
-        if (message?.type === 'hello') return
+        const data = JSON.parse(event.data)
 
-        // Trigger result sync for any other message
-        fetchMatchResults(match.match_id)
-      } catch (error) {
-        // Invalid JSON - sync anyway
-        fetchMatchResults(match.match_id)
-      }
-    }
-
-    socket.onerror = function (error) {
-      console.error(
-        `[PandaScore] WebSocket error for match ${match.match_id}:`,
-        error
-      )
-    }
-
-    socket.onclose = function (event) {
-      if (pollTimer) {
-        clearInterval(pollTimer)
-        pollTimer = null
-      }
-
-      connections.delete(match.match_id)
-
-      // Handle specific error codes with smart fallback
-      if (event?.code === 4003) {
-        console.warn(
-          `[PandaScore] Events endpoint forbidden for match ${match.match_id} (code: 4003)`
-        )
-
-        if (!useFrames && match.frames_url) {
-          console.info(
-            `[PandaScore] Trying frames endpoint for match ${match.match_id}`
-          )
-          scheduleReconnect(match, 0, true) // Reset attempt count, try frames
-          return
-        } else {
-          console.info(
-            `[PandaScore] WebSocket unavailable, using polling for match ${match.match_id}`
-          )
-          match.use_polling_fallback = true
-          startPollingFallback(match)
+        // Handle different message types
+        if (data.type === 'hello') {
+          console.log(`[PandaScore] Received hello from match ${matchId}`)
           return
         }
-      }
 
-      // Other non-retryable codes
-      if (CONFIG.NON_RETRY_CODES.has(event?.code)) {
+        // For any other message, fetch latest match data
+        fetchMatchData(matchId)
+      } catch (error) {
+        console.warn(`[PandaScore] Invalid JSON from match ${matchId}`)
+        // Still fetch data even if JSON is invalid
+        fetchMatchData(matchId)
+      }
+    }
+
+    ws.onerror = function (error) {
+      console.warn(`[PandaScore] WebSocket error for match ${matchId}:`, error)
+    }
+
+    ws.onclose = function (event) {
+      console.log(
+        `[PandaScore] Connection closed for match ${matchId}, code: ${event.code}`
+      )
+
+      // Clean up polling timer
+      const connection = connections.get(matchId)
+      if (connection && connection.pollTimer) {
+        clearInterval(connection.pollTimer)
+      }
+      connections.delete(matchId)
+
+      // Handle reconnection based on close code
+      if (CONFIG.NON_RETRY_CODES.includes(event.code)) {
         console.log(
-          `[PandaScore] Connection closed for match ${match.match_id} (code: ${event.code})`
+          `[PandaScore] Not retrying match ${matchId} due to close code ${event.code}`
         )
+
+        // For 4003 (forbidden), fall back to polling only
+        if (event.code === 4003) {
+          startPollingOnlyMode(matchId)
+        }
         return
       }
 
-      console.warn(
-        `[PandaScore] Connection lost for match ${match.match_id}, reconnecting...`
-      )
-      scheduleReconnect(match, attempt + 1, useFrames)
+      // Schedule retry for other cases
+      scheduleRetry(matchId)
     }
-  }
-
-  function scheduleReconnect(match, attempt, useFrames = false) {
-    const delay = Math.min(
-      CONFIG.MAX_RETRY_DELAY,
-      CONFIG.BASE_RETRY_DELAY * Math.pow(2, attempt - 1)
-    )
-
-    setTimeout(() => createConnection(match, attempt, useFrames), delay)
   }
 
   /**
-   * Polling Fallback for when WebSocket is unavailable
+   * Schedule reconnection attempt
    */
-  function startPollingFallback(match) {
-    console.info(
-      `[PandaScore] Starting polling fallback for match ${match.match_id}`
+  function scheduleRetry(matchId) {
+    const attempts = retryAttempts.get(matchId) || 0
+
+    if (attempts >= CONFIG.MAX_RETRIES) {
+      console.warn(
+        `[PandaScore] Max retries reached for match ${matchId}, switching to polling`
+      )
+      startPollingOnlyMode(matchId)
+      return
+    }
+
+    retryAttempts.set(matchId, attempts + 1)
+
+    console.log(
+      `[PandaScore] Retrying match ${matchId} in ${
+        CONFIG.RETRY_DELAY
+      }ms (attempt ${attempts + 1})`
     )
 
+    setTimeout(() => {
+      createWebSocketConnection(matchId)
+    }, CONFIG.RETRY_DELAY)
+  }
+
+  /**
+   * Fall back to polling-only mode
+   */
+  function startPollingOnlyMode(matchId) {
+    console.log(`[PandaScore] Starting polling-only mode for match ${matchId}`)
+
     // Initial fetch
-    fetchMatchResults(match.match_id)
+    fetchMatchData(matchId)
 
-    // Set up aggressive polling for live matches (every 3 seconds)
-    const pollInterval = setInterval(() => {
-      fetchMatchResults(match.match_id)
-    }, 3000) // Very frequent updates for live matches
+    // Set up polling
+    const pollTimer = setInterval(() => {
+      fetchMatchData(matchId)
+    }, CONFIG.POLL_INTERVAL)
 
-    connections.set(match.match_id, { type: 'polling', timer: pollInterval })
+    connections.set(matchId, { type: 'polling', pollTimer: pollTimer })
   }
 
-  function stopPollingFallback(matchId) {
+  /**
+   * Stop tracking a match
+   */
+  function stopTracking(matchId) {
     const connection = connections.get(matchId)
-    if (connection && connection.type === 'polling') {
-      clearInterval(connection.timer)
-      connections.delete(matchId)
+    if (!connection) return
+
+    if (connection.socket && connection.socket.readyState === WebSocket.OPEN) {
+      connection.socket.close(1000, 'Match finished')
     }
+
+    if (connection.pollTimer) {
+      clearInterval(connection.pollTimer)
+    }
+
+    connections.delete(matchId)
+    retryAttempts.delete(matchId)
+
+    console.log(`[PandaScore] Stopped tracking match ${matchId}`)
   }
 
-  // Initialize connections for all live matches
-  wsMatches.forEach((match) => createConnection(match))
+  /**
+   * Initialize tracking for all live matches
+   */
+  function initializeTracking() {
+    wsMatches.forEach((match) => {
+      const matchId = match.match_id
+
+      if (!matchId) {
+        console.warn('[PandaScore] Match missing ID:', match)
+        return
+      }
+
+      // Start with WebSocket connection attempt
+      createWebSocketConnection(matchId)
+    })
+  }
+
+  /**
+   * Clean up on page unload
+   */
+  window.addEventListener('beforeunload', () => {
+    connections.forEach((connection, matchId) => {
+      if (
+        connection.socket &&
+        connection.socket.readyState === WebSocket.OPEN
+      ) {
+        connection.socket.close(1000, 'Page unload')
+      }
+      if (connection.pollTimer) {
+        clearInterval(connection.pollTimer)
+      }
+    })
+  })
+
+  // Start tracking
+  initializeTracking()
 })

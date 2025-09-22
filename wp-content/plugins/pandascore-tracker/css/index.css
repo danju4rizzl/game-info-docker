@@ -36,6 +36,18 @@
   }
 }
 
+/* Helper Classes */
+.lol-py-md {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.lol-px-md {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
 /* PandaScore Tracker Styles */
 .pandascore-tracker * {
   /* We use this to debug the entire widget css */
@@ -386,13 +398,99 @@
   border-color: var(--brand-color);
 }
 
-/* Helper Classes */
-.lol-py-md {
-  padding-top: 10px;
-  padding-bottom: 10px;
+
+
+
+/* Score updating animation */
+.pandascore-score.score-updating {
+  animation: scoreUpdate 1s ease-in-out;
+  transform: scale(1.1);
 }
 
-.lol-px-md {
-  padding-left: 10px;
-  padding-right: 10px;
+@keyframes scoreUpdate {
+  0% {
+    transform: scale(1);
+    background-color: var(--brand-color);
+  }
+  50% {
+    transform: scale(1.15);
+    background-color: var(--brand-teal);
+    box-shadow: 0 0 10px rgba(0, 229, 190, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    background-color: var(--brand-color);
+  }
+}
+
+/* Enhanced live indicator with better visibility */
+.pandascore-live-indicator {
+  background: var(--brand-color);
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  margin: 0 7px;
+  position: relative;
+  animation: livePulse 2s infinite;
+}
+
+.pandascore-live-indicator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: var(--brand-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: liveRipple 2s infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes liveRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+/* Connection status indicator (optional - you can add this to show WebSocket status) */
+.pandascore-connection-status {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 1000;
+  display: none; /* Hidden by default, can be shown via JavaScript for debugging */
+}
+
+.pandascore-connection-status.connected {
+  background-color: var(--brand-teal);
+  color: white;
+}
+
+.pandascore-connection-status.disconnected {
+  background-color: var(--brand-red);
+  color: white;
+}
+
+.pandascore-connection-status.connecting {
+  background-color: var(--brand-color);
+  color: var(--brand-bg);
 }

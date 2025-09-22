@@ -2,7 +2,7 @@
 /*
 Plugin Name: PandaScore Tracker
 Description: Fetches and displays PandaScore game scores via shortcode.
-Version: 1.2 (League Filter Added)
+Version: 1.3 (Improved WebSocket Implementation)
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
@@ -23,8 +23,8 @@ class PandaScore_Tracker_Plugin {
     }
 
     public function enqueue_assets() {
-        wp_register_style('pandascore-tracker-style', plugins_url('css/index.css', __FILE__), [], '1.2');
-        wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', __FILE__), [], '1.2', true);
+        wp_register_style('pandascore-tracker-style', plugins_url('css/index.css', __FILE__), [], '1.3');
+        wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', __FILE__), [], '1.3', true);
         wp_register_script('pandascore-timezone-js', plugins_url('js/timezone-converter.js', __FILE__), [], '1.0', true);
         wp_register_script('pandascore-league-filter-js', plugins_url('js/league-filter.js', __FILE__), [], '1.0', true);
         wp_register_script('pandascore-date-filter-js', plugins_url('js/date-filter.js', __FILE__), [], '1.0', true);
@@ -76,7 +76,7 @@ class PandaScore_Tracker_Plugin {
         $opts = get_option($this->option_key);
         return isset($opts['api_key']) ? trim($opts['api_key']) : '';
     }
-    // 🔹 NEW: Render date filters (Today + next 6 days)
+
     private function render_date_filters() {
         $dates = [];
         $now = current_time('timestamp'); // WP localized timestamp
@@ -90,7 +90,6 @@ class PandaScore_Tracker_Plugin {
 
         $html = '<div class="pandascore-date-filters">';
         foreach ($dates as $d) {
-            // No default active date; user must toggle to filter by date
             $html .= '<div class="pandascore-date-filter" data-date-iso="' . esc_attr($d['iso']) . '">';
             $html .= esc_html($d['label']);
             $html .= '</div>';
@@ -99,17 +98,12 @@ class PandaScore_Tracker_Plugin {
         return $html;
     }
 
-
-    // 🔹 NEW: Render league filters row
     private function render_league_filters() {
-        // Define the specific leagues we want to show (consolidated LTA)
         $leagues = ['LCK', 'LPL', 'LEC', 'LTA'];
 
         $html = '<div class="pandascore-league-filters">';
 
-        // Add specific league buttons with local images
         foreach ($leagues as $league_name) {
-                       // Convert league name to filename format
             $filename = str_replace(' ', '-', strtoupper($league_name)) . '-logo.png';
             $image_url = plugins_url('images/' . $filename, __FILE__);
 
@@ -118,7 +112,6 @@ class PandaScore_Tracker_Plugin {
             $html .= '</div>';
         }
 
-        // Add "OTHER LEAGUES" button using the same pattern
         $other_leagues_filename = 'OTHERS-LEAGUES-logo.png';
         $other_leagues_image = plugins_url('images/' . $other_leagues_filename, __FILE__);
         $html .= '<div class="pandascore-league-filter" data-league-name="OTHER LEAGUES" title="OTHER LEAGUES">';
@@ -134,12 +127,8 @@ class PandaScore_Tracker_Plugin {
         if (!$api_key) return new WP_Error('no_api_key', 'PandaScore API key not set');
 
         $query_args = ['page[size]' => intval($limit)];
-
-        // For the league filtering to work properly with "OTHER LEAGUES",
-        // we fetch all LoL matches and let JavaScript handle the filtering
-        // This ensures we have all matches available for client-side filtering
-
         $url = add_query_arg($query_args, "https://api.pandascore.co/{$game}/matches/{$endpoint}");
+        
         $response = wp_remote_get($url, [
             'timeout' => 15,
             'headers' => ['Authorization' => 'Bearer ' . $api_key]
@@ -156,58 +145,72 @@ class PandaScore_Tracker_Plugin {
     }
 
     /**
-     * Build a wsMatches array for the front-end, augmenting known live match IDs
-     * with WebSocket endpoints when available from the /lives endpoint.
-     * Always returns at least objects with { match_id } so that the JS can
-     * initiate connections and fall back to polling if needed.
+     * Enhanced function to detect and collect live matches from tournaments
      */
-    private function get_ws_matches_payload($matchIds = []) {
+    private function get_live_matches_from_tournaments($game) {
         $api_key = $this->get_api_key();
-        $matchIds = array_values(array_unique(array_map('intval', (array) $matchIds)));
-        if (empty($matchIds) || !$api_key) return [];
+        if (!$api_key) return [];
 
-        $payload = [];
-        // Initialize with bare match_id entries
-        foreach ($matchIds as $id) {
-            $payload[(string) $id] = [ 'match_id' => $id ];
-        }
+        $live_matches = [];
 
-        // Try to enrich from /lives
-        $response = wp_remote_get('https://api.pandascore.co/lives', [
+        // Get running tournaments
+        $tournaments_url = "https://api.pandascore.co/{$game}/tournaments/running";
+        $response = wp_remote_get($tournaments_url, [
             'timeout' => 15,
             'headers' => ['Authorization' => 'Bearer ' . $api_key]
         ]);
-        if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
-            $lives = json_decode(wp_remote_retrieve_body($response), true);
-            if (json_last_error() === JSON_ERROR_NONE && is_array($lives)) {
-                foreach ($lives as $item) {
-                    $match = isset($item['match']) ? $item['match'] : null;
-                    $mid = $match['id'] ?? ($item['match_id'] ?? null);
-                    if (!$mid) continue;
-                    if (!isset($payload[(string) $mid])) continue; // only care for rendered matches
 
-                    $events_url = null; $frames_url = null; $game_ids = [];
-                    if (!empty($item['endpoints']) && is_array($item['endpoints'])) {
-                        foreach ($item['endpoints'] as $ep) {
-                            if (($ep['type'] ?? '') === 'events') $events_url = $ep['url'] ?? null;
-                            if (($ep['type'] ?? '') === 'frames') $frames_url = $ep['url'] ?? null;
-                        }
-                    }
-                    if (!empty($match['games']) && is_array($match['games'])) {
-                        foreach ($match['games'] as $g) {
-                            if (isset($g['id'])) $game_ids[] = intval($g['id']);
-                        }
-                    }
+        if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
+            error_log('[PandaScore] Failed to fetch tournaments: ' . (is_wp_error($response) ? $response->get_error_message() : wp_remote_retrieve_response_code($response)));
+            return [];
+        }
 
-                    $payload[(string) $mid]['events_url'] = $events_url;
-                    $payload[(string) $mid]['frames_url'] = $frames_url;
-                    if (!empty($game_ids)) $payload[(string) $mid]['game_ids'] = $game_ids;
+        $tournaments = json_decode(wp_remote_retrieve_body($response), true);
+        if (!is_array($tournaments)) return [];
+
+        // Process each tournament to find live-supported matches
+        foreach ($tournaments as $tournament) {
+            if (!isset($tournament['matches']) || !is_array($tournament['matches'])) continue;
+
+            foreach ($tournament['matches'] as $match) {
+                // Check if match has live support
+                if (isset($match['live']['supported']) && $match['live']['supported'] === true) {
+                    $match_data = [
+                        'match_id' => $match['id'],
+                        'status' => $match['status'] ?? 'unknown',
+                        'live_url' => $match['live']['url'] ?? null,
+                        'opens_at' => $match['live']['opens_at'] ?? null
+                    ];
+
+                    // Only include matches that are running or about to start
+                    if (in_array($match_data['status'], ['running', 'not_started'])) {
+                        $live_matches[] = $match_data;
+                        error_log("[PandaScore] Found live-supported match: {$match_data['match_id']} (status: {$match_data['status']})");
+                    }
                 }
             }
         }
 
-        // Return as a numeric array
-        return array_values($payload);
+        return $live_matches;
+    }
+
+    /**
+     * Build WebSocket matches data for JavaScript
+     */
+    private function get_ws_matches_payload($matchIds = []) {
+        $api_key = $this->get_api_key();
+        $matchIds = array_values(array_unique(array_map('intval', (array) $matchIds)));
+        
+        if (empty($matchIds) || !$api_key) return [];
+
+        $payload = [];
+        
+        // Initialize with basic match data
+        foreach ($matchIds as $id) {
+            $payload[] = ['match_id' => $id];
+        }
+
+        return $payload;
     }
 
     private function get_team_logo_html($logo_url, $team_name, $acronym) {
@@ -261,7 +264,6 @@ class PandaScore_Tracker_Plugin {
         $scheduled_at = $match['scheduled_at'] ?? '';
         $is_upcoming = !$is_live && $scheduled_at;
 
-        // 🔹 Added data-league-id for filtering
         $html = '<div class="pandascore-match" data-league-id="' . $league_id . '" data-match-id="' . esc_attr($match['id'] ?? '') . ($is_upcoming ? '" data-scheduled-at="' . esc_attr($scheduled_at) : '') . '">';
         $html .= '<div class="pandascore-league-container">';
         $html .= $league_logo ? '<div class="pandascore-league-logo"><img src="' . $league_logo . '" alt="' . $league_name . '" title="' . $league_name . '"></div>'
@@ -312,11 +314,9 @@ class PandaScore_Tracker_Plugin {
         $this->live_match_ids = [];
         $html = '<div class="pandascore-tracker align-' . esc_attr($atts['align']) . '">';
 
-        // 🔹 Render date filters first, then league filters
         $html .= $this->render_date_filters();
         $html .= $this->render_league_filters();
 
-        // 🔹 Create grouped containers for live and upcoming matches
         $html .= '<div class="pandascore-matches-wrapper">';
         if (in_array($atts['type'], ['live', 'mixed'])) {
             $live_content = $this->render_matches($atts['game'], $atts['limit'], true);
@@ -336,13 +336,28 @@ class PandaScore_Tracker_Plugin {
         }
         $html .= '</div>';
 
-        if ($this->live_match_ids) {
-            wp_enqueue_script('pandascore-live-tracker-js');
-            $wsMatches = $this->get_ws_matches_payload($this->live_match_ids);
-            wp_localize_script('pandascore-live-tracker-js', 'pandaScoreLiveTracker', [
-                'apiKey' => $this->get_api_key(),
-                'wsMatches' => $wsMatches,
-            ]);
+        // Enhanced live match detection and WebSocket setup
+        if (in_array($atts['type'], ['live', 'mixed'])) {
+            // Get live matches from tournaments (more comprehensive)
+            $tournament_live_matches = $this->get_live_matches_from_tournaments($atts['game']);
+            
+            // Merge with matches from /running endpoint
+            $all_live_match_ids = array_unique(array_merge(
+                $this->live_match_ids,
+                array_column($tournament_live_matches, 'match_id')
+            ));
+
+            if (!empty($all_live_match_ids)) {
+                wp_enqueue_script('pandascore-live-tracker-js');
+                $wsMatches = $this->get_ws_matches_payload($all_live_match_ids);
+                
+                wp_localize_script('pandascore-live-tracker-js', 'pandaScoreLiveTracker', [
+                    'apiKey' => $this->get_api_key(),
+                    'wsMatches' => $wsMatches,
+                ]);
+
+                error_log('[PandaScore] Initialized WebSocket tracking for ' . count($wsMatches) . ' matches');
+            }
         }
 
         $html .= '</div>';
