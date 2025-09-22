@@ -138,10 +138,13 @@ document.addEventListener('DOMContentLoaded', function () {
           match.style.display = 'flex'
         }
       } else if (selectedLeague === 'LTA') {
-        // Show both LTA North and LTA South
-        match.style.display = ltaLeagues.includes(matchLeagueName)
-          ? 'flex'
-          : 'none'
+        // Show matches for LTA, LTA North, and LTA South
+        match.style.display =
+          matchLeagueName === 'LTA' ||
+          matchLeagueName === 'LTA North' ||
+          matchLeagueName === 'LTA South'
+            ? 'flex'
+            : 'none'
       } else {
         // Show matches from the selected specific league only
         match.style.display =
