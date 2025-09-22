@@ -130,7 +130,7 @@
   width: 100%;
 }
 
-.pandascore-match {
+.pandascore-match-link {
   background: var(--brand-bg);
   color: var(--brand-white);
   padding: 8px;

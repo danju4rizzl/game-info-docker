@@ -2,7 +2,7 @@
 /*
 Plugin Name: PandaScore Tracker
 Description: Fetches and displays PandaScore game scores via shortcode.
-Version: 1.3 (Improved WebSocket Implementation)
+Version: 1.3 (Improved WebSocket Implementation + Match Details Routing)
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
@@ -20,6 +20,11 @@ class PandaScore_Tracker_Plugin {
         add_action('admin_init', [$this, 'register_settings']);
         add_shortcode('pandascore_tracker', [$this, 'shortcode_handler']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
+
+        // Routing for match details page
+        add_action('init', [$this, 'add_rewrite_rules']);
+        add_filter('query_vars', [$this, 'register_query_vars']);
+        add_filter('template_include', [$this, 'match_template_include']);
     }
 
     public function enqueue_assets() {
@@ -28,6 +33,35 @@ class PandaScore_Tracker_Plugin {
         wp_register_script('pandascore-timezone-js', plugins_url('js/timezone-converter.js', __FILE__), [], '1.0', true);
         wp_register_script('pandascore-league-filter-js', plugins_url('js/league-filter.js', __FILE__), [], '1.0', true);
         wp_register_script('pandascore-date-filter-js', plugins_url('js/date-filter.js', __FILE__), [], '1.0', true);
+    }
+
+    public function add_rewrite_rules() {
+        add_rewrite_rule('^match/([0-9]+)/?$', 'index.php?game_match_id=$matches[1]', 'top');
+    }
+
+    public function register_query_vars($vars) {
+        $vars[] = 'game_match_id';
+        return $vars;
+    }
+
+    public function match_template_include($template) {
+        $match_id = get_query_var('game_match_id');
+        if (!empty($match_id)) {
+            $plugin_template = plugin_dir_path(__FILE__) . 'templates/match-details.php';
+            if (file_exists($plugin_template)) {
+                return $plugin_template;
+            }
+        }
+        return $template;
+    }
+
+    public static function activate() {
+        add_rewrite_rule('^match/([0-9]+)/?$', 'index.php?game_match_id=$matches[1]', 'top');
+        flush_rewrite_rules();
+    }
+
+    public static function deactivate() {
+        flush_rewrite_rules();
     }
 
     public function admin_menu() {
@@ -221,6 +255,13 @@ class PandaScore_Tracker_Plugin {
         return '<div class="pandascore-team-logo-placeholder" title="Unknown Team">' . esc_html($fallback_letter) . '</div>';
     }
 
+    private function get_match_url($match) {
+        $id = isset($match['id']) ? intval($match['id']) : 0;
+        if (!$id) return '#';
+        // Use query var URL to avoid dependency on rewrite flush; pretty URLs are also supported via rewrite rules
+        return add_query_arg('game_match_id', $id, home_url('/'));
+    }
+
     private function render_team($logo_url, $name, $acronym, $score = null, $opponent_id = null) {
         $html = '<div class="pandascore-team' . ($score !== null ? ' with-score' : '') . '">';
         $html .= '<div class="pandascore-team-info">';
@@ -263,8 +304,10 @@ class PandaScore_Tracker_Plugin {
         $league_id = esc_attr($match['league']['id'] ?? '');
         $scheduled_at = $match['scheduled_at'] ?? '';
         $is_upcoming = !$is_live && $scheduled_at;
+        $match_url = $this->get_match_url($match);
 
         $html = '<div class="pandascore-match" data-league-id="' . $league_id . '" data-match-id="' . esc_attr($match['id'] ?? '') . ($is_upcoming ? '" data-scheduled-at="' . esc_attr($scheduled_at) : '') . '">';
+        $html .= '<a class="pandascore-match-link" href="' . esc_url($match_url) . '">';
         $html .= '<div class="pandascore-league-container">';
         $html .= $league_logo ? '<div class="pandascore-league-logo"><img src="' . $league_logo . '" alt="' . $league_name . '" title="' . $league_name . '"></div>'
                              : '<div class="pandascore-league-placeholder" title="' . $league_name . '">' . ($league_name ? $league_name[0] : 'L') . '</div>';
@@ -279,7 +322,9 @@ class PandaScore_Tracker_Plugin {
         if ($is_upcoming) {
             $html .= '<div class="pandascore-time-container"><div class="pandascore-time-badge"><div class="pandascore-time">Loading...</div><div class="pandascore-time-day">Loading...</div></div></div>';
         }
-        $html .= '</div></div>';
+        $html .= '</div>';
+        $html .= '</a>';
+        $html .= '</div>';
         return $html;
     }
 
@@ -365,4 +410,6 @@ class PandaScore_Tracker_Plugin {
     }
 }
 
+register_activation_hook(__FILE__, ['PandaScore_Tracker_Plugin', 'activate']);
+register_deactivation_hook(__FILE__, ['PandaScore_Tracker_Plugin', 'deactivate']);
 new PandaScore_Tracker_Plugin();
