@@ -7,7 +7,7 @@ Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
 
-if (!defined('ABSPATH')) {
+if (!defined(constant_name: 'ABSPATH')) {
     exit;
 }
 
@@ -22,7 +22,7 @@ class PandaScore_Tracker_Plugin {
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
-    public function enqueue_assets() {
+    public function enqueue_assets(): void {
         wp_register_style('pandascore-tracker-style', plugins_url('css/index.css', __FILE__), [], '1.3');
         wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', __FILE__), [], '1.3', true);
         wp_register_script('pandascore-timezone-js', plugins_url('js/timezone-converter.js', __FILE__), [], '1.0', true);
@@ -30,23 +30,23 @@ class PandaScore_Tracker_Plugin {
         wp_register_script('pandascore-date-filter-js', plugins_url('js/date-filter.js', __FILE__), [], '1.0', true);
     }
 
-    public function admin_menu() {
+    public function admin_menu(): void {
         add_options_page('PandaScore Tracker', 'PandaScore Tracker', 'manage_options', 'pandascore-tracker', [$this, 'settings_page']);
     }
 
-    public function register_settings() {
+    public function register_settings(): void {
         register_setting($this->option_key, $this->option_key);
         add_settings_section('pandascore_main', 'PandaScore Settings', null, 'pandascore-tracker');
         add_settings_field('api_key', 'API Key', [$this, 'field_api_key'], 'pandascore-tracker', 'pandascore_main');
     }
 
-    public function field_api_key() {
+    public function field_api_key(): void {
         $opts = get_option($this->option_key);
         $val = isset($opts['api_key']) ? esc_attr($opts['api_key']) : '';
         echo '<input type="text" name="' . $this->option_key . '[api_key]" value="' . $val . '" class="pandascore-api-key-input">';
     }
 
-    public function settings_page() {
+    public function settings_page(): void {
         wp_enqueue_style('pandascore-tracker-style');
         ?>
         <div class="wrap">
@@ -72,12 +72,12 @@ class PandaScore_Tracker_Plugin {
         <?php
     }
 
-    private function get_api_key() {
+    private function get_api_key(): string {
         $opts = get_option($this->option_key);
         return isset($opts['api_key']) ? trim($opts['api_key']) : '';
     }
 
-    private function render_date_filters() {
+    private function render_date_filters(): string {
         $dates = [];
         $now = current_time('timestamp'); // WP localized timestamp
         for ($i = 0; $i < 7; $i++) {
@@ -98,7 +98,7 @@ class PandaScore_Tracker_Plugin {
         return $html;
     }
 
-    private function render_league_filters() {
+    private function render_league_filters(): string {
         $leagues = ['LCK', 'LPL', 'LEC', 'LTA'];
 
         $html = '<div class="pandascore-league-filters">';
@@ -122,7 +122,7 @@ class PandaScore_Tracker_Plugin {
         return $html;
     }
 
-    private function make_api_call($game, $limit, $endpoint) {
+    private function make_api_call($game, $limit, $endpoint): mixed {
         $api_key = $this->get_api_key();
         if (!$api_key) return new WP_Error('no_api_key', 'PandaScore API key not set');
 
@@ -147,7 +147,7 @@ class PandaScore_Tracker_Plugin {
     /**
      * Enhanced function to detect and collect live matches from tournaments
      */
-    private function get_live_matches_from_tournaments($game) {
+    private function get_live_matches_from_tournaments($game): array {
         $api_key = $this->get_api_key();
         if (!$api_key) return [];
 
@@ -197,7 +197,7 @@ class PandaScore_Tracker_Plugin {
     /**
      * Build WebSocket matches data for JavaScript
      */
-    private function get_ws_matches_payload($matchIds = []) {
+    private function get_ws_matches_payload($matchIds = []): array {
         $api_key = $this->get_api_key();
         $matchIds = array_values(array_unique(array_map('intval', (array) $matchIds)));
         
@@ -213,7 +213,7 @@ class PandaScore_Tracker_Plugin {
         return $payload;
     }
 
-    private function get_team_logo_html($logo_url, $team_name, $acronym) {
+    private function get_team_logo_html($logo_url, $team_name, $acronym): string {
         if ($logo_url) {
             return '<img src="' . esc_url($logo_url) . '" alt="' . esc_attr($team_name) . '" class="pandascore-team-logo">';
         }
@@ -221,7 +221,7 @@ class PandaScore_Tracker_Plugin {
         return '<div class="pandascore-team-logo-placeholder" title="Unknown Team">' . esc_html($fallback_letter) . '</div>';
     }
 
-    private function render_team($logo_url, $name, $acronym, $score = null, $opponent_id = null) {
+    private function render_team($logo_url, $name, $acronym, $score = null, $opponent_id = null): string {
         $html = '<div class="pandascore-team' . ($score !== null ? ' with-score' : '') . '">';
         $html .= '<div class="pandascore-team-info">';
         $html .= $this->get_team_logo_html($logo_url, $name, $acronym);
@@ -234,7 +234,7 @@ class PandaScore_Tracker_Plugin {
         return $html;
     }
 
-    private function render_match($match, $is_live = false) {
+    private function render_match($match, $is_live = false): string {
         $opponents = ['TBD', 'TBD'];
         $acronyms = ['TBD', 'TBD'];
         $logos = ['', ''];
@@ -283,7 +283,7 @@ class PandaScore_Tracker_Plugin {
         return $html;
     }
 
-    private function render_matches($game, $limit, $is_live) {
+    private function render_matches($game, $limit, $is_live): string {
         $matches = $this->make_api_call($game, $limit, $is_live ? 'running' : 'upcoming');
         if (is_wp_error($matches)) {
             return '<div class="pandascore-error">Error: ' . esc_html($matches->get_error_message()) . '</div>';
@@ -304,7 +304,7 @@ class PandaScore_Tracker_Plugin {
         return $html;
     }
 
-    public function shortcode_handler($atts) {
+    public function shortcode_handler($atts): string {
         $atts = shortcode_atts(['game' => 'lol', 'limit' => 100, 'align' => 'center', 'type' => 'mixed'], $atts, 'pandascore_tracker');
         wp_enqueue_style('pandascore-tracker-style');
         wp_enqueue_script('pandascore-timezone-js');
