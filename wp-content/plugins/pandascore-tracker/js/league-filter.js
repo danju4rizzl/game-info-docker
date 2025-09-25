@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const matches = document.querySelectorAll('.pandascore-match')
 
   // Define the specific leagues we're filtering for (default visible set)
-  const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South']
-  const ltaLeagues = ['LTA North', 'LTA South']
+  const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA']
+  const ltaLeagues = ['LTA North', 'LTA South', 'LTA']
   const MAX_DISPLAY = 8
 
   // Helpers: sorting
-  const leaguePriority = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South']
+  const leaguePriority = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South', 'LTA']
   function getLeagueName(match) {
     const img = match.querySelector('.pandascore-league-container img')
     return img ? img.alt : ''
@@ -176,9 +176,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (upcomingContainer) {
       const upcomingMatches =
         upcomingContainer.querySelectorAll('.pandascore-match')
-      const visibleUpcomingMatches = Array.from(upcomingMatches).filter(
-        (match) => match.style.display !== 'none'
-      )
+        const visibleUpcomingMatches = Array.from(upcomingMatches).filter(
+          (match) => match.style.display !== 'none'
+        )
+        console.log(`upcomingContainer: ${visibleUpcomingMatches}`)
       upcomingContainer.style.display =
         visibleUpcomingMatches.length > 0 ? 'block' : 'none'
     }

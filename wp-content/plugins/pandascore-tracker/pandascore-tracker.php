@@ -154,7 +154,7 @@ class PandaScore_Tracker_Plugin {
         $live_matches = [];
 
         // Get running tournaments
-        $tournaments_url = "https://api.pandascore.co/{$game}/tournaments/running";
+        $tournaments_url = "https://api.pandascore.co/{$game}/tournaments/running?status=not_started";
         $response = wp_remote_get($tournaments_url, [
             'timeout' => 15,
             'headers' => ['Authorization' => 'Bearer ' . $api_key]
