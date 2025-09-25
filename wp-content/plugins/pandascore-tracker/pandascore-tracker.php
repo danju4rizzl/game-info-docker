@@ -2,29 +2,32 @@
 /*
 Plugin Name: PandaScore Tracker
 Description: Fetches and displays PandaScore game scores via shortcode.
-Version: 1.3 (Improved WebSocket Implementation)
+Version: 1.5 
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
 
-if (!defined(constant_name: 'ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
 class PandaScore_Tracker_Plugin {
     private $option_key = 'pandascore_tracker_options';
     private $live_match_ids = [];
+    private $preloaded_live_matches = [];
 
     public function __construct() {
         add_action('admin_menu', [$this, 'admin_menu']);
         add_action('admin_init', [$this, 'register_settings']);
+        add_action('admin_post_pandascore_clear_cache', [$this, 'handle_clear_cache']);
         add_shortcode('pandascore_tracker', [$this, 'shortcode_handler']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
+        add_action('rest_api_init', [$this, 'register_rest_routes']);
     }
 
     public function enqueue_assets(): void {
-        wp_register_style('pandascore-tracker-style', plugins_url('css/index.css', __FILE__), [], '1.3');
-        wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', __FILE__), [], '1.3', true);
+        wp_register_style('pandascore-tracker-style', plugins_url('css/index.css', __FILE__), [], '1.5');
+        wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', __FILE__), [], '1.5', true);
         wp_register_script('pandascore-timezone-js', plugins_url('js/timezone-converter.js', __FILE__), [], '1.0', true);
         wp_register_script('pandascore-league-filter-js', plugins_url('js/league-filter.js', __FILE__), [], '1.0', true);
         wp_register_script('pandascore-date-filter-js', plugins_url('js/date-filter.js', __FILE__), [], '1.0', true);
@@ -34,33 +37,185 @@ class PandaScore_Tracker_Plugin {
         add_options_page('PandaScore Tracker', 'PandaScore Tracker', 'manage_options', 'pandascore-tracker', [$this, 'settings_page']);
     }
 
+    private function defaults(): array {
+        return [
+            'api_key' => '',
+            'enable_cache' => 1,
+            'cache_version' => 1,
+            // TTLs (seconds)
+            'ttl_running' => 15,
+            'stale_running' => 120,
+            'ttl_upcoming' => 600,
+            'stale_upcoming' => 1800,
+            'ttl_tournaments' => 60,
+            'stale_tournaments' => 300,
+            'ttl_match' => 15,
+            'stale_match' => 120,
+        ];
+    }
+
     public function register_settings(): void {
-        register_setting($this->option_key, $this->option_key);
+        register_setting($this->option_key, $this->option_key, [
+            'sanitize_callback' => [$this, 'sanitize_options']
+        ]);
+
         add_settings_section('pandascore_main', 'PandaScore Settings', null, 'pandascore-tracker');
         add_settings_field('api_key', 'API Key', [$this, 'field_api_key'], 'pandascore-tracker', 'pandascore_main');
+        add_settings_field('enable_cache', 'Enable Caching', [$this, 'field_enable_cache'], 'pandascore-tracker', 'pandascore_main');
+
+        add_settings_section('pandascore_cache', __('Caching TTLs (seconds)', 'pandascore-tracker'), [$this, 'section_cache_info'], 'pandascore-tracker');
+        add_settings_field('ttl_running', 'Live list TTL', [$this, 'field_ttl_running'], 'pandascore-tracker', 'pandascore_cache');
+        add_settings_field('stale_running', 'Live list Stale TTL', [$this, 'field_stale_running'], 'pandascore-tracker', 'pandascore_cache');
+        add_settings_field('ttl_upcoming', 'Upcoming list TTL', [$this, 'field_ttl_upcoming'], 'pandascore-tracker', 'pandascore_cache');
+        add_settings_field('stale_upcoming', 'Upcoming list Stale TTL', [$this, 'field_stale_upcoming'], 'pandascore-tracker', 'pandascore_cache');
+        add_settings_field('ttl_tournaments', 'Tournaments TTL', [$this, 'field_ttl_tournaments'], 'pandascore-tracker', 'pandascore_cache');
+        add_settings_field('stale_tournaments', 'Tournaments Stale TTL', [$this, 'field_stale_tournaments'], 'pandascore-tracker', 'pandascore_cache');
+        add_settings_field('ttl_match', 'Match detail TTL', [$this, 'field_ttl_match'], 'pandascore-tracker', 'pandascore_cache');
+        add_settings_field('stale_match', 'Match detail Stale TTL', [$this, 'field_stale_match'], 'pandascore-tracker', 'pandascore_cache');
+    }
+
+    public function section_cache_info(): void {
+        echo wp_kses_post(
+            '<p class="description">These settings control how long data is cached by the plugin and how long stale data may be served if PandaScore is rate-limited or unavailable.</p>' .
+            '<ul class="description" style="margin-left:1.2em;list-style:disc;">' .
+            '<li><strong>TTL</strong>: Time To Live — how long fresh data is kept before the server fetches it again.</li>' .
+            '<li><strong>Stale TTL</strong>: How long previously cached data may be served if a new fetch fails (e.g., 429 or 5xx). This prevents empty widgets during outages.</li>' .
+            '<li><strong>Recommendations</strong>: Live 10–20s; Upcoming 300–600s; Tournaments 60s; Match details 10–20s.</li>' .
+            '</ul>'
+        );
+    }
+
+    public function sanitize_options($input): array {
+        $defaults = $this->defaults();
+        $existing = get_option($this->option_key, []);
+        $output = array_merge($defaults, is_array($existing) ? $existing : []);
+
+        // API key
+        if (isset($input['api_key'])) {
+            $output['api_key'] = sanitize_text_field($input['api_key']);
+        }
+
+        // Enable cache checkbox: if field missing, it's unchecked
+        $output['enable_cache'] = isset($input['enable_cache']) ? 1 : 0;
+
+        // TTLs
+        foreach (['ttl_running','stale_running','ttl_upcoming','stale_upcoming','ttl_tournaments','stale_tournaments','ttl_match','stale_match'] as $k) {
+            if (isset($input[$k]) && $input[$k] !== '') {
+                $v = intval($input[$k]);
+                if ($v < 0) $v = 0;
+                $output[$k] = $v;
+            }
+        }
+
+        // Preserve cache_version unless explicitly changed elsewhere
+        if (isset($existing['cache_version'])) {
+            $output['cache_version'] = intval($existing['cache_version']);
+            if ($output['cache_version'] <= 0) $output['cache_version'] = 1;
+        }
+
+        return $output;
     }
 
     public function field_api_key(): void {
-        $opts = get_option($this->option_key);
-        $val = isset($opts['api_key']) ? esc_attr($opts['api_key']) : '';
-        echo '<input type="text" name="' . $this->option_key . '[api_key]" value="' . $val . '" class="pandascore-api-key-input">';
+        $opts = $this->get_options();
+        $val = esc_attr($opts['api_key']);
+        echo '<input type="text" name="' . $this->option_key . '[api_key]" value="' . $val . '" class="pandascore-api-key-input" style="width: 420px;">';
+    }
+
+    public function field_enable_cache(): void {
+        $opts = $this->get_options();
+        $enabled = (bool)$opts['enable_cache'];
+        echo '<label><input type="checkbox" name="' . $this->option_key . '[enable_cache]" value="1" ' . checked(true, $enabled, false) . '> Use WordPress caching (transients/object cache) for API responses</label>';
+    }
+
+    private function ttl_number_field(string $key, string $placeholder, string $desc = ''): void {
+        $opts = $this->get_options();
+        $val = isset($opts[$key]) ? intval($opts[$key]) : '';
+        echo '<input type="number" min="0" step="1" name="' . $this->option_key . '[' . esc_attr($key) . ']" value="' . esc_attr($val) . '" placeholder="' . esc_attr($placeholder) . '" style="width: 140px;">';
+        if ($desc !== '') {
+            echo '<p class="description" style="max-width:720px;">' . esc_html($desc) . '</p>';
+        }
+    }
+
+    public function field_ttl_running(): void {
+        $this->ttl_number_field(
+            'ttl_running',
+            'e.g. 15',
+            __('How long the list of currently running matches is cached before refreshing from PandaScore. Lower = fresher, higher = fewer API calls. Example: 15 seconds.', 'pandascore-tracker')
+        );
+    }
+    public function field_stale_running(): void {
+        $this->ttl_number_field(
+            'stale_running',
+            'e.g. 120',
+            __('How long we may serve slightly out-of-date live list data if PandaScore is rate-limited or down. Example: 120 seconds.', 'pandascore-tracker')
+        );
+    }
+    public function field_ttl_upcoming(): void {
+        $this->ttl_number_field(
+            'ttl_upcoming',
+            'e.g. 600',
+            __('How long upcoming matches are cached. These change less often, so 300–600 seconds is typical. Example: 600 seconds.', 'pandascore-tracker')
+        );
+    }
+    public function field_stale_upcoming(): void {
+        $this->ttl_number_field(
+            'stale_upcoming',
+            'e.g. 1800',
+            __('How long we may serve stale upcoming data when errors occur. Example: 1800 seconds (30 minutes).', 'pandascore-tracker')
+        );
+    }
+    public function field_ttl_tournaments(): void {
+        $this->ttl_number_field(
+            'ttl_tournaments',
+            'e.g. 60',
+            __('How often to refresh running tournaments used to discover additional live matches. Example: 60 seconds.', 'pandascore-tracker')
+        );
+    }
+    public function field_stale_tournaments(): void {
+        $this->ttl_number_field(
+            'stale_tournaments',
+            'e.g. 300',
+            __('How long to serve stale tournament data if fetching fails. Example: 300 seconds.', 'pandascore-tracker')
+        );
+    }
+    public function field_ttl_match(): void {
+        $this->ttl_number_field(
+            'ttl_match',
+            'e.g. 15',
+            __('How often to refresh individual match details during live. Example: 15 seconds.', 'pandascore-tracker')
+        );
+    }
+    public function field_stale_match(): void {
+        $this->ttl_number_field(
+            'stale_match',
+            'e.g. 120',
+            __('How long we may serve stale match details when new data cannot be fetched (e.g., 429). Example: 120 seconds.', 'pandascore-tracker')
+        );
     }
 
     public function settings_page(): void {
         wp_enqueue_style('pandascore-tracker-style');
+        $clear_url = admin_url('admin-post.php');
         ?>
         <div class="wrap">
             <h1>PandaScore Tracker</h1>
-            <form method="post" action="options.php">
+            <form method="post" action="options.php" style="margin-bottom: 20px;">
                 <?php
                 settings_fields($this->option_key);
                 do_settings_sections('pandascore-tracker');
-                submit_button();
+                submit_button('Save Settings');
                 ?>
             </form>
+
+            <form method="post" action="<?php echo esc_url($clear_url); ?>">
+                <?php wp_nonce_field('pandascore_clear_cache', 'pandascore_clear_cache_nonce'); ?>
+                <input type="hidden" name="action" value="pandascore_clear_cache">
+                <?php submit_button('Clear Plugin Cache', 'secondary'); ?>
+            </form>
+
             <h3>Shortcode Usage</h3>
-            <p><strong>Basic usage:</strong> <code>[pandascore_tracker]</code>
-        </p>
+            <p><strong>Basic usage:</strong> <code>[pandascore_tracker]</code></p>
             <p><strong>Live matches:</strong> <code>[pandascore_tracker type="live"]</code></p>
             <p><strong>Mixed (live + upcoming):</strong> <code>[pandascore_tracker type="mixed" game="lol"]</code></p>
             <h4>Parameters:</h4>
@@ -72,9 +227,174 @@ class PandaScore_Tracker_Plugin {
         <?php
     }
 
+    public function handle_clear_cache(): void {
+        if (!current_user_can('manage_options')) {
+            wp_die(__('Unauthorized', 'pandascore-tracker'));
+        }
+        check_admin_referer('pandascore_clear_cache', 'pandascore_clear_cache_nonce');
+
+        $opts = $this->get_options();
+        $opts['cache_version'] = isset($opts['cache_version']) ? (intval($opts['cache_version']) + 1) : 2;
+        update_option($this->option_key, $opts);
+
+        // Best effort: attempt to flush group if supported (some object caches)
+        if (function_exists('wp_cache_flush_group')) {
+            @wp_cache_flush_group($this->cache_namespace());
+        }
+
+        wp_redirect(add_query_arg(['page' => 'pandascore-tracker', 'cleared' => '1'], admin_url('options-general.php')));
+        exit;
+    }
+
+    private function get_options(): array {
+        $opts = get_option($this->option_key, []);
+        return array_merge($this->defaults(), is_array($opts) ? $opts : []);
+    }
+
     private function get_api_key(): string {
-        $opts = get_option($this->option_key);
+        $opts = $this->get_options();
         return isset($opts['api_key']) ? trim($opts['api_key']) : '';
+    }
+
+    private function is_cache_enabled(): bool {
+        $opts = $this->get_options();
+        return !empty($opts['enable_cache']);
+    }
+
+    private function get_cache_version(): int {
+        $opts = $this->get_options();
+        $v = isset($opts['cache_version']) ? intval($opts['cache_version']) : 1;
+        return $v > 0 ? $v : 1;
+    }
+
+    private function ttl(string $name, int $default): int {
+        $opts = $this->get_options();
+        $val = isset($opts[$name]) ? intval($opts[$name]) : $default;
+        if ($val < 0) $val = 0;
+        return $val;
+    }
+
+    private function cache_namespace(): string {
+        return 'pandascore';
+    }
+
+    private function cache_key(string $key): string {
+        // Include version so clearing cache is simply bumping the version
+        return 'pandascore_v' . $this->get_cache_version() . '_' . $key;
+    }
+
+    private function cache_get(string $key) {
+        $nsKey = $this->cache_key($key);
+        if (wp_using_ext_object_cache()) {
+            return wp_cache_get($nsKey, $this->cache_namespace());
+        }
+        return get_transient($nsKey);
+    }
+
+    private function cache_set(string $key, $value, int $ttl): bool {
+        $nsKey = $this->cache_key($key);
+        if (wp_using_ext_object_cache()) {
+            return wp_cache_set($nsKey, $value, $this->cache_namespace(), $ttl);
+        }
+        return set_transient($nsKey, $value, $ttl);
+    }
+
+    private function cache_delete(string $key): void {
+        $nsKey = $this->cache_key($key);
+        if (wp_using_ext_object_cache()) {
+            wp_cache_delete($nsKey, $this->cache_namespace());
+        } else {
+            delete_transient($nsKey);
+        }
+    }
+
+    /**
+     * Cached GET with stale-on-error and light stampede protection
+     */
+    private function cached_json_get(string $url, array $headers, int $ttl, int $stale_ttl = 300) {
+        // If caching disabled, do a direct fetch
+        if (!$this->is_cache_enabled()) {
+            $response = wp_remote_get($url, [
+                'timeout' => 15,
+                'headers' => $headers
+            ]);
+            if (is_wp_error($response)) return $response;
+            if (wp_remote_retrieve_response_code($response) !== 200) {
+                return new WP_Error('api_error', 'PandaScore API returned code ' . wp_remote_retrieve_response_code($response));
+            }
+            $data = json_decode(wp_remote_retrieve_body($response), true);
+            if (json_last_error() !== JSON_ERROR_NONE) return new WP_Error('json_error', 'Invalid JSON from API');
+            return $data;
+        }
+
+        $hash = md5($url);
+        $freshKey = 'fresh_' . $hash;
+        $staleKey = 'stale_' . $hash;
+        $lockKey  = 'lock_' . $hash;
+
+        // Fast path: fresh cache
+        $fresh = $this->cache_get($freshKey);
+        if ($fresh !== false) {
+            return $fresh;
+        }
+
+        // Try to acquire a short lock
+        $lockAcquired = false;
+        $lockStoreKey = $this->cache_key($lockKey);
+        if (wp_using_ext_object_cache()) {
+            $lockAcquired = wp_cache_add($lockStoreKey, 1, $this->cache_namespace(), 20);
+        } else {
+            $lockAcquired = (get_transient($lockStoreKey) === false) && set_transient($lockStoreKey, 1, 20);
+        }
+
+        // If lock not acquired, serve stale if available
+        if (!$lockAcquired) {
+            $stale = $this->cache_get($staleKey);
+            if ($stale !== false) return $stale;
+            // No stale, continue to fetch (one more worker may still fetch)
+        }
+
+        // Fetch upstream
+        $response = wp_remote_get($url, [
+            'timeout' => 15,
+            'headers' => $headers
+        ]);
+
+        // Release lock
+        if (wp_using_ext_object_cache()) {
+            wp_cache_delete($lockStoreKey, $this->cache_namespace());
+        } else {
+            delete_transient($lockStoreKey);
+        }
+
+        if (is_wp_error($response)) {
+            $stale = $this->cache_get($staleKey);
+            if ($stale !== false) return $stale;
+            return $response;
+        }
+
+        $code = wp_remote_retrieve_response_code($response);
+        $body = wp_remote_retrieve_body($response);
+
+        if ($code === 200) {
+            $data = json_decode($body, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $stale = $this->cache_get($staleKey);
+                if ($stale !== false) return $stale;
+                return new WP_Error('json_error', 'Invalid JSON from PandaScore');
+            }
+            $this->cache_set($freshKey, $data, $ttl);
+            $this->cache_set($staleKey, $data, $stale_ttl);
+            return $data;
+        }
+
+        if (in_array($code, [429, 500, 502, 503, 504], true)) {
+            $stale = $this->cache_get($staleKey);
+            if ($stale !== false) return $stale;
+            return new WP_Error('api_error', 'PandaScore error ' . $code);
+        }
+
+        return new WP_Error('api_error', 'PandaScore error ' . $code);
     }
 
     private function render_date_filters(): string {
@@ -128,19 +448,18 @@ class PandaScore_Tracker_Plugin {
 
         $query_args = ['page[size]' => intval($limit)];
         $url = add_query_arg($query_args, "https://api.pandascore.co/{$game}/matches/{$endpoint}");
-        
-        $response = wp_remote_get($url, [
-            'timeout' => 15,
-            'headers' => ['Authorization' => 'Bearer ' . $api_key]
-        ]);
 
-        if (is_wp_error($response)) return $response;
-        if (wp_remote_retrieve_response_code($response) !== 200) {
-            return new WP_Error('api_error', 'PandaScore API returned code ' . wp_remote_retrieve_response_code($response));
-        }
+        $is_live = ($endpoint === 'running');
+        // Pull TTLs from settings (still filterable)
+        $ttl_setting = $is_live ? $this->ttl('ttl_running', 15) : $this->ttl('ttl_upcoming', 600);
+        $stale_setting = $is_live ? $this->ttl('stale_running', 120) : $this->ttl('stale_upcoming', 1800);
+        $ttl = (int) apply_filters('pandascore_cache_ttl', $ttl_setting, $endpoint, $game);
+        $stale_ttl = (int) apply_filters('pandascore_cache_stale_ttl', $stale_setting, $endpoint, $game);
 
-        $data = json_decode(wp_remote_retrieve_body($response), true);
-        if (json_last_error() !== JSON_ERROR_NONE) return new WP_Error('json_error', 'Invalid JSON from API');
+        $data = $this->cached_json_get($url, [
+            'Authorization' => 'Bearer ' . $api_key
+        ], $ttl, $stale_ttl);
+
         return $data;
     }
 
@@ -151,41 +470,46 @@ class PandaScore_Tracker_Plugin {
         $api_key = $this->get_api_key();
         if (!$api_key) return [];
 
-        $live_matches = [];
-
-        // Get running tournaments
         $tournaments_url = "https://api.pandascore.co/{$game}/tournaments/running?status=not_started";
-        $response = wp_remote_get($tournaments_url, [
-            'timeout' => 15,
-            'headers' => ['Authorization' => 'Bearer ' . $api_key]
-        ]);
 
-        if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
-            error_log('[PandaScore] Failed to fetch tournaments: ' . (is_wp_error($response) ? $response->get_error_message() : wp_remote_retrieve_response_code($response)));
+        $ttl_setting = $this->ttl('ttl_tournaments', 60);
+        $stale_setting = $this->ttl('stale_tournaments', 300);
+        $ttl = (int) apply_filters('pandascore_cache_ttl_tournaments', $ttl_setting, $game);
+        $stale_ttl = (int) apply_filters('pandascore_cache_stale_ttl_tournaments', $stale_setting, $game);
+
+        $response_data = $this->cached_json_get($tournaments_url, [
+            'Authorization' => 'Bearer ' . $api_key
+        ], $ttl, $stale_ttl);
+
+        if (is_wp_error($response_data)) {
+            error_log('[PandaScore] Failed to fetch tournaments: ' . $response_data->get_error_message());
             return [];
         }
 
-        $tournaments = json_decode(wp_remote_retrieve_body($response), true);
-        if (!is_array($tournaments)) return [];
+        if (!is_array($response_data)) return [];
+
+        $live_matches = [];
 
         // Process each tournament to find live-supported matches
-        foreach ($tournaments as $tournament) {
+        foreach ($response_data as $tournament) {
             if (!isset($tournament['matches']) || !is_array($tournament['matches'])) continue;
 
             foreach ($tournament['matches'] as $match) {
                 // Check if match has live support
                 if (isset($match['live']['supported']) && $match['live']['supported'] === true) {
                     $match_data = [
-                        'match_id' => $match['id'],
+                        'match_id' => $match['id'] ?? null,
                         'status' => $match['status'] ?? 'unknown',
                         'live_url' => $match['live']['url'] ?? null,
                         'opens_at' => $match['live']['opens_at'] ?? null
                     ];
 
                     // Only include matches that are running or about to start
-                    if (in_array($match_data['status'], ['running', 'not_started'])) {
-                        $live_matches[] = $match_data;
-                        error_log("[PandaScore] Found live-supported match: {$match_data['match_id']} (status: {$match_data['status']})");
+                    if (in_array($match_data['status'], ['running', 'not_started'], true)) {
+                        if ($match_data['match_id']) {
+                            $live_matches[] = $match_data;
+                            error_log("[PandaScore] Found live-supported match: {$match_data['match_id']} (status: {$match_data['status']})");
+                        }
                     }
                 }
             }
@@ -198,18 +522,13 @@ class PandaScore_Tracker_Plugin {
      * Build WebSocket matches data for JavaScript
      */
     private function get_ws_matches_payload($matchIds = []): array {
-        $api_key = $this->get_api_key();
         $matchIds = array_values(array_unique(array_map('intval', (array) $matchIds)));
-        
-        if (empty($matchIds) || !$api_key) return [];
+        if (empty($matchIds)) return [];
 
         $payload = [];
-        
-        // Initialize with basic match data
         foreach ($matchIds as $id) {
             $payload[] = ['match_id' => $id];
         }
-
         return $payload;
     }
 
@@ -297,6 +616,11 @@ class PandaScore_Tracker_Plugin {
         foreach ($matches as $match) {
             if ($is_live && isset($match['id'])) {
                 $this->live_match_ids[] = $match['id'];
+                $this->preloaded_live_matches[$match['id']] = [
+                    'id' => $match['id'],
+                    'status' => $match['status'] ?? null,
+                    'results' => $match['results'] ?? [],
+                ];
             }
             $html .= $this->render_match($match, $is_live);
         }
@@ -312,13 +636,15 @@ class PandaScore_Tracker_Plugin {
         wp_enqueue_script('pandascore-date-filter-js');
 
         $this->live_match_ids = [];
+        $this->preloaded_live_matches = [];
+
         $html = '<div class="pandascore-tracker align-' . esc_attr($atts['align']) . '">';
 
         $html .= $this->render_date_filters();
         $html .= $this->render_league_filters();
 
         $html .= '<div class="pandascore-matches-wrapper">';
-        if (in_array($atts['type'], ['live', 'mixed'])) {
+        if (in_array($atts['type'], ['live', 'mixed'], true)) {
             $live_content = $this->render_matches($atts['game'], $atts['limit'], true);
             if (!empty($live_content)) {
                 $html .= '<div class="pandascore-live-container">';
@@ -326,7 +652,7 @@ class PandaScore_Tracker_Plugin {
                 $html .= '</div>';
             }
         }
-        if (in_array($atts['type'], ['upcoming', 'mixed'])) {
+        if (in_array($atts['type'], ['upcoming', 'mixed'], true)) {
             $upcoming_content = $this->render_matches($atts['game'], $atts['limit'], false);
             if (!empty($upcoming_content)) {
                 $html .= '<div class="pandascore-upcoming-container">';
@@ -336,12 +662,9 @@ class PandaScore_Tracker_Plugin {
         }
         $html .= '</div>';
 
-        // Enhanced live match detection and WebSocket setup
-        if (in_array($atts['type'], ['live', 'mixed'])) {
-            // Get live matches from tournaments (more comprehensive)
+        // Live match detection (includes tournaments)
+        if (in_array($atts['type'], ['live', 'mixed'], true)) {
             $tournament_live_matches = $this->get_live_matches_from_tournaments($atts['game']);
-            
-            // Merge with matches from /running endpoint
             $all_live_match_ids = array_unique(array_merge(
                 $this->live_match_ids,
                 array_column($tournament_live_matches, 'match_id')
@@ -350,18 +673,54 @@ class PandaScore_Tracker_Plugin {
             if (!empty($all_live_match_ids)) {
                 wp_enqueue_script('pandascore-live-tracker-js');
                 $wsMatches = $this->get_ws_matches_payload($all_live_match_ids);
-                
+
+                // JS uses REST proxy and preloaded data (no API key exposure)
                 wp_localize_script('pandascore-live-tracker-js', 'pandaScoreLiveTracker', [
-                    'apiKey' => $this->get_api_key(),
                     'wsMatches' => $wsMatches,
+                    'restBase' => esc_url_raw( rest_url('pandascore/v1') ),
+                    'preloadedMatches' => array_values($this->preloaded_live_matches),
                 ]);
 
-                error_log('[PandaScore] Initialized WebSocket tracking for ' . count($wsMatches) . ' matches');
+                error_log('[PandaScore] Initialized tracking for ' . count($wsMatches) . ' matches');
             }
         }
 
         $html .= '</div>';
         return $html;
+    }
+
+    public function register_rest_routes(): void {
+        register_rest_route('pandascore/v1', '/match/(?P<id>\d+)', [
+            'methods'  => 'GET',
+            'permission_callback' => '__return_true',
+            'callback' => function (WP_REST_Request $req) {
+                $match_id = (int) $req['id'];
+                $api_key = $this->get_api_key();
+                if (!$api_key) {
+                    return new WP_Error('no_api_key', 'PandaScore API key missing', ['status' => 500]);
+                }
+                $url = "https://api.pandascore.co/matches/{$match_id}";
+
+                // TTLs for match detail (from settings, filterable)
+                $ttl_setting = $this->ttl('ttl_match', 15);
+                $stale_setting = $this->ttl('stale_match', 120);
+                $ttl = (int) apply_filters('pandascore_cache_ttl_match_detail', $ttl_setting, $match_id);
+                $stale_ttl = (int) apply_filters('pandascore_cache_stale_ttl_match_detail', $stale_setting, $match_id);
+
+                $data = $this->cached_json_get($url, [
+                    'Authorization' => 'Bearer ' . $api_key
+                ], $ttl, $stale_ttl);
+
+                if (is_wp_error($data)) return $data;
+
+                // Lightweight cache hints for edges/CDN; does not affect page caches
+                header('Cache-Control: public, max-age=10, stale-while-revalidate=60');
+
+                return rest_ensure_response($data);
+            }
+        ]);
+
+        // (Optional future) list endpoints can be added for running/upcoming per game
     }
 }
 

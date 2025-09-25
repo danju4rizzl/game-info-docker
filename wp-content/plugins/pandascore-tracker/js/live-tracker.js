@@ -18,12 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return
   }
 
-  const { apiKey, wsMatches } = pandaScoreLiveTracker
-
-  if (!apiKey?.trim()) {
-    console.error('[PandaScore] API key is missing')
-    return
-  }
+  const { wsMatches, restBase, preloadedMatches } = pandaScoreLiveTracker
 
   if (!Array.isArray(wsMatches) || wsMatches.length === 0) {
     console.log('[PandaScore] No live matches to track')
@@ -40,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
    * Build WebSocket URL properly
    */
   function buildWebSocketUrl(matchId) {
-    return `wss://live.pandascore.co/matches/${matchId}?token=${encodeURIComponent(apiKey)}`
+    return `wss://live.pandascore.co/matches/${matchId}`
   }
 
   /**
@@ -95,11 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   async function fetchMatchData(matchId) {
     try {
-      const response = await fetch(
-        `https://api.pandascore.co/matches/${matchId}?token=${encodeURIComponent(
-          apiKey
-        )}`
-      )
+      const base = typeof restBase === 'string' ? restBase.replace(/\/$/, '') : ''
+      const response = await fetch(`${base}/match/${matchId}`)
 
       if (!response.ok) {
         console.warn(
@@ -150,10 +142,8 @@ document.addEventListener('DOMContentLoaded', function () {
       // Reset retry counter on successful connection
       retryAttempts.delete(matchId)
 
-      // Initial data fetch
-      fetchMatchData(matchId)
-
-      // Start periodic polling as backup (less frequent than before)
+      // Do not fetch immediately; rely on preloaded data and WS messages
+      // Start periodic polling as backup
       pollTimer = setInterval(() => {
         fetchMatchData(matchId)
       }, CONFIG.POLL_INTERVAL)
@@ -284,12 +274,25 @@ document.addEventListener('DOMContentLoaded', function () {
    * Initialize tracking for all live matches
    */
   function initializeTracking() {
+    const preloadMap = new Map()
+    if (Array.isArray(preloadedMatches)) {
+      preloadedMatches.forEach((m) => {
+        if (m && m.id) preloadMap.set(String(m.id), m)
+      })
+    }
+
     wsMatches.forEach((match) => {
       const matchId = match.match_id
 
       if (!matchId) {
         console.warn('[PandaScore] Match missing ID:', match)
         return
+      }
+
+      // Apply preloaded data to DOM (no network)
+      const preload = preloadMap.get(String(matchId))
+      if (preload) {
+        updateMatchScores(matchId, preload)
       }
 
       // Start with WebSocket connection attempt
