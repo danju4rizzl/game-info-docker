@@ -1,0 +1,355 @@
+/* Match Details Page Styles */
+.pandascore-match-details {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--brand-container-bg);
+  color: var(--brand-white);
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.match-details-header {
+  margin-bottom: 30px;
+}
+
+.match-details-back {
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background: var(--brand-bg);
+  color: var(--brand-white);
+  border: 2px solid var(--brand-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: var(--brand-color);
+  color: var(--brand-bg);
+}
+
+.match-details-league {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.league-logo-large {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: var(--brand-color);
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.league-info h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  color: var(--brand-white);
+}
+
+.tournament-name {
+  font-size: 16px;
+  color: var(--brand-light-grey);
+  margin: 0;
+}
+
+.match-status {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.match-status.status-running {
+  background: var(--brand-red);
+  color: var(--brand-white);
+}
+
+.match-status.status-finished {
+  background: var(--brand-teal);
+  color: var(--brand-white);
+}
+
+.match-status.status-not_started {
+  background: var(--brand-color);
+  color: var(--brand-bg);
+}
+
+.scheduled-time {
+  font-size: 12px;
+  margin-top: 5px;
+  opacity: 0.8;
+}
+
+/* Teams Section */
+.match-details-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--brand-bg);
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.team-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.team-logo-container {
+  margin-bottom: 15px;
+}
+
+.team-logo-large {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.team-logo-placeholder-large {
+  width: 100px;
+  height: 100px;
+  background: var(--brand-color);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--brand-bg);
+}
+
+.team-info .team-name {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  color: var(--brand-white);
+}
+
+.team-info .team-acronym {
+  font-size: 16px;
+  color: var(--brand-light-grey);
+  margin: 0;
+}
+
+.team-score {
+  background: var(--brand-color);
+  color: var(--brand-bg);
+  font-size: 36px;
+  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.vs-separator {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--brand-color);
+  margin: 0 20px;
+}
+
+/* Match Info Section */
+.match-details-info {
+  background: var(--brand-bg);
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.match-details-info h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: var(--brand-color);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-label {
+  font-weight: 500;
+  color: var(--brand-light-grey);
+}
+
+.info-value {
+  font-weight: 600;
+  color: var(--brand-white);
+}
+
+/* Games Section */
+.match-details-games {
+  background: var(--brand-bg);
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.match-details-games h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: var(--brand-color);
+}
+
+.games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.game-item {
+  background: var(--brand-container-bg);
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--brand-color);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.game-number {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brand-white);
+}
+
+.game-status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.game-status.status-finished {
+  background: var(--brand-teal);
+  color: var(--brand-white);
+}
+
+.game-status.status-running {
+  background: var(--brand-red);
+  color: var(--brand-white);
+}
+
+.game-status.status-not_started {
+  background: var(--brand-color);
+  color: var(--brand-bg);
+}
+
+.game-teams {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.game-team {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding: 10px 15px;
+  background: var(--brand-bg);
+  border-radius: 6px;
+}
+
+.game-team .team-name {
+  font-weight: 500;
+  color: var(--brand-white);
+}
+
+.game-team .team-score {
+  background: var(--brand-color);
+  color: var(--brand-bg);
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  min-width: 30px;
+  text-align: center;
+}
+
+.no-games {
+  text-align: center;
+  color: var(--brand-light-grey);
+  font-style: italic;
+  padding: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .pandascore-match-details {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .match-details-teams {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .vs-separator {
+    margin: 10px 0;
+  }
+
+  .team-logo-large,
+  .team-logo-placeholder-large {
+    width: 80px;
+    height: 80px;
+  }
+
+  .team-info .team-name {
+    font-size: 20px;
+  }
+
+  .team-score {
+    font-size: 28px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-teams {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

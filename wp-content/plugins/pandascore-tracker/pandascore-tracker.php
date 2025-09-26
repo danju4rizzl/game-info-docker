@@ -27,10 +27,12 @@ class PandaScore_Tracker_Plugin {
 
     public function enqueue_assets(): void {
         wp_register_style('pandascore-tracker-style', plugins_url('css/index.css', __FILE__), [], '1.5');
+        wp_register_style('pandascore-match-details-style', plugins_url('css/match-details.css', __FILE__), [], '1.0');
         wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', __FILE__), [], '1.5', true);
         wp_register_script('pandascore-timezone-js', plugins_url('js/timezone-converter.js', __FILE__), [], '1.0', true);
         wp_register_script('pandascore-league-filter-js', plugins_url('js/league-filter.js', __FILE__), [], '1.0', true);
         wp_register_script('pandascore-date-filter-js', plugins_url('js/date-filter.js', __FILE__), [], '1.0', true);
+        wp_register_script('pandascore-match-details-js', plugins_url('js/match-details.js', __FILE__), [], '1.0', true);
     }
 
     public function admin_menu(): void {
@@ -629,11 +631,17 @@ class PandaScore_Tracker_Plugin {
     }
 
     public function shortcode_handler($atts): string {
+        // Check if we should show match details instead
+        if (isset($_GET['view']) && $_GET['view'] === 'match-details' && isset($_GET['match_id'])) {
+            return $this->render_match_details(intval($_GET['match_id']));
+        }
+
         $atts = shortcode_atts(['game' => 'lol', 'limit' => 100, 'align' => 'center', 'type' => 'mixed'], $atts, 'pandascore_tracker');
         wp_enqueue_style('pandascore-tracker-style');
         wp_enqueue_script('pandascore-timezone-js');
         wp_enqueue_script('pandascore-league-filter-js');
         wp_enqueue_script('pandascore-date-filter-js');
+        wp_enqueue_script('pandascore-match-details-js');
 
         $this->live_match_ids = [];
         $this->preloaded_live_matches = [];
@@ -721,6 +729,33 @@ class PandaScore_Tracker_Plugin {
         ]);
 
         // (Optional future) list endpoints can be added for running/upcoming per game
+    }
+
+    /**
+     * Render match details page
+     */
+    private function render_match_details($match_id): string {
+        wp_enqueue_style('pandascore-tracker-style');
+        wp_enqueue_style('pandascore-match-details-style');
+        
+        require_once plugin_dir_path(__FILE__) . 'templates/match-details.php';
+        
+        $details = new PandaScore_Match_Details($this, $match_id);
+        return $details->render();
+    }
+
+    /**
+     * Public method to access API key for match details template
+     */
+    public function get_public_api_key(): string {
+        return $this->get_api_key();
+    }
+
+    /**
+     * Public method to access cached JSON get for match details template
+     */
+    public function public_cached_json_get(string $url, array $headers, int $ttl, int $stale_ttl = 300) {
+        return $this->cached_json_get($url, $headers, $ttl, $stale_ttl);
     }
 }
 
