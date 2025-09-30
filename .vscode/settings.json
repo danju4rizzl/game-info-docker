@@ -13,5 +13,6 @@
     "Valorant",
     "videogame",
     "wscat"
-  ]
+  ],
+  "codium.codeCompletion.enable": true
 }
