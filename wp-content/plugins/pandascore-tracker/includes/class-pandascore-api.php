@@ -1,19 +1,28 @@
 <?php
 
 if (!defined('ABSPATH')) {
-    exit;
+    return;
 }
 
 class PandaScore_API {
     private $settings;
+    private $cache;
 
     public function __construct($settings) {
         $this->settings = $settings;
+        require_once plugin_dir_path(__FILE__) . 'class-pandascore-cache.php';
+        $this->cache = new PandaScore_Cache($settings);
     }
 
     public function make_api_call($game, $limit, $endpoint) {
         $api_key = $this->settings->get_api_key();
         if (!$api_key) return new WP_Error('no_api_key', 'PandaScore API key not set');
+
+        $cache_key = "api_call_{$game}_{$limit}_{$endpoint}";
+        $cached_data = $this->cache->get($cache_key);
+        if ($cached_data !== false) {
+            return $cached_data;
+        }
 
         $query_args = ['page[size]' => intval($limit)];
         $url = add_query_arg($query_args, "https://api.pandascore.co/{$game}/matches/{$endpoint}");
@@ -30,12 +39,20 @@ class PandaScore_API {
 
         $data = json_decode(wp_remote_retrieve_body($response), true);
         if (json_last_error() !== JSON_ERROR_NONE) return new WP_Error('json_error', 'Invalid JSON from API');
+        
+        $this->cache->set($cache_key, $data);
         return $data;
     }
 
     public function get_live_matches_from_tournaments($game) {
         $api_key = $this->settings->get_api_key();
         if (!$api_key) return [];
+
+        $cache_key = "live_tournaments_{$game}";
+        $cached_data = $this->cache->get($cache_key);
+        if ($cached_data !== false) {
+            return $cached_data;
+        }
 
         $live_matches = [];
         $tournaments_url = "https://api.pandascore.co/{$game}/tournaments/running";
@@ -45,7 +62,8 @@ class PandaScore_API {
         ]);
 
         if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
-            error_log('[PandaScore] Failed to fetch tournaments: ' . (is_wp_error($response) ? $response->get_error_message() : wp_remote_retrieve_response_code($response)));
+            $error_msg = is_wp_error($response) ? $response->get_error_message() : wp_remote_retrieve_response_code($response);
+            error_log('[PandaScore] Failed to fetch tournaments: ' . sanitize_text_field($error_msg));
             return [];
         }
 
@@ -66,12 +84,13 @@ class PandaScore_API {
 
                     if (in_array($match_data['status'], ['running', 'not_started'])) {
                         $live_matches[] = $match_data;
-                        error_log("[PandaScore] Found live-supported match: {$match_data['match_id']} (status: {$match_data['status']})");
+                        error_log('[PandaScore] Found live-supported match: ' . intval($match_data['match_id']) . ' (status: ' . sanitize_text_field($match_data['status']) . ')');
                     }
                 }
             }
         }
 
+        $this->cache->set($cache_key, $live_matches, 2 * MINUTE_IN_SECONDS);
         return $live_matches;
     }
 

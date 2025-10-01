@@ -2,7 +2,7 @@
 /*
 Plugin Name: PandaScore Tracker
 Description: Fetches and displays PandaScore game scores via shortcode.
-Version: 1.3 (Improved WebSocket Implementation + Match Details Routing)
+Version: 1.4
 Author: Deejay Dev
 Text Domain: pandascore-tracker
 */
@@ -28,14 +28,12 @@ class PandaScore_Tracker_Plugin {
 
     public function __construct() {
         $this->settings = new PandaScore_Settings();
-        $this->api = new PandaScore_API($this->settings);
-        $this->router = new PandaScore_Router(__FILE__);
-        $this->assets = new PandaScore_Assets(__FILE__);
-        $this->renderer = new PandaScore_Renderer(__FILE__, $this->router);
-        $this->shortcode = new PandaScore_Shortcode($this->api, $this->assets, $this->renderer, $this->settings);
+        $this->api = new PandaScore_API(settings: $this->settings);
+        $this->router = new PandaScore_Router(plugin_file: __FILE__);
+        $this->assets = new PandaScore_Assets(plugin_file: __FILE__);
+        $this->renderer = new PandaScore_Renderer(plugin_file: __FILE__, router: $this->router);
+        $this->shortcode = new PandaScore_Shortcode($this->api, assets: $this->assets, renderer: $this->renderer, settings: $this->settings);
     }
-
-
 
     public static function activate() {
         PandaScore_Router::activate();
@@ -44,10 +42,6 @@ class PandaScore_Tracker_Plugin {
     public static function deactivate() {
         PandaScore_Router::deactivate();
     }
-
-
-
-
 }
 
 register_activation_hook(__FILE__, ['PandaScore_Tracker_Plugin', 'activate']);

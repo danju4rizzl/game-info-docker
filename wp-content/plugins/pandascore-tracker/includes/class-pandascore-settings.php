@@ -10,6 +10,19 @@ class PandaScore_Settings {
     public function __construct() {
         add_action('admin_menu', [$this, 'admin_menu']);
         add_action('admin_init', [$this, 'register_settings']);
+        add_action('admin_init', [$this, 'handle_cache_clear']);
+    }
+
+    public function handle_cache_clear() {
+        if (isset($_POST['action']) && $_POST['action'] === 'clear_cache' && 
+            wp_verify_nonce($_POST['pandascore_cache_nonce'], 'pandascore_clear_cache')) {
+            require_once plugin_dir_path(__FILE__) . 'class-pandascore-cache.php';
+            $cache = new PandaScore_Cache($this);
+            $cache->clear_all();
+            add_action('admin_notices', function() {
+                echo '<div class="notice notice-success is-dismissible"><p>Cache cleared successfully!</p></div>';
+            });
+        }
     }
 
     public function admin_menu() {
@@ -20,12 +33,20 @@ class PandaScore_Settings {
         register_setting($this->option_key, $this->option_key);
         add_settings_section('pandascore_main', 'PandaScore Settings', null, 'pandascore-tracker');
         add_settings_field('api_key', 'API Key', [$this, 'field_api_key'], 'pandascore-tracker', 'pandascore_main');
+        add_settings_field('cache_duration', 'Cache Duration (minutes)', [$this, 'field_cache_duration'], 'pandascore-tracker', 'pandascore_main');
     }
 
     public function field_api_key() {
         $opts = get_option($this->option_key);
         $val = isset($opts['api_key']) ? esc_attr($opts['api_key']) : '';
         echo '<input type="text" name="' . $this->option_key . '[api_key]" value="' . $val . '" class="pandascore-api-key-input">';
+    }
+
+    public function field_cache_duration() {
+        $opts = get_option($this->option_key);
+        $val = isset($opts['cache_duration']) ? intval($opts['cache_duration']) : 10;
+        echo '<input type="number" min="1" max="60" name="' . $this->option_key . '[cache_duration]" value="' . $val . '" /> minutes';
+        echo '<p class="description">Cache API responses to reduce rate limit usage (1-60 minutes)</p>';
     }
 
     public function settings_page() {
@@ -39,6 +60,11 @@ class PandaScore_Settings {
                 do_settings_sections('pandascore-tracker');
                 submit_button();
                 ?>
+            </form>
+            <form method="post" action="">
+                <?php wp_nonce_field('pandascore_clear_cache', 'pandascore_cache_nonce'); ?>
+                <input type="hidden" name="action" value="clear_cache" />
+                <input type="submit" class="button" value="Clear Cache" />
             </form>
             <h3>Shortcode Usage</h3>
             <p><strong>Basic usage:</strong> <code>[pandascore_tracker]</code></p>
@@ -56,5 +82,11 @@ class PandaScore_Settings {
     public function get_api_key() {
         $opts = get_option($this->option_key);
         return isset($opts['api_key']) ? trim($opts['api_key']) : '';
+    }
+
+    public function get_cache_duration() {
+        $opts = get_option($this->option_key);
+        $minutes = isset($opts['cache_duration']) ? intval($opts['cache_duration']) : 10;
+        return $minutes * MINUTE_IN_SECONDS;
     }
 }
