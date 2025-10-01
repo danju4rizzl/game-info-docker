@@ -7,7 +7,7 @@ get_header();
 wp_enqueue_style('pandascore-tracker-style');
 wp_enqueue_script('pandascore-timezone-js');
 
-$match_id = intval(get_query_var('game_match_id'));
+$match_id = intval(get_query_var('match'));
 $opts = get_option('pandascore_tracker_options');
 $api_key = isset($opts['api_key']) ? trim($opts['api_key']) : '';
 

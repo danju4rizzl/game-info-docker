@@ -36,16 +36,16 @@ class PandaScore_Tracker_Plugin {
     }
 
     public function add_rewrite_rules() {
-        add_rewrite_rule('^match/([0-9]+)/?$', 'index.php?game_match_id=$matches[1]', 'top');
+        add_rewrite_rule('^match/([0-9]+)/?$', 'index.php?match=$matches[1]', 'top');
     }
 
     public function register_query_vars($vars) {
-        $vars[] = 'game_match_id';
+        $vars[] = 'match';
         return $vars;
     }
 
     public function match_template_include($template) {
-        $match_id = get_query_var('game_match_id');
+        $match_id = get_query_var('match');
         if (!empty($match_id)) {
             $plugin_template = plugin_dir_path(__FILE__) . 'templates/match-details.php';
             if (file_exists($plugin_template)) {
@@ -56,7 +56,7 @@ class PandaScore_Tracker_Plugin {
     }
 
     public static function activate() {
-        add_rewrite_rule('^match/([0-9]+)/?$', 'index.php?game_match_id=$matches[1]', 'top');
+        add_rewrite_rule('^match/([0-9]+)/?$', 'index.php?match=$matches[1]', 'top');
         flush_rewrite_rules();
     }
 
@@ -259,7 +259,7 @@ class PandaScore_Tracker_Plugin {
         $id = isset($match['id']) ? intval($match['id']) : 0;
         if (!$id) return '#';
         // Use query var URL to avoid dependency on rewrite flush; pretty URLs are also supported via rewrite rules
-        return add_query_arg('game_match_id', $id, home_url('/'));
+        return add_query_arg('match', $id, home_url('/'));
     }
 
     private function render_team($logo_url, $name, $acronym, $score = null, $opponent_id = null) {
