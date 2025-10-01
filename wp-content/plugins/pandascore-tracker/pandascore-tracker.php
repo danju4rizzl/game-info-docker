@@ -12,13 +12,16 @@ if (!defined('ABSPATH')) {
 }
 
 require_once plugin_dir_path(__FILE__) . 'includes/class-pandascore-settings.php';
+require_once plugin_dir_path(__FILE__) . 'includes/class-pandascore-api.php';
 
 class PandaScore_Tracker_Plugin {
     private $live_match_ids = [];
     private $settings;
+    private $api;
 
     public function __construct() {
         $this->settings = new PandaScore_Settings();
+        $this->api = new PandaScore_API($this->settings);
         add_shortcode('pandascore_tracker', [$this, 'shortcode_handler']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
 
@@ -116,96 +119,7 @@ class PandaScore_Tracker_Plugin {
         return $html;
     }
 
-    private function make_api_call($game, $limit, $endpoint) {
-        $api_key = $this->get_api_key();
-        if (!$api_key) return new WP_Error('no_api_key', 'PandaScore API key not set');
 
-        $query_args = ['page[size]' => intval($limit)];
-        $url = add_query_arg($query_args, "https://api.pandascore.co/{$game}/matches/{$endpoint}");
-        
-        $response = wp_remote_get($url, [
-            'timeout' => 15,
-            'headers' => ['Authorization' => 'Bearer ' . $api_key]
-        ]);
-
-        if (is_wp_error($response)) return $response;
-        if (wp_remote_retrieve_response_code($response) !== 200) {
-            return new WP_Error('api_error', 'PandaScore API returned code ' . wp_remote_retrieve_response_code($response));
-        }
-
-        $data = json_decode(wp_remote_retrieve_body($response), true);
-        if (json_last_error() !== JSON_ERROR_NONE) return new WP_Error('json_error', 'Invalid JSON from API');
-        return $data;
-    }
-
-    /**
-     * Enhanced function to detect and collect live matches from tournaments
-     */
-    private function get_live_matches_from_tournaments($game) {
-        $api_key = $this->get_api_key();
-        if (!$api_key) return [];
-
-        $live_matches = [];
-
-        // Get running tournaments
-        $tournaments_url = "https://api.pandascore.co/{$game}/tournaments/running";
-        $response = wp_remote_get($tournaments_url, [
-            'timeout' => 15,
-            'headers' => ['Authorization' => 'Bearer ' . $api_key]
-        ]);
-
-        if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
-            error_log('[PandaScore] Failed to fetch tournaments: ' . (is_wp_error($response) ? $response->get_error_message() : wp_remote_retrieve_response_code($response)));
-            return [];
-        }
-
-        $tournaments = json_decode(wp_remote_retrieve_body($response), true);
-        if (!is_array($tournaments)) return [];
-
-        // Process each tournament to find live-supported matches
-        foreach ($tournaments as $tournament) {
-            if (!isset($tournament['matches']) || !is_array($tournament['matches'])) continue;
-
-            foreach ($tournament['matches'] as $match) {
-                // Check if match has live support
-                if (isset($match['live']['supported']) && $match['live']['supported'] === true) {
-                    $match_data = [
-                        'match_id' => $match['id'],
-                        'status' => $match['status'] ?? 'unknown',
-                        'live_url' => $match['live']['url'] ?? null,
-                        'opens_at' => $match['live']['opens_at'] ?? null
-                    ];
-
-                    // Only include matches that are running or about to start
-                    if (in_array($match_data['status'], ['running', 'not_started'])) {
-                        $live_matches[] = $match_data;
-                        error_log("[PandaScore] Found live-supported match: {$match_data['match_id']} (status: {$match_data['status']})");
-                    }
-                }
-            }
-        }
-
-        return $live_matches;
-    }
-
-    /**
-     * Build WebSocket matches data for JavaScript
-     */
-    private function get_ws_matches_payload($matchIds = []) {
-        $api_key = $this->get_api_key();
-        $matchIds = array_values(array_unique(array_map('intval', (array) $matchIds)));
-        
-        if (empty($matchIds) || !$api_key) return [];
-
-        $payload = [];
-        
-        // Initialize with basic match data
-        foreach ($matchIds as $id) {
-            $payload[] = ['match_id' => $id];
-        }
-
-        return $payload;
-    }
 
     private function get_team_logo_html($logo_url, $team_name, $acronym) {
         if ($logo_url) {
@@ -289,7 +203,7 @@ class PandaScore_Tracker_Plugin {
     }
 
     private function render_matches($game, $limit, $is_live) {
-        $matches = $this->make_api_call($game, $limit, $is_live ? 'running' : 'upcoming');
+        $matches = $this->api->make_api_call($game, $limit, $is_live ? 'running' : 'upcoming');
         if (is_wp_error($matches)) {
             return '<div class="pandascore-error">Error: ' . esc_html($matches->get_error_message()) . '</div>';
         }
@@ -344,7 +258,7 @@ class PandaScore_Tracker_Plugin {
         // Enhanced live match detection and WebSocket setup
         if (in_array($atts['type'], ['live', 'mixed'])) {
             // Get live matches from tournaments (more comprehensive)
-            $tournament_live_matches = $this->get_live_matches_from_tournaments($atts['game']);
+            $tournament_live_matches = $this->api->get_live_matches_from_tournaments($atts['game']);
             
             // Merge with matches from /running endpoint
             $all_live_match_ids = array_unique(array_merge(
@@ -354,7 +268,7 @@ class PandaScore_Tracker_Plugin {
 
             if (!empty($all_live_match_ids)) {
                 wp_enqueue_script('pandascore-live-tracker-js');
-                $wsMatches = $this->get_ws_matches_payload($all_live_match_ids);
+                $wsMatches = $this->api->get_ws_matches_payload($all_live_match_ids);
                 
                 wp_localize_script('pandascore-live-tracker-js', 'pandaScoreLiveTracker', [
                     'apiKey' => $this->get_api_key(),
