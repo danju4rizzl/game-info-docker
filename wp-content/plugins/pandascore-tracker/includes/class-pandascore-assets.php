@@ -14,6 +14,7 @@ class PandaScore_Assets {
 
     public function register_assets() {
         wp_register_style('pandascore-tracker-style', plugins_url('css/index.css', $this->plugin_file), [], '1.3');
+        wp_register_style('pandascore-match-details-style', plugins_url('css/match-details.css', $this->plugin_file), [], '1.3');
         wp_register_script('pandascore-live-tracker-js', plugins_url('js/live-tracker.js', $this->plugin_file), [], '1.3', true);
         wp_register_script('pandascore-timezone-js', plugins_url('js/timezone-converter.js', $this->plugin_file), [], '1.0', true);
         wp_register_script('pandascore-league-filter-js', plugins_url('js/league-filter.js', $this->plugin_file), [], '1.0', true);
@@ -22,6 +23,7 @@ class PandaScore_Assets {
 
     public function enqueue_basic_assets() {
         wp_enqueue_style('pandascore-tracker-style');
+        wp_enqueue_style('pandascore-match-details-style');
         wp_enqueue_script('pandascore-timezone-js');
         wp_enqueue_script('pandascore-league-filter-js');
         wp_enqueue_script('pandascore-date-filter-js');

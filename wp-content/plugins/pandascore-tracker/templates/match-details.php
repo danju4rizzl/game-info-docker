@@ -2,10 +2,8 @@
 if (!defined('ABSPATH')) { exit; }
 
 get_header();
-
-// Enqueue plugin styles and optional timezone script
 wp_enqueue_style('pandascore-tracker-style');
-wp_enqueue_script('pandascore-timezone-js');
+wp_enqueue_style('pandascore-match-details-style');
 
 $match_id = intval(get_query_var('match'));
 $opts = get_option('pandascore_tracker_options');
@@ -39,84 +37,128 @@ if (!$match_id) {
     }
 }
 
-function pandascore_team_block($team) {
-    $name = isset($team['name']) ? esc_html($team['name']) : 'TBD';
-    $acronym = !empty($team['acronym']) ? esc_html($team['acronym']) : $name;
-    $logo = isset($team['image_url']) ? esc_url($team['image_url']) : '';
-    $html = '<div class="pandascore-team">';
-    $html .= '<div class="pandascore-team-info">';
-    if ($logo) {
-        $html .= '<img src="' . $logo . '" alt="' . $name . '" class="pandascore-team-logo">';
-    } else {
-        $html .= '<div class="pandascore-team-logo-placeholder" title="Unknown Team">' . esc_html(mb_substr($name, 0, 1)) . '</div>';
-    }
-    $html .= '<span class="pandascore-team-name" title="' . $name . '">' . $acronym . '</span>';
-    $html .= '</div>';
-    $html .= '</div>';
-    return $html;
+if ($error) {
+    echo '<div class="pandascore-error">' . esc_html($error) . '</div>';
+    get_footer();
+    return;
 }
 
+$league_name = $match['league']['name'] ?? 'LCK SPLIT 3, WEEK 12';
+$scheduled_at = $match['scheduled_at'] ?? '';
+$opponents = $match['opponents'] ?? [];
+$results = $match['results'] ?? [];
+$teamA = $opponents[0]['opponent'] ?? ['name' => 'T1', 'acronym' => 'T1'];
+$teamB = $opponents[1]['opponent'] ?? ['name' => 'DRX', 'acronym' => 'DRX'];
+$scoreA = $results[0]['score'] ?? 3;
+$scoreB = $results[1]['score'] ?? 4;
 ?>
-<div class="pandascore-match-details-container" style="max-width: 980px; margin: 32px auto; padding: 0 16px;">
-    <a href="javascript:history.back()" style="display:inline-block;margin-bottom:16px;">&larr; Back</a>
 
-    <?php if ($error): ?>
-        <div class="pandascore-error"><?php echo esc_html($error); ?></div>
-    <?php elseif ($match): ?>
-        <?php
-            $league_name = isset($match['league']['name']) ? esc_html($match['league']['name']) : '';
-            $league_logo = isset($match['league']['image_url']) ? esc_url($match['league']['image_url']) : '';
-            $status = isset($match['status']) ? esc_html($match['status']) : '';
-            $scheduled_at = !empty($match['scheduled_at']) ? esc_html($match['scheduled_at']) : '';
-            $begin_at = !empty($match['begin_at']) ? esc_html($match['begin_at']) : '';
-            $live_supported = isset($match['live']['supported']) ? (bool)$match['live']['supported'] : false;
-            $results = isset($match['results']) && is_array($match['results']) ? $match['results'] : [];
-            $opponents = isset($match['opponents']) && is_array($match['opponents']) ? $match['opponents'] : [];
-        ?>
 
-        <div class="pandascore-match-details-card" style="background:#0f1320;border-radius:12px;padding:16px 16px 24px;">
-            <div class="pandascore-league-container" style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-                <?php if ($league_logo): ?>
-                    <div class="pandascore-league-logo" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
-                        <img src="<?php echo $league_logo; ?>" alt="<?php echo $league_name; ?>" title="<?php echo $league_name; ?>" style="width:100%;height:100%;object-fit:contain;" />
+
+<div class="match-page">
+    <div class="match-header">
+        <h1><?php echo esc_html(strtoupper($league_name)); ?></h1>
+        <div class="match-time"><?php echo $scheduled_at ? date('H:i - jS \of F Y', strtotime($scheduled_at)) : '12:00 - 7th of August 2025'; ?></div>
+    </div>
+
+    <div class="match-layout">
+        <div class="sidebar">
+            <button class="stats-button">See all player stats</button>
+            <?php for($i = 0; $i < 5; $i++): ?>
+            <div class="player-card">
+                <img src="https://via.placeholder.com/40/666/fff?text=D" class="player-avatar">
+                <div>
+                    <div class="player-name">Doran</div>
+                    <div class="player-role">Most Played Champs</div>
+                    <div class="champion-icons">
+                        <?php for($j = 0; $j < 5; $j++): ?>
+                        <img src="https://via.placeholder.com/20/444/fff?text=C" class="champion-icon">
+                        <?php endfor; ?>
                     </div>
-                <?php endif; ?>
-                <div style="font-weight:600;"><?php echo $league_name; ?></div>
-                <div style="margin-left:auto;font-size:12px;opacity:0.8;">Status: <?php echo $status; ?><?php echo $live_supported ? ' • Live supported' : ''; ?></div>
-            </div>
-
-            <div class="pandascore-teams-container" style="display:flex;gap:12px;align-items:center;justify-content:space-between;">
-                <?php
-                    $teamA = isset($opponents[0]['opponent']) ? $opponents[0]['opponent'] : ['name' => 'TBD'];
-                    $teamB = isset($opponents[1]['opponent']) ? $opponents[1]['opponent'] : ['name' => 'TBD'];
-                    $scoreA = isset($results[0]['score']) ? intval($results[0]['score']) : null;
-                    $scoreB = isset($results[1]['score']) ? intval($results[1]['score']) : null;
-                ?>
-                <div style="flex:1;display:flex;justify-content:flex-start;">
-                    <?php echo pandascore_team_block($teamA); ?>
-                </div>
-                <div class="pandascore-scoreboard" style="min-width:80px;text-align:center;font-weight:700;font-size:20px;">
-                    <?php echo $scoreA !== null && $scoreB !== null ? intval($scoreA) . ' : ' . intval($scoreB) : 'vs'; ?>
-                </div>
-                <div style="flex:1;display:flex;justify-content:flex-end;">
-                    <?php echo pandascore_team_block($teamB); ?>
                 </div>
             </div>
+            <?php endfor; ?>
+        </div>
 
-            <div class="pandascore-schedule" style="margin-top:16px;font-size:14px;opacity:0.85;">
-                <?php if ($scheduled_at): ?>
-                    <div>Scheduled: <span class="pandascore-time" data-iso="<?php echo esc_attr($scheduled_at); ?>"><?php echo $scheduled_at; ?></span></div>
-                <?php endif; ?>
-                <?php if ($begin_at): ?>
-                    <div>Begin at: <span class="pandascore-time" data-iso="<?php echo esc_attr($begin_at); ?>"><?php echo $begin_at; ?></span></div>
-                <?php endif; ?>
+        <div class="center-content">
+            <div class="main-match">
+                <div class="team-logos">
+                    <div class="team-logo">
+                        <img src="<?php echo esc_url($teamA['image_url'] ?? 'https://via.placeholder.com/80/ff0000/fff?text=T1'); ?>" alt="<?php echo esc_attr($teamA['name']); ?>">
+                    </div>
+                    <div class="vs-section">VS</div>
+                    <div class="team-logo">
+                        <img src="<?php echo esc_url($teamB['image_url'] ?? 'https://via.placeholder.com/80/0066ff/fff?text=DRX'); ?>" alt="<?php echo esc_attr($teamB['name']); ?>">
+                    </div>
+                </div>
+
+                <div class="prediction-title">Who would win?</div>
+                <div class="prediction-buttons">
+                    <button class="pick-button">Pick</button>
+                    <button class="pick-button">Pick</button>
+                </div>
+            </div>
+
+            <div class="head-to-head">
+                <h2>HEAD TO HEAD</h2>
+                <div class="h2h-summary">
+                    <div class="team-summary">
+                        <div>
+                            <div>NAME</div>
+                            <div class="team-wins"><?php echo intval($scoreA); ?> wins</div>
+                        </div>
+                        <img src="<?php echo esc_url($teamA['image_url'] ?? 'https://via.placeholder.com/40/ff0000/fff?text=T1'); ?>" class="team-small-logo">
+                    </div>
+                    <div class="team-summary">
+                        <img src="<?php echo esc_url($teamB['image_url'] ?? 'https://via.placeholder.com/40/0066ff/fff?text=DRX'); ?>" class="team-small-logo">
+                        <div>
+                            <div>NAME</div>
+                            <div class="team-wins"><?php echo intval($scoreB); ?> wins</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="match-history">
+                    <div class="history-match">
+                        <div class="match-date">18/08/2025</div>
+                        <div>Match name here</div>
+                        <div class="match-result">
+                            <span class="team-score red">NAME</span>
+                            <span class="score">20 - 30</span>
+                            <span class="team-score blue">NAME</span>
+                        </div>
+                    </div>
+                    <div class="history-match">
+                        <div class="match-date">18/08/2025</div>
+                        <div>Match name here</div>
+                        <div class="match-result">
+                            <span class="team-score red">NAME</span>
+                            <span class="score">15 - 25</span>
+                            <span class="team-score blue">NAME</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div style="margin-top:16px;font-size:12px;opacity:0.7;">
-            Match ID: <?php echo intval($match_id); ?>
+        <div class="sidebar">
+            <button class="stats-button">See all player stats</button>
+            <?php for($i = 0; $i < 5; $i++): ?>
+            <div class="player-card">
+                <img src="https://via.placeholder.com/40/666/fff?text=D" class="player-avatar">
+                <div>
+                    <div class="player-name">Doran</div>
+                    <div class="player-role">Most Played Champs</div>
+                    <div class="champion-icons">
+                        <?php for($j = 0; $j < 5; $j++): ?>
+                        <img src="https://via.placeholder.com/20/444/fff?text=C" class="champion-icon">
+                        <?php endfor; ?>
+                    </div>
+                </div>
+            </div>
+            <?php endfor; ?>
         </div>
-    <?php endif; ?>
+    </div>
 </div>
 
 <?php get_footer(); ?>
