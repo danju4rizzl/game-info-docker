@@ -105,7 +105,7 @@ if ( ! function_exists( 'get_option' ) ) {
      * @param string $plugin
      * @return string
      */
-    function plugins_url( $path = '', $plugin = '' ) { return $path; }
+    function plugins_url( $path = '', $plugin = '' ): string { return $path; }
     
     /**
      * @param string $handle
@@ -114,7 +114,7 @@ if ( ! function_exists( 'get_option' ) ) {
      * @param string|bool $ver
      * @param string $media
      */
-    function wp_register_style( $handle, $src, $deps = array(), $ver = false, $media = 'all' ) { }
+    function wp_register_style( $handle, $src, $deps = array(), $ver = false, $media = 'all' ): void { }
     
     /**
      * @param string $handle
@@ -139,13 +139,13 @@ if ( ! function_exists( 'get_option' ) ) {
      * @param string|bool $ver
      * @param string $media
      */
-    function wp_enqueue_style( $handle, $src = '', $deps = array(), $ver = false, $media = 'all' ) { }
+    function wp_enqueue_style( $handle, $src = '', $deps = array(), $ver = false, $media = 'all' ): void { }
     
     /**
      * @param string $handle
      * @param string $data
      */
-    function wp_add_inline_style( $handle, $data ) { }
+    function wp_add_inline_style( $handle, $data ): void { }
     
     /**
      * @param string $handle
@@ -154,27 +154,27 @@ if ( ! function_exists( 'get_option' ) ) {
      * @param string|bool $ver
      * @param bool $in_footer
      */
-    function wp_enqueue_script( $handle, $src = '', $deps = array(), $ver = false, $in_footer = false ) { }
+    function wp_enqueue_script( $handle, $src = '', $deps = array(), $ver = false, $in_footer = false ): void { }
     
     /**
      * @param string $handle
      * @param string $object_name
      * @param array $l10n
      */
-    function wp_localize_script( $handle, $object_name, $l10n ) { }
+    function wp_localize_script( $handle, $object_name, $l10n ): void { }
     
     /**
      * @param string $path
      * @param string $scheme
      * @return string
      */
-    function rest_url( $path = '', $scheme = 'rest' ) { return $path; }
+    function rest_url( $path = '', $scheme = 'rest' ): string { return $path; }
     
     /**
      * @param string|int $action
      * @return string
      */
-    function wp_create_nonce( $action = -1 ) { return 'nonce'; }
+    function wp_create_nonce( $action = -1 ): string { return 'nonce'; }
     
     /**
      * @param array $pairs
@@ -182,7 +182,7 @@ if ( ! function_exists( 'get_option' ) ) {
      * @param string $shortcode
      * @return array
      */
-    function shortcode_atts( $pairs, $atts, $shortcode = '' ) { return array_merge( $pairs, (array) $atts ); }
+    function shortcode_atts( $pairs, $atts, $shortcode = '' ): array { return array_merge( $pairs, (array) $atts ); }
     
     /**
      * @param string $namespace
@@ -190,7 +190,7 @@ if ( ! function_exists( 'get_option' ) ) {
      * @param array $args
      * @param bool $override
      */
-    function register_rest_route( $namespace, $route, $args = array(), $override = false ) { }
+    function register_rest_route( $namespace, $route, $args = array(), $override = false ): void { }
     
     /**
      * @param string $page_title
@@ -199,14 +199,14 @@ if ( ! function_exists( 'get_option' ) ) {
      * @param string $menu_slug
      * @param callable $function
      */
-    function add_options_page( $page_title, $menu_title, $capability, $menu_slug, $function = '' ) { }
+    function add_options_page( $page_title, $menu_title, $capability, $menu_slug, $function = '' ): void { }
     
     /**
      * @param string $option_group
      * @param string $option_name
      * @param array $args
      */
-    function register_setting( $option_group, $option_name, $args = array() ) { }
+    function register_setting( $option_group, $option_name, $args = array() ): void { }
     
     /**
      * @param string $id
@@ -214,7 +214,7 @@ if ( ! function_exists( 'get_option' ) ) {
      * @param callable $callback
      * @param string $page
      */
-    function add_settings_section( $id, $title, $callback, $page ) { }
+    function add_settings_section( $id, $title, $callback, $page ): void { }
     
     /**
      * @param string $id
@@ -229,12 +229,12 @@ if ( ! function_exists( 'get_option' ) ) {
     /**
      * @param string $option_group
      */
-    function settings_fields( $option_group ) { }
+    function settings_fields( $option_group ): void { }
     
     /**
      * @param string $page
      */
-    function do_settings_sections( $page ) { }
+    function do_settings_sections( $page ): void { }
     
     /**
      * @param string $text
@@ -248,11 +248,11 @@ if ( ! function_exists( 'get_option' ) ) {
     /**
      * @return bool
      */
-    function __return_true() { return true; }
+    function __return_true(): bool { return true; }
 }
 
 // WordPress Classes
-if ( ! class_exists( 'WP_Error' ) ) {
+if ( ! class_exists( class: 'WP_Error' ) ) {
     class WP_Error {
         /**
          * @param string $code
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WP_Error' ) ) {
     }
 }
 
-if ( ! class_exists( 'WP_REST_Request' ) ) {
+if ( ! class_exists( class: 'WP_REST_Request' ) ) {
     class WP_REST_Request {
         /**
          * @param string $key
@@ -278,7 +278,7 @@ if ( ! class_exists( 'WP_REST_Request' ) ) {
     }
 }
 
-if ( ! class_exists( 'WP_REST_Response' ) ) {
+if ( ! class_exists( class: 'WP_REST_Response' ) ) {
     class WP_REST_Response {
         /**
          * @param mixed $data
@@ -287,4 +287,28 @@ if ( ! class_exists( 'WP_REST_Response' ) ) {
          */
         public function __construct( $data = null, $status = 200, $headers = array() ) {}
     }
+
+/**
+ * @param string $var
+ * @param mixed $default
+ * @return mixed
+ */
+function get_query_var( $var, $default = '' ): mixed { return $default; }
+
+/**
+ * @param string $text
+ * @return string
+ */
+function sanitize_text_field( $text ): string { return $text; }
+
+/**
+ * @return void
+ */
+function get_header(): void { }
+
+/**
+ * @return void
+ */
+function get_footer(): void { }
+
 }
