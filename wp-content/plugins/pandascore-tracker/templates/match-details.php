@@ -63,12 +63,12 @@ $scoreB = $results[1]['score'] ?? 4;
 
     <div class="match-layout">
         <div class="sidebar">
-            <button class="stats-button">See all player stats</button>
-            <?php for($i = 0; $i < 5; $i++): ?>
+            <!-- <button class="stats-button">See all player stats</button> -->
+            <?php for($i = 0; $i < 3; $i++): ?>
             <div class="player-card">
                 <img src="https://via.placeholder.com/40/666/fff?text=D" class="player-avatar">
                 <div>
-                    <div class="player-name">Doran</div>
+                    <div class="player-name">Developer</div>
                     <div class="player-role">Most Played Champs</div>
                     <div class="champion-icons">
                         <?php for($j = 0; $j < 5; $j++): ?>
@@ -86,19 +86,19 @@ $scoreB = $results[1]['score'] ?? 4;
                     <div class="team-logo">
                         <img src="<?php echo esc_url($teamA['image_url'] ?? 'https://via.placeholder.com/80/ff0000/fff?text=T1'); ?>" alt="<?php echo esc_attr($teamA['name']); ?>">
                     </div>
-                    <div class="vs-section">VS</div>
+                    <div class="vs-section"><img src="<?php echo plugin_dir_url(__DIR__) . 'images/VS.png'; ?>" alt="VS"></div>
                     <div class="team-logo">
                         <img src="<?php echo esc_url($teamB['image_url'] ?? 'https://via.placeholder.com/80/0066ff/fff?text=DRX'); ?>" alt="<?php echo esc_attr($teamB['name']); ?>">
                     </div>
                 </div>
-
+<!-- 
                 <div class="prediction-title">Who would win?</div>
                 <div class="prediction-buttons">
                     <button class="pick-button">Pick</button>
                     <button class="pick-button">Pick</button>
-                </div>
+                </div> -->
             </div>
-
+<!-- 
             <div class="head-to-head">
                 <h2>HEAD TO HEAD</h2>
                 <div class="h2h-summary">
@@ -138,16 +138,16 @@ $scoreB = $results[1]['score'] ?? 4;
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="sidebar">
-            <button class="stats-button">See all player stats</button>
-            <?php for($i = 0; $i < 5; $i++): ?>
+            <!-- <button class="stats-button">See all player stats</button> -->
+            <?php for($i = 0; $i < 3; $i++): ?>
             <div class="player-card">
                 <img src="https://via.placeholder.com/40/666/fff?text=D" class="player-avatar">
                 <div>
-                    <div class="player-name">Doran</div>
+                    <div class="player-name">Deejay</div>
                     <div class="player-role">Most Played Champs</div>
                     <div class="champion-icons">
                         <?php for($j = 0; $j < 5; $j++): ?>
