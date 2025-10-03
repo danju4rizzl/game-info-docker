@@ -47,7 +47,6 @@
   padding-right: 10px;
 }
 
-
 /* PandaScore Tracker Styles */
 .pandascore-tracker * {
   /* We use this to debug the entire widget css */
@@ -345,6 +344,20 @@
   margin: 0px auto;
   margin-bottom: 15px;
   padding: 0px 5px;
+  overflow: hidden;
+  overflow-x: scroll;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.pandascore-league-filters.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.pandascore-league-filters::-webkit-scrollbar {
+  display: none;
 }
 
 .pandascore-league-filter {
@@ -393,13 +406,15 @@
   border-color: var(--brand-brown);
 }
 
+.pandascore-league-filter[data-league-name='WORLDS'].active,
+.pandascore-league-filter[data-league-name='WORLDS']:hover {
+  border-color: var(--brand-color);
+}
+
 .pandascore-league-filter[data-league-name='OTHER LEAGUES'].active,
 .pandascore-league-filter[data-league-name='OTHER LEAGUES']:hover {
   border-color: var(--brand-color);
 }
-
-
-
 
 /* Score updating animation */
 .pandascore-score.score-updating {
@@ -448,7 +463,8 @@
 }
 
 @keyframes livePulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {

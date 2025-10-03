@@ -254,4 +254,61 @@ document.addEventListener('DOMContentLoaded', function () {
   // Enforce max visible per section and update visibility after initialization
   enforceDisplayLimit()
   updateContainerVisibility()
+
+  // Enable drag-to-scroll on the league filters container
+  const leagueStrips = Array.from(
+    document.querySelectorAll('.pandascore-league-filters')
+  )
+
+  leagueStrips.forEach((container) => {
+    let isDown = false
+    let startX = 0
+    let startScrollLeft = 0
+    let dragged = false
+
+    const onPointerDown = (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      isDown = true
+      dragged = false
+      startX = e.clientX
+      startScrollLeft = container.scrollLeft
+    }
+
+    const onPointerMove = (e) => {
+      if (!isDown) return
+      const dx = e.clientX - startX
+      if (Math.abs(dx) > 3 && !dragged) {
+        dragged = true
+        container.classList.add('is-dragging')
+      }
+      if (dragged) {
+        container.scrollLeft = startScrollLeft - dx
+        e.preventDefault()
+      }
+    }
+
+    const endDrag = () => {
+      if (!isDown) return
+      isDown = false
+      container.classList.remove('is-dragging')
+    }
+
+    container.addEventListener('pointerdown', onPointerDown)
+    container.addEventListener('pointermove', onPointerMove)
+    container.addEventListener('pointerup', endDrag)
+    container.addEventListener('pointercancel', endDrag)
+    container.addEventListener('pointerleave', endDrag)
+
+    container.addEventListener(
+      'click',
+      (e) => {
+        if (dragged) {
+          e.preventDefault()
+          e.stopPropagation()
+          dragged = false
+        }
+      },
+      true
+    )
+  })
 })
