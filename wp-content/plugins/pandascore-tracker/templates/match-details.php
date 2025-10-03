@@ -159,6 +159,38 @@ $scoreB = $results[1]['score'] ?? 4;
             <?php endfor; ?>
         </div>
     </div>
+
+        <div class="live-stream-section">
+            <div class="live-stream-container">
+                <div class="stream-header">
+                    <span class="live-badge">Live</span>
+                    <h2>STREAM</h2>
+                </div>
+                <div class="stream-layout">
+                    <div class="main-stream">
+                        <div class="stream-player">
+                            <div class="play-button">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                    <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.2)"/>
+                                    <path d="M23 18L40 30L23 42V18Z" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stream-list">
+                        <?php for($i = 0; $i < 15; $i++): ?>
+                        <div class="stream-item">
+                            <span class="stream-name">Name of the stream here</span>
+                            <div class="twitch-icon">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 300 300"><path fill-rule="evenodd" clip-rule="evenodd" fill="#65459B" d="M215.2 260.8h-58.7L117.4 300H78.3v-39.2H6.6V52.2L26.1 0h267.3v182.6l-78.2 78.2zm52.2-91.2V26.1H52.2v189.1h58.7v39.1l39.1-39.1h71.7l45.7-45.6z"/><path fill="#65459B" d="M195.6 78.3v78.3h26.1V78.3h-26.1zm-71.7 78.2H150V78.3h-26.1v78.2z"/></svg>
+                            </div>
+                        </div>
+                        <?php endfor; ?>
+                    </div>
+                </div>
+            </div>
+    </div>
+
 </div>
 
 <?php get_footer(); ?>
