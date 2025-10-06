@@ -18,7 +18,11 @@ class PandaScore_Shortcode {
         $this->settings = $settings;
         add_shortcode('pandascore_tracker', [$this, 'handle']);
     }
-
+    /**
+     * Summary of handle ⚠️ NOTE the short codes are currently not working because we are still developing the app later we will customize the shortcode to filter the requests
+     * @param mixed $atts
+     * @return string
+     */
     public function handle($atts) {
         $atts = shortcode_atts(['game' => 'lol', 'limit' => 100, 'align' => 'center', 'type' => 'mixed'], $atts, 'pandascore_tracker');
         $this->assets->enqueue_basic_assets();

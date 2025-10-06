@@ -132,7 +132,8 @@ class PandaScore_Renderer {
     }
 
     public function render_matches($api, $game, $limit, $is_live, &$live_match_ids) {
-        $matches = $api->make_api_call($game, $limit, $is_live ? 'running' : 'upcoming');
+        $endpoint = $is_live ? 'matches/running' : "matches/upcoming";
+        $matches = $api->make_api_call($endpoint);
         if (is_wp_error($matches)) {
             return '<div class="pandascore-error">Error: ' . esc_html($matches->get_error_message()) . '</div>';
         }
@@ -152,5 +153,7 @@ class PandaScore_Renderer {
         return $html;
     }
 
-
+    public function get_match_details($api, $match_id) {
+        return $api->make_api_call("lol/matches/{$match_id}");
+    }
 }

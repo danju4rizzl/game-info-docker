@@ -14,18 +14,17 @@ class PandaScore_API {
         $this->cache = new PandaScore_Cache($settings);
     }
 
-    public function make_api_call($game, $limit, $endpoint) {
+    public function make_api_call($endpoint) {
         $api_key = $this->settings->get_api_key();
         if (!$api_key) return new WP_Error('no_api_key', 'PandaScore API key not set');
 
-        $cache_key = "api_call_{$game}_{$limit}_{$endpoint}";
+        $cache_key = "api_call_" . md5($endpoint);
         $cached_data = $this->cache->get($cache_key);
         if ($cached_data !== false) {
             return $cached_data;
         }
 
-        $query_args = ['page[size]' => intval($limit)];
-        $url = add_query_arg($query_args, "https://api.pandascore.co/{$game}/matches/{$endpoint}");
+        $url = "https://api.pandascore.co/lol/{$endpoint}";
         
         $response = wp_remote_get($url, [
             'timeout' => 15,
