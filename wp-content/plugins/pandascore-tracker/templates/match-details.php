@@ -17,7 +17,7 @@ if (!$match_id) {
 } elseif (!$api_key) {
     $error = 'PandaScore API key not set.';
 } else {
-    $url = 'https://api.pandascore.co/matches/' . $match_id;
+    $url = 'https://api.pandascore.co/lol/matches/' . $match_id;
     $response = wp_remote_get($url, [
         'timeout' => 15,
         'headers' => ['Authorization' => 'Bearer ' . $api_key]
@@ -51,6 +51,15 @@ $teamA = $opponents[0]['opponent'] ?? ['name' => 'T1', 'acronym' => 'T1'];
 $teamB = $opponents[1]['opponent'] ?? ['name' => 'DRX', 'acronym' => 'DRX'];
 $scoreA = $results[0]['score'] ?? 3;
 $scoreB = $results[1]['score'] ?? 4;
+
+
+
+?>
+
+<?php
+$players = $match['players'] ?? [];
+echo '<pre>' . print_r($players, true) . '</pre>';
+// echo '<pre>' . print_r($match, true) . '</pre>';
 ?>
 
 

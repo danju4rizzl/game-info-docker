@@ -64,20 +64,22 @@
 }
 
 .player-avatar {
-  width: 40px;
-  height: 40px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .player-name {
   font-weight: bold;
   margin-bottom: 5px;
   color: var(--brand-white);
+  font-size: var(--brand-font-md);
 }
 
 .player-role {
+  font-size: var(--brand-font-sm);
   color: var(--brand-lighter-grey);
-  font-size: 0.9em;
   margin-bottom: 8px;
 }
 
@@ -338,8 +340,8 @@
 
 .twitch-icon {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 }
 
 /* Scrollbar styling for stream list */
@@ -353,7 +355,8 @@
 }
 
 .stream-list::-webkit-scrollbar-thumb {
-  background: var(--brand-color);
+  background: var(--brand-lighter-grey);
+  height: 20px;
   border-radius: 3px;
 }
 
