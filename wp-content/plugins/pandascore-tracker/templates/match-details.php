@@ -52,14 +52,18 @@ $teamB = $opponents[1]['opponent'] ?? ['name' => 'DRX', 'acronym' => 'DRX'];
 $scoreA = $results[0]['score'] ?? 3;
 $scoreB = $results[1]['score'] ?? 4;
 
-
-
-?>
-
-<?php
 $players = $match['players'] ?? [];
-echo '<pre>' . print_r($players, true) . '</pre>';
-// echo '<pre>' . print_r($match, true) . '</pre>';
+
+$streams = $match['streams_list'] ?? [];
+$main_stream = null;
+foreach($streams as $stream) {
+    if ($stream['main'] === true) {
+        $main_stream = $stream['embed_url'];
+        break;
+    }
+}
+
+// echo '<pre>' . print_r($players, true) . '</pre>';
 ?>
 
 
@@ -182,12 +186,23 @@ echo '<pre>' . print_r($players, true) . '</pre>';
                 <div class="stream-layout">
                     <div class="main-stream">
                         <div class="stream-player">
+                            <?php if ($main_stream): ?>
+                            <iframe
+                                src="<?php echo esc_url($main_stream); ?>"
+                                height="592px"
+                                width="100%"
+                                frameborder="0"
+                                allow="autoplay"
+                                allowfullscreen>
+                            </iframe>
+                            <?php else: ?>
                             <div class="play-button">
                                 <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
                                     <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.2)"/>
                                     <path d="M23 18L40 30L23 42V18Z" fill="white"/>
                                 </svg>
                             </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="stream-list">
