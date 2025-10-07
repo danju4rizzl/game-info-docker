@@ -119,12 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (current) applyDateFilter(current.getAttribute('data-date-iso'))
   })
 
-  // Enable drag-to-scroll on the date filters container (desktop + touch)
-  const dateStrips = Array.from(
-    document.querySelectorAll('.pandascore-date-filters')
+  // Enable drag-to-scroll on both date and league filters containers (desktop + touch)
+  const scrollableContainers = Array.from(
+    document.querySelectorAll('.pandascore-date-filters, .pandascore-league-filters')
   )
 
-  dateStrips.forEach((container) => {
+  scrollableContainers.forEach((container) => {
     let isDown = false
     let startX = 0
     let startScrollLeft = 0
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     container.addEventListener('pointercancel', endDrag)
     container.addEventListener('pointerleave', endDrag)
 
-    // Prevent accidental click on a date after dragging
+    // Prevent accidental click after dragging
     container.addEventListener(
       'click',
       (e) => {

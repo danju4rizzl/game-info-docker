@@ -339,8 +339,8 @@
 
 /* League filter styles */
 .pandascore-league-filters {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   margin: 0px auto;
   margin-bottom: 15px;
   padding: 0px 5px;
@@ -408,7 +408,7 @@
 
 .pandascore-league-filter[data-league-name='WORLDS'].active,
 .pandascore-league-filter[data-league-name='WORLDS']:hover {
-  border-color: var(--brand-color);
+  border-color: var(--brand-white);
 }
 
 .pandascore-league-filter[data-league-name='OTHER LEAGUES'].active,
