@@ -72,13 +72,15 @@ echo '<pre>' . print_r($players, true) . '</pre>';
 
     <div class="match-layout">
         <div class="sidebar">
-            <!-- <button class="stats-button">See all player stats</button> -->
-            <?php for($i = 0; $i < 3; $i++): ?>
+            <?php 
+            $team1_players = array_slice($players, 0, 5);
+            foreach($team1_players as $player): 
+            ?>
             <div class="player-card">
-                <img src="https://via.placeholder.com/40/666/fff?text=D" class="player-avatar">
+                <img src="<?php echo esc_url($player['image_url'] ?: 'https://via.placeholder.com/40/666/fff?text=' . substr($player['name'], 0, 1)); ?>" class="player-avatar">
                 <div>
-                    <div class="player-name">Developer</div>
-                    <div class="player-role">Most Played Champs</div>
+                    <div class="player-name"><?php echo esc_html($player['name']); ?></div>
+                    <div class="player-role"><?php echo esc_html(strtoupper($player['role'])); ?></div>
                     <div class="champion-icons">
                         <?php for($j = 0; $j < 5; $j++): ?>
                         <img src="https://via.placeholder.com/20/444/fff?text=C" class="champion-icon">
@@ -86,7 +88,7 @@ echo '<pre>' . print_r($players, true) . '</pre>';
                     </div>
                 </div>
             </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
 
         <div class="center-content">
@@ -151,13 +153,15 @@ echo '<pre>' . print_r($players, true) . '</pre>';
         </div>
 
         <div class="sidebar">
-            <!-- <button class="stats-button">See all player stats</button> -->
-            <?php for($i = 0; $i < 3; $i++): ?>
+            <?php 
+            $team2_players = array_slice($players, 5, 5);
+            foreach($team2_players as $player): 
+            ?>
             <div class="player-card">
-                <img src="https://via.placeholder.com/40/666/fff?text=D" class="player-avatar">
+                <img src="<?php echo esc_url($player['image_url'] ?: 'https://via.placeholder.com/40/666/fff?text=' . substr($player['name'], 0, 1)); ?>" class="player-avatar">
                 <div>
-                    <div class="player-name">Deejay</div>
-                    <div class="player-role">Most Played Champs</div>
+                    <div class="player-name"><?php echo esc_html($player['name']); ?></div>
+                    <div class="player-role"><?php echo esc_html(strtoupper($player['role'])); ?></div>
                     <div class="champion-icons">
                         <?php for($j = 0; $j < 5; $j++): ?>
                         <img src="https://via.placeholder.com/20/444/fff?text=C" class="champion-icon">
@@ -165,7 +169,7 @@ echo '<pre>' . print_r($players, true) . '</pre>';
                     </div>
                 </div>
             </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 
