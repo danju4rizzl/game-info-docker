@@ -35,7 +35,7 @@ class PandaScore_Renderer {
     }
 
     public function render_league_filters() {
-        $leagues = ['LCK', 'LPL', 'LEC', 'LTA', 'WORLDS'];
+        $leagues = ['WORLDS', 'LCK', 'LPL', 'LEC', 'LTA', 'ASI'];
         $html = '<div class="pandascore-league-filters">';
 
         foreach ($leagues as $league_name) {
