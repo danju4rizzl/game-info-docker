@@ -8,6 +8,7 @@
   --brand-bg: #2f2e37;
   --brand-container-bg: #1d1c26;
   --brand-white: #fff;
+  --brand-black: #000;
   --brand-red: #f60909;
   --brand-light-red: #f5c2c7;
   --brand-lighter-red: #f8d7da;
@@ -137,17 +138,16 @@
   color: var(--brand-white);
   padding: 8px;
   gap: 8px;
-  width: 100%; 
+  width: 100%;
   border-radius: 8px;
   text-decoration: none;
   border: 1px solid var(--brand-bg);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 .pandascore-match-link:hover {
   border: 1px solid var(--brand-color);
   transform: translateY(-2px);
 }
-
 
 .pandascore-league-container {
   display: flex;
@@ -370,8 +370,8 @@
 }
 
 .pandascore-league-filter {
-  width: var(--brand-filter-box-size);
-  height: var(--brand-filter-box-size);
+  width: calc(var(--brand-filter-box-size) + 5px);
+  height: calc(var(--brand-filter-box-size) + 5px);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -414,14 +414,14 @@
   border-color: var(--brand-brown);
 }
 
-.pandascore-league-filter[data-league-name='WORLDS'].active,
-.pandascore-league-filter[data-league-name='WORLDS']:hover {
+.pandascore-league-filter[data-league-name='Worlds'].active,
+.pandascore-league-filter[data-league-name='Worlds']:hover {
   border-color: var(--brand-white);
 }
 
 .pandascore-league-filter[data-league-name='ASI'].active,
 .pandascore-league-filter[data-league-name='ASI']:hover {
-  border-color: var(--brand-color);
+  border-color: var(--brand-black);
 }
 
 .pandascore-league-filter[data-league-name='OTHER LEAGUES'].active,

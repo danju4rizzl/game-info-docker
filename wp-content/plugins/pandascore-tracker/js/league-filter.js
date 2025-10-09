@@ -2,13 +2,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const filters = document.querySelectorAll('.pandascore-league-filter')
   const matches = document.querySelectorAll('.pandascore-match')
 
+  const LCK = 'LCK'
+  const LPL = 'LPL'
+  const LEC = 'LEC'
+  const LTA = 'LTA'
+  const ASI = 'ASI'
+  const WORLDS = 'Worlds'
+  const LTANorth = 'LTA North'
+  const LTASouth = 'LTA South'
+
   // Define the specific leagues we're filtering for (default visible set)
-  const specificLeagues = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South', 'Asia Invitational']
-  const ltaLeagues = ['LTA North', 'LTA South']
+  const specificLeagues = [LCK, LPL, LEC, LTA, ASI, WORLDS, LTANorth, LTASouth]
+
   const MAX_DISPLAY = 8
 
   // Helpers: sorting
-  const leaguePriority = ['LCK', 'LPL', 'LEC', 'LTA North', 'LTA South', 'Asia Invitational']
+  const leaguePriority = [LCK, LPL, LEC, LTA, ASI, WORLDS, LTANorth, LTASouth]
+
   function getLeagueName(match) {
     const img = match.querySelector('.pandascore-league-container img')
     return img ? img.alt : ''
@@ -148,9 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } else if (selectedLeague === 'ASI') {
         // Show matches for Asia Invitational
         match.style.display =
-          matchLeagueName === 'Asia Invitational'
-            ? 'flex'
-            : 'none'
+          matchLeagueName === 'Asia Invitational' ? 'flex' : 'none'
       } else {
         // Show matches from the selected specific league only
         match.style.display =

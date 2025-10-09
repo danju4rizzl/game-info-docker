@@ -1,3 +1,19 @@
+### Top Leagues we are interested in (default league filter) ###
+
+| League Slug | local image naming |
+|-------------|----------------------|
+| league-of-legends-asia-invitational | ASI |
+| league-of-legends-world-championship | Worlds |
+| league-of-legends-lck-champions-korea | LCK |
+| league-of-legends-lpl-china | LPL |
+| league-of-legends-lec | LEC |
+| league-of-legends-lta-south | LTA South |
+| league-of-legends-lta-north | LTA North |
+
+
+
+### All Leagues ###
+
 | League Name | Short Name / Acronym |
 |-------------|----------------------|
 | Asia Invitational | ASI |

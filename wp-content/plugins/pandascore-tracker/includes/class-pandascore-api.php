@@ -24,7 +24,7 @@ class PandaScore_API {
             return $cached_data;
         }
 
-        $url = "https://api.pandascore.co/lol/{$endpoint}";
+        $url = "https://api.pandascore.co/lol{$endpoint}";
         
         $response = wp_remote_get($url, [
             'timeout' => 15,

@@ -35,10 +35,11 @@ class PandaScore_Renderer {
     }
 
     public function render_league_filters() {
-        $leagues = ['WORLDS', 'LCK', 'LPL', 'LEC', 'LTA', 'ASI'];
+        // The $leagueFilters is used to display the league filters  
+        $leagueFilters = ['Worlds', 'ASI', 'LCK', 'LPL', 'LEC', 'LTA'];
         $html = '<div class="pandascore-league-filters">';
 
-        foreach ($leagues as $league_name) {
+        foreach ($leagueFilters as $league_name) {
             $filename = str_replace(' ', '-', strtoupper($league_name)) . '-logo.png';
             $image_url = plugins_url('images/' . $filename, $this->plugin_file);
 
@@ -132,7 +133,7 @@ class PandaScore_Renderer {
     }
 
     public function render_matches($api, $game, $limit, $is_live, &$live_match_ids) {
-        $endpoint = $is_live ? 'matches/running' : "matches/upcoming";
+        $endpoint = $is_live ? '/matches/running?filter[live_supported]=true' : "/matches/upcoming?filter[opponents_filled]=true";
         $matches = $api->make_api_call($endpoint);
         if (is_wp_error($matches)) {
             return '<div class="pandascore-error">Error: ' . esc_html($matches->get_error_message()) . '</div>';
@@ -141,7 +142,21 @@ class PandaScore_Renderer {
             return $is_live ? '' : '<div class="pandascore-no-matches">No upcoming matches found.</div>';
         }
 
+        // Log API results for debugging
+        $leagues_from_api = [];
+        foreach ($matches as $match) {
+            if (isset($match['league']['name'])) {
+                $leagues_from_api[] = $match['league']['name'];
+            }
+        }
+        $unique_leagues = array_unique($leagues_from_api);
+        sort($unique_leagues);
+        
+        echo '<script>console.log("🔥 API Results - ' . ($is_live ? 'LIVE' : 'UPCOMING') . ' leagues:", ' . json_encode($unique_leagues) . ');</script>';
+        echo '<script>console.log("🏆 Full ' . ($is_live ? 'LIVE' : 'UPCOMING') . ' matches response:", ' . json_encode($matches) . ');</script>';
+
         $html = '<div class="pandascore-section-header">' . ($is_live ? '<span class="pandascore-live-indicator"></span>LIVE' : 'UPCOMING') . '</div>';
+        $html .= '<script>console.log("📊 Total ' . ($is_live ? 'LIVE' : 'UPCOMING') . ' matches from API:", ' . count($matches) . ');</script>';
         $html .= '<div class="pandascore-matches-container">';
         foreach ($matches as $match) {
             if ($is_live && isset($match['id'])) {
