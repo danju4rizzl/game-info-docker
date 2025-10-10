@@ -1,0 +1,939 @@
+[
+  {
+    "id": 17677,
+    "name": "Playoffs",
+    "type": "offline",
+    "matches": [
+      {
+        "id": 1245032,
+        "name": "Upper bracket quarterfinal: CNV vs EST",
+        "status": "finished",
+        "live": {
+          "supported": false,
+          "url": null,
+          "opens_at": null
+        },
+        "begin_at": "2025-10-04T20:05:30Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": "2025-10-05T00:01:24Z",
+        "forfeit": false,
+        "winner_id": 128363,
+        "winner_type": "Team",
+        "slug": "conviction-vs-estral-esports-2025-10-04",
+        "modified_at": "2025-10-05T00:54:25Z",
+        "tournament_id": 17677,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-04T20:00:00Z",
+        "original_scheduled_at": "2025-10-04T20:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=ltanorth",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/ltanorth"
+          },
+          {
+            "main": false,
+            "language": "en",
+            "embed_url": "https://www.youtube.com/embed/NxV_vEduBlM",
+            "official": false,
+            "raw_url": "https://www.youtube.com/watch?v=NxV_vEduBlM"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://www.youtube.com/embed/rRZqFowHzuQ",
+            "official": false,
+            "raw_url": "https://www.youtube.com/watch?v=rRZqFowHzuQ"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1245034,
+        "name": "Upper bracket semifinal 1: LG vs SDM",
+        "status": "finished",
+        "live": {
+          "supported": false,
+          "url": null,
+          "opens_at": null
+        },
+        "begin_at": "2025-10-05T20:09:47Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": "2025-10-05T22:37:19Z",
+        "forfeit": false,
+        "winner_id": 136272,
+        "winner_type": "Team",
+        "slug": "luminosity-gaming-vs-sdm-tigres-2025-10-05",
+        "modified_at": "2025-10-05T23:47:43Z",
+        "tournament_id": 17677,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-05T20:00:00Z",
+        "original_scheduled_at": "2025-10-05T20:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=ltanorth",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/ltanorth"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=ltaespanol",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/ltaespanol"
+          },
+          {
+            "main": false,
+            "language": "en",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://www.youtube.com/@LTANorth/live"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://www.youtube.com/@LTAEspanol/live"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1245035,
+        "name": "Upper bracket semifinal 2: DSG vs EST",
+        "status": "finished",
+        "live": {
+          "supported": false,
+          "url": null,
+          "opens_at": null
+        },
+        "begin_at": "2025-10-07T20:06:19Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": "2025-10-07T20:38:59Z",
+        "forfeit": false,
+        "winner_id": 133267,
+        "winner_type": "Team",
+        "slug": "disguised-vs-estral-esports-2025-10-06",
+        "modified_at": "2025-10-07T22:50:39Z",
+        "tournament_id": 17677,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-07T20:00:00Z",
+        "original_scheduled_at": "2025-10-06T20:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=ltanorth",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/ltanorth"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=ltaespanol",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/ltaespanol"
+          },
+          {
+            "main": false,
+            "language": "en",
+            "embed_url": "https://www.youtube.com/embed/5W3Bi9ZOi_4",
+            "official": false,
+            "raw_url": "https://www.youtube.com/watch?v=5W3Bi9ZOi_4"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://www.youtube.com/embed/GgIEKEoD23c",
+            "official": false,
+            "raw_url": "https://www.youtube.com/watch?v=GgIEKEoD23c"
+          }
+        ],
+        "rescheduled": true
+      },
+      {
+        "id": 1245036,
+        "name": "Upper bracket final: DSG vs LG",
+        "status": "finished",
+        "live": {
+          "supported": false,
+          "url": null,
+          "opens_at": null
+        },
+        "begin_at": "2025-10-08T20:05:29Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": "2025-10-08T22:36:33Z",
+        "forfeit": false,
+        "winner_id": 133267,
+        "winner_type": "Team",
+        "slug": "luminosity-gaming-2025-10-08",
+        "modified_at": "2025-10-09T05:37:10Z",
+        "tournament_id": 17677,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-08T20:00:00Z",
+        "original_scheduled_at": "2025-10-07T20:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=ltanorth",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/ltanorth"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=ltaespanol",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/ltaespanol"
+          },
+          {
+            "main": false,
+            "language": "en",
+            "embed_url": "https://www.youtube.com/embed/R2fwQaPCaW0",
+            "official": true,
+            "raw_url": "https://www.youtube.com/watch?v=R2fwQaPCaW0"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://www.youtube.com/embed/Esdc51KBeoM",
+            "official": true,
+            "raw_url": "https://www.youtube.com/watch?v=Esdc51KBeoM"
+          }
+        ],
+        "rescheduled": true
+      },
+      {
+        "id": 1245041,
+        "name": "Lower bracket semifinal: EST vs SDM",
+        "status": "finished",
+        "live": {
+          "supported": false,
+          "url": null,
+          "opens_at": null
+        },
+        "begin_at": "2025-10-09T20:06:20Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": "2025-10-09T22:34:02Z",
+        "forfeit": false,
+        "winner_id": 128363,
+        "winner_type": "Team",
+        "slug": "estral-esports-vs-sdm-tigres-2025-10-09",
+        "modified_at": "2025-10-09T22:34:06Z",
+        "tournament_id": 17677,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-09T20:00:00Z",
+        "original_scheduled_at": "2025-10-08T20:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=ltanorth",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/ltanorth"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=ltaespanol",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/ltaespanol"
+          },
+          {
+            "main": false,
+            "language": "en",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://www.youtube.com/@LTANorth/live"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://www.youtube.com/@LTAEspanol/live"
+          }
+        ],
+        "rescheduled": true
+      },
+      {
+        "id": 1245039,
+        "name": "Lower bracket final: LG vs EST",
+        "status": "not_started",
+        "live": {
+          "supported": false,
+          "url": null,
+          "opens_at": null
+        },
+        "begin_at": "2025-10-10T20:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "luminosity-gaming-2025-10-10",
+        "modified_at": "2025-10-09T22:34:06Z",
+        "tournament_id": 17677,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-10T20:00:00Z",
+        "original_scheduled_at": "2025-10-09T20:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=ltanorth",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/ltanorth"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=ltaespanol",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/ltaespanol"
+          },
+          {
+            "main": false,
+            "language": "en",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://www.youtube.com/@LTANorth/live"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://www.youtube.com/@LTAEspanol/live"
+          }
+        ],
+        "rescheduled": true
+      },
+      {
+        "id": 1245037,
+        "name": "Grand final: DSG vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": false,
+          "url": null,
+          "opens_at": null
+        },
+        "begin_at": "2025-10-12T20:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-12-d5fc9d91-3e3d-4080-a27e-95e92ca440e7",
+        "modified_at": "2025-10-08T22:36:35Z",
+        "tournament_id": 17677,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-12T20:00:00Z",
+        "original_scheduled_at": "2025-10-12T20:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://www.youtube.com/@LTAEspanol/live"
+          },
+          {
+            "main": false,
+            "language": "en",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://www.youtube.com/@LTANorth/live"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=ltaespanol",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/ltaespanol"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=ltanorth",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/ltanorth"
+          }
+        ],
+        "rescheduled": false
+      }
+    ],
+    "country": "MX",
+    "begin_at": "2025-10-04T20:00:00Z",
+    "detailed_stats": true,
+    "end_at": "2025-10-13T03:00:00Z",
+    "winner_id": null,
+    "teams": [
+      {
+        "id": 128363,
+        "name": "Estral Esports",
+        "location": "MX",
+        "slug": "estral-esports-league-of-legends",
+        "modified_at": "2025-10-07T22:31:11Z",
+        "acronym": "EST",
+        "image_url": "https://cdn.pandascore.co/images/team/image/128363/estral_esportslogo_square.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 133267,
+        "name": "Disguised",
+        "location": "US",
+        "slug": "disguised-league-of-legends",
+        "modified_at": "2025-09-25T12:24:53Z",
+        "acronym": "DSG",
+        "image_url": "https://cdn.pandascore.co/images/team/image/133267/disguisedlogo_square.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/133267/181px_disguised_nov_2023_darkmode.png"
+      },
+      {
+        "id": 136272,
+        "name": "Luminosity Gaming",
+        "location": "CA",
+        "slug": "luminosity-gaming-league-of-legends",
+        "modified_at": "2025-09-25T12:24:53Z",
+        "acronym": "LG",
+        "image_url": "https://cdn.pandascore.co/images/team/image/136272/luminosity_gaminglogo_profile.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/136272/175px_luminosity_gaming_2018_allmode.png"
+      },
+      {
+        "id": 136708,
+        "name": "Conviction",
+        "location": "US",
+        "slug": "conviction",
+        "modified_at": "2025-10-04T20:45:35Z",
+        "acronym": "CNV",
+        "image_url": "https://cdn.pandascore.co/images/team/image/136708/convictionlogo_square.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 136729,
+        "name": "SDM Tigres",
+        "location": "MX",
+        "slug": "sdm-tigres",
+        "modified_at": "2025-10-08T11:34:43Z",
+        "acronym": "SDM",
+        "image_url": "https://cdn.pandascore.co/images/team/image/136729/sdm_tigreslogo_square.png",
+        "dark_mode_image_url": null
+      }
+    ],
+    "winner_type": "Team",
+    "slug": "league-of-legends-lta-north-promotion-2026-playoffs",
+    "serie_id": 9730,
+    "serie": {
+      "id": 9730,
+      "name": "Promotion",
+      "year": 2026,
+      "begin_at": "2025-10-04T20:00:00Z",
+      "end_at": "2025-10-13T03:00:00Z",
+      "winner_id": null,
+      "winner_type": "Team",
+      "slug": "league-of-legends-lta-north-promotion-2026",
+      "modified_at": "2025-09-25T12:28:45Z",
+      "league_id": 5345,
+      "season": null,
+      "full_name": "Promotion 2026"
+    },
+    "modified_at": "2025-10-07T22:31:11Z",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "slug": "league-of-legends"
+    },
+    "league_id": 5345,
+    "league": {
+      "id": 5345,
+      "name": "LTA North",
+      "url": null,
+      "slug": "league-of-legends-lta-north",
+      "modified_at": "2024-12-29T13:25:51Z",
+      "image_url": "https://cdn.pandascore.co/images/league/image/5345/lta_north_logo-png"
+    },
+    "prizepool": null,
+    "tier": "d",
+    "videogame_title": null,
+    "has_bracket": true,
+    "region": "NA",
+    "live_supported": false,
+    "expected_roster": [
+      {
+        "team": {
+          "id": 128363,
+          "name": "Estral Esports",
+          "location": "MX",
+          "slug": "estral-esports-league-of-legends",
+          "modified_at": "2025-10-07T22:31:11Z",
+          "acronym": "EST",
+          "image_url": "https://cdn.pandascore.co/images/team/image/128363/estral_esportslogo_square.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 696,
+            "name": "Ghost",
+            "role": "adc",
+            "slug": "ghost",
+            "modified_at": "2025-09-25T12:24:55Z",
+            "age": 26,
+            "birthday": "1999-03-18",
+            "first_name": "Jang",
+            "last_name": "Yong-jun",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/696/dk_ghost_worlds_2021.png"
+          },
+          {
+            "active": true,
+            "id": 1715,
+            "name": "SolidSnake",
+            "role": "jun",
+            "slug": "solidsnake",
+            "modified_at": "2025-09-25T12:24:55Z",
+            "age": 27,
+            "birthday": "1998-08-10",
+            "first_name": "Diego",
+            "last_name": "Vallejo",
+            "nationality": "PE",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1715/inf_solid_2023_opening.png"
+          },
+          {
+            "active": true,
+            "id": 8270,
+            "name": "Summit",
+            "role": "top",
+            "slug": "summit",
+            "modified_at": "2025-09-25T12:24:54Z",
+            "age": 26,
+            "birthday": "1998-12-08",
+            "first_name": "Park ",
+            "last_name": "Woo-tae",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/8270/tl_summit_2023_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 25536,
+            "name": "Cody",
+            "role": "mid",
+            "slug": "cody",
+            "modified_at": "2025-09-25T12:24:55Z",
+            "age": 23,
+            "birthday": "2001-10-23",
+            "first_name": "Cristian Sebastian",
+            "last_name": "Quispe Yampara",
+            "nationality": "CL",
+            "image_url": "https://cdn.pandascore.co/images/player/image/25536/6_k_cody_2023_opening.png"
+          },
+          {
+            "active": true,
+            "id": 38881,
+            "name": "Winsome",
+            "role": "sup",
+            "slug": "winsome",
+            "modified_at": "2025-09-25T12:24:55Z",
+            "age": 25,
+            "birthday": "2000-06-30",
+            "first_name": "Dong-keon",
+            "last_name": "Kim",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/38881/loud_winsome_lta_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 62154,
+            "name": "Shintalx",
+            "role": "mid",
+            "slug": "shintalx",
+            "modified_at": "2025-10-09T10:25:07Z",
+            "age": null,
+            "birthday": null,
+            "first_name": "Alejandro ",
+            "last_name": "Quintanilla",
+            "nationality": "MX",
+            "image_url": null
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 133267,
+          "name": "Disguised",
+          "location": "US",
+          "slug": "disguised-league-of-legends",
+          "modified_at": "2025-09-25T12:24:53Z",
+          "acronym": "DSG",
+          "image_url": "https://cdn.pandascore.co/images/team/image/133267/disguisedlogo_square.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/133267/181px_disguised_nov_2023_darkmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 618,
+            "name": "huhi",
+            "role": "sup",
+            "slug": "huhi",
+            "modified_at": "2025-09-25T12:24:52Z",
+            "age": 30,
+            "birthday": "1995-04-03",
+            "first_name": "Choi",
+            "last_name": "Jae-Hyun",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/618/dsg_huhi_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 31213,
+            "name": "Castle",
+            "role": "top",
+            "slug": "castle",
+            "modified_at": "2025-09-25T12:24:52Z",
+            "age": 23,
+            "birthday": "2002-10-08",
+            "first_name": "Cho",
+            "last_name": "Hyeon-seong",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/31213/dsg_castle_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 33646,
+            "name": "DarkWings",
+            "role": "mid",
+            "slug": "darkwings",
+            "modified_at": "2025-09-25T12:24:52Z",
+            "age": 25,
+            "birthday": "2000-01-11",
+            "first_name": "Isaac",
+            "last_name": "Chou",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/33646/dsg_darkwings_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 35024,
+            "name": "Rahel",
+            "role": "adc",
+            "slug": "rahel",
+            "modified_at": "2025-09-25T12:24:53Z",
+            "age": 21,
+            "birthday": "2004-02-13",
+            "first_name": "Cho",
+            "last_name": "Min-seong",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/35024/dsg_rahel_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 38239,
+            "name": "eXyu",
+            "role": "jun",
+            "slug": "exyu",
+            "modified_at": "2025-09-25T12:24:52Z",
+            "age": 23,
+            "birthday": "2001-12-14",
+            "first_name": "Lawrence",
+            "last_name": "Xu",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/38239/dsg_e_xyu_2025_split_1.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 136272,
+          "name": "Luminosity Gaming",
+          "location": "CA",
+          "slug": "luminosity-gaming-league-of-legends",
+          "modified_at": "2025-09-25T12:24:53Z",
+          "acronym": "LG",
+          "image_url": "https://cdn.pandascore.co/images/team/image/136272/luminosity_gaminglogo_profile.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/136272/175px_luminosity_gaming_2018_allmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 1220,
+            "name": "Zeyzal",
+            "role": "sup",
+            "slug": "zeyzal",
+            "modified_at": "2025-09-25T12:24:53Z",
+            "age": 26,
+            "birthday": "1999-07-07",
+            "first_name": "Tristan",
+            "last_name": "Stidam",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1220/c9_c_zeyzal_2023_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 6060,
+            "name": "Insanity",
+            "role": "mid",
+            "slug": "insanity",
+            "modified_at": "2025-09-25T12:24:53Z",
+            "age": 26,
+            "birthday": "1999-09-22",
+            "first_name": "David",
+            "last_name": "Challe",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/6060/ezgif_5_26e7f3211b.png"
+          },
+          {
+            "active": true,
+            "id": 18485,
+            "name": "Tactical",
+            "role": "adc",
+            "slug": "tactical",
+            "modified_at": "2025-09-25T12:24:53Z",
+            "age": 25,
+            "birthday": "2000-08-18",
+            "first_name": "Edward",
+            "last_name": "Ra",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/18485/imt_tactical_2023_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 18491,
+            "name": "FakeGod",
+            "role": "top",
+            "slug": "fakegod",
+            "modified_at": "2025-09-25T12:24:53Z",
+            "age": 25,
+            "birthday": "2000-05-27",
+            "first_name": "Aaron",
+            "last_name": "Lee",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/18491/ezgif_7_b18d9935a3.png"
+          },
+          {
+            "active": true,
+            "id": 33650,
+            "name": "Tomio",
+            "role": "jun",
+            "slug": "tomio",
+            "modified_at": "2025-09-25T12:24:53Z",
+            "age": 22,
+            "birthday": "2003-06-15",
+            "first_name": "Tomio",
+            "last_name": "Chan",
+            "nationality": "CA",
+            "image_url": "https://cdn.pandascore.co/images/player/image/33650/c9_c_tomio_2023_split_1.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 136708,
+          "name": "Conviction",
+          "location": "US",
+          "slug": "conviction",
+          "modified_at": "2025-10-04T20:45:35Z",
+          "acronym": "CNV",
+          "image_url": "https://cdn.pandascore.co/images/team/image/136708/convictionlogo_square.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 849,
+            "name": "Stunt",
+            "role": "sup",
+            "slug": "stunt",
+            "modified_at": "2025-09-25T12:24:54Z",
+            "age": 29,
+            "birthday": "1995-11-13",
+            "first_name": "William",
+            "last_name": "Chen",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/849/220px_100_stunt_2020_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 1392,
+            "name": "Cody Sun",
+            "role": "adc",
+            "slug": "cody-sun",
+            "modified_at": "2025-10-04T20:45:35Z",
+            "age": 28,
+            "birthday": "1997-04-25",
+            "first_name": "Liyu",
+            "last_name": "Sun",
+            "nationality": "CA",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1392/220px_100_cody_sun_2020_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 8940,
+            "name": "V1per",
+            "role": "adc",
+            "slug": "v1per",
+            "modified_at": "2025-09-25T12:24:54Z",
+            "age": 27,
+            "birthday": "1998-01-25",
+            "first_name": "Omran",
+            "last_name": "Shoura",
+            "nationality": "CA",
+            "image_url": "https://cdn.pandascore.co/images/player/image/8940/220px_dig_v1per_2020_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 22935,
+            "name": "TF Blade",
+            "role": "top",
+            "slug": "tf-blade",
+            "modified_at": "2025-09-25T12:24:54Z",
+            "age": 26,
+            "birthday": "1999-06-29",
+            "first_name": "Ashkan",
+            "last_name": "Homayouni",
+            "nationality": "IR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/22935/_.png"
+          },
+          {
+            "active": true,
+            "id": 24997,
+            "name": "Evolved",
+            "role": "mid",
+            "slug": "evolved",
+            "modified_at": "2025-09-25T12:24:53Z",
+            "age": 24,
+            "birthday": "2001-09-15",
+            "first_name": "Jackson",
+            "last_name": "Dohan",
+            "nationality": "CA",
+            "image_url": "https://cdn.pandascore.co/images/player/image/24997/220px_tsm_evolved_2020_split_1.png"
+          },
+          {
+            "active": false,
+            "id": 40816,
+            "name": "Perry",
+            "role": "jun",
+            "slug": "perry",
+            "modified_at": "2025-09-25T12:24:53Z",
+            "age": 21,
+            "birthday": "2004-04-22",
+            "first_name": "Perry",
+            "last_name": "Norman",
+            "nationality": "US",
+            "image_url": null
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 136729,
+          "name": "SDM Tigres",
+          "location": "MX",
+          "slug": "sdm-tigres",
+          "modified_at": "2025-10-08T11:34:43Z",
+          "acronym": "SDM",
+          "image_url": "https://cdn.pandascore.co/images/team/image/136729/sdm_tigreslogo_square.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 1786,
+            "name": "VirusFx",
+            "role": "adc",
+            "slug": "virusfx",
+            "modified_at": "2025-09-25T12:24:54Z",
+            "age": null,
+            "birthday": null,
+            "first_name": "Guillermo",
+            "last_name": "Navarrete Uxul",
+            "nationality": "MX",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1786/aze_virus_fx_ddh_opening_2020.png"
+          },
+          {
+            "active": true,
+            "id": 24853,
+            "name": "Jauny",
+            "role": "top",
+            "slug": "jauny",
+            "modified_at": "2025-09-25T12:24:54Z",
+            "age": 24,
+            "birthday": "2001-04-12",
+            "first_name": "Jauny",
+            "last_name": "Vargas Altamirano",
+            "nationality": "CR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/24853/pix_jauny_2020_opening.png"
+          },
+          {
+            "active": true,
+            "id": 36731,
+            "name": "MATAZ",
+            "role": "jun",
+            "slug": "mataz",
+            "modified_at": "2025-09-25T12:24:54Z",
+            "age": 24,
+            "birthday": "2001-01-19",
+            "first_name": "Julián",
+            "last_name": "Cárdenas Sanchez",
+            "nationality": "MX",
+            "image_url": "https://cdn.pandascore.co/images/player/image/36731/aze_mataz_2021_closing.png"
+          },
+          {
+            "active": true,
+            "id": 47173,
+            "name": "Ichiwin",
+            "role": "sup",
+            "slug": "ichiwin",
+            "modified_at": "2025-09-25T12:24:54Z",
+            "age": 24,
+            "birthday": "2001-04-02",
+            "first_name": "Juan Pablo",
+            "last_name": "Arcila Rendon",
+            "nationality": "CO",
+            "image_url": "https://cdn.pandascore.co/images/player/image/47173/z5_b_ichiwin_2022_opening.png"
+          },
+          {
+            "active": true,
+            "id": 47229,
+            "name": "Skyy",
+            "role": "mid",
+            "slug": "skyy-416bcc8f-6cc1-4c96-940e-6056689cf603",
+            "modified_at": "2025-09-25T12:24:54Z",
+            "age": null,
+            "birthday": null,
+            "first_name": "Ivan Garcia",
+            "last_name": "Rivera",
+            "nationality": "MX",
+            "image_url": "https://cdn.pandascore.co/images/player/image/47229/ath_ll_sky_ll_2023_opening.png"
+          }
+        ]
+      }
+    ]
+  }
+]

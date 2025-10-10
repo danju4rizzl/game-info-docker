@@ -1,0 +1,2718 @@
+{
+  "reference-get_additions": {
+    "url": "https://developers.pandascore.co/reference/get_additions",
+    "title": "List additions",
+    "endpoint": "https://api.pandascore.co/additions",
+    "description": "Get the latest additions.\n\nThis endpoint only shows unchanged objects.\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_changes": {
+    "url": "https://developers.pandascore.co/reference/get_changes",
+    "title": "List changes",
+    "endpoint": "https://api.pandascore.co/changes",
+    "description": "Get the latest updates.\n\nThis endpoint only provides the latest change for an object. It does not keep track of previous changes.\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_leagues",
+    "title": "Get CODMW leagues",
+    "endpoint": "https://api.pandascore.co/codmw/leagues",
+    "description": "List CODMW leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_matches": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_matches",
+    "title": "List CODMW matches",
+    "endpoint": "https://api.pandascore.co/codmw/matches",
+    "description": "List matches for the COD MW videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_matches_past",
+    "title": "Get past CODMW matches",
+    "endpoint": "https://api.pandascore.co/codmw/matches/past",
+    "description": "List past CODMW matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_matches_running",
+    "title": "Get running CODMW matches",
+    "endpoint": "https://api.pandascore.co/codmw/matches/running",
+    "description": "List running CODMW matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_matches_upcoming",
+    "title": "Get upcoming CODMW matches",
+    "endpoint": "https://api.pandascore.co/codmw/matches/upcoming",
+    "description": "List upcoming CODMW matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_players": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_players",
+    "title": "List CODMW players",
+    "endpoint": "https://api.pandascore.co/codmw/players",
+    "description": "List players for the CODMW videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_series": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_series",
+    "title": "List CODMW series",
+    "endpoint": "https://api.pandascore.co/codmw/series",
+    "description": "List series for the CODMW videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_series_past",
+    "title": "Get past CODMW series",
+    "endpoint": "https://api.pandascore.co/codmw/series/past",
+    "description": "List past CODMW series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_series_running",
+    "title": "Get running CODMW series",
+    "endpoint": "https://api.pandascore.co/codmw/series/running",
+    "description": "List running CODMW series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_series_upcoming",
+    "title": "Get upcoming CODMW series",
+    "endpoint": "https://api.pandascore.co/codmw/series/upcoming",
+    "description": "List upcoming CODMW series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_teams": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_teams",
+    "title": "List CODMW teams",
+    "endpoint": "https://api.pandascore.co/codmw/teams",
+    "description": "List teams for the CODMW videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_tournaments",
+    "title": "List CODMW tournaments",
+    "endpoint": "https://api.pandascore.co/codmw/tournaments",
+    "description": "List tournaments for the CODMW videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_tournaments_past",
+    "title": "Get past CODMW tournaments",
+    "endpoint": "https://api.pandascore.co/codmw/tournaments/past",
+    "description": "List past CODMW tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_tournaments_running",
+    "title": "Get running CODMW tournaments",
+    "endpoint": "https://api.pandascore.co/codmw/tournaments/running",
+    "description": "List running CODMW tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_codmw_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_codmw_tournaments_upcoming",
+    "title": "Get upcoming CODMW tournaments",
+    "endpoint": "https://api.pandascore.co/codmw/tournaments/upcoming",
+    "description": "List upcoming CODMW tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_games_csgogameid-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_games_csgogameid-1",
+    "title": "Get a game",
+    "endpoint": "https://api.pandascore.co/csgo/games/{csgo_game_id}",
+    "description": "Get a single Counter-Strike game by ID\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_games_csgogameid_events-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_games_csgogameid_events-1",
+    "title": "List Play-by-Play events for a given game",
+    "endpoint": "https://api.pandascore.co/csgo/games/{csgo_game_id}/events",
+    "description": "List events for a given Counter-Strike game\n\nThis endpoint is only available to customers with the real-time dataproplan",
+    "options": {}
+  },
+  "reference-get_csgo_games_csgogameid_rounds-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_games_csgogameid_rounds-1",
+    "title": "List rounds in a Counter-Strike game",
+    "endpoint": "https://api.pandascore.co/csgo/games/{csgo_game_id}/rounds",
+    "description": "List rounds in a Counter-Strike game\n\nThis endpoint is only available to customers with a real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_leagues-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_leagues-1",
+    "title": "Get Counter-Strike leagues",
+    "endpoint": "https://api.pandascore.co/csgo/leagues",
+    "description": "List Counter-Strike leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_maps-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_maps-1",
+    "title": "List maps",
+    "endpoint": "https://api.pandascore.co/csgo/maps",
+    "description": "List maps\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_maps_csgomapid-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_maps_csgomapid-1",
+    "title": "Get a map",
+    "endpoint": "https://api.pandascore.co/csgo/maps/{csgo_map_id}",
+    "description": "Get a single map by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_matches-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_matches-1",
+    "title": "List Counter-Strike matches",
+    "endpoint": "https://api.pandascore.co/csgo/matches",
+    "description": "List matches for the Counter-Strike videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_matches_matchidorslug-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_matches_matchidorslug-1",
+    "title": "Get a Counter-Strike match",
+    "endpoint": "https://api.pandascore.co/csgo/matches/{match_id_or_slug}",
+    "description": "Get a single Counter-Strike match by ID or slug\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_matches_matchidorslug_games-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_matches_matchidorslug_games-1",
+    "title": "List games for a given match",
+    "endpoint": "https://api.pandascore.co/csgo/matches/{match_id_or_slug}/games",
+    "description": "List games for a given Counter-Strike match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_matches_matchidorslug_players_playeridorslug_stats-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_matches_matchidorslug_players_playeridorslug_stats-1",
+    "title": "Get stats for Counter-Strike player on match",
+    "endpoint": "https://api.pandascore.co/csgo/matches/{match_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Counter-Strike player for the given match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_matches_matchidorslug_players_stats-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_matches_matchidorslug_players_stats-1",
+    "title": "Get stats for Counter-Strike players on match",
+    "endpoint": "https://api.pandascore.co/csgo/matches/{match_id_or_slug}/players/stats",
+    "description": "Get detailed statistics of Counter-Strike players for the given match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_matches_matchidorslug_teams_teamidorslug_stats-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_matches_matchidorslug_teams_teamidorslug_stats-1",
+    "title": "Get stats for Counter-Strike team on match",
+    "endpoint": "https://api.pandascore.co/csgo/matches/{match_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Counter-Strike team for the given match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_matches_past-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_matches_past-1",
+    "title": "Get past Counter-Strike matches",
+    "endpoint": "https://api.pandascore.co/csgo/matches/past",
+    "description": "List past Counter-Strike matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_matches_running-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_matches_running-1",
+    "title": "Get running Counter-Strike matches",
+    "endpoint": "https://api.pandascore.co/csgo/matches/running",
+    "description": "List running Counter-Strike matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_matches_upcoming-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_matches_upcoming-1",
+    "title": "Get upcoming Counter-Strike matches",
+    "endpoint": "https://api.pandascore.co/csgo/matches/upcoming",
+    "description": "List upcoming Counter-Strike matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_players-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_players-1",
+    "title": "List Counter-Strike players",
+    "endpoint": "https://api.pandascore.co/csgo/players",
+    "description": "List players for the Counter-Strike videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_players_playeridorslug_stats-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_players_playeridorslug_stats-1",
+    "title": "Get stats for Counter-Strike player",
+    "endpoint": "https://api.pandascore.co/csgo/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Counter-Strike player\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_series-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_series-1",
+    "title": "List Counter-Strike series",
+    "endpoint": "https://api.pandascore.co/csgo/series",
+    "description": "List series for the Counter-Strike videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_series_past-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_series_past-1",
+    "title": "Get past Counter-Strike series",
+    "endpoint": "https://api.pandascore.co/csgo/series/past",
+    "description": "List past Counter-Strike series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_series_running-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_series_running-1",
+    "title": "Get running Counter-Strike series",
+    "endpoint": "https://api.pandascore.co/csgo/series/running",
+    "description": "List running Counter-Strike series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_series_serieidorslug_players_playeridorslug_stats-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_series_serieidorslug_players_playeridorslug_stats-1",
+    "title": "Get stats for Counter-Strike player on serie",
+    "endpoint": "https://api.pandascore.co/csgo/series/{serie_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Counter-Strike player for the given serie\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_series_serieidorslug_teams_teamidorslug_stats-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_series_serieidorslug_teams_teamidorslug_stats-1",
+    "title": "Get stats for Counter-Strike team on serie",
+    "endpoint": "https://api.pandascore.co/csgo/series/{serie_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Counter-Strike team for the given serie\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_series_upcoming-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_series_upcoming-1",
+    "title": "Get upcoming Counter-Strike series",
+    "endpoint": "https://api.pandascore.co/csgo/series/upcoming",
+    "description": "List upcoming Counter-Strike series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_teams-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_teams-1",
+    "title": "List Counter-Strike teams",
+    "endpoint": "https://api.pandascore.co/csgo/teams",
+    "description": "List teams for the Counter-Strike videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_teams_teamidorslug_stats-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_teams_teamidorslug_stats-1",
+    "title": "Get stats for Counter-Strike team",
+    "endpoint": "https://api.pandascore.co/csgo/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Counter-Strike team\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_tournaments-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_tournaments-1",
+    "title": "List Counter-Strike tournaments",
+    "endpoint": "https://api.pandascore.co/csgo/tournaments",
+    "description": "List tournaments for the Counter-Strike videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_tournaments_past-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_tournaments_past-1",
+    "title": "Get past Counter-Strike tournaments",
+    "endpoint": "https://api.pandascore.co/csgo/tournaments/past",
+    "description": "List past Counter-Strike tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_tournaments_running-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_tournaments_running-1",
+    "title": "Get running Counter-Strike tournaments",
+    "endpoint": "https://api.pandascore.co/csgo/tournaments/running",
+    "description": "List running Counter-Strike tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_tournaments_tournamentidorslug_players_playeridorslug_stats-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_tournaments_tournamentidorslug_players_playeridorslug_stats-1",
+    "title": "Get stats for Counter-Strike player on tournament",
+    "endpoint": "https://api.pandascore.co/csgo/tournaments/{tournament_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Counter-Strike player for the given tournament\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_tournaments_tournamentidorslug_teams_teamidorslug_stats-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_tournaments_tournamentidorslug_teams_teamidorslug_stats-1",
+    "title": "Get stats for Counter-Strike team on tournament",
+    "endpoint": "https://api.pandascore.co/csgo/tournaments/{tournament_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Counter-Strike team for the given tournament\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_csgo_tournaments_upcoming-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_tournaments_upcoming-1",
+    "title": "Get upcoming Counter-Strike tournaments",
+    "endpoint": "https://api.pandascore.co/csgo/tournaments/upcoming",
+    "description": "List upcoming Counter-Strike tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_weapons-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_weapons-1",
+    "title": "List weapons",
+    "endpoint": "https://api.pandascore.co/csgo/weapons",
+    "description": "List weapons\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_csgo_weapons_csgoweaponidorslug-1": {
+    "url": "https://developers.pandascore.co/reference/get_csgo_weapons_csgoweaponidorslug-1",
+    "title": "Get a weapon",
+    "endpoint": "https://api.pandascore.co/csgo/weapons/{csgo_weapon_id_or_slug}",
+    "description": "Get a single weapon by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_deletions": {
+    "url": "https://developers.pandascore.co/reference/get_deletions",
+    "title": "List deletions",
+    "endpoint": "https://api.pandascore.co/deletions",
+    "description": "Get the latest deleted documents\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_abilities": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_abilities",
+    "title": "List abilities",
+    "endpoint": "https://api.pandascore.co/dota2/abilities",
+    "description": "List abilities\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_abilities_dota2abilityidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_abilities_dota2abilityidorslug",
+    "title": "Get an ability",
+    "endpoint": "https://api.pandascore.co/dota2/abilities/{dota2_ability_id_or_slug}",
+    "description": "Get a single ability by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_games_dota2gameid": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_games_dota2gameid",
+    "title": "Get a game",
+    "endpoint": "https://api.pandascore.co/dota2/games/{dota2_game_id}",
+    "description": "Get a single Dota 2 game by ID\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_games_dota2gameid_frames": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_games_dota2gameid_frames",
+    "title": "List frames for a given game",
+    "endpoint": "https://api.pandascore.co/dota2/games/{dota2_game_id}/frames",
+    "description": "List frames for a given Dota 2 game\n\nThis endpoint is only available to customers with a real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_heroes": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_heroes",
+    "title": "List heroes",
+    "endpoint": "https://api.pandascore.co/dota2/heroes",
+    "description": "List heroes\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_heroes_dota2heroidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_heroes_dota2heroidorslug",
+    "title": "Get an hero",
+    "endpoint": "https://api.pandascore.co/dota2/heroes/{dota2_hero_id_or_slug}",
+    "description": "Get a single hero by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_items": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_items",
+    "title": "List items",
+    "endpoint": "https://api.pandascore.co/dota2/items",
+    "description": "List items\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_items_dota2itemidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_items_dota2itemidorslug",
+    "title": "Get an item",
+    "endpoint": "https://api.pandascore.co/dota2/items/{dota2_item_id_or_slug}",
+    "description": "Get a single item by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_leagues",
+    "title": "Get Dota 2 leagues",
+    "endpoint": "https://api.pandascore.co/dota2/leagues",
+    "description": "List Dota2 leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_matches": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_matches",
+    "title": "List Dota 2 matches",
+    "endpoint": "https://api.pandascore.co/dota2/matches",
+    "description": "List matches for the Dota 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_matches_matchidorslug_games": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_matches_matchidorslug_games",
+    "title": "List games for a given match",
+    "endpoint": "https://api.pandascore.co/dota2/matches/{match_id_or_slug}/games",
+    "description": "List games for a given Dota 2 match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_matches_matchidorslug_players_stats": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_matches_matchidorslug_players_stats",
+    "title": "Get stats for Dota2 players on match",
+    "endpoint": "https://api.pandascore.co/dota2/matches/{match_id_or_slug}/players/stats",
+    "description": "Get detailed statistics of Dota2 players for the given match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_matches_past",
+    "title": "Get past Dota 2 matches",
+    "endpoint": "https://api.pandascore.co/dota2/matches/past",
+    "description": "List past Dota 2 matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_matches_running",
+    "title": "Get running Dota 2 matches",
+    "endpoint": "https://api.pandascore.co/dota2/matches/running",
+    "description": "List running Dota 2 matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_matches_upcoming",
+    "title": "Get upcoming Dota 2 matches",
+    "endpoint": "https://api.pandascore.co/dota2/matches/upcoming",
+    "description": "List upcoming Dota 2 matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_players": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_players",
+    "title": "List Dota 2 players",
+    "endpoint": "https://api.pandascore.co/dota2/players",
+    "description": "List players for the Dota 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_players_playeridorslug_stats",
+    "title": "Get stats for Dota2 player",
+    "endpoint": "https://api.pandascore.co/dota2/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Dota2 player\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_series": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_series",
+    "title": "List Dota 2 series",
+    "endpoint": "https://api.pandascore.co/dota2/series",
+    "description": "List series for the Dota 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_series_past",
+    "title": "Get past Dota 2 series",
+    "endpoint": "https://api.pandascore.co/dota2/series/past",
+    "description": "List past Dota 2 series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_series_running",
+    "title": "Get running Dota 2 series",
+    "endpoint": "https://api.pandascore.co/dota2/series/running",
+    "description": "List running Dota 2 series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_series_serieidorslug_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_series_serieidorslug_players_playeridorslug_stats",
+    "title": "Get stats for Dota2 player on serie",
+    "endpoint": "https://api.pandascore.co/dota2/series/{serie_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Dota2 player for the given serie\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_series_serieidorslug_teams": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_series_serieidorslug_teams",
+    "title": "List Dota 2 teams for a serie",
+    "endpoint": "https://api.pandascore.co/dota2/series/{serie_id_or_slug}/teams",
+    "description": "List teams for the Dota 2 videogame for a given serie\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_series_serieidorslug_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_series_serieidorslug_teams_teamidorslug_stats",
+    "title": "Get stats for Dota2 team on serie",
+    "endpoint": "https://api.pandascore.co/dota2/series/{serie_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Dota2 team for the given serie\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_series_upcoming",
+    "title": "Get upcoming Dota 2 series",
+    "endpoint": "https://api.pandascore.co/dota2/series/upcoming",
+    "description": "List upcoming Dota 2 series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_teams": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_teams",
+    "title": "List Dota 2 teams",
+    "endpoint": "https://api.pandascore.co/dota2/teams",
+    "description": "List teams for the Dota 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_teams_teamidorslug_games": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_teams_teamidorslug_games",
+    "title": "List finished games for a given team",
+    "endpoint": "https://api.pandascore.co/dota2/teams/{team_id_or_slug}/games",
+    "description": "List finished games for a given Dota 2 team\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_teams_teamidorslug_stats",
+    "title": "Get stats for Dota2 team",
+    "endpoint": "https://api.pandascore.co/dota2/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Dota2 team\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_tournaments",
+    "title": "List Dota 2 tournaments",
+    "endpoint": "https://api.pandascore.co/dota2/tournaments",
+    "description": "List tournaments for the Dota 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_tournaments_past",
+    "title": "Get past Dota 2 tournaments",
+    "endpoint": "https://api.pandascore.co/dota2/tournaments/past",
+    "description": "List past Dota 2 tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_tournaments_running",
+    "title": "Get running Dota 2 tournaments",
+    "endpoint": "https://api.pandascore.co/dota2/tournaments/running",
+    "description": "List running Dota 2 tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_dota2_tournaments_tournamentidorslug_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_tournaments_tournamentidorslug_players_playeridorslug_stats",
+    "title": "Get stats for Dota2 player on tournament",
+    "endpoint": "https://api.pandascore.co/dota2/tournaments/{tournament_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Dota2 player for the given tournament\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_tournaments_tournamentidorslug_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_tournaments_tournamentidorslug_teams_teamidorslug_stats",
+    "title": "Get stats for Dota2 team on tournament",
+    "endpoint": "https://api.pandascore.co/dota2/tournaments/{tournament_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Dota2 team for the given tournament\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_dota2_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_dota2_tournaments_upcoming",
+    "title": "Get upcoming Dota 2 tournaments",
+    "endpoint": "https://api.pandascore.co/dota2/tournaments/upcoming",
+    "description": "List upcoming Dota 2 tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_leagues",
+    "title": "Get EA Sports FC leagues",
+    "endpoint": "https://api.pandascore.co/fifa/leagues",
+    "description": "List EA Sports FC leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_matches": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_matches",
+    "title": "List EA Sports FC matches",
+    "endpoint": "https://api.pandascore.co/fifa/matches",
+    "description": "List matches for the EA Sports FC videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_matches_past",
+    "title": "Get past EA Sports FC matches",
+    "endpoint": "https://api.pandascore.co/fifa/matches/past",
+    "description": "List past EA Sports FC matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_matches_running",
+    "title": "Get running EA Sports FC matches",
+    "endpoint": "https://api.pandascore.co/fifa/matches/running",
+    "description": "List running EA Sports FC matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_matches_upcoming",
+    "title": "Get upcoming EA Sports FC matches",
+    "endpoint": "https://api.pandascore.co/fifa/matches/upcoming",
+    "description": "List upcoming EA Sports FC matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_players": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_players",
+    "title": "List EA Sports FC players",
+    "endpoint": "https://api.pandascore.co/fifa/players",
+    "description": "List players for the EA Sports FC videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_series": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_series",
+    "title": "List EA Sports FC series",
+    "endpoint": "https://api.pandascore.co/fifa/series",
+    "description": "List series for the EA Sports FC videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_series_past",
+    "title": "Get past EA Sports FC series",
+    "endpoint": "https://api.pandascore.co/fifa/series/past",
+    "description": "List past EA Sports FC series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_series_running",
+    "title": "Get running EA Sports FC series",
+    "endpoint": "https://api.pandascore.co/fifa/series/running",
+    "description": "List running EA Sports FC series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_series_upcoming",
+    "title": "Get upcoming EA Sports FC series",
+    "endpoint": "https://api.pandascore.co/fifa/series/upcoming",
+    "description": "List upcoming EA Sports FC series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_teams": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_teams",
+    "title": "List EA Sports FC teams",
+    "endpoint": "https://api.pandascore.co/fifa/teams",
+    "description": "List teams for the EA Sports FC videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_tournaments",
+    "title": "List EA Sports FC tournaments",
+    "endpoint": "https://api.pandascore.co/fifa/tournaments",
+    "description": "List tournaments for the EA Sports FC videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_tournaments_past",
+    "title": "Get past EA Sports FC tournaments",
+    "endpoint": "https://api.pandascore.co/fifa/tournaments/past",
+    "description": "List past EA Sports FC tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_tournaments_running",
+    "title": "Get running EA Sports FC tournaments",
+    "endpoint": "https://api.pandascore.co/fifa/tournaments/running",
+    "description": "List running EA Sports FC tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_fifa_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_fifa_tournaments_upcoming",
+    "title": "Get upcoming EA Sports FC tournaments",
+    "endpoint": "https://api.pandascore.co/fifa/tournaments/upcoming",
+    "description": "List upcoming EA Sports FC tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_incidents": {
+    "url": "https://developers.pandascore.co/reference/get_incidents",
+    "title": "List changes, additions and deletions",
+    "endpoint": "https://api.pandascore.co/incidents",
+    "description": "Get the latest updates and additions.\n\nThis endpoint only provides the latest incident for an object. It does not keep track of previous incidents.\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_leagues-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_leagues-1",
+    "title": "Get King of Glory leagues",
+    "endpoint": "https://api.pandascore.co/kog/leagues",
+    "description": "List King of Glory leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_matches-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_matches-1",
+    "title": "List King of Glory matches",
+    "endpoint": "https://api.pandascore.co/kog/matches",
+    "description": "List matches for the King of Glory videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_matches_past-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_matches_past-1",
+    "title": "Get past King of Glory matches",
+    "endpoint": "https://api.pandascore.co/kog/matches/past",
+    "description": "List past King of Glory matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_matches_running-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_matches_running-1",
+    "title": "Get running King of Glory matches",
+    "endpoint": "https://api.pandascore.co/kog/matches/running",
+    "description": "List running King of Glory matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_matches_upcoming-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_matches_upcoming-1",
+    "title": "Get upcoming King of Glory matches",
+    "endpoint": "https://api.pandascore.co/kog/matches/upcoming",
+    "description": "List upcoming King of Glory matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_players-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_players-1",
+    "title": "List King of Glory players",
+    "endpoint": "https://api.pandascore.co/kog/players",
+    "description": "List players for the King of Glory videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_series-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_series-1",
+    "title": "List King of Glory series",
+    "endpoint": "https://api.pandascore.co/kog/series",
+    "description": "List series for the King of Glory videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_series_past-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_series_past-1",
+    "title": "Get past King of Glory series",
+    "endpoint": "https://api.pandascore.co/kog/series/past",
+    "description": "List past King of Glory series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_series_running-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_series_running-1",
+    "title": "Get running King of Glory series",
+    "endpoint": "https://api.pandascore.co/kog/series/running",
+    "description": "List running King of Glory series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_series_upcoming-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_series_upcoming-1",
+    "title": "Get upcoming King of Glory series",
+    "endpoint": "https://api.pandascore.co/kog/series/upcoming",
+    "description": "List upcoming King of Glory series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_teams-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_teams-1",
+    "title": "List King of Glory teams",
+    "endpoint": "https://api.pandascore.co/kog/teams",
+    "description": "List teams for the King of Glory videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_tournaments-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_tournaments-1",
+    "title": "List King of Glory tournaments",
+    "endpoint": "https://api.pandascore.co/kog/tournaments",
+    "description": "List tournaments for the King of Glory videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_tournaments_past-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_tournaments_past-1",
+    "title": "Get past King of Glory tournaments",
+    "endpoint": "https://api.pandascore.co/kog/tournaments/past",
+    "description": "List past King of Glory tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_tournaments_running-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_tournaments_running-1",
+    "title": "Get running King of Glory tournaments",
+    "endpoint": "https://api.pandascore.co/kog/tournaments/running",
+    "description": "List running King of Glory tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_kog_tournaments_upcoming-1": {
+    "url": "https://developers.pandascore.co/reference/get_kog_tournaments_upcoming-1",
+    "title": "Get upcoming King of Glory tournaments",
+    "endpoint": "https://api.pandascore.co/kog/tournaments/upcoming",
+    "description": "List upcoming King of Glory tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_leagues",
+    "title": "List leagues",
+    "endpoint": "https://api.pandascore.co/leagues",
+    "description": "List leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_leagues_leagueidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_leagues_leagueidorslug",
+    "title": "Get a league",
+    "endpoint": "https://api.pandascore.co/leagues/{league_id_or_slug}",
+    "description": "Get a single league by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_leagues_leagueidorslug_matches": {
+    "url": "https://developers.pandascore.co/reference/get_leagues_leagueidorslug_matches",
+    "title": "Get matches for a league",
+    "endpoint": "https://api.pandascore.co/leagues/{league_id_or_slug}/matches",
+    "description": "List matches of the given league\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_leagues_leagueidorslug_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_leagues_leagueidorslug_matches_past",
+    "title": "Get past matches for league",
+    "endpoint": "https://api.pandascore.co/leagues/{league_id_or_slug}/matches/past",
+    "description": "List past matches for the given league\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_leagues_leagueidorslug_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_leagues_leagueidorslug_matches_running",
+    "title": "Get running matches for league",
+    "endpoint": "https://api.pandascore.co/leagues/{league_id_or_slug}/matches/running",
+    "description": "List currently running matches for the given league\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_leagues_leagueidorslug_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_leagues_leagueidorslug_matches_upcoming",
+    "title": "Get upcoming matches for league",
+    "endpoint": "https://api.pandascore.co/leagues/{league_id_or_slug}/matches/upcoming",
+    "description": "List upcoming matches for the given league\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_leagues_leagueidorslug_series": {
+    "url": "https://developers.pandascore.co/reference/get_leagues_leagueidorslug_series",
+    "title": "List series of a league",
+    "endpoint": "https://api.pandascore.co/leagues/{league_id_or_slug}/series",
+    "description": "List series for the given league\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_leagues_leagueidorslug_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_leagues_leagueidorslug_tournaments",
+    "title": "Get tournaments for a league",
+    "endpoint": "https://api.pandascore.co/leagues/{league_id_or_slug}/tournaments",
+    "description": "List tournaments of the given league\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lives": {
+    "url": "https://developers.pandascore.co/reference/get_lives",
+    "title": "List lives matches",
+    "endpoint": "https://api.pandascore.co/lives",
+    "description": "List currently running live matches, available from pandascore with live websocket data.\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_leagues",
+    "title": "Get LoL Wild Rift leagues",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/leagues",
+    "description": "List LoL Wild Rift leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_matches": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_matches",
+    "title": "List LoL Wild Rift matches",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/matches",
+    "description": "List matches for the LoL Wild Rift videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_matches_past",
+    "title": "Get past LoL Wild Rift matches",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/matches/past",
+    "description": "List past LoL Wild Rift matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_matches_running",
+    "title": "Get running LoL Wild Rift matches",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/matches/running",
+    "description": "List running LoL Wild Rift matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_matches_upcoming",
+    "title": "Get upcoming LoL Wild Rift matches",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/matches/upcoming",
+    "description": "List upcoming LoL Wild Rift matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_players": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_players",
+    "title": "List LoL Wild Rift players",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/players",
+    "description": "List players for the LoL Wild Rift videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_series": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_series",
+    "title": "List LoL Wild Rift series",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/series",
+    "description": "List series for the  LoL Wild Rift videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_series_past",
+    "title": "Get past LoL Wild Rift series",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/series/past",
+    "description": "List past LoL Wild Rift series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_series_running",
+    "title": "Get running LoL Wild Rift series",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/series/running",
+    "description": "List running LoL Wild Rift series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_series_upcoming",
+    "title": "Get upcoming LoL Wild Rift series",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/series/upcoming",
+    "description": "List upcoming LoL Wild Rift series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_teams": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_teams",
+    "title": "List LoL Wild Rift teams",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/teams",
+    "description": "List teams for the LoL Wild Rift videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_tournaments",
+    "title": "List LoL Wild Rift tournaments",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/tournaments",
+    "description": "List tournaments for the LoL Wild Rift videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_tournaments_past",
+    "title": "Get past LoL Wild Rift tournaments",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/tournaments/past",
+    "description": "List past LoL Wild Rift tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_tournaments_running",
+    "title": "Get running LoL Wild Rift tournaments",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/tournaments/running",
+    "description": "List running LoL Wild Rift tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol-wild-rift_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_lol-wild-rift_tournaments_upcoming",
+    "title": "Get upcoming LoL Wild Rift tournaments",
+    "endpoint": "https://api.pandascore.co/lol-wild-rift/tournaments/upcoming",
+    "description": "List upcoming LoL Wild Rift tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_champions": {
+    "url": "https://developers.pandascore.co/reference/get_lol_champions",
+    "title": "List champions",
+    "endpoint": "https://api.pandascore.co/lol/champions",
+    "description": "List champions\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_champions_lolchampionid": {
+    "url": "https://developers.pandascore.co/reference/get_lol_champions_lolchampionid",
+    "title": "Get a champion",
+    "endpoint": "https://api.pandascore.co/lol/champions/{lol_champion_id}",
+    "description": "Get a single champion by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_games_lolgameid": {
+    "url": "https://developers.pandascore.co/reference/get_lol_games_lolgameid",
+    "title": "Get a game",
+    "endpoint": "https://api.pandascore.co/lol/games/{lol_game_id}",
+    "description": "Get a single League of Legends game by ID\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_games_lolgameid_events": {
+    "url": "https://developers.pandascore.co/reference/get_lol_games_lolgameid_events",
+    "title": "List Play-by-Play events for a given game",
+    "endpoint": "https://api.pandascore.co/lol/games/{lol_game_id}/events",
+    "description": "List events for a given League of Legends game\n\nThis endpoint is only available to customers with a real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_games_lolgameid_frames": {
+    "url": "https://developers.pandascore.co/reference/get_lol_games_lolgameid_frames",
+    "title": "List Play-by-Play frames for a given game",
+    "endpoint": "https://api.pandascore.co/lol/games/{lol_game_id}/frames",
+    "description": "List frames for a given League of Legends game\n\nThis endpoint is only available to customers with a real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_items": {
+    "url": "https://developers.pandascore.co/reference/get_lol_items",
+    "title": "List items",
+    "endpoint": "https://api.pandascore.co/lol/items",
+    "description": "List items\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_items_lolitemid": {
+    "url": "https://developers.pandascore.co/reference/get_lol_items_lolitemid",
+    "title": "Get an item",
+    "endpoint": "https://api.pandascore.co/lol/items/{lol_item_id}",
+    "description": "Get a single item by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_lol_leagues",
+    "title": "Get LoL leagues",
+    "endpoint": "https://api.pandascore.co/lol/leagues",
+    "description": "List League of Legends leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_masteries": {
+    "url": "https://developers.pandascore.co/reference/get_lol_masteries",
+    "title": "List masteries",
+    "endpoint": "https://api.pandascore.co/lol/masteries",
+    "description": "List masteries\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_masteries_lolmasteryid": {
+    "url": "https://developers.pandascore.co/reference/get_lol_masteries_lolmasteryid",
+    "title": "Get a mastery",
+    "endpoint": "https://api.pandascore.co/lol/masteries/{lol_mastery_id}",
+    "description": "Get a single mastery by ID\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_matches": {
+    "url": "https://developers.pandascore.co/reference/get_lol_matches",
+    "title": "List LoL matches",
+    "endpoint": "https://api.pandascore.co/lol/matches",
+    "description": "List matches for the League of Legends videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_matches_matchidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_lol_matches_matchidorslug",
+    "title": "Get a LoL match",
+    "endpoint": "https://api.pandascore.co/lol/matches/{match_id_or_slug}",
+    "description": "Get a single League of Legends match by ID or slug\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_matches_matchidorslug_games": {
+    "url": "https://developers.pandascore.co/reference/get_lol_matches_matchidorslug_games",
+    "title": "List games for a given match",
+    "endpoint": "https://api.pandascore.co/lol/matches/{match_id_or_slug}/games",
+    "description": "List games for a given League of Legends match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_matches_matchidorslug_players_stats": {
+    "url": "https://developers.pandascore.co/reference/get_lol_matches_matchidorslug_players_stats",
+    "title": "Get stats for LoL players on match",
+    "endpoint": "https://api.pandascore.co/lol/matches/{match_id_or_slug}/players/stats",
+    "description": "Get detailed statistics of League-of-Legends players for the given match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_lol_matches_past",
+    "title": "Get past LoL matches",
+    "endpoint": "https://api.pandascore.co/lol/matches/past",
+    "description": "List past League of Legends matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_lol_matches_running",
+    "title": "Get running LoL matches",
+    "endpoint": "https://api.pandascore.co/lol/matches/running",
+    "description": "List running League of Legends matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_lol_matches_upcoming",
+    "title": "Get upcoming LoL matches",
+    "endpoint": "https://api.pandascore.co/lol/matches/upcoming",
+    "description": "List upcoming League of Legends matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_players": {
+    "url": "https://developers.pandascore.co/reference/get_lol_players",
+    "title": "List LoL players",
+    "endpoint": "https://api.pandascore.co/lol/players",
+    "description": "List players for the League of Legends videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_lol_players_playeridorslug_stats",
+    "title": "Get stats for LoL player",
+    "endpoint": "https://api.pandascore.co/lol/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given League-of-Legends player\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_runes": {
+    "url": "https://developers.pandascore.co/reference/get_lol_runes",
+    "title": "List runes",
+    "endpoint": "https://api.pandascore.co/lol/runes",
+    "description": "List runes\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_runes-reforged": {
+    "url": "https://developers.pandascore.co/reference/get_lol_runes-reforged",
+    "title": "List LoL runes",
+    "endpoint": "https://api.pandascore.co/lol/runes-reforged",
+    "description": "List the latest version of League of Legends (reforged) runes\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_runes-reforged-paths": {
+    "url": "https://developers.pandascore.co/reference/get_lol_runes-reforged-paths",
+    "title": "List rune paths",
+    "endpoint": "https://api.pandascore.co/lol/runes-reforged-paths",
+    "description": "List the latest version of League of Legends (reforged) rune paths\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_runes-reforged-paths_lolrunepathid": {
+    "url": "https://developers.pandascore.co/reference/get_lol_runes-reforged-paths_lolrunepathid",
+    "title": "Get a LoL rune path",
+    "endpoint": "https://api.pandascore.co/lol/runes-reforged-paths/{lol_rune_path_id}",
+    "description": "Retrieve the latest version of a League of Legends (reforged) rune path by its ID\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_runes-reforged_lolrunereforgedid": {
+    "url": "https://developers.pandascore.co/reference/get_lol_runes-reforged_lolrunereforgedid",
+    "title": "Get a LoL rune",
+    "endpoint": "https://api.pandascore.co/lol/runes-reforged/{lol_rune_reforged_id}",
+    "description": "Retrieve the latest version of a League of Legends (reforged) rune by its ID\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_runes_lolruneid": {
+    "url": "https://developers.pandascore.co/reference/get_lol_runes_lolruneid",
+    "title": "Get a rune",
+    "endpoint": "https://api.pandascore.co/lol/runes/{lol_rune_id}",
+    "description": "Get a single rune by ID\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_series": {
+    "url": "https://developers.pandascore.co/reference/get_lol_series",
+    "title": "List LoL series",
+    "endpoint": "https://api.pandascore.co/lol/series",
+    "description": "List series for the League of Legends videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_lol_series_past",
+    "title": "Get past LoL series",
+    "endpoint": "https://api.pandascore.co/lol/series/past",
+    "description": "List past League of Legends series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_lol_series_running",
+    "title": "Get running LoL series",
+    "endpoint": "https://api.pandascore.co/lol/series/running",
+    "description": "List running League of Legends series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_series_serieidorslug_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_lol_series_serieidorslug_players_playeridorslug_stats",
+    "title": "Get stats for LoL player on serie",
+    "endpoint": "https://api.pandascore.co/lol/series/{serie_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given League-of-Legends player for the given serie\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_series_serieidorslug_teams": {
+    "url": "https://developers.pandascore.co/reference/get_lol_series_serieidorslug_teams",
+    "title": "List LoL teams for a serie",
+    "endpoint": "https://api.pandascore.co/lol/series/{serie_id_or_slug}/teams",
+    "description": "List teams for the League of Legends videogame for a given serie\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_series_serieidorslug_teams_stats": {
+    "url": "https://developers.pandascore.co/reference/get_lol_series_serieidorslug_teams_stats",
+    "title": "Get stats for LoL teams on serie",
+    "endpoint": "https://api.pandascore.co/lol/series/{serie_id_or_slug}/teams/stats",
+    "description": "Get detailed statistics of the LoL teams for the given series\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_series_serieidorslug_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_lol_series_serieidorslug_teams_teamidorslug_stats",
+    "title": "Get stats for LoL team on serie",
+    "endpoint": "https://api.pandascore.co/lol/series/{serie_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given League-of-Legends team for the given serie\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_lol_series_upcoming",
+    "title": "Get upcoming LoL series",
+    "endpoint": "https://api.pandascore.co/lol/series/upcoming",
+    "description": "List upcoming League of Legends series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_spells": {
+    "url": "https://developers.pandascore.co/reference/get_lol_spells",
+    "title": "List spells",
+    "endpoint": "https://api.pandascore.co/lol/spells",
+    "description": "List spells\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_spells_lolspellid": {
+    "url": "https://developers.pandascore.co/reference/get_lol_spells_lolspellid",
+    "title": "Get a spell",
+    "endpoint": "https://api.pandascore.co/lol/spells/{lol_spell_id}",
+    "description": "Get a single spell by ID\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_teams": {
+    "url": "https://developers.pandascore.co/reference/get_lol_teams",
+    "title": "List LoL teams",
+    "endpoint": "https://api.pandascore.co/lol/teams",
+    "description": "List teams for the League of Legends videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_teams_teamidorslug_games": {
+    "url": "https://developers.pandascore.co/reference/get_lol_teams_teamidorslug_games",
+    "title": "List finished games for a given team",
+    "endpoint": "https://api.pandascore.co/lol/teams/{team_id_or_slug}/games",
+    "description": "List finished games for a given League of Legends team\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_lol_teams_teamidorslug_stats",
+    "title": "Get stats for LoL team",
+    "endpoint": "https://api.pandascore.co/lol/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given League-of-Legends team\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_lol_tournaments",
+    "title": "List LoL tournaments",
+    "endpoint": "https://api.pandascore.co/lol/tournaments",
+    "description": "List tournaments for the League of Legends videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_lol_tournaments_past",
+    "title": "Get past LoL tournaments",
+    "endpoint": "https://api.pandascore.co/lol/tournaments/past",
+    "description": "List past League of Legends tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_lol_tournaments_running",
+    "title": "Get running LoL tournaments",
+    "endpoint": "https://api.pandascore.co/lol/tournaments/running",
+    "description": "List running League of Legends tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_tournaments_tournamentidorslug_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_lol_tournaments_tournamentidorslug_players_playeridorslug_stats",
+    "title": "Get stats for LoL player on tournament",
+    "endpoint": "https://api.pandascore.co/lol/tournaments/{tournament_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given League-of-Legends player for the given tournament\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_tournaments_tournamentidorslug_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_lol_tournaments_tournamentidorslug_teams_teamidorslug_stats",
+    "title": "Get stats for LoL team on tournament",
+    "endpoint": "https://api.pandascore.co/lol/tournaments/{tournament_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given League-of-Legends team for the given tournament\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_lol_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_lol_tournaments_upcoming",
+    "title": "Get upcoming LoL tournaments",
+    "endpoint": "https://api.pandascore.co/lol/tournaments/upcoming",
+    "description": "List upcoming League of Legends tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_versions_all_champions": {
+    "url": "https://developers.pandascore.co/reference/get_lol_versions_all_champions",
+    "title": "List champions for all version",
+    "endpoint": "https://api.pandascore.co/lol/versions/all/champions",
+    "description": "Deprecated. Equivalent route:/lol/champions?filter[videogame_version]=all\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_versions_all_items": {
+    "url": "https://developers.pandascore.co/reference/get_lol_versions_all_items",
+    "title": "List items for all version",
+    "endpoint": "https://api.pandascore.co/lol/versions/all/items",
+    "description": "Deprecated. Equivalent route:/lol/items?filter[videogame_version]=all\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_versions_lolversionname_champions": {
+    "url": "https://developers.pandascore.co/reference/get_lol_versions_lolversionname_champions",
+    "title": "List champions for version",
+    "endpoint": "https://api.pandascore.co/lol/versions/{lol_version_name}/champions",
+    "description": "Deprecated. Equivalent route:/lol/champions?filter[videogame_version]={lol_version_name}\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_lol_versions_lolversionname_items": {
+    "url": "https://developers.pandascore.co/reference/get_lol_versions_lolversionname_items",
+    "title": "List items for version",
+    "endpoint": "https://api.pandascore.co/lol/versions/{lol_version_name}/items",
+    "description": "Deprecated. Equivalent route:/lol/items?filter[videogame_version]={lol_version_name}\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_matches": {
+    "url": "https://developers.pandascore.co/reference/get_matches",
+    "title": "List matches",
+    "endpoint": "https://api.pandascore.co/matches",
+    "description": "List matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_matches_matchidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_matches_matchidorslug",
+    "title": "Get a match",
+    "endpoint": "https://api.pandascore.co/matches/{match_id_or_slug}",
+    "description": "Get a single match by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_matches_matchidorslug_opponents": {
+    "url": "https://developers.pandascore.co/reference/get_matches_matchidorslug_opponents",
+    "title": "Get match's opponents",
+    "endpoint": "https://api.pandascore.co/matches/{match_id_or_slug}/opponents",
+    "description": "List opponents (player or teams) for the given match\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_matches_past",
+    "title": "Get past matches",
+    "endpoint": "https://api.pandascore.co/matches/past",
+    "description": "List past matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_matches_running",
+    "title": "Get running matches",
+    "endpoint": "https://api.pandascore.co/matches/running",
+    "description": "List currently running matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_matches_upcoming",
+    "title": "Get upcoming matches",
+    "endpoint": "https://api.pandascore.co/matches/upcoming",
+    "description": "List upcoming matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_leagues",
+    "title": "Get ML:BB Leagues",
+    "endpoint": "https://api.pandascore.co/mlbb/leagues",
+    "description": "List Mobile Legends: Bang Bang leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_matches": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_matches",
+    "title": "List ML:BB matches",
+    "endpoint": "https://api.pandascore.co/mlbb/matches",
+    "description": "List matches for the Mobile Legends: Bang Bang videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_matches_past",
+    "title": "Get past ML:BB matches",
+    "endpoint": "https://api.pandascore.co/mlbb/matches/past",
+    "description": "List past Mobile Legends: Bang Bang matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_matches_running",
+    "title": "Get running ML:BB matches",
+    "endpoint": "https://api.pandascore.co/mlbb/matches/running",
+    "description": "List running Mobile Legends: Bang Bang matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_matches_upcoming",
+    "title": "Get upcoming ML:BB matches",
+    "endpoint": "https://api.pandascore.co/mlbb/matches/upcoming",
+    "description": "List upcoming Mobile Legends: Bang Bang matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_players": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_players",
+    "title": "List ML:BB players",
+    "endpoint": "https://api.pandascore.co/mlbb/players",
+    "description": "List players for the Mobile Legends: Bang Bang videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_series": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_series",
+    "title": "List ML:BB series",
+    "endpoint": "https://api.pandascore.co/mlbb/series",
+    "description": "List series for the Mobile Legends: Bang Bang videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_series_past",
+    "title": "Get past ML:BB series",
+    "endpoint": "https://api.pandascore.co/mlbb/series/past",
+    "description": "List past Mobile Legends: Bang Bang series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_series_running",
+    "title": "Get running ML:BB series",
+    "endpoint": "https://api.pandascore.co/mlbb/series/running",
+    "description": "List running Mobile Legends: Bang Bang series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_series_upcoming",
+    "title": "Get upcoming ML:BB series",
+    "endpoint": "https://api.pandascore.co/mlbb/series/upcoming",
+    "description": "List upcoming Mobile Legends: Bang Bang series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_teams": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_teams",
+    "title": "List ML:BB teams",
+    "endpoint": "https://api.pandascore.co/mlbb/teams",
+    "description": "List teams for the Mobile Legends: Bang Bang videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_tournaments",
+    "title": "List ML:BB tournaments",
+    "endpoint": "https://api.pandascore.co/mlbb/tournaments",
+    "description": "List tournaments for the Mobile Legends: Bang Bang videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_tournaments_past",
+    "title": "Get past ML:BB tournaments",
+    "endpoint": "https://api.pandascore.co/mlbb/tournaments/past",
+    "description": "List past Mobile Legends: Bang Bang tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_tournaments_running",
+    "title": "Get running ML:BB tournaments",
+    "endpoint": "https://api.pandascore.co/mlbb/tournaments/running",
+    "description": "List running Mobile Legends: Bang Bang tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_mlbb_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_mlbb_tournaments_upcoming",
+    "title": "Get upcoming ML:BB tournaments",
+    "endpoint": "https://api.pandascore.co/mlbb/tournaments/upcoming",
+    "description": "List upcoming Mobile Legends: Bang Bang tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_games_owgameid": {
+    "url": "https://developers.pandascore.co/reference/get_ow_games_owgameid",
+    "title": "Get a game",
+    "endpoint": "https://api.pandascore.co/ow/games/{ow_game_id}",
+    "description": "Get a single Overwatch game by ID\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_ow_games_owgameid_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_ow_games_owgameid_players_playeridorslug_stats",
+    "title": "Get stats for OW player on game",
+    "endpoint": "https://api.pandascore.co/ow/games/{ow_game_id}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Overwatch given player for the given game\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_ow_heroes": {
+    "url": "https://developers.pandascore.co/reference/get_ow_heroes",
+    "title": "List heroes",
+    "endpoint": "https://api.pandascore.co/ow/heroes",
+    "description": "List heroes\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_heroes_owheroidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_ow_heroes_owheroidorslug",
+    "title": "Get an hero",
+    "endpoint": "https://api.pandascore.co/ow/heroes/{ow_hero_id_or_slug}",
+    "description": "Get a single hero by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_ow_leagues",
+    "title": "Get Overwatch leagues",
+    "endpoint": "https://api.pandascore.co/ow/leagues",
+    "description": "List Overwatch leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_maps": {
+    "url": "https://developers.pandascore.co/reference/get_ow_maps",
+    "title": "List maps",
+    "endpoint": "https://api.pandascore.co/ow/maps",
+    "description": "List maps\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_maps_owmapidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_ow_maps_owmapidorslug",
+    "title": "Get a map",
+    "endpoint": "https://api.pandascore.co/ow/maps/{ow_map_id_or_slug}",
+    "description": "Get a single map by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_matches": {
+    "url": "https://developers.pandascore.co/reference/get_ow_matches",
+    "title": "List Overwatch matches",
+    "endpoint": "https://api.pandascore.co/ow/matches",
+    "description": "List matches for the Overwatch videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_matches_matchidorslug_games": {
+    "url": "https://developers.pandascore.co/reference/get_ow_matches_matchidorslug_games",
+    "title": "List games for a given match",
+    "endpoint": "https://api.pandascore.co/ow/matches/{match_id_or_slug}/games",
+    "description": "List games for a given Overwatch match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_ow_matches_matchidorslug_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_ow_matches_matchidorslug_players_playeridorslug_stats",
+    "title": "Get stats for OW player on match",
+    "endpoint": "https://api.pandascore.co/ow/matches/{match_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Overwatch given player for the given match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_ow_matches_matchidorslug_players_stats": {
+    "url": "https://developers.pandascore.co/reference/get_ow_matches_matchidorslug_players_stats",
+    "title": "Get stats for OW players on match",
+    "endpoint": "https://api.pandascore.co/ow/matches/{match_id_or_slug}/players/stats",
+    "description": "Get detailed statistics of Overwatch players for the given match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_ow_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_ow_matches_past",
+    "title": "Get past Overwatch matches",
+    "endpoint": "https://api.pandascore.co/ow/matches/past",
+    "description": "List past Overwatch matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_ow_matches_running",
+    "title": "Get running Overwatch matches",
+    "endpoint": "https://api.pandascore.co/ow/matches/running",
+    "description": "List running Overwatch matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_ow_matches_upcoming",
+    "title": "Get upcoming Overwatch matches",
+    "endpoint": "https://api.pandascore.co/ow/matches/upcoming",
+    "description": "List upcoming Overwatch matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_players": {
+    "url": "https://developers.pandascore.co/reference/get_ow_players",
+    "title": "List Overwatch players",
+    "endpoint": "https://api.pandascore.co/ow/players",
+    "description": "List players for the Overwatch videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_ow_players_playeridorslug_stats",
+    "title": "Get stats for OW player",
+    "endpoint": "https://api.pandascore.co/ow/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Overwatch player\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_ow_series": {
+    "url": "https://developers.pandascore.co/reference/get_ow_series",
+    "title": "List Overwatch series",
+    "endpoint": "https://api.pandascore.co/ow/series",
+    "description": "List series for the Overwatch videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_ow_series_past",
+    "title": "Get past Overwatch series",
+    "endpoint": "https://api.pandascore.co/ow/series/past",
+    "description": "List past Overwatch series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_ow_series_running",
+    "title": "Get running Overwatch series",
+    "endpoint": "https://api.pandascore.co/ow/series/running",
+    "description": "List running Overwatch series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_series_serieidorslug_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_ow_series_serieidorslug_players_playeridorslug_stats",
+    "title": "Get stats for OW player on serie",
+    "endpoint": "https://api.pandascore.co/ow/series/{serie_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Overwatch given player for the given serie\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_ow_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_ow_series_upcoming",
+    "title": "Get upcoming Overwatch series",
+    "endpoint": "https://api.pandascore.co/ow/series/upcoming",
+    "description": "List upcoming Overwatch series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_teams": {
+    "url": "https://developers.pandascore.co/reference/get_ow_teams",
+    "title": "List Overwatch teams",
+    "endpoint": "https://api.pandascore.co/ow/teams",
+    "description": "List teams for the Overwatch videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_ow_tournaments",
+    "title": "List Overwatch tournaments",
+    "endpoint": "https://api.pandascore.co/ow/tournaments",
+    "description": "List tournaments for the Overwatch videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_ow_tournaments_past",
+    "title": "Get past Overwatch tournaments",
+    "endpoint": "https://api.pandascore.co/ow/tournaments/past",
+    "description": "List past Overwatch tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_ow_tournaments_running",
+    "title": "Get running Overwatch tournaments",
+    "endpoint": "https://api.pandascore.co/ow/tournaments/running",
+    "description": "List running Overwatch tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_ow_tournaments_tournamentidorslug_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_ow_tournaments_tournamentidorslug_players_playeridorslug_stats",
+    "title": "Get stats for OW player on tournament",
+    "endpoint": "https://api.pandascore.co/ow/tournaments/{tournament_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get detailed statistics of a given Overwatch player for the given tournament\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_ow_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_ow_tournaments_upcoming",
+    "title": "Get upcoming Overwatch tournaments",
+    "endpoint": "https://api.pandascore.co/ow/tournaments/upcoming",
+    "description": "List upcoming Overwatch tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_players": {
+    "url": "https://developers.pandascore.co/reference/get_players",
+    "title": "List players",
+    "endpoint": "https://api.pandascore.co/players",
+    "description": "List players\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_players_playeridorslug": {
+    "url": "https://developers.pandascore.co/reference/get_players_playeridorslug",
+    "title": "Get a player",
+    "endpoint": "https://api.pandascore.co/players/{player_id_or_slug}",
+    "description": "Get a single player by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_players_playeridorslug_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_players_playeridorslug_leagues",
+    "title": "Get leagues for a player",
+    "endpoint": "https://api.pandascore.co/players/{player_id_or_slug}/leagues",
+    "description": "List leagues for the given player. Only leagues from the player's current videogame.\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_players_playeridorslug_matches": {
+    "url": "https://developers.pandascore.co/reference/get_players_playeridorslug_matches",
+    "title": "Get matches for a player",
+    "endpoint": "https://api.pandascore.co/players/{player_id_or_slug}/matches",
+    "description": "List matches for the given player. Only matches from the player's current videogame.\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_players_playeridorslug_series": {
+    "url": "https://developers.pandascore.co/reference/get_players_playeridorslug_series",
+    "title": "Get series for a player",
+    "endpoint": "https://api.pandascore.co/players/{player_id_or_slug}/series",
+    "description": "List series for the given player. Only series from the player's current videogame.\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_players_playeridorslug_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_players_playeridorslug_tournaments",
+    "title": "Get tournaments for a player",
+    "endpoint": "https://api.pandascore.co/players/{player_id_or_slug}/tournaments",
+    "description": "List tournaments for the given player. Only tournaments from the player's current videogame.\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_leagues",
+    "title": "Get PUBG leagues",
+    "endpoint": "https://api.pandascore.co/pubg/leagues",
+    "description": "List PUBG leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_matches": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_matches",
+    "title": "List PUBG matches",
+    "endpoint": "https://api.pandascore.co/pubg/matches",
+    "description": "List matches for the PUBG videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_matches_past",
+    "title": "Get past PUBG matches",
+    "endpoint": "https://api.pandascore.co/pubg/matches/past",
+    "description": "List past PUBG matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_matches_running",
+    "title": "Get running PUBG matches",
+    "endpoint": "https://api.pandascore.co/pubg/matches/running",
+    "description": "List running PUBG matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_matches_upcoming",
+    "title": "Get upcoming PUBG matches",
+    "endpoint": "https://api.pandascore.co/pubg/matches/upcoming",
+    "description": "List upcoming PUBG matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_players": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_players",
+    "title": "List PUBG players",
+    "endpoint": "https://api.pandascore.co/pubg/players",
+    "description": "List players for the PUBG videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_series": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_series",
+    "title": "List PUBG series",
+    "endpoint": "https://api.pandascore.co/pubg/series",
+    "description": "List series for the PUBG videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_series_past",
+    "title": "Get past PUBG series",
+    "endpoint": "https://api.pandascore.co/pubg/series/past",
+    "description": "List past PUBG series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_series_running",
+    "title": "Get running PUBG series",
+    "endpoint": "https://api.pandascore.co/pubg/series/running",
+    "description": "List running PUBG series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_series_upcoming",
+    "title": "Get upcoming PUBG series",
+    "endpoint": "https://api.pandascore.co/pubg/series/upcoming",
+    "description": "List upcoming PUBG series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_teams": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_teams",
+    "title": "List PUBG teams",
+    "endpoint": "https://api.pandascore.co/pubg/teams",
+    "description": "List teams for the PUBG videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_tournaments",
+    "title": "List PUBG tournaments",
+    "endpoint": "https://api.pandascore.co/pubg/tournaments",
+    "description": "List tournaments for the PUBG videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_tournaments_past",
+    "title": "Get past PUBG tournaments",
+    "endpoint": "https://api.pandascore.co/pubg/tournaments/past",
+    "description": "List past PUBG tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_tournaments_running",
+    "title": "Get running PUBG tournaments",
+    "endpoint": "https://api.pandascore.co/pubg/tournaments/running",
+    "description": "List running PUBG tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_pubg_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_pubg_tournaments_upcoming",
+    "title": "Get upcoming PUBG tournaments",
+    "endpoint": "https://api.pandascore.co/pubg/tournaments/upcoming",
+    "description": "List upcoming PUBG tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_leagues",
+    "title": "Get R6siege leagues",
+    "endpoint": "https://api.pandascore.co/r6siege/leagues",
+    "description": "List Rainbow Six Siege leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_matches": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_matches",
+    "title": "List R6Siege matches",
+    "endpoint": "https://api.pandascore.co/r6siege/matches",
+    "description": "List matches for the Rainbow Six Siege videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_matches_past",
+    "title": "Get past R6siege matches",
+    "endpoint": "https://api.pandascore.co/r6siege/matches/past",
+    "description": "List past Rainbow Six Siege matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_matches_running",
+    "title": "Get running R6siege matches",
+    "endpoint": "https://api.pandascore.co/r6siege/matches/running",
+    "description": "List running Rainbow Six Siege matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_matches_upcoming",
+    "title": "Get upcoming R6siege matches",
+    "endpoint": "https://api.pandascore.co/r6siege/matches/upcoming",
+    "description": "List upcoming Rainbow Six Siege matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_players": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_players",
+    "title": "List R6Siege players",
+    "endpoint": "https://api.pandascore.co/r6siege/players",
+    "description": "List players for the Rainbow Six Siege videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_series": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_series",
+    "title": "List R6Siege series",
+    "endpoint": "https://api.pandascore.co/r6siege/series",
+    "description": "List series for the Rainbow Six Siege videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_series_past",
+    "title": "Get past R6siege series",
+    "endpoint": "https://api.pandascore.co/r6siege/series/past",
+    "description": "List past Rainbow Six Siege series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_series_running",
+    "title": "Get running R6siege series",
+    "endpoint": "https://api.pandascore.co/r6siege/series/running",
+    "description": "List running Rainbow Six Siege series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_series_upcoming",
+    "title": "Get upcoming R6siege series",
+    "endpoint": "https://api.pandascore.co/r6siege/series/upcoming",
+    "description": "List upcoming Rainbow Six Siege series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_teams": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_teams",
+    "title": "List R6Siege teams",
+    "endpoint": "https://api.pandascore.co/r6siege/teams",
+    "description": "List teams for the Rainbow Six Siege videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_tournaments",
+    "title": "List R6Siege tournaments",
+    "endpoint": "https://api.pandascore.co/r6siege/tournaments",
+    "description": "List tournaments for the Rainbow Six Siege videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_tournaments_past",
+    "title": "Get past R6Siege tournaments",
+    "endpoint": "https://api.pandascore.co/r6siege/tournaments/past",
+    "description": "List past Rainbow Six Siege tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_tournaments_running",
+    "title": "Get running R6Siege tournaments",
+    "endpoint": "https://api.pandascore.co/r6siege/tournaments/running",
+    "description": "List running Rainbow Six Siege tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_r6siege_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_r6siege_tournaments_upcoming",
+    "title": "Get upcoming R6Siege tournaments",
+    "endpoint": "https://api.pandascore.co/r6siege/tournaments/upcoming",
+    "description": "List upcoming Rainbow Six Siege tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_rl_leagues",
+    "title": "Get RL leagues",
+    "endpoint": "https://api.pandascore.co/rl/leagues",
+    "description": "List RL leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_matches": {
+    "url": "https://developers.pandascore.co/reference/get_rl_matches",
+    "title": "List rl matches",
+    "endpoint": "https://api.pandascore.co/rl/matches",
+    "description": "List matches for the Rocket League videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_rl_matches_past",
+    "title": "Get past Rocket League matches",
+    "endpoint": "https://api.pandascore.co/rl/matches/past",
+    "description": "List past Rocket League matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_rl_matches_running",
+    "title": "Get running Rocket League matches",
+    "endpoint": "https://api.pandascore.co/rl/matches/running",
+    "description": "List running Rocket League matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_rl_matches_upcoming",
+    "title": "Get upcoming Rocket League matches",
+    "endpoint": "https://api.pandascore.co/rl/matches/upcoming",
+    "description": "List upcoming Rocket League matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_players": {
+    "url": "https://developers.pandascore.co/reference/get_rl_players",
+    "title": "List Rocket League players",
+    "endpoint": "https://api.pandascore.co/rl/players",
+    "description": "List players for the Rocket League videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_series": {
+    "url": "https://developers.pandascore.co/reference/get_rl_series",
+    "title": "List Rocket League series",
+    "endpoint": "https://api.pandascore.co/rl/series",
+    "description": "List series for the Rocket League videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_rl_series_past",
+    "title": "Get past Rocket League series",
+    "endpoint": "https://api.pandascore.co/rl/series/past",
+    "description": "List past Rocket League series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_rl_series_running",
+    "title": "Get running Rocket League series",
+    "endpoint": "https://api.pandascore.co/rl/series/running",
+    "description": "List running Rocket League series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_rl_series_upcoming",
+    "title": "Get upcoming Rocket League series",
+    "endpoint": "https://api.pandascore.co/rl/series/upcoming",
+    "description": "List upcoming Rocket League series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_teams": {
+    "url": "https://developers.pandascore.co/reference/get_rl_teams",
+    "title": "List Rocket League teams",
+    "endpoint": "https://api.pandascore.co/rl/teams",
+    "description": "List teams for the Rocket League videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_rl_tournaments",
+    "title": "List Rocket League tournaments",
+    "endpoint": "https://api.pandascore.co/rl/tournaments",
+    "description": "List tournaments for the Rocket League videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_rl_tournaments_past",
+    "title": "Get past Rocket League tournaments",
+    "endpoint": "https://api.pandascore.co/rl/tournaments/past",
+    "description": "List past Rocket League tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_rl_tournaments_running",
+    "title": "Get running Rocket League tournaments",
+    "endpoint": "https://api.pandascore.co/rl/tournaments/running",
+    "description": "List running Rocket League tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_rl_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_rl_tournaments_upcoming",
+    "title": "Get upcoming Rocket League tournaments",
+    "endpoint": "https://api.pandascore.co/rl/tournaments/upcoming",
+    "description": "List upcoming Rocket League tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series": {
+    "url": "https://developers.pandascore.co/reference/get_series",
+    "title": "List series",
+    "endpoint": "https://api.pandascore.co/series",
+    "description": "List series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_series_past",
+    "title": "Get past series",
+    "endpoint": "https://api.pandascore.co/series/past",
+    "description": "List past series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_series_running",
+    "title": "Get running series",
+    "endpoint": "https://api.pandascore.co/series/running",
+    "description": "List currently running series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series_serieidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_series_serieidorslug",
+    "title": "Get a serie",
+    "endpoint": "https://api.pandascore.co/series/{serie_id_or_slug}",
+    "description": "Get a single serie by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series_serieidorslug_matches": {
+    "url": "https://developers.pandascore.co/reference/get_series_serieidorslug_matches",
+    "title": "Get matches for a serie",
+    "endpoint": "https://api.pandascore.co/series/{serie_id_or_slug}/matches",
+    "description": "List matches of the given serie\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series_serieidorslug_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_series_serieidorslug_matches_past",
+    "title": "Get past matches for serie",
+    "endpoint": "https://api.pandascore.co/series/{serie_id_or_slug}/matches/past",
+    "description": "List past matches for the given serie\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series_serieidorslug_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_series_serieidorslug_matches_running",
+    "title": "Get running matches for serie",
+    "endpoint": "https://api.pandascore.co/series/{serie_id_or_slug}/matches/running",
+    "description": "List currently running matches for the given serie\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series_serieidorslug_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_series_serieidorslug_matches_upcoming",
+    "title": "Get upcoming matches for serie",
+    "endpoint": "https://api.pandascore.co/series/{serie_id_or_slug}/matches/upcoming",
+    "description": "List upcoming matches for the given serie\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series_serieidorslug_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_series_serieidorslug_tournaments",
+    "title": "Get tournaments for a serie",
+    "endpoint": "https://api.pandascore.co/series/{serie_id_or_slug}/tournaments",
+    "description": "List tournaments of the given serie\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_series_upcoming",
+    "title": "Get upcoming series",
+    "endpoint": "https://api.pandascore.co/series/upcoming",
+    "description": "List upcoming series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_leagues",
+    "title": "Get StarCraft 2 leagues",
+    "endpoint": "https://api.pandascore.co/starcraft-2/leagues",
+    "description": "List StarCraft 2 leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_matches": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_matches",
+    "title": "List StarCraft 2 matches",
+    "endpoint": "https://api.pandascore.co/starcraft-2/matches",
+    "description": "List matches for the StarCraft 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_matches_past",
+    "title": "Get past StarCraft 2 matches",
+    "endpoint": "https://api.pandascore.co/starcraft-2/matches/past",
+    "description": "List past StarCraft 2 matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_matches_running",
+    "title": "Get running StarCraft 2 matches",
+    "endpoint": "https://api.pandascore.co/starcraft-2/matches/running",
+    "description": "List running StarCraft 2 matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_matches_upcoming",
+    "title": "Get upcoming StarCraft 2 matches",
+    "endpoint": "https://api.pandascore.co/starcraft-2/matches/upcoming",
+    "description": "List upcoming StarCraft 2 matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_players": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_players",
+    "title": "List StarCraft 2 players",
+    "endpoint": "https://api.pandascore.co/starcraft-2/players",
+    "description": "List players for the StarCraft 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_series": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_series",
+    "title": "List StarCraft 2 series",
+    "endpoint": "https://api.pandascore.co/starcraft-2/series",
+    "description": "List series for the  StarCraft 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_series_past",
+    "title": "Get past StarCraft 2 series",
+    "endpoint": "https://api.pandascore.co/starcraft-2/series/past",
+    "description": "List past StarCraft 2 series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_series_running",
+    "title": "Get running StarCraft 2 series",
+    "endpoint": "https://api.pandascore.co/starcraft-2/series/running",
+    "description": "List running StarCraft 2 series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_series_upcoming",
+    "title": "Get upcoming StarCraft 2 series",
+    "endpoint": "https://api.pandascore.co/starcraft-2/series/upcoming",
+    "description": "List upcoming StarCraft 2 series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_teams": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_teams",
+    "title": "List StarCraft 2 teams",
+    "endpoint": "https://api.pandascore.co/starcraft-2/teams",
+    "description": "List teams for the StarCraft 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_tournaments",
+    "title": "List StarCraft 2 tournaments",
+    "endpoint": "https://api.pandascore.co/starcraft-2/tournaments",
+    "description": "List tournaments for the StarCraft 2 videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_tournaments_past",
+    "title": "Get past StarCraft 2 tournaments",
+    "endpoint": "https://api.pandascore.co/starcraft-2/tournaments/past",
+    "description": "List past StarCraft 2 tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_tournaments_running",
+    "title": "Get running StarCraft 2 tournaments",
+    "endpoint": "https://api.pandascore.co/starcraft-2/tournaments/running",
+    "description": "List running StarCraft 2 tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-2_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-2_tournaments_upcoming",
+    "title": "Get upcoming StarCraft 2 tournaments",
+    "endpoint": "https://api.pandascore.co/starcraft-2/tournaments/upcoming",
+    "description": "List upcoming StarCraft 2 tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_leagues",
+    "title": "Get StarCraft Brood War leagues",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/leagues",
+    "description": "List StarCraft Brood War leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_matches": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_matches",
+    "title": "List StarCraft Brood War matches",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/matches",
+    "description": "List matches for the StarCraft Brood War videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_matches_past",
+    "title": "Get past StarCraft Brood War matches",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/matches/past",
+    "description": "List past StarCraft Brood War matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_matches_running",
+    "title": "Get running StarCraft Brood War matches",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/matches/running",
+    "description": "List running StarCraft Brood War matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_matches_upcoming",
+    "title": "Get upcoming StarCraft Brood War matches",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/matches/upcoming",
+    "description": "List upcoming StarCraft Brood War matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_players": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_players",
+    "title": "List StarCraft Brood War players",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/players",
+    "description": "List players for the StarCraft Brood War videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_series": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_series",
+    "title": "List StarCraft Brood War series",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/series",
+    "description": "List series for the StarCraft Brood War videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_series_past",
+    "title": "Get past StarCraft Brood War series",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/series/past",
+    "description": "List past StarCraft Brood War series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_series_running",
+    "title": "Get running StarCraft Brood War series",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/series/running",
+    "description": "List running StarCraft Brood War series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_series_upcoming",
+    "title": "Get upcoming StarCraft Brood War series",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/series/upcoming",
+    "description": "List upcoming StarCraft Brood War series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_teams": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_teams",
+    "title": "List StarCraft Brood War teams",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/teams",
+    "description": "List teams for the StarCraft Brood War videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_tournaments",
+    "title": "List StarCraft Brood War tournaments",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/tournaments",
+    "description": "List tournaments for the StarCraft Brood War videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_tournaments_past",
+    "title": "Get past StarCraft Brood War tournaments",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/tournaments/past",
+    "description": "List past StarCraft Brood War tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_tournaments_running",
+    "title": "Get running StarCraft Brood War tournaments",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/tournaments/running",
+    "description": "List running StarCraft Brood War tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_starcraft-brood-war_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_starcraft-brood-war_tournaments_upcoming",
+    "title": "Get upcoming StarCraft Brood War tournaments",
+    "endpoint": "https://api.pandascore.co/starcraft-brood-war/tournaments/upcoming",
+    "description": "List upcoming StarCraft Brood War tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_teams": {
+    "url": "https://developers.pandascore.co/reference/get_teams",
+    "title": "List teams",
+    "endpoint": "https://api.pandascore.co/teams",
+    "description": "List teams\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_teams_teamidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_teams_teamidorslug",
+    "title": "Get a team",
+    "endpoint": "https://api.pandascore.co/teams/{team_id_or_slug}",
+    "description": "Get a single team by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_teams_teamidorslug_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_teams_teamidorslug_leagues",
+    "title": "Get leagues for a team",
+    "endpoint": "https://api.pandascore.co/teams/{team_id_or_slug}/leagues",
+    "description": "List leagues in which the given team was part of\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_teams_teamidorslug_matches": {
+    "url": "https://developers.pandascore.co/reference/get_teams_teamidorslug_matches",
+    "title": "Get matches for team",
+    "endpoint": "https://api.pandascore.co/teams/{team_id_or_slug}/matches",
+    "description": "List matches for the given team\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_teams_teamidorslug_series": {
+    "url": "https://developers.pandascore.co/reference/get_teams_teamidorslug_series",
+    "title": "Get series for a team",
+    "endpoint": "https://api.pandascore.co/teams/{team_id_or_slug}/series",
+    "description": "List series in which the given team was part of\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_teams_teamidorslug_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_teams_teamidorslug_tournaments",
+    "title": "Get tournaments for a team",
+    "endpoint": "https://api.pandascore.co/teams/{team_id_or_slug}/tournaments",
+    "description": "List tournaments in which the given team was part of\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments",
+    "title": "List tournaments",
+    "endpoint": "https://api.pandascore.co/tournaments",
+    "description": "List tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments_past",
+    "title": "Get past tournaments",
+    "endpoint": "https://api.pandascore.co/tournaments/past",
+    "description": "List past tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments_running",
+    "title": "Get running tournaments",
+    "endpoint": "https://api.pandascore.co/tournaments/running",
+    "description": "List currently running tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments_tournamentidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments_tournamentidorslug",
+    "title": "Get a tournament",
+    "endpoint": "https://api.pandascore.co/tournaments/{tournament_id_or_slug}",
+    "description": "Get a single tournament by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments_tournamentidorslug_brackets": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments_tournamentidorslug_brackets",
+    "title": "Get a tournament's brackets",
+    "endpoint": "https://api.pandascore.co/tournaments/{tournament_id_or_slug}/brackets",
+    "description": "Get the brackets of the given tournament\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments_tournamentidorslug_matches": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments_tournamentidorslug_matches",
+    "title": "Get matches for tournament",
+    "endpoint": "https://api.pandascore.co/tournaments/{tournament_id_or_slug}/matches",
+    "description": "List matches for the given tournament\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments_tournamentidorslug_rosters": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments_tournamentidorslug_rosters",
+    "title": "Get rosters for a tournament",
+    "endpoint": "https://api.pandascore.co/tournaments/{tournament_id_or_slug}/rosters",
+    "description": "List participants (player or team) for a given tournament.\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments_tournamentidorslug_standings": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments_tournamentidorslug_standings",
+    "title": "Get tournament standings",
+    "endpoint": "https://api.pandascore.co/tournaments/{tournament_id_or_slug}/standings",
+    "description": "Get the current standings for a given tournament\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments_tournamentidorslug_teams": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments_tournamentidorslug_teams",
+    "title": "Get teams for a tournament",
+    "endpoint": "https://api.pandascore.co/tournaments/{tournament_id_or_slug}/teams",
+    "description": "List teams for the given tournament\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_tournaments_upcoming",
+    "title": "Get upcoming tournaments",
+    "endpoint": "https://api.pandascore.co/tournaments/upcoming",
+    "description": "List upcoming tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_abilities": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_abilities",
+    "title": "List Valorant abilities",
+    "endpoint": "https://api.pandascore.co/valorant/abilities",
+    "description": "List abilities\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_abilities_valorantabilityid": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_abilities_valorantabilityid",
+    "title": "Get a Valorant ability by its ID",
+    "endpoint": "https://api.pandascore.co/valorant/abilities/{valorant_ability_id}",
+    "description": "Get a Valorant ability by its ID\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_agents": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_agents",
+    "title": "List Valorant agents",
+    "endpoint": "https://api.pandascore.co/valorant/agents",
+    "description": "List agents\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_agents_valorantagentid": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_agents_valorantagentid",
+    "title": "Get a Valorant agent by its ID",
+    "endpoint": "https://api.pandascore.co/valorant/agents/{valorant_agent_id}",
+    "description": "Get a Valorant agent by its ID\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_games_valorantgameid": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_games_valorantgameid",
+    "title": "Get a game",
+    "endpoint": "https://api.pandascore.co/valorant/games/{valorant_game_id}",
+    "description": "Get a single Valorant game by ID\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_games_valorantgameid_events": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_games_valorantgameid_events",
+    "title": "List Play-by-Play events for a given game",
+    "endpoint": "https://api.pandascore.co/valorant/games/{valorant_game_id}/events",
+    "description": "List events for a given Valorant game\n\nThis endpoint is only available to customers with theprohistorical plan",
+    "options": {}
+  },
+  "reference-get_valorant_games_valorantgameid_rounds": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_games_valorantgameid_rounds",
+    "title": "List rounds in a Valorant game",
+    "endpoint": "https://api.pandascore.co/valorant/games/{valorant_game_id}/rounds",
+    "description": "List rounds in a Valorant game\n\nThis endpoint is only available to customers with theprohistorical plan",
+    "options": {}
+  },
+  "reference-get_valorant_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_leagues",
+    "title": "Get Valorant leagues",
+    "endpoint": "https://api.pandascore.co/valorant/leagues",
+    "description": "List Valorant leagues\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_maps": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_maps",
+    "title": "List Valorant maps",
+    "endpoint": "https://api.pandascore.co/valorant/maps",
+    "description": "List maps\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_maps_valorantmapid": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_maps_valorantmapid",
+    "title": "Get a Valorant map by its ID",
+    "endpoint": "https://api.pandascore.co/valorant/maps/{valorant_map_id}",
+    "description": "Get a Valorant map by its ID\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_matches": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_matches",
+    "title": "List Valorant matches",
+    "endpoint": "https://api.pandascore.co/valorant/matches",
+    "description": "List matches for the Valorant videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_matches_matchidorslug_games": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_matches_matchidorslug_games",
+    "title": "List games for a given match",
+    "endpoint": "https://api.pandascore.co/valorant/matches/{match_id_or_slug}/games",
+    "description": "List games for a given Valorant match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_matches_matchidorslug_players_stats": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_matches_matchidorslug_players_stats",
+    "title": "Get players stats for a Valorant match",
+    "endpoint": "https://api.pandascore.co/valorant/matches/{match_id_or_slug}/players/stats",
+    "description": "Get the aggregated statistics for all players in a Valorant match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_matches_matchidorslug_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_matches_matchidorslug_teams_teamidorslug_stats",
+    "title": "Get team stats for a Valorant match",
+    "endpoint": "https://api.pandascore.co/valorant/matches/{match_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get the aggregated team statistics for a Valorant match\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_matches_past": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_matches_past",
+    "title": "Get past Valorant matches",
+    "endpoint": "https://api.pandascore.co/valorant/matches/past",
+    "description": "List past Valorant matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_matches_running": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_matches_running",
+    "title": "Get running Valorant matches",
+    "endpoint": "https://api.pandascore.co/valorant/matches/running",
+    "description": "List running Valorant matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_matches_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_matches_upcoming",
+    "title": "Get upcoming Valorant matches",
+    "endpoint": "https://api.pandascore.co/valorant/matches/upcoming",
+    "description": "List upcoming Valorant matches\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_players": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_players",
+    "title": "List Valorant players",
+    "endpoint": "https://api.pandascore.co/valorant/players",
+    "description": "List players for the Valorant videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_players_playeridorslug_stats",
+    "title": "Get a Valorant player stats",
+    "endpoint": "https://api.pandascore.co/valorant/players/{player_id_or_slug}/stats",
+    "description": "Get a Valorant player stats by ID or slug\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_series": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_series",
+    "title": "List Valorant series",
+    "endpoint": "https://api.pandascore.co/valorant/series",
+    "description": "List series for the Valorant videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_series_past": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_series_past",
+    "title": "Get past Valorant series",
+    "endpoint": "https://api.pandascore.co/valorant/series/past",
+    "description": "List past Valorant series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_series_running": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_series_running",
+    "title": "Get running Valorant series",
+    "endpoint": "https://api.pandascore.co/valorant/series/running",
+    "description": "List running Valorant series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_series_serieidorslug_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_series_serieidorslug_players_playeridorslug_stats",
+    "title": "Get player stats for a Valorant series",
+    "endpoint": "https://api.pandascore.co/valorant/series/{serie_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get the aggregated player statistics for a Valorant series\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_series_serieidorslug_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_series_serieidorslug_teams_teamidorslug_stats",
+    "title": "Get team stats for a Valorant series",
+    "endpoint": "https://api.pandascore.co/valorant/series/{serie_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get the aggregated team statistics for a Valorant series\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_series_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_series_upcoming",
+    "title": "Get upcoming Valorant series",
+    "endpoint": "https://api.pandascore.co/valorant/series/upcoming",
+    "description": "List upcoming Valorant series\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_teams": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_teams",
+    "title": "List Valorant teams",
+    "endpoint": "https://api.pandascore.co/valorant/teams",
+    "description": "List teams for the Valorant videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_teams_teamidorslug_stats",
+    "title": "Get a Valorant team stats",
+    "endpoint": "https://api.pandascore.co/valorant/teams/{team_id_or_slug}/stats",
+    "description": "Get a Valorant team stats by ID or slug\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_tournaments",
+    "title": "List Valorant tournaments",
+    "endpoint": "https://api.pandascore.co/valorant/tournaments",
+    "description": "List tournaments for the Valorant videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_tournaments_past": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_tournaments_past",
+    "title": "Get past Valorant tournaments",
+    "endpoint": "https://api.pandascore.co/valorant/tournaments/past",
+    "description": "List past Valorant tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_tournaments_running": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_tournaments_running",
+    "title": "Get running Valorant tournaments",
+    "endpoint": "https://api.pandascore.co/valorant/tournaments/running",
+    "description": "List running Valorant tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_tournaments_tournamentidorslug_players_playeridorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_tournaments_tournamentidorslug_players_playeridorslug_stats",
+    "title": "Get player stats for a Valorant tournament",
+    "endpoint": "https://api.pandascore.co/valorant/tournaments/{tournament_id_or_slug}/players/{player_id_or_slug}/stats",
+    "description": "Get the aggregated player statistics for a Valorant tournament\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_tournaments_tournamentidorslug_teams_teamidorslug_stats": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_tournaments_tournamentidorslug_teams_teamidorslug_stats",
+    "title": "Get team stats for a Valorant tournament",
+    "endpoint": "https://api.pandascore.co/valorant/tournaments/{tournament_id_or_slug}/teams/{team_id_or_slug}/stats",
+    "description": "Get the aggregated team statistics for a Valorant tournament\n\nThis endpoint is only available to customers with a historical or real-time data plan",
+    "options": {}
+  },
+  "reference-get_valorant_tournaments_upcoming": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_tournaments_upcoming",
+    "title": "Get upcoming Valorant tournaments",
+    "endpoint": "https://api.pandascore.co/valorant/tournaments/upcoming",
+    "description": "List upcoming Valorant tournaments\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_versions_all_agents": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_versions_all_agents",
+    "title": "List Valorant agents for all versions",
+    "endpoint": "https://api.pandascore.co/valorant/versions/all/agents",
+    "description": "Deprecated. Equivalent route:/valorant/agents?filter[videogame_version]=all\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_versions_all_maps": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_versions_all_maps",
+    "title": "List Valorant maps for all versions",
+    "endpoint": "https://api.pandascore.co/valorant/versions/all/maps",
+    "description": "Deprecated. Equivalent route:/valorant/maps?filter[videogame_version]=all\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_versions_valorantversionname_agents": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_versions_valorantversionname_agents",
+    "title": "List Valorant agents for a specific version",
+    "endpoint": "https://api.pandascore.co/valorant/versions/{valorant_version_name}/agents",
+    "description": "Deprecated. Equivalent route:/valorant/agents?filter[videogame_version]={valorant_version_name}\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_versions_valorantversionname_maps": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_versions_valorantversionname_maps",
+    "title": "List Valorant maps for a specific version",
+    "endpoint": "https://api.pandascore.co/valorant/versions/{valorant_version_name}/maps",
+    "description": "Deprecated. Equivalent route:/valorant/maps?filter[videogame_version]={valorant_version_name}\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_weapons": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_weapons",
+    "title": "List Valorant weapons",
+    "endpoint": "https://api.pandascore.co/valorant/weapons",
+    "description": "List weapons\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_valorant_weapons_valorantweaponid": {
+    "url": "https://developers.pandascore.co/reference/get_valorant_weapons_valorantweaponid",
+    "title": "Get a Valorant weapon by its ID",
+    "endpoint": "https://api.pandascore.co/valorant/weapons/{valorant_weapon_id}",
+    "description": "Get a Valorant weapon by its ID\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_videogames": {
+    "url": "https://developers.pandascore.co/reference/get_videogames",
+    "title": "List videogames",
+    "endpoint": "https://api.pandascore.co/videogames",
+    "description": "List videogames\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_videogames_videogameidorslug": {
+    "url": "https://developers.pandascore.co/reference/get_videogames_videogameidorslug",
+    "title": "Get a videogame",
+    "endpoint": "https://api.pandascore.co/videogames/{videogame_id_or_slug}",
+    "description": "Get a single videogame by ID or by slug\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_videogames_videogameidorslug_leagues": {
+    "url": "https://developers.pandascore.co/reference/get_videogames_videogameidorslug_leagues",
+    "title": "List leagues for a videogame",
+    "endpoint": "https://api.pandascore.co/videogames/{videogame_id_or_slug}/leagues",
+    "description": "List leagues for a given videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_videogames_videogameidorslug_series": {
+    "url": "https://developers.pandascore.co/reference/get_videogames_videogameidorslug_series",
+    "title": "List series for a videogame",
+    "endpoint": "https://api.pandascore.co/videogames/{videogame_id_or_slug}/series",
+    "description": "List series for the given videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_videogames_videogameidorslug_titles": {
+    "url": "https://developers.pandascore.co/reference/get_videogames_videogameidorslug_titles",
+    "title": "List videogame titles",
+    "endpoint": "https://api.pandascore.co/videogames/{videogame_id_or_slug}/titles",
+    "description": "List available titles for a given videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_videogames_videogameidorslug_tournaments": {
+    "url": "https://developers.pandascore.co/reference/get_videogames_videogameidorslug_tournaments",
+    "title": "Get tournaments for a videogame",
+    "endpoint": "https://api.pandascore.co/videogames/{videogame_id_or_slug}/tournaments",
+    "description": "List tournaments of the given videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  },
+  "reference-get_videogames_videogameidorslug_versions": {
+    "url": "https://developers.pandascore.co/reference/get_videogames_videogameidorslug_versions",
+    "title": "List videogame versions",
+    "endpoint": "https://api.pandascore.co/videogames/{videogame_id_or_slug}/versions",
+    "description": "List available versions for a given videogame\n\nThis endpoint is available to all customers",
+    "options": {}
+  }
+}

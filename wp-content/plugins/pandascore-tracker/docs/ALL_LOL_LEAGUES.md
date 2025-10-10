@@ -2,8 +2,8 @@
 
 | League Slug | local image naming |
 |-------------|----------------------|
-| league-of-legends-asia-invitational | ASI |
 | league-of-legends-world-championship | Worlds |
+| league-of-legends-asia-invitational | ASI |
 | league-of-legends-lck-champions-korea | LCK |
 | league-of-legends-lpl-china | LPL |
 | league-of-legends-lec | LEC |
