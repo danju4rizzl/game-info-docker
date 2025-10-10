@@ -43,32 +43,113 @@ class PandaScore_API {
         return $data;
     }
 
-    public function get_live_matches_from_tournaments($game) {
-        $api_key = $this->settings->get_api_key();
-        if (!$api_key) return [];
-
-        $cache_key = "live_tournaments_{$game}";
-        $cached_data = $this->cache->get($cache_key);
-        if ($cached_data !== false) {
-            return $cached_data;
+    public function get_tournament_matches($is_live = false, $league_type = 'top') {
+        if ($league_type === 'top') {
+            $tournaments = $this->get_top_league_tournaments($is_live);
+        } elseif ($league_type === 'other') {
+            $tournaments = $this->get_other_league_tournaments($is_live);
+        } else {
+            $tournaments = $this->get_tournaments_for_leagues($is_live);
         }
-
-        $live_matches = [];
-        $tournaments_url = "https://api.pandascore.co/{$game}/tournaments/running";
-        $response = wp_remote_get($tournaments_url, [
-            'timeout' => 15,
-            'headers' => ['Authorization' => 'Bearer ' . $api_key]
-        ]);
-
-        if (is_wp_error($response) || wp_remote_retrieve_response_code($response) !== 200) {
-            $error_msg = is_wp_error($response) ? $response->get_error_message() : wp_remote_retrieve_response_code($response);
-            error_log('[PandaScore] Failed to fetch tournaments: ' . sanitize_text_field($error_msg));
+        
+        if (is_wp_error($tournaments) || empty($tournaments)) {
             return [];
         }
 
-        $tournaments = json_decode(wp_remote_retrieve_body($response), true);
-        if (!is_array($tournaments)) return [];
+        $all_matches = [];
+        foreach ($tournaments as $tournament) {
+            if (isset($tournament['matches']) && is_array($tournament['matches'])) {
+                foreach ($tournament['matches'] as $match) {
+                    $match['league'] = $tournament['league'];
+                    $all_matches[] = $match;
+                }
+            }
+        }
+        return $all_matches;
+    }
 
+    public function get_top_league_matches($is_live = false) {
+        return $this->get_tournament_matches($is_live, 'top');
+    }
+
+    public function get_other_league_matches($is_live = false) {
+        return $this->get_tournament_matches($is_live, 'other');
+    }
+
+    public function get_all_tournament_matches($is_live = false) {
+        return $this->get_tournament_matches($is_live, 'all');
+    }
+
+    public function get_tournaments_for_leagues($is_live = false) {
+        $endpoint = $is_live ? '/tournaments/running' : '/tournaments/upcoming';
+        $tournaments = $this->make_api_call($endpoint);
+        
+        if (is_wp_error($tournaments)) return $tournaments;
+        
+        // Return ALL tournaments - filtering will be done in JavaScript
+        return $tournaments;
+    }
+
+    public function get_top_league_tournaments($is_live = false) {
+        $top_leagues = [
+            'league-of-legends-world-championship',
+            'league-of-legends-asia-invitational', 
+            'league-of-legends-lck-champions-korea',
+            'league-of-legends-lpl-china',
+            'league-of-legends-lec',
+            'league-of-legends-lta-south',
+            'league-of-legends-lta-north',
+            'league-of-legends-asia-masters',
+            'league-of-legends-emea-masters' // Add EMEA Masters since it's available
+        ];
+
+        $all_tournaments = $this->get_tournaments_for_leagues($is_live);
+        if (is_wp_error($all_tournaments)) return $all_tournaments;
+        
+        $filtered_tournaments = [];
+        foreach ($all_tournaments as $tournament) {
+            $league_slug = $tournament['league']['slug'] ?? '';
+            if (in_array($league_slug, $top_leagues)) {
+                $filtered_tournaments[] = $tournament;
+            }
+        }
+        
+        return $filtered_tournaments;
+    }
+
+    public function get_other_league_tournaments($is_live = false) {
+        $top_leagues = [
+            'league-of-legends-world-championship',
+            'league-of-legends-asia-invitational', 
+            'league-of-legends-lck-champions-korea',
+            'league-of-legends-lpl-china',
+            'league-of-legends-lec',
+            'league-of-legends-lta-south',
+            'league-of-legends-lta-north',
+            'league-of-legends-asia-masters'
+        ];
+
+        $all_tournaments = $this->get_tournaments_for_leagues($is_live);
+        if (is_wp_error($all_tournaments)) return $all_tournaments;
+        
+        $other_tournaments = [];
+        foreach ($all_tournaments as $tournament) {
+            $league_slug = $tournament['league']['slug'] ?? '';
+            if (!in_array($league_slug, $top_leagues)) {
+                $other_tournaments[] = $tournament;
+            }
+        }
+        
+        return $other_tournaments;
+    }
+
+    public function get_live_matches_from_tournaments($game) {
+        $tournaments = $this->get_top_league_tournaments(true);
+        if (is_wp_error($tournaments) || empty($tournaments)) {
+            return [];
+        }
+
+        $live_matches = [];
         foreach ($tournaments as $tournament) {
             if (!isset($tournament['matches']) || !is_array($tournament['matches'])) continue;
 
@@ -83,13 +164,11 @@ class PandaScore_API {
 
                     if (in_array($match_data['status'], ['running', 'not_started'])) {
                         $live_matches[] = $match_data;
-                        error_log('[PandaScore] Found live-supported match: ' . intval($match_data['match_id']) . ' (status: ' . sanitize_text_field($match_data['status']) . ')');
                     }
                 }
             }
         }
 
-        $this->cache->set($cache_key, $live_matches, 2 * MINUTE_IN_SECONDS);
         return $live_matches;
     }
 

@@ -86,7 +86,8 @@ class PandaScore_Renderer {
         $scores = [0, 0];
         $opponent_ids = [null, null];
 
-        if (isset($match['opponents']) && is_array($match['opponents'])) {
+        // Handle tournament matches with teams in tournament data
+        if (isset($match['opponents']) && is_array($match['opponents']) && !empty($match['opponents'])) {
             foreach ($match['opponents'] as $i => $o) {
                 if ($i < 2) {
                     $opponents[$i] = isset($o['opponent']['name']) ? esc_html($o['opponent']['name']) : 'TBD';
@@ -94,6 +95,15 @@ class PandaScore_Renderer {
                     $logos[$i] = $o['opponent']['image_url'] ?? '';
                     $opponent_ids[$i] = $o['opponent']['id'] ?? null;
                 }
+            }
+        } else {
+            // Extract team names from match name for TBD matches
+            $match_name = $match['name'] ?? '';
+            if (preg_match('/([A-Z0-9.]+)\s+vs\s+([A-Z0-9.]+)/', $match_name, $matches_found)) {
+                $acronyms[0] = $matches_found[1];
+                $acronyms[1] = $matches_found[2];
+                $opponents[0] = $matches_found[1];
+                $opponents[1] = $matches_found[2];
             }
         }
 
@@ -103,7 +113,7 @@ class PandaScore_Renderer {
             }
         }
 
-        $league_name = esc_html($match['league']['name'] ?? '');
+        $league_name = esc_html($match['league']['name'] ?? 'Unknown League');
         $league_logo = esc_url($match['league']['image_url'] ?? '');
         $league_id = esc_attr($match['league']['id'] ?? '');
         $scheduled_at = $match['scheduled_at'] ?? '';
@@ -133,18 +143,28 @@ class PandaScore_Renderer {
     }
 
     public function render_matches($api, $game, $limit, $is_live, &$live_match_ids) {
-        $endpoint = $is_live ? '/matches/running?filter[live_supported]=true' : "/matches/upcoming?filter[opponents_filled]=true";
-        $matches = $api->make_api_call($endpoint);
+        // Show ALL matches from ALL tournaments - no filtering
+        $matches = $api->get_all_tournament_matches($is_live);
         if (is_wp_error($matches)) {
             return '<div class="pandascore-error">Error: ' . esc_html($matches->get_error_message()) . '</div>';
         }
         if (empty($matches)) {
-            return $is_live ? '' : '<div class="pandascore-no-matches">No upcoming matches found.</div>';
+            return $is_live ? '' : '<div class="pandascore-no-matches">No matches found.</div>';
+        }
+
+        // Show ALL matches - no status filtering for now
+        $filtered_matches = $matches;
+        
+        // Add live match IDs for WebSocket tracking
+        foreach ($filtered_matches as $match) {
+            if ($is_live && isset($match['id'])) {
+                $live_match_ids[] = $match['id'];
+            }
         }
 
         // Log API results for debugging
         $leagues_from_api = [];
-        foreach ($matches as $match) {
+        foreach ($filtered_matches as $match) {
             if (isset($match['league']['name'])) {
                 $leagues_from_api[] = $match['league']['name'];
             }
@@ -152,16 +172,25 @@ class PandaScore_Renderer {
         $unique_leagues = array_unique($leagues_from_api);
         sort($unique_leagues);
         
-        echo '<script>console.log("🔥 API Results - ' . ($is_live ? 'LIVE' : 'UPCOMING') . ' leagues:", ' . json_encode($unique_leagues) . ');</script>';
-        echo '<script>console.log("🏆 Full ' . ($is_live ? 'LIVE' : 'UPCOMING') . ' matches response:", ' . json_encode($matches) . ');</script>';
+        echo '<script>console.log("🔥 Tournament-based ' . ($is_live ? 'LIVE' : 'UPCOMING') . ' leagues:", ' . json_encode($unique_leagues) . ');</script>';
+        echo '<script>console.log("📊 Total ' . ($is_live ? 'LIVE' : 'UPCOMING') . ' matches:", ' . count($filtered_matches) . ');</script>';
+        
+        // Debug: Log all available tournaments
+        $all_tournaments = $api->get_tournaments_for_leagues($is_live);
+        $all_league_names = [];
+        foreach ($all_tournaments as $tournament) {
+            $league_name = $tournament['league']['name'] ?? 'Unknown';
+            $league_slug = $tournament['league']['slug'] ?? 'unknown';
+            $all_league_names[] = $league_name . ' (' . $league_slug . ')';
+        }
+        echo '<script>console.log("🎮 All available tournaments:", ' . json_encode(array_unique($all_league_names)) . ');</script>';
 
         $html = '<div class="pandascore-section-header">' . ($is_live ? '<span class="pandascore-live-indicator"></span>LIVE' : 'UPCOMING') . '</div>';
-        $html .= '<script>console.log("📊 Total ' . ($is_live ? 'LIVE' : 'UPCOMING') . ' matches from API:", ' . count($matches) . ');</script>';
         $html .= '<div class="pandascore-matches-container">';
-        foreach ($matches as $match) {
-            if ($is_live && isset($match['id'])) {
-                $live_match_ids[] = $match['id'];
-            }
+        
+        // Show ALL matches - no limit for now
+        $display_matches = $filtered_matches;
+        foreach ($display_matches as $match) {
             $html .= $this->render_match($match, $is_live);
         }
         $html .= '</div>';
@@ -169,6 +198,6 @@ class PandaScore_Renderer {
     }
 
     public function get_match_details($api, $match_id) {
-        return $api->make_api_call("lol/matches/{$match_id}");
+        return $api->make_api_call("/matches/{$match_id}");
     }
 }

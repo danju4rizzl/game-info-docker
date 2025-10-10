@@ -6,13 +6,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const LPL = 'LPL'
   const LEC = 'LEC'
   const LTA = 'LTA'
-  const ASI = 'ASI'
-  const WORLDS = 'Worlds'
   const LTANorth = 'LTA North'
   const LTASouth = 'LTA South'
+  const ASI = 'Asia Invitational'
+  const WORLDS = 'Worlds'
 
   // Define the specific leagues we're filtering for (default visible set)
-  const specificLeagues = [LCK, LPL, LEC, LTA, ASI, WORLDS, LTANorth, LTASouth]
+  const specificLeagues = [
+    LCK,
+    LPL,
+    LEC,
+    LTA,
+    ASI,
+    WORLDS,
+    LTANorth,
+    LTASouth
+    // Add EMEA Masters since it's available
+  ]
 
   const MAX_DISPLAY = 8
 
@@ -21,7 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function getLeagueName(match) {
     const img = match.querySelector('.pandascore-league-container img')
-    return img ? img.alt : ''
+    const placeholder = match.querySelector(
+      '.pandascore-league-container .pandascore-league-placeholder'
+    )
+    return img ? img.alt : placeholder ? placeholder.title : ''
   }
   function sortByScheduledAtAsc(a, b) {
     const ta = a.getAttribute('data-scheduled-at')
@@ -60,32 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
     items.forEach((el) => upContainer.appendChild(el))
   }
 
-  // Initialize default state: show only main 5 leagues, hide OTHER LEAGUES
+  // Initialize default state: show ALL matches
   function initializeDefaultState() {
     matches.forEach((match) => {
-      const matchLeague = match.querySelector(
-        '.pandascore-league-container img'
-      )
-
-      if (!matchLeague) {
-        // If no league image, check for placeholder
-        const placeholder = match.querySelector(
-          '.pandascore-league-placeholder'
-        )
-        if (placeholder) {
-          match.style.display = 'none' // Hide matches without proper league info
-        }
-        return
-      }
-
-      const matchLeagueName = matchLeague.alt
-
-      // Show matches from the 5 main leagues, hide OTHER LEAGUES
-      if (specificLeagues.includes(matchLeagueName)) {
-        match.style.display = 'flex'
-      } else {
-        match.style.display = 'none'
-      }
+      // Show ALL matches by default
+      match.style.display = 'flex'
     })
 
     // Ensure no filters are active initially
@@ -96,26 +88,11 @@ document.addEventListener('DOMContentLoaded', function () {
     sortUpcomingMatches()
   }
 
-  // Show matches from the 5 main leagues (default state)
+  // Show ALL matches (default state)
   function showMainLeaguesMatches() {
     matches.forEach((match) => {
-      const matchLeague = match.querySelector(
-        '.pandascore-league-container img'
-      )
-
-      if (!matchLeague) {
-        match.style.display = 'none'
-        return
-      }
-
-      const matchLeagueName = matchLeague.alt
-
-      // Show only matches from the 5 main leagues
-      if (specificLeagues.includes(matchLeagueName)) {
-        match.style.display = 'flex'
-      } else {
-        match.style.display = 'none'
-      }
+      // Show ALL matches
+      match.style.display = 'flex'
     })
 
     // Enforce max visible per section, then update container visibility
@@ -128,37 +105,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Filter matches for a specific league
   function filterByLeague(selectedLeague) {
+    console.log('🔍 Filtering by:', selectedLeague)
     matches.forEach((match) => {
-      const matchLeague = match.querySelector(
-        '.pandascore-league-container img'
-      )
+      const matchLeagueName = getLeagueName(match)
+      console.log('Match league name:', matchLeagueName)
 
-      if (!matchLeague) {
+      if (!matchLeagueName) {
         match.style.display = 'none'
         return
       }
 
-      const matchLeagueName = matchLeague.alt
-
       if (selectedLeague === 'OTHER LEAGUES') {
-        // Show matches that are NOT from the specific 5 leagues
+        // Show matches that are NOT from the specific  leagues
         if (specificLeagues.includes(matchLeagueName)) {
           match.style.display = 'none'
         } else {
           match.style.display = 'flex'
         }
-      } else if (selectedLeague === 'LTA') {
+      } else if (selectedLeague === LTA) {
         // Show matches for LTA, LTA North, and LTA South
         match.style.display =
-          matchLeagueName === 'LTA' ||
-          matchLeagueName === 'LTA North' ||
-          matchLeagueName === 'LTA South'
+          matchLeagueName === LTA ||
+          matchLeagueName === LTANorth ||
+          matchLeagueName === LTASouth
             ? 'flex'
             : 'none'
       } else if (selectedLeague === 'ASI') {
-        // Show matches for Asia Invitational
-        match.style.display =
-          matchLeagueName === 'Asia Invitational' ? 'flex' : 'none'
+        // console.log('ASI SELECTED BRO!!!', matchLeagueName)
+        // Show matches for Asia Invitational (temporarily showing Worlds matches)
+        match.style.display = matchLeagueName === ASI ? 'flex' : 'none'
+      } else if (selectedLeague === WORLDS) {
+        // Show matches for Worlds
+        match.style.display = matchLeagueName === WORLDS ? 'flex' : 'none'
+      } else if (selectedLeague === LCK) {
+        // Show matches for LCK
+        match.style.display = matchLeagueName === LCK ? 'flex' : 'none'
+      } else if (selectedLeague === LPL) {
+        // Show matches for LPL
+        match.style.display = matchLeagueName === LPL ? 'flex' : 'none'
+      } else if (selectedLeague === LCE) {
+        // Show matches for LEC
+        match.style.display = matchLeagueName === LCE ? 'flex' : 'none'
       } else {
         // Show matches from the selected specific league only
         match.style.display =
@@ -264,6 +251,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize the default state on page load
   initializeDefaultState()
+
+  // Log all unique league names for debugging
+  const uniqueLeagues = new Set()
+  matches.forEach((match) => {
+    const leagueName = getLeagueName(match)
+    if (leagueName) {
+      uniqueLeagues.add(leagueName)
+    }
+  })
+  console.log('🏆 All available league names:', Array.from(uniqueLeagues))
 
   // Enforce max visible per section and update visibility after initialization
   enforceDisplayLimit()
