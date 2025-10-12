@@ -36,7 +36,7 @@ class PandaScore_Renderer {
 
     public function render_league_filters() {
         // The $leagueFilters is used to display the league filters  
-        $leagueFilters = ['Worlds', 'ASI', 'LCK', 'LPL', 'LEC', 'LTA'];
+        $leagueFilters = ['Worlds', 'LCK', 'LPL', 'LEC', 'LTA'];
         $html = '<div class="pandascore-league-filters">';
 
         foreach ($leagueFilters as $league_name) {
@@ -62,6 +62,8 @@ class PandaScore_Renderer {
         if ($logo_url) {
             return '<img src="' . esc_url($logo_url) . '" alt="' . esc_attr($team_name) . '" class="pandascore-team-logo">';
         }
+        // Debug: Log when logo is missing
+        echo '<script>console.log("Missing logo for team: ' . esc_js($team_name) . ' (' . esc_js($acronym) . '), logo_url: ' . esc_js($logo_url) . '");</script>';
         $fallback_letter = strtoupper(($acronym && $acronym !== 'TBD' && $acronym !== 'N/A') ? $acronym[0] : (($team_name && $team_name !== 'TBD' && $team_name !== 'N/A') ? $team_name[0] : '?'));
         return '<div class="pandascore-team-logo-placeholder" title="Unknown Team">' . esc_html($fallback_letter) . '</div>';
     }
@@ -89,11 +91,17 @@ class PandaScore_Renderer {
         // Handle tournament matches with teams in tournament data
         if (isset($match['opponents']) && is_array($match['opponents']) && !empty($match['opponents'])) {
             foreach ($match['opponents'] as $i => $o) {
-                if ($i < 2) {
-                    $opponents[$i] = isset($o['opponent']['name']) ? esc_html($o['opponent']['name']) : 'TBD';
-                    $acronyms[$i] = !empty($o['opponent']['acronym']) ? esc_html($o['opponent']['acronym']) : $opponents[$i];
-                    $logos[$i] = $o['opponent']['image_url'] ?? '';
-                    $opponent_ids[$i] = $o['opponent']['id'] ?? null;
+                if ($i < 2 && isset($o['opponent'])) {
+                    $opponent = $o['opponent'];
+                    $opponents[$i] = $opponent['name'] ?? 'TBD';
+                    $acronyms[$i] = $opponent['acronym'] ?? $opponents[$i];
+                    $logos[$i] = $opponent['image_url'] ?? '';
+                    $opponent_ids[$i] = $opponent['id'] ?? null;
+                    
+                    // Debug: Log team data to see what's available
+                    if (empty($logos[$i])) {
+                        echo '<script>console.log("Team ' . $i . ' data:", ' . json_encode($opponent) . ');</script>';
+                    }
                 }
             }
         } else {
@@ -143,7 +151,6 @@ class PandaScore_Renderer {
     }
 
     public function render_matches($api, $game, $limit, $is_live, &$live_match_ids) {
-        // Show ALL matches from ALL tournaments - no filtering
         $matches = $api->get_all_tournament_matches($is_live);
         if (is_wp_error($matches)) {
             return '<div class="pandascore-error">Error: ' . esc_html($matches->get_error_message()) . '</div>';
@@ -152,8 +159,22 @@ class PandaScore_Renderer {
             return $is_live ? '' : '<div class="pandascore-no-matches">No matches found.</div>';
         }
 
-        // Show ALL matches - no status filtering for now
-        $filtered_matches = $matches;
+        // Filter matches by status
+        $filtered_matches = [];
+        foreach ($matches as $match) {
+            $status = $match['status'] ?? '';
+            if ($is_live) {
+                // Only show running matches for live
+                if ($status === 'running') {
+                    $filtered_matches[] = $match;
+                }
+            } else {
+                // Only show not_started matches for upcoming
+                if ($status === 'not_started') {
+                    $filtered_matches[] = $match;
+                }
+            }
+        }
         
         // Add live match IDs for WebSocket tracking
         foreach ($filtered_matches as $match) {
@@ -188,8 +209,8 @@ class PandaScore_Renderer {
         $html = '<div class="pandascore-section-header">' . ($is_live ? '<span class="pandascore-live-indicator"></span>LIVE' : 'UPCOMING') . '</div>';
         $html .= '<div class="pandascore-matches-container">';
         
-        // Show ALL matches - no limit for now
-        $display_matches = $filtered_matches;
+        // Apply limit to matches
+        $display_matches = array_slice($filtered_matches, 0, $limit);
         foreach ($display_matches as $match) {
             $html .= $this->render_match($match, $is_live);
         }

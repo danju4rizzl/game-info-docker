@@ -419,10 +419,7 @@
   border-color: var(--brand-white);
 }
 
-.pandascore-league-filter[data-league-name='ASI'].active,
-.pandascore-league-filter[data-league-name='ASI']:hover {
-  border-color: var(--brand-black);
-}
+
 
 .pandascore-league-filter[data-league-name='OTHER LEAGUES'].active,
 .pandascore-league-filter[data-league-name='OTHER LEAGUES']:hover {

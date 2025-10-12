@@ -82,25 +82,36 @@ class PandaScore_API {
 
     public function get_tournaments_for_leagues($is_live = false) {
         $endpoint = $is_live ? '/tournaments/running' : '/tournaments/upcoming';
+        $endpoint .= '?sort=&page[size]=100';
         $tournaments = $this->make_api_call($endpoint);
         
         if (is_wp_error($tournaments)) return $tournaments;
         
-        // Return ALL tournaments - filtering will be done in JavaScript
+        // Fetch matches for each tournament with team details
+        foreach ($tournaments as &$tournament) {
+            $tournament_id = $tournament['id'] ?? null;
+            if ($tournament_id) {
+                $matches_endpoint = "/tournaments/{$tournament_id}/matches?sort=&page[size]=50";
+                $matches = $this->make_api_call($matches_endpoint);
+                if (!is_wp_error($matches)) {
+                    $tournament['matches'] = $matches;
+                }
+            }
+        }
+        
         return $tournaments;
     }
 
     public function get_top_league_tournaments($is_live = false) {
         $top_leagues = [
             'league-of-legends-world-championship',
-            'league-of-legends-asia-invitational', 
             'league-of-legends-lck-champions-korea',
             'league-of-legends-lpl-china',
             'league-of-legends-lec',
             'league-of-legends-lta-south',
             'league-of-legends-lta-north',
-            'league-of-legends-asia-masters',
-            'league-of-legends-emea-masters' // Add EMEA Masters since it's available
+        
+          
         ];
 
         $all_tournaments = $this->get_tournaments_for_leagues($is_live);
@@ -118,15 +129,13 @@ class PandaScore_API {
     }
 
     public function get_other_league_tournaments($is_live = false) {
-        $top_leagues = [
+         $top_leagues = [
             'league-of-legends-world-championship',
-            'league-of-legends-asia-invitational', 
             'league-of-legends-lck-champions-korea',
             'league-of-legends-lpl-china',
             'league-of-legends-lec',
             'league-of-legends-lta-south',
             'league-of-legends-lta-north',
-            'league-of-legends-asia-masters'
         ];
 
         $all_tournaments = $this->get_tournaments_for_leagues($is_live);
