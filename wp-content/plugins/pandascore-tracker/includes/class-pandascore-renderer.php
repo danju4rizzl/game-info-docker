@@ -95,7 +95,7 @@ class PandaScore_Renderer {
                     $opponent = $o['opponent'];
                     $opponents[$i] = $opponent['name'] ?? 'TBD';
                     $acronyms[$i] = $opponent['acronym'] ?? $opponents[$i];
-                    $logos[$i] = $opponent['image_url'] ?? '';
+                    $logos[$i] = $opponent['image_url'] ?? 'HEY';
                     $opponent_ids[$i] = $opponent['id'] ?? null;
                     
                     // Debug: Log team data to see what's available

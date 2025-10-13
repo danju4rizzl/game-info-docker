@@ -11,16 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const WORLDS = 'Worlds'
 
   // Define the specific leagues we're filtering for (default visible set)
-  const specificLeagues = [
-    LCK,
-    LPL,
-    LEC,
-    LTA,
-    WORLDS,
-    LTANorth,
-    LTASouth
-    // Add EMEA Masters since it's available
-  ]
+  const specificLeagues = [LCK, LPL, LEC, LTA, WORLDS, LTANorth, LTASouth]
 
   const MAX_DISPLAY = 8
 
@@ -103,10 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Filter matches for a specific league
   function filterByLeague(selectedLeague) {
-    console.log('🔍 Filtering by:', selectedLeague)
+    // console.log('🔍 Filtering by:', selectedLeague)
     matches.forEach((match) => {
       const matchLeagueName = getLeagueName(match)
-      console.log('Match league name:', matchLeagueName)
+      // console.log('Match league name:', matchLeagueName)
 
       if (!matchLeagueName) {
         match.style.display = 'none'
@@ -128,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
           matchLeagueName === LTASouth
             ? 'flex'
             : 'none'
-      }  else if (selectedLeague === WORLDS) {
+      } else if (selectedLeague === WORLDS) {
         // Show matches for Worlds
         match.style.display = matchLeagueName === WORLDS ? 'flex' : 'none'
       } else if (selectedLeague === LCK) {

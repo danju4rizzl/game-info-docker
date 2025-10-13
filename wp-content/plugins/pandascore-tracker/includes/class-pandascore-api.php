@@ -87,15 +87,20 @@ class PandaScore_API {
         
         if (is_wp_error($tournaments)) return $tournaments;
         
-        // Fetch matches for each tournament with team details
+        // Fetch full match details for each tournament
         foreach ($tournaments as &$tournament) {
-            $tournament_id = $tournament['id'] ?? null;
-            if ($tournament_id) {
-                $matches_endpoint = "/tournaments/{$tournament_id}/matches?sort=&page[size]=50";
-                $matches = $this->make_api_call($matches_endpoint);
-                if (!is_wp_error($matches)) {
-                    $tournament['matches'] = $matches;
+            if (isset($tournament['matches']) && is_array($tournament['matches'])) {
+                $enriched_matches = [];
+                foreach ($tournament['matches'] as $match) {
+                    $match_id = $match['id'] ?? null;
+                    if ($match_id) {
+                        $full_match = $this->make_api_call("/matches/{$match_id}");
+                        if (!is_wp_error($full_match)) {
+                            $enriched_matches[] = $full_match;
+                        }
+                    }
                 }
+                $tournament['matches'] = $enriched_matches;
             }
         }
         
