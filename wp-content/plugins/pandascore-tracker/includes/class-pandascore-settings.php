@@ -19,9 +19,6 @@ class PandaScore_Settings {
             require_once plugin_dir_path(__FILE__) . 'class-pandascore-cache.php';
             $cache = new PandaScore_Cache($this);
             $cache->clear_all();
-            add_action('admin_notices', function() {
-                echo '<div class="notice notice-success is-dismissible"><p>Cache cleared successfully!</p></div>';
-            });
         }
     }
 
@@ -51,6 +48,26 @@ class PandaScore_Settings {
 
     public function settings_page() {
         wp_enqueue_style('pandascore-tracker-style');
+        
+        if (isset($_POST['action']) && $_POST['action'] === 'manual_sync' && 
+            isset($_POST['pandascore_sync_nonce']) &&
+            wp_verify_nonce($_POST['pandascore_sync_nonce'], 'pandascore_manual_sync')) {
+            require_once plugin_dir_path(__FILE__) . 'class-pandascore-database.php';
+            require_once plugin_dir_path(__FILE__) . 'class-pandascore-sync.php';
+            $database = new PandaScore_Database();
+            $sync = new PandaScore_Sync($this, $database);
+            $sync->manual_sync();
+            echo '<div class="notice notice-success is-dismissible"><p>Manual sync completed!</p></div>';
+        }
+        
+        require_once plugin_dir_path(__FILE__) . 'class-pandascore-database.php';
+        $database = new PandaScore_Database();
+        $debug_info = $database->get_debug_info();
+        $last_sync = $database->get_last_sync_time();
+        $last_sync_text = $last_sync ? human_time_diff($last_sync, current_time('timestamp')) . ' ago' : 'Never';
+        
+        echo '<script>console.log("[PandaScore Debug]", ' . json_encode($debug_info) . ');</script>';
+        
         ?>
         <div class="wrap">
             <h1>PandaScore Tracker</h1>
@@ -61,7 +78,16 @@ class PandaScore_Settings {
                 submit_button();
                 ?>
             </form>
-            <form method="post" action="">
+            <h3>Data Management</h3>
+            <p><strong>Last Sync:</strong> <?php echo esc_html($last_sync_text); ?></p>
+            <p><strong>Tournaments:</strong> <?php echo esc_html($debug_info['tournaments_count']); ?></p>
+            <p><strong>Matches:</strong> <?php echo esc_html($debug_info['matches_count']); ?></p>
+            <form method="post" action="" style="display:inline-block;margin-right:10px;">
+                <?php wp_nonce_field('pandascore_manual_sync', 'pandascore_sync_nonce'); ?>
+                <input type="hidden" name="action" value="manual_sync" />
+                <input type="submit" class="button button-primary" value="Sync Now" />
+            </form>
+            <form method="post" action="" style="display:inline-block;">
                 <?php wp_nonce_field('pandascore_clear_cache', 'pandascore_cache_nonce'); ?>
                 <input type="hidden" name="action" value="clear_cache" />
                 <input type="submit" class="button" value="Clear Cache" />

@@ -6,34 +6,17 @@ wp_enqueue_style('pandascore-tracker-style');
 wp_enqueue_style('pandascore-match-details-style');
 
 $match_id = intval(get_query_var('match'));
-$opts = get_option('pandascore_tracker_options');
-$api_key = isset($opts['api_key']) ? trim($opts['api_key']) : '';
-
 $match = null;
 $error = '';
 
 if (!$match_id) {
     $error = 'Invalid match ID.';
-} elseif (!$api_key) {
-    $error = 'PandaScore API key not set.';
 } else {
-    $url = 'https://api.pandascore.co/lol/matches/' . $match_id;
-    $response = wp_remote_get($url, [
-        'timeout' => 15,
-        'headers' => ['Authorization' => 'Bearer ' . $api_key]
-    ]);
-
-    if (is_wp_error($response)) {
-        $error = 'Failed to fetch match details.';
-    } elseif (wp_remote_retrieve_response_code($response) !== 200) {
-        $error = 'API error: ' . wp_remote_retrieve_response_code($response);
-    } else {
-        $data = json_decode(wp_remote_retrieve_body($response), true);
-        if (json_last_error() !== JSON_ERROR_NONE || empty($data)) {
-            $error = 'Invalid data from API.';
-        } else {
-            $match = $data;
-        }
+    $database = new PandaScore_Database();
+    $match = $database->get_match_by_id($match_id);
+    
+    if (!$match) {
+        $error = 'Match not found.';
     }
 }
 
@@ -52,7 +35,25 @@ $teamB = $opponents[1]['opponent'] ?? ['name' => 'DRX', 'acronym' => 'DRX'];
 $scoreA = $results[0]['score'] ?? 3;
 $scoreB = $results[1]['score'] ?? 4;
 
-$players = $match['players'] ?? [];
+// Get players from tournament's expected_roster
+$players = [];
+if (isset($match['tournament_id'])) {
+    $tournament = $database->get_tournament_by_id($match['tournament_id']);
+    if ($tournament && isset($tournament['expected_roster'])) {
+        $teamA_id = $teamA['id'] ?? null;
+        $teamB_id = $teamB['id'] ?? null;
+        
+        foreach ($tournament['expected_roster'] as $roster) {
+            if (isset($roster['team']['id']) && isset($roster['players'])) {
+                if ($roster['team']['id'] == $teamA_id) {
+                    $players = array_merge($players, $roster['players']);
+                } elseif ($roster['team']['id'] == $teamB_id) {
+                    $players = array_merge($players, $roster['players']);
+                }
+            }
+        }
+    }
+}
 
 $streams = $match['streams_list'] ?? [];
 $main_stream = null;
@@ -66,7 +67,9 @@ foreach($streams as $stream) {
 // echo '<pre>' . print_r($players, true) . '</pre>';
 ?>
 
-
+<script>
+console.log('Match Details Data:', <?php echo json_encode($match, JSON_PRETTY_PRINT); ?>);
+</script>
 
 <div class="match-page">
     <div class="match-header">

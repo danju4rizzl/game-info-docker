@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('ABSPATH')) {
     return;
 }
@@ -7,14 +6,24 @@ if (!defined('ABSPATH')) {
 class PandaScore_API {
     private $settings;
     private $cache;
+    private $database;
 
-    public function __construct($settings) {
+    public function __construct($settings, $database = null) {
         $this->settings = $settings;
         require_once plugin_dir_path(__FILE__) . 'class-pandascore-cache.php';
         $this->cache = new PandaScore_Cache($settings);
+        $this->database = $database;
     }
 
     public function make_api_call($endpoint) {
+        if (strpos($endpoint, '/matches/') === 0 && $this->database) {
+            $match_id = intval(str_replace('/matches/', '', $endpoint));
+            $match = $this->database->get_match_by_id($match_id);
+            if ($match) {
+                return $match;
+            }
+        }
+
         $api_key = $this->settings->get_api_key();
         if (!$api_key) return new WP_Error('no_api_key', 'PandaScore API key not set');
 
@@ -44,6 +53,13 @@ class PandaScore_API {
     }
 
     public function get_tournament_matches($is_live = false, $league_type = 'top') {
+        if ($this->database) {
+            $matches = $this->database->get_matches($is_live, $league_type);
+            if (!empty($matches)) {
+                return $matches;
+            }
+        }
+        
         if ($league_type === 'top') {
             $tournaments = $this->get_top_league_tournaments($is_live);
         } elseif ($league_type === 'other') {
@@ -87,7 +103,6 @@ class PandaScore_API {
         
         if (is_wp_error($tournaments)) return $tournaments;
         
-        // Fetch full match details for each tournament
         foreach ($tournaments as &$tournament) {
             if (isset($tournament['matches']) && is_array($tournament['matches'])) {
                 $enriched_matches = [];
@@ -115,8 +130,6 @@ class PandaScore_API {
             'league-of-legends-lec',
             'league-of-legends-lta-south',
             'league-of-legends-lta-north',
-        
-          
         ];
 
         $all_tournaments = $this->get_tournaments_for_leagues($is_live);
@@ -134,7 +147,7 @@ class PandaScore_API {
     }
 
     public function get_other_league_tournaments($is_live = false) {
-         $top_leagues = [
+        $top_leagues = [
             'league-of-legends-world-championship',
             'league-of-legends-lck-champions-korea',
             'league-of-legends-lpl-china',

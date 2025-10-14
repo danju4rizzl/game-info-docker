@@ -1,0 +1,202 @@
+[
+  {
+    "end_at": "2025-10-13T11:33:24Z",
+    "videogame_title": null,
+    "streams_list": [
+      {
+        "main": true,
+        "language": "zh",
+        "embed_url": "https://www.youtube.com/embed/PfA-3rzGGig",
+        "official": true,
+        "raw_url": "https://www.youtube.com/watch?v=PfA-3rzGGig"
+      },
+      {
+        "main": false,
+        "language": "zh",
+        "embed_url": "https://liveshare.huya.com/iframe/18524919",
+        "official": false,
+        "raw_url": "https://www.huya.com/18524919"
+      }
+    ],
+    "tournament_id": 17772,
+    "begin_at": "2025-10-13T09:04:01Z",
+    "videogame_version": {
+      "name": "15.19.1",
+      "current": false
+    },
+    "number_of_games": 5,
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "slug": "league-of-legends"
+    },
+    "serie": {
+      "id": 9128,
+      "name": "",
+      "year": 2025,
+      "begin_at": "2025-03-05T04:00:00Z",
+      "end_at": "2025-10-13T14:00:00Z",
+      "winner_id": null,
+      "winner_type": "Team",
+      "slug": "league-of-legends-asia-masters-2025",
+      "modified_at": "2025-10-08T06:27:15Z",
+      "league_id": 5375,
+      "season": null,
+      "full_name": "2025"
+    },
+    "opponents": [
+      {
+        "type": "Team",
+        "opponent": {
+          "id": 131040,
+          "name": "T1 Academy",
+          "location": "KR",
+          "slug": "t1-academy",
+          "modified_at": "2025-10-09T18:54:41Z",
+          "acronym": "T1.A",
+          "image_url": "https://cdn.pandascore.co/images/team/image/131040/t1logo_profile.png",
+          "dark_mode_image_url": null
+        }
+      },
+      {
+        "type": "Team",
+        "opponent": {
+          "id": 128344,
+          "name": "DRX Challengers",
+          "location": "KR",
+          "slug": "drx-challengers",
+          "modified_at": "2025-10-11T06:03:06Z",
+          "acronym": "DRX.C",
+          "image_url": "https://cdn.pandascore.co/images/team/image/128344/dr_xlogo_square.png",
+          "dark_mode_image_url": null
+        }
+      }
+    ],
+    "rescheduled": false,
+    "winner_type": "Team",
+    "match_type": "best_of",
+    "results": [
+      {
+        "team_id": 131040,
+        "score": 3
+      },
+      {
+        "team_id": 128344,
+        "score": 0
+      }
+    ],
+    "live": {
+      "supported": false,
+      "url": null,
+      "opens_at": null
+    },
+    "scheduled_at": "2025-10-13T09:00:00Z",
+    "modified_at": "2025-10-13T13:26:08Z",
+    "status": "finished",
+    "league": {
+      "id": 5375,
+      "name": "Asia Masters",
+      "url": null,
+      "slug": "league-of-legends-asia-masters",
+      "modified_at": "2025-03-05T09:25:01Z",
+      "image_url": null
+    },
+    "tournament": {
+      "id": 17772,
+      "name": "Playoffs",
+      "type": "online",
+      "country": "CN",
+      "begin_at": "2025-10-10T06:00:00Z",
+      "detailed_stats": true,
+      "end_at": "2025-10-13T14:00:00Z",
+      "winner_id": 131040,
+      "winner_type": "Team",
+      "slug": "league-of-legends-asia-masters-2025-playoffs",
+      "serie_id": 9128,
+      "modified_at": "2025-10-13T11:33:26Z",
+      "league_id": 5375,
+      "prizepool": null,
+      "tier": "d",
+      "has_bracket": true,
+      "region": "ASIA",
+      "live_supported": false
+    },
+    "original_scheduled_at": "2025-10-13T09:00:00Z",
+    "id": 1251223,
+    "name": "Grand final: T1.A vs DRX.C",
+    "league_id": 5375,
+    "draw": false,
+    "games": [
+      {
+        "complete": true,
+        "id": 273206,
+        "position": 1,
+        "status": "finished",
+        "length": 1602,
+        "finished": true,
+        "begin_at": "2025-10-13T09:04:01Z",
+        "detailed_stats": true,
+        "end_at": "2025-10-13T09:36:18Z",
+        "forfeit": false,
+        "match_id": 1251223,
+        "winner_type": "Team",
+        "winner": {
+          "id": 131040,
+          "type": "Team"
+        }
+      },
+      {
+        "complete": true,
+        "id": 273207,
+        "position": 2,
+        "status": "finished",
+        "length": 1886,
+        "finished": true,
+        "begin_at": "2025-10-13T09:48:41Z",
+        "detailed_stats": true,
+        "end_at": "2025-10-13T10:26:08Z",
+        "forfeit": false,
+        "match_id": 1251223,
+        "winner_type": "Team",
+        "winner": {
+          "id": 131040,
+          "type": "Team"
+        }
+      },
+      {
+        "complete": true,
+        "id": 273208,
+        "position": 3,
+        "status": "finished",
+        "length": 1766,
+        "finished": true,
+        "begin_at": "2025-10-13T10:39:41Z",
+        "detailed_stats": true,
+        "end_at": "2025-10-13T11:33:25Z",
+        "forfeit": false,
+        "match_id": 1251223,
+        "winner_type": "Team",
+        "winner": {
+          "id": 131040,
+          "type": "Team"
+        }
+      }
+    ],
+    "winner_id": 131040,
+    "forfeit": false,
+    "slug": "t1-academy-vs-drx-challengers-2025-10-13",
+    "game_advantage": null,
+    "winner": {
+      "id": 131040,
+      "name": "T1 Academy",
+      "location": "KR",
+      "slug": "t1-academy",
+      "modified_at": "2025-10-09T18:54:41Z",
+      "acronym": "T1.A",
+      "image_url": "https://cdn.pandascore.co/images/team/image/131040/t1logo_profile.png",
+      "dark_mode_image_url": null
+    },
+    "detailed_stats": true,
+    "serie_id": 9128
+  }
+]

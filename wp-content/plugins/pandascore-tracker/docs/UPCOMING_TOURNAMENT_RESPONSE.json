@@ -1,0 +1,4945 @@
+[
+  {
+    "id": 17660,
+    "name": "Play-In",
+    "type": "offline",
+    "matches": [
+      {
+        "id": 1244313,
+        "name": "Qualification match: T1 vs IG",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244313",
+          "opens_at": "2025-10-14T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-14T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "t1-2025-10-14",
+        "modified_at": "2025-10-13T21:38:25Z",
+        "tournament_id": 17660,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-14T08:00:00Z",
+        "original_scheduled_at": "2025-10-14T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          }
+        ],
+        "rescheduled": false
+      }
+    ],
+    "country": "CN",
+    "begin_at": "2025-10-14T08:00:00Z",
+    "detailed_stats": true,
+    "end_at": "2025-10-14T15:00:00Z",
+    "winner_id": null,
+    "teams": [
+      {
+        "id": 411,
+        "name": "Invictus Gaming",
+        "location": "CN",
+        "slug": "invictus-gaming",
+        "modified_at": "2025-09-27T19:44:56Z",
+        "acronym": "IG",
+        "image_url": "https://cdn.pandascore.co/images/team/image/411/invictus_gaminglogo_square.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/411/175px_invictus_gaming_darkmode.png"
+      },
+      {
+        "id": 126061,
+        "name": "T1",
+        "location": "KR",
+        "slug": "t1",
+        "modified_at": "2025-09-24T08:31:48Z",
+        "acronym": "T1",
+        "image_url": "https://cdn.pandascore.co/images/team/image/126061/t_oscq04.png",
+        "dark_mode_image_url": null
+      }
+    ],
+    "winner_type": "Team",
+    "slug": "league-of-legends-world-championship-2025-play-in",
+    "serie_id": 9720,
+    "serie": {
+      "id": 9720,
+      "name": "",
+      "year": 2025,
+      "begin_at": "2025-10-14T08:00:00Z",
+      "end_at": "2025-11-09T14:00:00Z",
+      "winner_id": null,
+      "winner_type": "Team",
+      "slug": "league-of-legends-world-championship-2025",
+      "modified_at": "2025-09-24T08:32:00Z",
+      "league_id": 297,
+      "season": null,
+      "full_name": "2025"
+    },
+    "modified_at": "2025-09-27T19:44:56Z",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "slug": "league-of-legends"
+    },
+    "league_id": 297,
+    "league": {
+      "id": 297,
+      "name": "Worlds",
+      "url": null,
+      "slug": "league-of-legends-world-championship",
+      "modified_at": "2023-12-06T15:53:28Z",
+      "image_url": "https://cdn.pandascore.co/images/league/image/297/worlds-png"
+    },
+    "prizepool": null,
+    "tier": "s",
+    "videogame_title": null,
+    "has_bracket": false,
+    "region": "ASIA",
+    "live_supported": true,
+    "expected_roster": [
+      {
+        "team": {
+          "id": 411,
+          "name": "Invictus Gaming",
+          "location": "CN",
+          "slug": "invictus-gaming",
+          "modified_at": "2025-09-27T19:44:56Z",
+          "acronym": "IG",
+          "image_url": "https://cdn.pandascore.co/images/team/image/411/invictus_gaminglogo_square.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/411/175px_invictus_gaming_darkmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 390,
+            "name": "Rookie",
+            "role": "mid",
+            "slug": "rookie",
+            "modified_at": "2025-09-27T19:44:56Z",
+            "age": 28,
+            "birthday": "1997-03-11",
+            "first_name": "Song",
+            "last_name": "Eui-jin",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/390/ig_rookie_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 2170,
+            "name": "Meiko",
+            "role": "sup",
+            "slug": "meiko",
+            "modified_at": "2025-09-27T19:44:56Z",
+            "age": 27,
+            "birthday": "1998-06-06",
+            "first_name": "Ye",
+            "last_name": "Tian",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/2170/ig_meiko_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 3480,
+            "name": "TheShy",
+            "role": "top",
+            "slug": "theshy",
+            "modified_at": "2025-09-27T19:44:56Z",
+            "age": 25,
+            "birthday": "1999-11-11",
+            "first_name": "Seung-Lok",
+            "last_name": "Kang",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/3480/ig_the_shy_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 19316,
+            "name": "GALA",
+            "role": "adc",
+            "slug": "gala-a397ecf2-0505-4f6f-a93a-c608491b89ea",
+            "modified_at": "2025-09-27T19:44:55Z",
+            "age": 24,
+            "birthday": "2001-02-14",
+            "first_name": "Wei",
+            "last_name": "Chen",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/19316/ig_gala_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 21978,
+            "name": "Wei",
+            "role": "jun",
+            "slug": "wei",
+            "modified_at": "2025-09-27T19:44:56Z",
+            "age": 22,
+            "birthday": "2002-11-09",
+            "first_name": "Yangwei",
+            "last_name": "Yan",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/21978/ig_wei_2025_split_3.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 126061,
+          "name": "T1",
+          "location": "KR",
+          "slug": "t1",
+          "modified_at": "2025-09-24T08:31:48Z",
+          "acronym": "T1",
+          "image_url": "https://cdn.pandascore.co/images/team/image/126061/t_oscq04.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 585,
+            "name": "Faker",
+            "role": "mid",
+            "slug": "faker",
+            "modified_at": "2025-09-24T08:31:48Z",
+            "age": 29,
+            "birthday": "1996-05-07",
+            "first_name": "Lee",
+            "last_name": "Sang-hyeok",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/585/t1_faker_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 8158,
+            "name": "Keria",
+            "role": "sup",
+            "slug": "keria",
+            "modified_at": "2025-09-24T08:31:48Z",
+            "age": 22,
+            "birthday": "2002-10-14",
+            "first_name": "Ryu",
+            "last_name": "Min-seok",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/8158/t1_keria_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 19282,
+            "name": "Doran",
+            "role": "top",
+            "slug": "doran-2686e2c9-bd34-47fb-9d17-87debb7be1b6",
+            "modified_at": "2025-09-24T08:31:46Z",
+            "age": 25,
+            "birthday": "2000-07-22",
+            "first_name": "Choi",
+            "last_name": "Hyeon-joon",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/19282/gen_doran_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 19285,
+            "name": "Gumayusi",
+            "role": "adc",
+            "slug": "gumayusi",
+            "modified_at": "2025-09-24T08:31:48Z",
+            "age": 23,
+            "birthday": "2002-02-06",
+            "first_name": "Lee",
+            "last_name": "Min-hyeon",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/19285/t1_gumayusi_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 31392,
+            "name": "Oner",
+            "role": "jun",
+            "slug": "oner",
+            "modified_at": "2025-09-24T08:31:48Z",
+            "age": 22,
+            "birthday": "2002-12-24",
+            "first_name": "Moon",
+            "last_name": "Hyeon-joon",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/31392/t1_oner_2023_split_2.png"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 17663,
+    "name": "Group Stage",
+    "type": "offline",
+    "matches": [
+      {
+        "id": 1244331,
+        "name": "Round 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244331",
+          "opens_at": "2025-10-15T04:45:00.000000Z"
+        },
+        "begin_at": "2025-10-15T05:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-15",
+        "modified_at": "2025-09-24T09:27:18Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-15T05:00:00Z",
+        "original_scheduled_at": "2025-10-15T05:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244332,
+        "name": "Round 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244332",
+          "opens_at": "2025-10-15T05:45:00.000000Z"
+        },
+        "begin_at": "2025-10-15T06:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-15-187a96c7-9700-4d3c-aaef-bf830de58d44",
+        "modified_at": "2025-09-24T09:27:23Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-15T06:00:00Z",
+        "original_scheduled_at": "2025-10-15T06:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244333,
+        "name": "Round 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244333",
+          "opens_at": "2025-10-15T06:45:00.000000Z"
+        },
+        "begin_at": "2025-10-15T07:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-15-e4f6b72a-31bf-4199-9327-da52d1caaf52",
+        "modified_at": "2025-09-24T09:27:26Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-15T07:00:00Z",
+        "original_scheduled_at": "2025-10-15T07:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244335,
+        "name": "Round 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244335",
+          "opens_at": "2025-10-15T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-15T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-15-0b7b2446-347f-4b8e-9625-c13c45ac9a30",
+        "modified_at": "2025-09-24T09:27:30Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-15T08:00:00Z",
+        "original_scheduled_at": "2025-10-15T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244336,
+        "name": "Round 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244336",
+          "opens_at": "2025-10-15T08:45:00.000000Z"
+        },
+        "begin_at": "2025-10-15T09:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-15-907bd53c-2073-48a8-b28c-d10eef9a9432",
+        "modified_at": "2025-09-24T09:27:34Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-15T09:00:00Z",
+        "original_scheduled_at": "2025-10-15T09:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244337,
+        "name": "Round 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244337",
+          "opens_at": "2025-10-15T09:45:00.000000Z"
+        },
+        "begin_at": "2025-10-15T10:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-15-de7a4c83-3372-436c-a04e-a4e14ca70db7",
+        "modified_at": "2025-09-24T09:28:32Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-15T10:00:00Z",
+        "original_scheduled_at": "2025-10-15T10:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244338,
+        "name": "Round 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244338",
+          "opens_at": "2025-10-15T10:45:00.000000Z"
+        },
+        "begin_at": "2025-10-15T11:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-15-59deb4c9-dd99-4e1e-be38-44470bc2f9a5",
+        "modified_at": "2025-09-24T09:28:36Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-15T11:00:00Z",
+        "original_scheduled_at": "2025-10-15T11:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244339,
+        "name": "Round 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244339",
+          "opens_at": "2025-10-15T11:45:00.000000Z"
+        },
+        "begin_at": "2025-10-15T12:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-15-5cafb082-817a-4929-8ad7-bf80769f0254",
+        "modified_at": "2025-09-24T09:28:40Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-15T12:00:00Z",
+        "original_scheduled_at": "2025-10-15T12:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244340,
+        "name": "Round 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244340",
+          "opens_at": "2025-10-16T04:45:00.000000Z"
+        },
+        "begin_at": "2025-10-16T05:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-16-80866a01-e6a0-4558-b7ae-c436542c1cba",
+        "modified_at": "2025-09-24T09:30:33Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-16T05:00:00Z",
+        "original_scheduled_at": "2025-10-16T05:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244341,
+        "name": "Round 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244341",
+          "opens_at": "2025-10-16T05:45:00.000000Z"
+        },
+        "begin_at": "2025-10-16T06:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-16-4d5dc190-986a-4eb9-9333-af0bafe67d92",
+        "modified_at": "2025-09-24T09:30:37Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-16T06:00:00Z",
+        "original_scheduled_at": "2025-10-16T06:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244342,
+        "name": "Round 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244342",
+          "opens_at": "2025-10-16T06:45:00.000000Z"
+        },
+        "begin_at": "2025-10-16T07:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-16-57130dfd-c6df-446a-b06e-90d5bf3daf76",
+        "modified_at": "2025-09-24T09:30:43Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-16T07:00:00Z",
+        "original_scheduled_at": "2025-10-16T07:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244344,
+        "name": "Round 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244344",
+          "opens_at": "2025-10-16T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-16T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-16-2c20daa0-3486-4547-8158-fe688ef0cc38",
+        "modified_at": "2025-09-24T09:30:48Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-16T08:00:00Z",
+        "original_scheduled_at": "2025-10-16T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244345,
+        "name": "Round 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244345",
+          "opens_at": "2025-10-16T08:45:00.000000Z"
+        },
+        "begin_at": "2025-10-16T09:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-16-c86fedbb-adc4-4b8e-83e1-fd21902ba750",
+        "modified_at": "2025-09-24T09:30:53Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-16T09:00:00Z",
+        "original_scheduled_at": "2025-10-16T09:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244346,
+        "name": "Round 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244346",
+          "opens_at": "2025-10-16T09:45:00.000000Z"
+        },
+        "begin_at": "2025-10-16T10:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-16-4c4c2a50-7c6a-47ce-9bde-2efb322f3a9a",
+        "modified_at": "2025-09-24T09:30:58Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-16T10:00:00Z",
+        "original_scheduled_at": "2025-10-16T10:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244347,
+        "name": "Round 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244347",
+          "opens_at": "2025-10-16T10:45:00.000000Z"
+        },
+        "begin_at": "2025-10-16T11:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-16-8f506284-8017-485e-9ee5-8e010ed383b5",
+        "modified_at": "2025-09-24T09:31:02Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-16T11:00:00Z",
+        "original_scheduled_at": "2025-10-16T11:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244348,
+        "name": "Round 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244348",
+          "opens_at": "2025-10-16T11:45:00.000000Z"
+        },
+        "begin_at": "2025-10-16T12:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-16-2e5f430a-a119-48b6-b0ed-18c53575e2f0",
+        "modified_at": "2025-09-24T09:31:06Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-16T12:00:00Z",
+        "original_scheduled_at": "2025-10-16T12:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244349,
+        "name": "Round 3: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244349",
+          "opens_at": "2025-10-17T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-17T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-17-ba326dc2-ba16-405f-8396-22955774c0b2",
+        "modified_at": "2025-09-24T12:01:00Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-17T08:00:00Z",
+        "original_scheduled_at": "2025-10-17T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244350,
+        "name": "Round 3: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244350",
+          "opens_at": "2025-10-17T10:45:00.000000Z"
+        },
+        "begin_at": "2025-10-17T11:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-17-938bb8f7-e625-45e2-b8d8-702ac329d852",
+        "modified_at": "2025-09-24T12:01:05Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-17T11:00:00Z",
+        "original_scheduled_at": "2025-10-17T11:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244352,
+        "name": "Round 3: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244352",
+          "opens_at": "2025-10-18T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-18T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-18",
+        "modified_at": "2025-09-24T09:31:45Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-18T08:00:00Z",
+        "original_scheduled_at": "2025-10-18T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244353,
+        "name": "Round 3: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244353",
+          "opens_at": "2025-10-18T08:45:00.000000Z"
+        },
+        "begin_at": "2025-10-18T09:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-18-2a6eabc9-5943-4825-bca1-d1f9b0a86ff4",
+        "modified_at": "2025-09-24T09:31:49Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-18T09:00:00Z",
+        "original_scheduled_at": "2025-10-18T09:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244354,
+        "name": "Round 3: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244354",
+          "opens_at": "2025-10-18T09:45:00.000000Z"
+        },
+        "begin_at": "2025-10-18T10:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-18-f4b88d45-29eb-4056-950a-d2272df33865",
+        "modified_at": "2025-09-24T09:31:53Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-18T10:00:00Z",
+        "original_scheduled_at": "2025-10-18T10:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244355,
+        "name": "Round 3: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244355",
+          "opens_at": "2025-10-18T10:45:00.000000Z"
+        },
+        "begin_at": "2025-10-18T11:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-18-bbe78980-1ad2-4b33-aa3f-370f6f070f1c",
+        "modified_at": "2025-09-24T09:31:58Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 1,
+        "scheduled_at": "2025-10-18T11:00:00Z",
+        "original_scheduled_at": "2025-10-18T11:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244356,
+        "name": "Round 3: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244356",
+          "opens_at": "2025-10-19T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-19T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-19",
+        "modified_at": "2025-09-24T09:32:12Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-19T08:00:00Z",
+        "original_scheduled_at": "2025-10-19T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244357,
+        "name": "Round 3: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244357",
+          "opens_at": "2025-10-19T10:45:00.000000Z"
+        },
+        "begin_at": "2025-10-19T11:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-19-0536ef2f-f3e4-42d3-81ba-895360b8ce2b",
+        "modified_at": "2025-09-24T09:32:18Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-19T11:00:00Z",
+        "original_scheduled_at": "2025-10-19T11:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244365,
+        "name": "Round 4: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244365",
+          "opens_at": "2025-10-22T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-22T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-22-7ba49232-1c27-4452-90d3-72b1f2ef0960",
+        "modified_at": "2025-09-24T09:33:07Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-22T08:00:00Z",
+        "original_scheduled_at": "2025-10-22T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244366,
+        "name": "Round 4: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244366",
+          "opens_at": "2025-10-22T10:45:00.000000Z"
+        },
+        "begin_at": "2025-10-22T11:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-22-eb53d748-c200-4b80-b23a-2281d4b2ab5f",
+        "modified_at": "2025-09-24T09:33:13Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-22T11:00:00Z",
+        "original_scheduled_at": "2025-10-22T11:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244367,
+        "name": "Round 4: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244367",
+          "opens_at": "2025-10-23T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-23T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-23",
+        "modified_at": "2025-09-24T09:33:31Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-23T08:00:00Z",
+        "original_scheduled_at": "2025-10-23T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244368,
+        "name": "Round 4: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244368",
+          "opens_at": "2025-10-23T10:45:00.000000Z"
+        },
+        "begin_at": "2025-10-23T11:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-23-f09d97dd-4861-4049-9b52-50438fcece70",
+        "modified_at": "2025-09-24T09:33:36Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-23T11:00:00Z",
+        "original_scheduled_at": "2025-10-23T11:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244369,
+        "name": "Round 4: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244369",
+          "opens_at": "2025-10-24T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-24T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-24-190dd719-2ff3-45bf-9793-663be84b8a27",
+        "modified_at": "2025-09-24T09:33:40Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-24T08:00:00Z",
+        "original_scheduled_at": "2025-10-24T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244370,
+        "name": "Round 4: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244370",
+          "opens_at": "2025-10-24T10:45:00.000000Z"
+        },
+        "begin_at": "2025-10-24T11:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-24-e0e3308b-5f59-41f8-871c-145521056b43",
+        "modified_at": "2025-09-24T09:33:44Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-24T11:00:00Z",
+        "original_scheduled_at": "2025-10-24T11:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244371,
+        "name": "Round 5: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244371",
+          "opens_at": "2025-10-25T04:45:00.000000Z"
+        },
+        "begin_at": "2025-10-25T05:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-25-c97553f6-cf56-4a58-9a37-4ebe099b513b",
+        "modified_at": "2025-09-24T09:33:52Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-25T05:00:00Z",
+        "original_scheduled_at": "2025-10-25T05:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244372,
+        "name": "Round 5: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244372",
+          "opens_at": "2025-10-25T07:45:00.000000Z"
+        },
+        "begin_at": "2025-10-25T08:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-25-85d19b57-09e0-455d-a6d8-60d99a318a47",
+        "modified_at": "2025-09-24T09:33:56Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-25T08:00:00Z",
+        "original_scheduled_at": "2025-10-25T08:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244373,
+        "name": "Round 5: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244373",
+          "opens_at": "2025-10-25T10:45:00.000000Z"
+        },
+        "begin_at": "2025-10-25T11:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-25-0cbc56e1-5d36-4dbd-9db1-536a7d5ab017",
+        "modified_at": "2025-09-24T09:34:01Z",
+        "tournament_id": 17663,
+        "match_type": "best_of",
+        "number_of_games": 3,
+        "scheduled_at": "2025-10-25T11:00:00Z",
+        "original_scheduled_at": "2025-10-25T11:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          }
+        ],
+        "rescheduled": false
+      }
+    ],
+    "country": "CN",
+    "begin_at": "2025-10-15T05:00:00Z",
+    "detailed_stats": true,
+    "end_at": "2025-10-25T14:00:00Z",
+    "winner_id": null,
+    "teams": [
+      {
+        "id": 63,
+        "name": "KT Rolster",
+        "location": "KR",
+        "slug": "kt-rolster",
+        "modified_at": "2025-09-24T09:26:36Z",
+        "acronym": "KT",
+        "image_url": "https://cdn.pandascore.co/images/team/image/63/kt_rolsterlogo_profile.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/63/kt_rolster_2021_full_darkmode.png"
+      },
+      {
+        "id": 88,
+        "name": "G2 Esports",
+        "location": "DE",
+        "slug": "g2-esports",
+        "modified_at": "2025-09-24T08:57:47Z",
+        "acronym": "G2",
+        "image_url": "https://cdn.pandascore.co/images/team/image/88/g2-esports.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/88/231px_g2_esports_2019_darkmode.png"
+      },
+      {
+        "id": 311,
+        "name": "FlyQuest",
+        "location": "US",
+        "slug": "flyquest",
+        "modified_at": "2025-09-24T08:57:45Z",
+        "acronym": "FLY",
+        "image_url": "https://cdn.pandascore.co/images/team/image/311/fly_questlogo_square.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 394,
+        "name": "Fnatic",
+        "location": "GB",
+        "slug": "fnatic",
+        "modified_at": "2025-10-02T15:05:37Z",
+        "acronym": "FNC",
+        "image_url": "https://cdn.pandascore.co/images/team/image/394/220px_fnaticlogo_square.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 1537,
+        "name": "100 Thieves",
+        "location": "US",
+        "slug": "100-thieves",
+        "modified_at": "2025-09-24T08:57:45Z",
+        "acronym": "100",
+        "image_url": "https://cdn.pandascore.co/images/team/image/1537/100_thieves_alternatelogo_square.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/1537/190px_100_thieves_darkmode.png"
+      },
+      {
+        "id": 1566,
+        "name": "Bilibili Gaming",
+        "location": "CN",
+        "slug": "bilibili-gaming",
+        "modified_at": "2025-09-24T08:57:43Z",
+        "acronym": "BLG",
+        "image_url": "https://cdn.pandascore.co/images/team/image/1566/qw_yi_qu_j.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 2882,
+        "name": "Gen.G",
+        "location": "KR",
+        "slug": "geng",
+        "modified_at": "2025-09-24T08:57:42Z",
+        "acronym": "GEN",
+        "image_url": "https://cdn.pandascore.co/images/team/image/2882/500px_gen.g_esports_2019_full_lightmode.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/2882/499px_gen.g_esports_2019_full_darkmode.png"
+      },
+      {
+        "id": 2883,
+        "name": "Hanwha Life Esports",
+        "location": "KR",
+        "slug": "hanwha-life-esports",
+        "modified_at": "2025-09-24T08:57:41Z",
+        "acronym": "HLE",
+        "image_url": "https://cdn.pandascore.co/images/team/image/2883/hanwha-life-esports-1s04vbu0.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 126059,
+        "name": "Top Esports",
+        "location": "CN",
+        "slug": "top-esports",
+        "modified_at": "2025-10-02T15:05:38Z",
+        "acronym": "TES",
+        "image_url": "https://cdn.pandascore.co/images/team/image/126059/top_esportslogo_square.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 126536,
+        "name": "Movistar KOI",
+        "location": "ES",
+        "slug": "mad-lions-league-of-legends",
+        "modified_at": "2025-09-24T08:57:48Z",
+        "acronym": "MKOI",
+        "image_url": "https://cdn.pandascore.co/images/team/image/126536/movistar_ko_ilogo_square.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 126702,
+        "name": "PSG Talon",
+        "location": "HK",
+        "slug": "talon-esports-league-of-legends",
+        "modified_at": "2025-09-24T08:57:49Z",
+        "acronym": "TLN",
+        "image_url": "https://cdn.pandascore.co/images/team/image/126702/220px_psg_talonlogo_square.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 129971,
+        "name": "Anyone's Legend",
+        "location": "CN",
+        "slug": "anyone-s-legend",
+        "modified_at": "2025-09-24T08:57:44Z",
+        "acronym": "AL",
+        "image_url": "https://cdn.pandascore.co/images/team/image/129971/1083px_anyone_s_legend_full_lightmode.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/129971/1083px_anyone_s_legend_full_darkmode.png"
+      },
+      {
+        "id": 130355,
+        "name": "CTBC Flying Oyster",
+        "location": "TW",
+        "slug": "ctbc-flying-oyster",
+        "modified_at": "2025-09-24T08:57:48Z",
+        "acronym": "CFO",
+        "image_url": "https://cdn.pandascore.co/images/team/image/130355/ctbc_flying_oysterlogo_square.png",
+        "dark_mode_image_url": null
+      },
+      {
+        "id": 132315,
+        "name": "Vivo Keyd Stars",
+        "location": "BR",
+        "slug": "vivo-keyd-stars",
+        "modified_at": "2025-09-24T09:25:51Z",
+        "acronym": "VKS",
+        "image_url": "https://cdn.pandascore.co/images/team/image/132315/214px_keyd_stars_2022_allmode.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/132315/214px_keyd_stars_2022_allmode.png"
+      },
+      {
+        "id": 136073,
+        "name": "Team Secret Whales",
+        "location": "VN",
+        "slug": "team-secret-whales",
+        "modified_at": "2025-09-24T09:23:45Z",
+        "acronym": "TSW",
+        "image_url": "https://cdn.pandascore.co/images/team/image/136073/1200px_secret_whales_lightmode.png",
+        "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/136073/1200px_secret_whales_darkmode.png"
+      }
+    ],
+    "winner_type": "Team",
+    "slug": "league-of-legends-world-championship-2025-swiss-stage",
+    "serie_id": 9720,
+    "serie": {
+      "id": 9720,
+      "name": "",
+      "year": 2025,
+      "begin_at": "2025-10-14T08:00:00Z",
+      "end_at": "2025-11-09T14:00:00Z",
+      "winner_id": null,
+      "winner_type": "Team",
+      "slug": "league-of-legends-world-championship-2025",
+      "modified_at": "2025-09-24T08:32:00Z",
+      "league_id": 297,
+      "season": null,
+      "full_name": "2025"
+    },
+    "modified_at": "2025-10-02T15:05:38Z",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "slug": "league-of-legends"
+    },
+    "league_id": 297,
+    "league": {
+      "id": 297,
+      "name": "Worlds",
+      "url": null,
+      "slug": "league-of-legends-world-championship",
+      "modified_at": "2023-12-06T15:53:28Z",
+      "image_url": "https://cdn.pandascore.co/images/league/image/297/worlds-png"
+    },
+    "prizepool": null,
+    "tier": "s",
+    "videogame_title": null,
+    "has_bracket": false,
+    "region": "ASIA",
+    "live_supported": true,
+    "expected_roster": [
+      {
+        "team": {
+          "id": 63,
+          "name": "KT Rolster",
+          "location": "KR",
+          "slug": "kt-rolster",
+          "modified_at": "2025-09-24T09:26:36Z",
+          "acronym": "KT",
+          "image_url": "https://cdn.pandascore.co/images/team/image/63/kt_rolsterlogo_profile.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/63/kt_rolster_2021_full_darkmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 1009,
+            "name": "Bdd",
+            "role": "mid",
+            "slug": "bdd",
+            "modified_at": "2025-09-24T08:57:42Z",
+            "age": 26,
+            "birthday": "1999-03-01",
+            "first_name": "Gwak",
+            "last_name": "Bo-seong",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1009/kt_bdd_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 1461,
+            "name": "Cuzz",
+            "role": "jun",
+            "slug": "cuzz",
+            "modified_at": "2025-09-24T08:57:42Z",
+            "age": 25,
+            "birthday": "1999-10-30",
+            "first_name": "Moon",
+            "last_name": "Woo-chan",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1461/ezgif_7_9fb3bf1e81.png"
+          },
+          {
+            "active": true,
+            "id": 22959,
+            "name": "deokdam",
+            "role": "adc",
+            "slug": "feiz",
+            "modified_at": "2025-09-24T08:57:42Z",
+            "age": 25,
+            "birthday": "2000-02-25",
+            "first_name": "Seo",
+            "last_name": "Dae-gil",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/22959/fpx_deokdam_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 38357,
+            "name": "PerfecT",
+            "role": "top",
+            "slug": "perfect-lee-seung-min",
+            "modified_at": "2025-09-24T08:57:42Z",
+            "age": 21,
+            "birthday": "2004-05-17",
+            "first_name": "Lee",
+            "last_name": "Seung-min",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/38357/kt_perfec_t_2024_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 38363,
+            "name": "Peter",
+            "role": "sup",
+            "slug": "peter",
+            "modified_at": "2025-09-24T08:57:43Z",
+            "age": 22,
+            "birthday": "2003-04-28",
+            "first_name": "Jeong",
+            "last_name": "Yoon-su",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/38363/ns_peter_2022_split_2.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 88,
+          "name": "G2 Esports",
+          "location": "DE",
+          "slug": "g2-esports",
+          "modified_at": "2025-09-24T08:57:47Z",
+          "acronym": "G2",
+          "image_url": "https://cdn.pandascore.co/images/team/image/88/g2-esports.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/88/231px_g2_esports_2019_darkmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 871,
+            "name": "Hans sama",
+            "role": "adc",
+            "slug": "hans-sama",
+            "modified_at": "2025-09-24T08:57:47Z",
+            "age": 26,
+            "birthday": "1999-09-02",
+            "first_name": "Steven",
+            "last_name": "Liv",
+            "nationality": "FR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/871/g2_hans_sama_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 1132,
+            "name": "Caps",
+            "role": "mid",
+            "slug": "caps",
+            "modified_at": "2025-09-24T08:57:46Z",
+            "age": 25,
+            "birthday": "1999-11-17",
+            "first_name": "Rasmus",
+            "last_name": "Winther",
+            "nationality": "DK",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1132/g2_caps_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 1718,
+            "name": "BrokenBlade",
+            "role": "top",
+            "slug": "broken-blade",
+            "modified_at": "2025-09-24T08:57:46Z",
+            "age": 25,
+            "birthday": "2000-01-19",
+            "first_name": "Sergen",
+            "last_name": "Çelik",
+            "nationality": "DE",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1718/g2_broken_blade_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 14980,
+            "name": "Labrov",
+            "role": "sup",
+            "slug": "labrov",
+            "modified_at": "2025-09-24T08:57:47Z",
+            "age": 23,
+            "birthday": "2002-02-12",
+            "first_name": "Labros",
+            "last_name": "Papoutsakis",
+            "nationality": "GR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/14980/g2_labrov_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 45258,
+            "name": "SkewMond",
+            "role": "jun",
+            "slug": "skewmond",
+            "modified_at": "2025-09-24T08:57:47Z",
+            "age": 21,
+            "birthday": "2004-08-09",
+            "first_name": "Rudy",
+            "last_name": "Semaan",
+            "nationality": "FR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/45258/g2_skew_mond_2025_split_3.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 311,
+          "name": "FlyQuest",
+          "location": "US",
+          "slug": "flyquest",
+          "modified_at": "2025-09-24T08:57:45Z",
+          "acronym": "FLY",
+          "image_url": "https://cdn.pandascore.co/images/team/image/311/fly_questlogo_square.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 1343,
+            "name": "Bwipo",
+            "role": "top",
+            "slug": "bwipo",
+            "modified_at": "2025-09-24T08:57:44Z",
+            "age": 26,
+            "birthday": "1998-12-24",
+            "first_name": "Gabriël",
+            "last_name": "Rau",
+            "nationality": "BE",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1343/fly_bwipo_2025_msi.png"
+          },
+          {
+            "active": true,
+            "id": 18036,
+            "name": "Inspired",
+            "role": "jun",
+            "slug": "inspired",
+            "modified_at": "2025-09-24T08:57:44Z",
+            "age": 23,
+            "birthday": "2002-01-24",
+            "first_name": "Kacper",
+            "last_name": "Sloma",
+            "nationality": "PL",
+            "image_url": "https://cdn.pandascore.co/images/player/image/18036/fly_inspired_2025_msi.png"
+          },
+          {
+            "active": true,
+            "id": 25363,
+            "name": "Quad",
+            "role": "mid",
+            "slug": "119b0bf9-b178-4089-ad30-2df4632e9c2d",
+            "modified_at": "2025-09-24T08:57:45Z",
+            "age": 23,
+            "birthday": "2002-08-25",
+            "first_name": "Song",
+            "last_name": "Su-hyeong",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/25363/fly_quad_2025_msi.png"
+          },
+          {
+            "active": true,
+            "id": 39702,
+            "name": "Busio",
+            "role": "sup",
+            "slug": "busio",
+            "modified_at": "2025-09-24T08:57:44Z",
+            "age": 21,
+            "birthday": "2003-10-22",
+            "first_name": "Alan",
+            "last_name": "Cwalina",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/39702/fly_busio_2025_msi.png"
+          },
+          {
+            "active": true,
+            "id": 43802,
+            "name": "Massu",
+            "role": "adc",
+            "slug": "massu",
+            "modified_at": "2025-09-24T08:57:45Z",
+            "age": 20,
+            "birthday": "2004-11-28",
+            "first_name": "Fahad",
+            "last_name": "Abdulmalek",
+            "nationality": "CA",
+            "image_url": "https://cdn.pandascore.co/images/player/image/43802/fly_massu_2025_msi.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 394,
+          "name": "Fnatic",
+          "location": "GB",
+          "slug": "fnatic",
+          "modified_at": "2025-10-02T15:05:37Z",
+          "acronym": "FNC",
+          "image_url": "https://cdn.pandascore.co/images/team/image/394/220px_fnaticlogo_square.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 605,
+            "name": "Mikyx",
+            "role": "sup",
+            "slug": "mikyx",
+            "modified_at": "2025-10-02T15:05:35Z",
+            "age": 26,
+            "birthday": "1998-11-02",
+            "first_name": "Mihael",
+            "last_name": "Mehle",
+            "nationality": "SI",
+            "image_url": "https://cdn.pandascore.co/images/player/image/605/fnc_mikyx_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 1168,
+            "name": "Upset",
+            "role": "adc",
+            "slug": "upset",
+            "modified_at": "2025-10-02T15:05:37Z",
+            "age": 25,
+            "birthday": "1999-12-16",
+            "first_name": "Elias",
+            "last_name": "Lipp",
+            "nationality": "DE",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1168/fnc_upset_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 3503,
+            "name": "Razork",
+            "role": "jun",
+            "slug": "razork",
+            "modified_at": "2025-10-02T15:05:37Z",
+            "age": 25,
+            "birthday": "2000-10-07",
+            "first_name": "Iván",
+            "last_name": "Martín Díaz ",
+            "nationality": "ES",
+            "image_url": "https://cdn.pandascore.co/images/player/image/3503/fnc_razork_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 23436,
+            "name": "Oscarinin",
+            "role": "top",
+            "slug": "oscarinin",
+            "modified_at": "2025-10-02T15:05:36Z",
+            "age": 22,
+            "birthday": "2003-06-11",
+            "first_name": "Óscar",
+            "last_name": "Muñoz Jiménez",
+            "nationality": "ES",
+            "image_url": "https://cdn.pandascore.co/images/player/image/23436/fnc_oscarinin_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 40296,
+            "name": "Poby",
+            "role": "mid",
+            "slug": "poby",
+            "modified_at": "2025-10-02T15:05:36Z",
+            "age": 19,
+            "birthday": "2006-02-07",
+            "first_name": "Sung-won",
+            "last_name": "Yoon",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/40296/fnc_poby_2025_split_3.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 1537,
+          "name": "100 Thieves",
+          "location": "US",
+          "slug": "100-thieves",
+          "modified_at": "2025-09-24T08:57:45Z",
+          "acronym": "100",
+          "image_url": "https://cdn.pandascore.co/images/team/image/1537/100_thieves_alternatelogo_square.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/1537/190px_100_thieves_darkmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 1612,
+            "name": "FBI",
+            "role": "adc",
+            "slug": "fbi",
+            "modified_at": "2025-09-24T08:57:45Z",
+            "age": 26,
+            "birthday": "1999-02-11",
+            "first_name": "Victor",
+            "last_name": "Huang",
+            "nationality": "AU",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1612/100_t_fbi_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 3468,
+            "name": "Dhokla",
+            "role": "top",
+            "slug": "dhokla",
+            "modified_at": "2025-09-24T08:57:45Z",
+            "age": 28,
+            "birthday": "1997-07-17",
+            "first_name": "Niship",
+            "last_name": "Doshi",
+            "nationality": "US",
+            "image_url": "https://cdn.pandascore.co/images/player/image/3468/ezgif_5_4f27ddb481.png"
+          },
+          {
+            "active": true,
+            "id": 18026,
+            "name": "Eyla",
+            "role": "sup",
+            "slug": "eyla",
+            "modified_at": "2025-09-24T08:57:45Z",
+            "age": 26,
+            "birthday": "1999-08-24",
+            "first_name": "Bill",
+            "last_name": "Nguyen",
+            "nationality": "AU",
+            "image_url": "https://cdn.pandascore.co/images/player/image/18026/100_t_eyla_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 18099,
+            "name": "River",
+            "role": "jun",
+            "slug": "baby-a4193857-79e6-4f15-91cf-a510ab151fff",
+            "modified_at": "2025-09-24T08:57:45Z",
+            "age": 26,
+            "birthday": "1999-07-23",
+            "first_name": "Kim",
+            "last_name": "Dong-woo",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/18099/100_t_river_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 38348,
+            "name": "Quid",
+            "role": "mid",
+            "slug": "quid",
+            "modified_at": "2025-09-24T08:57:45Z",
+            "age": 21,
+            "birthday": "2004-04-27",
+            "first_name": "Lim",
+            "last_name": "Hyeon-seung",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/38348/100_t_quid_2025_split_3.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 1566,
+          "name": "Bilibili Gaming",
+          "location": "CN",
+          "slug": "bilibili-gaming",
+          "modified_at": "2025-09-24T08:57:43Z",
+          "acronym": "BLG",
+          "image_url": "https://cdn.pandascore.co/images/team/image/1566/qw_yi_qu_j.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 2509,
+            "name": "knight",
+            "role": "mid",
+            "slug": "sg-knight",
+            "modified_at": "2025-09-24T08:57:43Z",
+            "age": 25,
+            "birthday": "2000-05-22",
+            "first_name": "Ding",
+            "last_name": "Zhuo",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/2509/blg_knight_msi_2025.png"
+          },
+          {
+            "active": true,
+            "id": 23010,
+            "name": "Elk",
+            "role": "adc",
+            "slug": "jiumeng",
+            "modified_at": "2025-09-24T08:57:43Z",
+            "age": 24,
+            "birthday": "2001-09-29",
+            "first_name": "Jiahao",
+            "last_name": "Zhao",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/23010/blg_elk_msi_2025.png"
+          },
+          {
+            "active": true,
+            "id": 23415,
+            "name": "Bin",
+            "role": "top",
+            "slug": "bin",
+            "modified_at": "2025-09-24T08:57:43Z",
+            "age": 22,
+            "birthday": "2003-09-28",
+            "first_name": "Zebin",
+            "last_name": "Chen",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/23415/blg_bin_msi_2025.png"
+          },
+          {
+            "active": true,
+            "id": 23421,
+            "name": "ON",
+            "role": "sup",
+            "slug": "owo",
+            "modified_at": "2025-09-24T08:57:43Z",
+            "age": 22,
+            "birthday": "2003-05-12",
+            "first_name": "Wenjun",
+            "last_name": "Luo",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/23421/blg_on_msi_2025.png"
+          },
+          {
+            "active": true,
+            "id": 23651,
+            "name": "Shad0w",
+            "role": "jun",
+            "slug": "shadow-zhiqiang-zhao",
+            "modified_at": "2025-09-24T08:57:43Z",
+            "age": 24,
+            "birthday": "2001-02-25",
+            "first_name": "Zhiqiang",
+            "last_name": "Zhao",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/23651/blg_shad0w_2025_split_3.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 2882,
+          "name": "Gen.G",
+          "location": "KR",
+          "slug": "geng",
+          "modified_at": "2025-09-24T08:57:42Z",
+          "acronym": "GEN",
+          "image_url": "https://cdn.pandascore.co/images/team/image/2882/500px_gen.g_esports_2019_full_lightmode.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/2882/499px_gen.g_esports_2019_full_darkmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 1121,
+            "name": "Ruler",
+            "role": "adc",
+            "slug": "ruler",
+            "modified_at": "2025-09-24T08:57:42Z",
+            "age": 26,
+            "birthday": "1998-12-29",
+            "first_name": "Park",
+            "last_name": "Jae-hyuk",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1121/jdg_ruler_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 3524,
+            "name": "Kiin",
+            "role": "top",
+            "slug": "kiin",
+            "modified_at": "2025-09-24T08:57:42Z",
+            "age": 26,
+            "birthday": "1999-05-28",
+            "first_name": "Kim",
+            "last_name": "Gi-in ",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/3524/kt_kiin_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 15000,
+            "name": "Chovy",
+            "role": "mid",
+            "slug": "chovy",
+            "modified_at": "2025-09-24T08:57:41Z",
+            "age": 24,
+            "birthday": "2001-03-03",
+            "first_name": "Jeong",
+            "last_name": "Ji-hoon",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/15000/gen_chovy_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 18112,
+            "name": "Canyon",
+            "role": "jun",
+            "slug": "canyon",
+            "modified_at": "2025-09-24T08:57:41Z",
+            "age": 24,
+            "birthday": "2001-06-18",
+            "first_name": "Kim",
+            "last_name": "Geon-bu",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/18112/dk_canyon_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 38359,
+            "name": "Duro",
+            "role": "sup",
+            "slug": "duro",
+            "modified_at": "2025-09-24T08:57:41Z",
+            "age": 23,
+            "birthday": "2002-02-04",
+            "first_name": "Joo",
+            "last_name": "Min-kyu",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/38359/fox.y_duro_2024_split_2.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 2883,
+          "name": "Hanwha Life Esports",
+          "location": "KR",
+          "slug": "hanwha-life-esports",
+          "modified_at": "2025-09-24T08:57:41Z",
+          "acronym": "HLE",
+          "image_url": "https://cdn.pandascore.co/images/team/image/2883/hanwha-life-esports-1s04vbu0.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 520,
+            "name": "Peanut",
+            "role": "jun",
+            "slug": "peanut",
+            "modified_at": "2025-09-24T08:57:41Z",
+            "age": 27,
+            "birthday": "1998-02-03",
+            "first_name": "Han",
+            "last_name": "Wang-ho",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/520/gen_peanut_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 8176,
+            "name": "Viper",
+            "role": "adc",
+            "slug": "viper-309f5be7-0007-492a-8d90-854914e5563d",
+            "modified_at": "2025-09-24T08:57:41Z",
+            "age": 24,
+            "birthday": "2000-10-19",
+            "first_name": "Park",
+            "last_name": "Do-hyeon",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/8176/edg_viper_2022_worlds.png"
+          },
+          {
+            "active": true,
+            "id": 25391,
+            "name": "Zeka",
+            "role": "mid",
+            "slug": "zeka",
+            "modified_at": "2025-09-24T08:57:41Z",
+            "age": 22,
+            "birthday": "2002-11-28",
+            "first_name": "Kim",
+            "last_name": "Geon-woo",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/25391/drx_zeka_2022_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 31220,
+            "name": "Delight",
+            "role": "sup",
+            "slug": "crescent",
+            "modified_at": "2025-09-24T08:57:40Z",
+            "age": 23,
+            "birthday": "2002-09-12",
+            "first_name": "Yoo",
+            "last_name": "Hwan-joong ",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/31220/gen_delight_2023_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 31391,
+            "name": "Zeus",
+            "role": "top",
+            "slug": "zeus-choi-woo-je",
+            "modified_at": "2025-09-24T08:57:41Z",
+            "age": 21,
+            "birthday": "2004-01-31",
+            "first_name": "Choi",
+            "last_name": "Woo-je",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/31391/t1_zeus_2023_split_2.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 126059,
+          "name": "Top Esports",
+          "location": "CN",
+          "slug": "top-esports",
+          "modified_at": "2025-10-02T15:05:38Z",
+          "acronym": "TES",
+          "image_url": "https://cdn.pandascore.co/images/team/image/126059/top_esportslogo_square.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 8951,
+            "name": "JackeyLove",
+            "role": "adc",
+            "slug": "jackeylove",
+            "modified_at": "2025-10-02T15:05:38Z",
+            "age": 24,
+            "birthday": "2000-11-18",
+            "first_name": "Wenbo",
+            "last_name": "Yu",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/8951/tes_jackey_love_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 18472,
+            "name": "369",
+            "role": "top",
+            "slug": "player-369",
+            "modified_at": "2025-10-02T15:05:37Z",
+            "age": 24,
+            "birthday": "2001-07-12",
+            "first_name": "Jiahao",
+            "last_name": "Bai",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/18472/tes_369_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 20290,
+            "name": "Kanavi",
+            "role": "jun",
+            "slug": "kanavi",
+            "modified_at": "2025-10-02T15:05:38Z",
+            "age": 24,
+            "birthday": "2000-11-02",
+            "first_name": "Jinhhyeok",
+            "last_name": "Seo",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/20290/tes_kanavi_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 21974,
+            "name": "Hang",
+            "role": "sup",
+            "slug": "hang",
+            "modified_at": "2025-10-02T15:05:38Z",
+            "age": 22,
+            "birthday": "2003-02-05",
+            "first_name": "Minghang",
+            "last_name": "Fu",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/21974/tes_hang_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 27849,
+            "name": "Creme",
+            "role": "mid",
+            "slug": "crime",
+            "modified_at": "2025-10-02T15:05:37Z",
+            "age": 21,
+            "birthday": "2003-12-14",
+            "first_name": "Jian",
+            "last_name": "Lin",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/27849/tes_creme_2025_split_1.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 126536,
+          "name": "Movistar KOI",
+          "location": "ES",
+          "slug": "mad-lions-league-of-legends",
+          "modified_at": "2025-09-24T08:57:48Z",
+          "acronym": "MKOI",
+          "image_url": "https://cdn.pandascore.co/images/team/image/126536/movistar_ko_ilogo_square.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 24428,
+            "name": "Elyoya",
+            "role": "jun",
+            "slug": "elyoya",
+            "modified_at": "2025-09-24T08:57:47Z",
+            "age": 25,
+            "birthday": "2000-03-13",
+            "first_name": "Javier",
+            "last_name": "Prades",
+            "nationality": "ES",
+            "image_url": "https://cdn.pandascore.co/images/player/image/24428/mkoi_elyoya_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 25655,
+            "name": "Supa",
+            "role": "adc",
+            "slug": "supa",
+            "modified_at": "2025-09-24T08:57:48Z",
+            "age": 25,
+            "birthday": "2000-01-23",
+            "first_name": "David",
+            "last_name": "Martinez Garcia",
+            "nationality": "ES",
+            "image_url": "https://cdn.pandascore.co/images/player/image/25655/mkoi_supa_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 32062,
+            "name": "Jojopyun",
+            "role": "mid",
+            "slug": "jojopyun",
+            "modified_at": "2025-09-24T08:57:47Z",
+            "age": 21,
+            "birthday": "2004-10-01",
+            "first_name": "Joseph",
+            "last_name": "Pyun",
+            "nationality": "CA",
+            "image_url": "https://cdn.pandascore.co/images/player/image/32062/mkoi_jojopyun_2025_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 37551,
+            "name": "Myrwn",
+            "role": "top",
+            "slug": "myrwn",
+            "modified_at": "2025-09-24T08:57:47Z",
+            "age": 22,
+            "birthday": "2003-06-13",
+            "first_name": "Alex",
+            "last_name": "Villarejo",
+            "nationality": "ES",
+            "image_url": "https://cdn.pandascore.co/images/player/image/37551/mkoi_myrwn_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 42376,
+            "name": "Alvaro",
+            "role": "sup",
+            "slug": "alvaro",
+            "modified_at": "2025-09-24T08:57:47Z",
+            "age": 22,
+            "birthday": "2003-07-15",
+            "first_name": "Álvaro Fernández",
+            "last_name": "del Amo",
+            "nationality": "ES",
+            "image_url": "https://cdn.pandascore.co/images/player/image/42376/mkoi_alvaro_2025_split_3.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 126702,
+          "name": "PSG Talon",
+          "location": "HK",
+          "slug": "talon-esports-league-of-legends",
+          "modified_at": "2025-09-24T08:57:49Z",
+          "acronym": "TLN",
+          "image_url": "https://cdn.pandascore.co/images/team/image/126702/220px_psg_talonlogo_square.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 418,
+            "name": "Karsa",
+            "role": "jun",
+            "slug": "karsa",
+            "modified_at": "2025-09-24T08:57:49Z",
+            "age": 28,
+            "birthday": "1997-02-14",
+            "first_name": "Hao-Hsuan",
+            "last_name": "Hung",
+            "nationality": "TW",
+            "image_url": "https://cdn.pandascore.co/images/player/image/418/cfo_karsa_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 421,
+            "name": "Maple",
+            "role": "mid",
+            "slug": "maple",
+            "modified_at": "2025-09-24T08:57:49Z",
+            "age": 28,
+            "birthday": "1997-10-10",
+            "first_name": "Yi-tang",
+            "last_name": "Huang",
+            "nationality": "TW",
+            "image_url": "https://cdn.pandascore.co/images/player/image/421/psg_maple_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 1592,
+            "name": "Betty",
+            "role": "adc",
+            "slug": "betty",
+            "modified_at": "2025-09-24T08:57:49Z",
+            "age": 25,
+            "birthday": "2000-01-16",
+            "first_name": "Yuhung",
+            "last_name": "Lu",
+            "nationality": "TW",
+            "image_url": "https://cdn.pandascore.co/images/player/image/1592/psg_betty_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 3263,
+            "name": "Woody",
+            "role": "sup",
+            "slug": "woody",
+            "modified_at": "2025-09-24T08:57:49Z",
+            "age": 27,
+            "birthday": "1998-04-10",
+            "first_name": "Yu-En",
+            "last_name": "Lin",
+            "nationality": "TW",
+            "image_url": "https://cdn.pandascore.co/images/player/image/3263/psg_woody_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 26145,
+            "name": "Azhi",
+            "role": "top",
+            "slug": "azhi",
+            "modified_at": "2025-09-24T08:57:49Z",
+            "age": 24,
+            "birthday": "2001-05-09",
+            "first_name": "Shangjhih",
+            "last_name": "Huang",
+            "nationality": "TW",
+            "image_url": "https://cdn.pandascore.co/images/player/image/26145/psg_azhi_2024_split_1.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 129971,
+          "name": "Anyone's Legend",
+          "location": "CN",
+          "slug": "anyone-s-legend",
+          "modified_at": "2025-09-24T08:57:44Z",
+          "acronym": "AL",
+          "image_url": "https://cdn.pandascore.co/images/team/image/129971/1083px_anyone_s_legend_full_lightmode.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/129971/1083px_anyone_s_legend_full_darkmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 371,
+            "name": "Flandre",
+            "role": "top",
+            "slug": "flandre",
+            "modified_at": "2025-09-24T08:57:44Z",
+            "age": 27,
+            "birthday": "1998-08-28",
+            "first_name": "Xuanjun",
+            "last_name": "Li",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/371/al_flandre_msi_2025.png"
+          },
+          {
+            "active": true,
+            "id": 958,
+            "name": "Tarzan",
+            "role": "jun",
+            "slug": "tarzan",
+            "modified_at": "2025-09-24T08:57:44Z",
+            "age": 26,
+            "birthday": "1999-08-23",
+            "first_name": "Lee",
+            "last_name": "Seung-yong",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/958/al_tarzan_msi_2025.png"
+          },
+          {
+            "active": true,
+            "id": 8962,
+            "name": "Hope",
+            "role": "adc",
+            "slug": "hopezz",
+            "modified_at": "2025-09-24T08:57:44Z",
+            "age": 25,
+            "birthday": "2000-09-29",
+            "first_name": "Jie",
+            "last_name": "Wang",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/8962/al_hope_msi_2025.png"
+          },
+          {
+            "active": true,
+            "id": 27865,
+            "name": "Shanks",
+            "role": "mid",
+            "slug": "shanks-cui-xiao-jun",
+            "modified_at": "2025-09-24T08:57:44Z",
+            "age": 24,
+            "birthday": "2001-05-13",
+            "first_name": "Xiaojun",
+            "last_name": "Cui",
+            "nationality": "CN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/27865/al_shanks_msi_2025.png"
+          },
+          {
+            "active": true,
+            "id": 31221,
+            "name": "Kael",
+            "role": "sup",
+            "slug": "khael-kim-jin-hong",
+            "modified_at": "2025-09-24T08:57:44Z",
+            "age": 21,
+            "birthday": "2004-02-11",
+            "first_name": "Kim",
+            "last_name": " Jin-hong",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/31221/al_kael_msi_2025.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 130355,
+          "name": "CTBC Flying Oyster",
+          "location": "TW",
+          "slug": "ctbc-flying-oyster",
+          "modified_at": "2025-09-24T08:57:48Z",
+          "acronym": "CFO",
+          "image_url": "https://cdn.pandascore.co/images/team/image/130355/ctbc_flying_oysterlogo_square.png",
+          "dark_mode_image_url": null
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 738,
+            "name": "Kaiwing",
+            "role": "sup",
+            "slug": "kaiwing",
+            "modified_at": "2025-09-24T08:57:48Z",
+            "age": 28,
+            "birthday": "1996-10-27",
+            "first_name": "Kai Wing",
+            "last_name": "Ling",
+            "nationality": "HK",
+            "image_url": "https://cdn.pandascore.co/images/player/image/738/fak_kaiwing_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 7604,
+            "name": "Rest",
+            "role": "top",
+            "slug": "rest",
+            "modified_at": "2025-09-24T08:57:48Z",
+            "age": 26,
+            "birthday": "1998-12-11",
+            "first_name": "Shih-Chieh",
+            "last_name": "Hsu",
+            "nationality": "TW",
+            "image_url": "https://cdn.pandascore.co/images/player/image/7604/cfo_rest_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 21640,
+            "name": "JunJia",
+            "role": "jun",
+            "slug": "junjia",
+            "modified_at": "2025-09-24T08:57:48Z",
+            "age": 23,
+            "birthday": "2002-06-10",
+            "first_name": "Chunchia",
+            "last_name": "Yu",
+            "nationality": "TW",
+            "image_url": "https://cdn.pandascore.co/images/player/image/21640/psg_jun_jia_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 25145,
+            "name": "Doggo",
+            "role": "adc",
+            "slug": "doggo",
+            "modified_at": "2025-09-24T08:57:48Z",
+            "age": 22,
+            "birthday": "2003-01-14",
+            "first_name": "Tzuchuan",
+            "last_name": "Chiu",
+            "nationality": "TW",
+            "image_url": "https://cdn.pandascore.co/images/player/image/25145/up_doggo_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 27937,
+            "name": "Driver",
+            "role": "top",
+            "slug": "driver",
+            "modified_at": "2025-09-24T08:57:48Z",
+            "age": 23,
+            "birthday": "2002-04-04",
+            "first_name": "Shen",
+            "last_name": "Zong-Hua",
+            "nationality": "TW",
+            "image_url": "https://cdn.pandascore.co/images/player/image/27937/byg_driver_2024_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 55370,
+            "name": "HongQ",
+            "role": "mid",
+            "slug": "hongq",
+            "modified_at": "2025-09-24T08:57:48Z",
+            "age": 18,
+            "birthday": "2007-07-02",
+            "first_name": "Tsai",
+            "last_name": "Ming-Hong",
+            "nationality": "TW",
+            "image_url": null
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 132315,
+          "name": "Vivo Keyd Stars",
+          "location": "BR",
+          "slug": "vivo-keyd-stars",
+          "modified_at": "2025-09-24T09:25:51Z",
+          "acronym": "VKS",
+          "image_url": "https://cdn.pandascore.co/images/team/image/132315/214px_keyd_stars_2022_allmode.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/132315/214px_keyd_stars_2022_allmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 22950,
+            "name": "Trymbi",
+            "role": "sup",
+            "slug": "trymbi",
+            "modified_at": "2025-09-24T08:57:46Z",
+            "age": 24,
+            "birthday": "2000-10-20",
+            "first_name": "Adrian",
+            "last_name": "Trybus",
+            "nationality": "PL",
+            "image_url": "https://cdn.pandascore.co/images/player/image/22950/vks_trymbi_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 24547,
+            "name": "Boal",
+            "role": "top",
+            "slug": "sorry",
+            "modified_at": "2025-09-24T08:57:46Z",
+            "age": 22,
+            "birthday": "2002-12-04",
+            "first_name": "Felipe",
+            "last_name": "Boal",
+            "nationality": "BR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/24547/vks_boal_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 28807,
+            "name": "Mireu",
+            "role": "mid",
+            "slug": "mireu",
+            "modified_at": "2025-09-24T08:57:46Z",
+            "age": 24,
+            "birthday": "2001-09-20",
+            "first_name": "Jeong",
+            "last_name": "Jo-bin",
+            "nationality": "KR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/28807/vks_mireu_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 32664,
+            "name": "Disamis",
+            "role": "jun",
+            "slug": "disamis",
+            "modified_at": "2025-09-24T08:57:46Z",
+            "age": 22,
+            "birthday": "2003-08-03",
+            "first_name": "Pedro",
+            "last_name": "Gonçalves",
+            "nationality": "BR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/32664/vks_disamis_2025_split_3.png"
+          },
+          {
+            "active": true,
+            "id": 42867,
+            "name": "Morttheus",
+            "role": "adc",
+            "slug": "morttheus",
+            "modified_at": "2025-09-24T08:57:46Z",
+            "age": 23,
+            "birthday": "2002-06-18",
+            "first_name": "Matheus",
+            "last_name": "Motta",
+            "nationality": "BR",
+            "image_url": "https://cdn.pandascore.co/images/player/image/42867/vks_morttheus_2025_split_3.png"
+          }
+        ]
+      },
+      {
+        "team": {
+          "id": 136073,
+          "name": "Team Secret Whales",
+          "location": "VN",
+          "slug": "team-secret-whales",
+          "modified_at": "2025-09-24T09:23:45Z",
+          "acronym": "TSW",
+          "image_url": "https://cdn.pandascore.co/images/team/image/136073/1200px_secret_whales_lightmode.png",
+          "dark_mode_image_url": "https://cdn.pandascore.co/dark_images/team/dark_image/136073/1200px_secret_whales_darkmode.png"
+        },
+        "players": [
+          {
+            "active": true,
+            "id": 22980,
+            "name": "Hiro02",
+            "role": "top",
+            "slug": "hiro-tr-n-le-trung-h-u",
+            "modified_at": "2025-09-24T08:57:49Z",
+            "age": 23,
+            "birthday": "2002-05-18",
+            "first_name": "Trần Lê",
+            "last_name": "Trung Hậu",
+            "nationality": "VN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/22980/evs_th_2020_split_2.png"
+          },
+          {
+            "active": true,
+            "id": 23327,
+            "name": "Pun",
+            "role": "top",
+            "slug": "kaido",
+            "modified_at": "2025-09-24T09:23:47Z",
+            "age": 23,
+            "birthday": "2002-07-29",
+            "first_name": "Nguyễn",
+            "last_name": "Đăng Khoa",
+            "nationality": "VN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/23327/ezgif_4_35a7163215.png"
+          },
+          {
+            "active": true,
+            "id": 24605,
+            "name": "Taki",
+            "role": "sup",
+            "slug": "taki",
+            "modified_at": "2025-09-24T08:57:49Z",
+            "age": 22,
+            "birthday": "2003-06-30",
+            "first_name": "Đinh",
+            "last_name": "Anh Tài",
+            "nationality": "VN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/24605/sgb_taki_2021_split_1.png"
+          },
+          {
+            "active": true,
+            "id": 33531,
+            "name": "Eddie",
+            "role": "adc",
+            "slug": "eddie",
+            "modified_at": "2025-09-24T08:57:48Z",
+            "age": 22,
+            "birthday": "2003-06-17",
+            "first_name": "Công Nghĩa",
+            "last_name": "Hoàng",
+            "nationality": "VN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/33531/ezgif_4_5c22c6efa5.png"
+          },
+          {
+            "active": true,
+            "id": 50231,
+            "name": "Hizto",
+            "role": "jun",
+            "slug": "bwhizto",
+            "modified_at": "2025-09-24T08:57:49Z",
+            "age": 18,
+            "birthday": "2007-09-15",
+            "first_name": "Lê Văn ",
+            "last_name": "Hoàng Hải",
+            "nationality": "VN",
+            "image_url": "https://cdn.pandascore.co/images/player/image/50231/bw_hizto_asci_2023.png"
+          },
+          {
+            "active": true,
+            "id": 57927,
+            "name": "Dire",
+            "role": "mid",
+            "slug": "dire",
+            "modified_at": "2025-09-24T08:57:48Z",
+            "age": 18,
+            "birthday": "2006-11-22",
+            "first_name": "Đức",
+            "last_name": "Trần Duy",
+            "nationality": "VN",
+            "image_url": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 17664,
+    "name": "Playoffs",
+    "type": "offline",
+    "matches": [
+      {
+        "id": 1244375,
+        "name": "Quarterfinal 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244375",
+          "opens_at": "2025-10-28T06:45:00.000000Z"
+        },
+        "begin_at": "2025-10-28T07:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-28",
+        "modified_at": "2025-09-24T09:25:35Z",
+        "tournament_id": 17664,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-28T07:00:00Z",
+        "original_scheduled_at": "2025-10-28T07:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244376,
+        "name": "Quarterfinal 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244376",
+          "opens_at": "2025-10-29T06:45:00.000000Z"
+        },
+        "begin_at": "2025-10-29T07:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-29",
+        "modified_at": "2025-09-24T09:25:41Z",
+        "tournament_id": 17664,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-29T07:00:00Z",
+        "original_scheduled_at": "2025-10-29T07:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244377,
+        "name": "Quarterfinal 3: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244377",
+          "opens_at": "2025-10-30T06:45:00.000000Z"
+        },
+        "begin_at": "2025-10-30T07:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-30",
+        "modified_at": "2025-09-24T09:25:45Z",
+        "tournament_id": 17664,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-30T07:00:00Z",
+        "original_scheduled_at": "2025-10-30T07:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244378,
+        "name": "Quarterfinal 4: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244378",
+          "opens_at": "2025-10-31T06:45:00.000000Z"
+        },
+        "begin_at": "2025-10-31T07:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-10-31",
+        "modified_at": "2025-09-24T09:25:51Z",
+        "tournament_id": 17664,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-10-31T07:00:00Z",
+        "original_scheduled_at": "2025-10-31T07:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244379,
+        "name": "Semifinal 1: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244379",
+          "opens_at": "2025-11-01T06:45:00.000000Z"
+        },
+        "begin_at": "2025-11-01T07:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-11-01",
+        "modified_at": "2025-09-24T09:25:56Z",
+        "tournament_id": 17664,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-11-01T07:00:00Z",
+        "original_scheduled_at": "2025-11-01T07:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244380,
+        "name": "Semifinal 2: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244380",
+          "opens_at": "2025-11-02T06:45:00.000000Z"
+        },
+        "begin_at": "2025-11-02T07:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-11-02",
+        "modified_at": "2025-09-24T09:26:00Z",
+        "tournament_id": 17664,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-11-02T07:00:00Z",
+        "original_scheduled_at": "2025-11-02T07:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          }
+        ],
+        "rescheduled": false
+      },
+      {
+        "id": 1244381,
+        "name": "Grand final: TBD vs TBD",
+        "status": "not_started",
+        "live": {
+          "supported": true,
+          "url": "wss://live.pandascore.co/matches/1244381",
+          "opens_at": "2025-11-09T06:45:00.000000Z"
+        },
+        "begin_at": "2025-11-09T07:00:00Z",
+        "detailed_stats": true,
+        "draw": false,
+        "end_at": null,
+        "forfeit": false,
+        "winner_id": null,
+        "winner_type": "Team",
+        "slug": "2025-11-09",
+        "modified_at": "2025-09-24T09:26:05Z",
+        "tournament_id": 17664,
+        "match_type": "best_of",
+        "number_of_games": 5,
+        "scheduled_at": "2025-11-09T07:00:00Z",
+        "original_scheduled_at": "2025-11-09T07:00:00Z",
+        "game_advantage": null,
+        "streams_list": [
+          {
+            "main": true,
+            "language": "en",
+            "embed_url": "https://player.twitch.tv/?channel=riotgames",
+            "official": true,
+            "raw_url": "https://www.twitch.tv/riotgames"
+          },
+          {
+            "main": false,
+            "language": "ko",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://play.sooplive.co.kr/aflol"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "https://live.bilibili.com/6"
+          },
+          {
+            "main": false,
+            "language": "zh",
+            "embed_url": null,
+            "official": false,
+            "raw_url": "http://www.huya.com/lpl"
+          },
+          {
+            "main": false,
+            "language": "fr",
+            "embed_url": "https://player.twitch.tv/?channel=otplol_",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/otplol_"
+          },
+          {
+            "main": false,
+            "language": "es",
+            "embed_url": "https://player.twitch.tv/?channel=lvpes",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/lvpes"
+          },
+          {
+            "main": false,
+            "language": "pt",
+            "embed_url": "https://player.twitch.tv/?channel=LTASul",
+            "official": false,
+            "raw_url": "https://www.twitch.tv/LTASul"
+          }
+        ],
+        "rescheduled": false
+      }
+    ],
+    "country": "CN",
+    "begin_at": "2025-10-28T07:00:00Z",
+    "detailed_stats": true,
+    "end_at": "2025-11-09T07:00:00Z",
+    "winner_id": null,
+    "teams": [],
+    "winner_type": "Team",
+    "slug": "league-of-legends-world-championship-2025-playoffs",
+    "serie_id": 9720,
+    "serie": {
+      "id": 9720,
+      "name": "",
+      "year": 2025,
+      "begin_at": "2025-10-14T08:00:00Z",
+      "end_at": "2025-11-09T14:00:00Z",
+      "winner_id": null,
+      "winner_type": "Team",
+      "slug": "league-of-legends-world-championship-2025",
+      "modified_at": "2025-09-24T08:32:00Z",
+      "league_id": 297,
+      "season": null,
+      "full_name": "2025"
+    },
+    "modified_at": "2025-10-13T07:48:59Z",
+    "videogame": {
+      "id": 1,
+      "name": "LoL",
+      "slug": "league-of-legends"
+    },
+    "league_id": 297,
+    "league": {
+      "id": 297,
+      "name": "Worlds",
+      "url": null,
+      "slug": "league-of-legends-world-championship",
+      "modified_at": "2023-12-06T15:53:28Z",
+      "image_url": "https://cdn.pandascore.co/images/league/image/297/worlds-png"
+    },
+    "prizepool": "5000000 United States Dollar",
+    "tier": "s",
+    "videogame_title": null,
+    "has_bracket": true,
+    "region": "ASIA",
+    "live_supported": true,
+    "expected_roster": []
+  }
+]
