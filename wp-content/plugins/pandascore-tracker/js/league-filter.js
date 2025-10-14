@@ -62,11 +62,12 @@ document.addEventListener('DOMContentLoaded', function () {
     items.forEach((el) => upContainer.appendChild(el))
   }
 
-  // Initialize default state: show ALL matches
+  // Initialize default state: show only top leagues
   function initializeDefaultState() {
     matches.forEach((match) => {
-      // Show ALL matches by default
-      match.style.display = 'flex'
+      const matchLeagueName = getLeagueName(match)
+      // Show only top leagues by default
+      match.style.display = specificLeagues.includes(matchLeagueName) ? 'flex' : 'none'
     })
 
     // Ensure no filters are active initially
@@ -77,11 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
     sortUpcomingMatches()
   }
 
-  // Show ALL matches (default state)
+  // Show only top leagues matches (default state)
   function showMainLeaguesMatches() {
     matches.forEach((match) => {
-      // Show ALL matches
-      match.style.display = 'flex'
+      const matchLeagueName = getLeagueName(match)
+      // Show only top leagues
+      match.style.display = specificLeagues.includes(matchLeagueName) ? 'flex' : 'none'
     })
 
     // Enforce max visible per section, then update container visibility
@@ -128,9 +130,9 @@ document.addEventListener('DOMContentLoaded', function () {
       } else if (selectedLeague === LPL) {
         // Show matches for LPL
         match.style.display = matchLeagueName === LPL ? 'flex' : 'none'
-      } else if (selectedLeague === LCE) {
+      } else if (selectedLeague === LEC) {
         // Show matches for LEC
-        match.style.display = matchLeagueName === LCE ? 'flex' : 'none'
+        match.style.display = matchLeagueName === LEC ? 'flex' : 'none'
       } else {
         // Show matches from the selected specific league only
         match.style.display =
