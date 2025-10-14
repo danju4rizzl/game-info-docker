@@ -1,6 +1,6 @@
 # PandaScore Tracker WordPress Plugin
 
-A modern WordPress plugin that fetches and displays esports match data from the PandaScore API with a sleek dark theme UI.
+A modern WordPress plugin that provides real-time esports match data from the PandaScore API with a sleek dark theme UI.
 
 ## Features
 
@@ -24,12 +24,43 @@ A modern WordPress plugin that fetches and displays esports match data from the 
 2. Upload the `pandascore-tracker` folder to `/wp-content/plugins/`
 3. Activate the plugin through the WordPress admin
 
-## Configuration
+## Setup & Configuration
 
-### API Key Setup
+### Step 1: Plugin Activation & Database Setup
+When you activate the plugin, it automatically creates two database tables using WordPress's built-in database:
+- `wp_pandascore_tournaments` - Stores tournament data
+- `wp_pandascore_matches` - Stores match data with league information
+
+These tables are created automatically upon activation, no manual database configuration needed.
+
+### Step 2: API Key Configuration
 1. Get your free API key from [PandaScore Developers](https://pandascore.co/developers)
 2. Go to WordPress Admin → Settings → PandaScore Tracker
-3. Enter your API key and save
+3. Enter your API key in the "API Key" field
+4. Click "Save Changes"
+
+### Step 3: Cache Duration (Optional)
+1. In the same settings page, you'll see "Cache Duration (minutes)"
+2. Default is 10 minutes (recommended to reduce API rate limit usage)
+3. You can adjust between 1-60 minutes based on your needs
+4. Click "Save Changes" if you modify this setting
+
+### Step 4: Sync Data from PandaScore API
+1. After saving your API key, click the "Sync Now" button
+2. This fetches the latest:
+   - Running and upcoming tournaments
+   - Live matches
+   - Upcoming matches
+3. Data is stored in your WordPress database for fast retrieval
+4. The plugin automatically syncs every 5 minutes via WP-Cron
+
+### Step 5: Display Matches on Your Site
+Add the shortcode to any page, post, or widget:
+```
+[pandascore_tracker]
+```
+
+This displays live and upcoming matches based on the synced data.
 
 ## Usage
 
@@ -59,42 +90,33 @@ A modern WordPress plugin that fetches and displays esports match data from the 
 
 ## Supported Games
 
-- **Valorant** (`valorant`)
 - **League of Legends** (`lol`)
-- **Counter-Strike: Global Offensive** (`csgo`)
-- **Dota 2** (`dota2`)
-- **Overwatch** (`overwatch`)
-- **Rainbow Six Siege** (`r6siege`)
-- **Rocket League** (`rl`)
 
-## Technical Features
+
+## How It Works
+
+### Data Flow Architecture
+1. **API Integration**: Plugin connects to PandaScore API using your API key
+2. **Data Fetching**: Retrieves tournaments and matches from PandaScore
+3. **Database Storage**: Stores data in WordPress database tables for performance
+4. **Caching Layer**: Implements caching to minimize API calls and respect rate limits
+5. **Auto-Sync**: Background sync every 5 minutes keeps data fresh
+6. **Frontend Display**: Shortcode renders cached data instantly without API delays
 
 ### Component Architecture
-Settings: Admin configuration
-
-API: External API interactions
-
-Router: URL routing and templates
-
-Assets: CSS/JS management
-
-Renderer: HTML generation
-
-Main Plugin: Orchestration and shortcode handling
+- **Settings**: Admin configuration interface
+- **API**: External API interactions with PandaScore
+- **Database**: Local storage for tournaments and matches
+- **Sync**: Automated and manual data synchronization
+- **Cache**: Response caching to reduce API usage
+- **Renderer**: HTML generation for match displays
+- **Main Plugin**: Orchestration and shortcode handling
 ## Requirements
 
 - **WordPress**: 5.0 or higher
 - **PHP**: 7.4 or higher
 - **PandaScore API Key**: Required for functionality
 - **Modern Browser**: For WebSocket support (live matches)
-
-
-## Requirements
-
-- WordPress 5.0 or higher
-- PHP 7.4 or higher
-- PandaScore API key (free)
-- Active internet connection
 
 ## License
 

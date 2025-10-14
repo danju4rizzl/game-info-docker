@@ -20,20 +20,61 @@ class PandaScore_Sync {
         add_action('pandascore_sync_data', [$this, 'sync_all_data']);
         
         if (!wp_next_scheduled('pandascore_sync_data')) {
-            wp_schedule_event(time(), 'pandascore_5min', 'pandascore_sync_data');
-            error_log('[PandaScore Sync] Scheduled pandascore_sync_data event');
+            $scheduled = wp_schedule_event(time(), 'pandascore_5min', 'pandascore_sync_data');
+            if ($scheduled === false) {
+                error_log('[PandaScore Sync] WARNING: Failed to schedule cron event');
+            } else {
+                error_log('[PandaScore Sync] Scheduled pandascore_sync_data event');
+            }
+        } else {
+            $next_run = wp_next_scheduled('pandascore_sync_data');
+            error_log('[PandaScore Sync] Cron already scheduled. Next run: ' . date('Y-m-d H:i:s', $next_run));
+        }
+        
+        // Fallback: Check if last sync was more than 10 minutes ago and trigger sync
+        add_action('init', [$this, 'check_and_trigger_sync']);
+    }
+    
+    /**
+     * Fallback mechanism to trigger sync if WP-Cron is not running.
+     */
+    public function check_and_trigger_sync() {
+        // Only run on admin pages or when shortcode is loaded
+        if (!is_admin() && !did_action('pandascore_shortcode_loaded')) {
+            return;
+        }
+        
+        $last_sync = $this->database->get_last_sync_time();
+        $current_time = current_time('timestamp');
+        
+        // If no sync or last sync was more than 10 minutes ago
+        if (!$last_sync || ($current_time - $last_sync) > 600) {
+            error_log('[PandaScore Sync] Fallback sync triggered - last sync was ' . ($last_sync ? human_time_diff($last_sync, $current_time) . ' ago' : 'never'));
+            $this->sync_all_data();
         }
     }
 
     public function sync_all_data() {
         error_log('[PandaScore Sync] Starting sync at ' . current_time('mysql'));
         
-        $this->sync_tournaments(true);
-        $this->sync_tournaments(false);
-        $this->sync_matches_from_tournaments();
-        $this->database->cleanup_old_matches(7);
+        $api_key = $this->settings->get_api_key();
+        if (!$api_key) {
+            error_log('[PandaScore Sync] CRITICAL: No API key configured - sync aborted');
+            return false;
+        }
         
-        error_log('[PandaScore Sync] Completed sync at ' . current_time('mysql'));
+        try {
+            $this->sync_tournaments(true);
+            $this->sync_tournaments(false);
+            $this->sync_matches_from_tournaments();
+            $this->database->cleanup_old_matches(7);
+            
+            error_log('[PandaScore Sync] Completed sync at ' . current_time('mysql'));
+            return true;
+        } catch (Exception $e) {
+            error_log('[PandaScore Sync] ERROR: ' . $e->getMessage());
+            return false;
+        }
     }
 
     private function sync_tournaments($is_live) {
@@ -142,8 +183,10 @@ class PandaScore_Sync {
     }
 
     public function manual_sync() {
-        $this->sync_all_data();
-        return true;
+        error_log('[PandaScore Sync] Manual sync triggered');
+        $result = $this->sync_all_data();
+        error_log('[PandaScore Sync] Manual sync result: ' . ($result ? 'SUCCESS' : 'FAILED'));
+        return $result;
     }
 
     public static function clear_scheduled_sync() {

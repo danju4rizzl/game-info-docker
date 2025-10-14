@@ -52,12 +52,23 @@ class PandaScore_Settings {
         if (isset($_POST['action']) && $_POST['action'] === 'manual_sync' && 
             isset($_POST['pandascore_sync_nonce']) &&
             wp_verify_nonce($_POST['pandascore_sync_nonce'], 'pandascore_manual_sync')) {
-            require_once plugin_dir_path(__FILE__) . 'class-pandascore-database.php';
-            require_once plugin_dir_path(__FILE__) . 'class-pandascore-sync.php';
-            $database = new PandaScore_Database();
-            $sync = new PandaScore_Sync($this, $database);
-            $sync->manual_sync();
-            echo '<div class="notice notice-success is-dismissible"><p>Manual sync completed!</p></div>';
+            
+            $api_key = $this->get_api_key();
+            if (!$api_key) {
+                echo '<div class="notice notice-error is-dismissible"><p>Error: API key not configured. Please set your PandaScore API key first.</p></div>';
+            } else {
+                require_once plugin_dir_path(__FILE__) . 'class-pandascore-database.php';
+                require_once plugin_dir_path(__FILE__) . 'class-pandascore-sync.php';
+                $database = new PandaScore_Database();
+                $sync = new PandaScore_Sync($this, $database);
+                $result = $sync->manual_sync();
+                
+                if ($result) {
+                    echo '<div class="notice notice-success is-dismissible"><p>Manual sync completed successfully!</p></div>';
+                } else {
+                    echo '<div class="notice notice-error is-dismissible"><p>Manual sync failed. Please check error logs for details.</p></div>';
+                }
+            }
         }
         
         require_once plugin_dir_path(__FILE__) . 'class-pandascore-database.php';
@@ -67,6 +78,9 @@ class PandaScore_Settings {
         $last_sync_text = $last_sync ? human_time_diff($last_sync, current_time('timestamp')) . ' ago' : 'Never';
         
         echo '<script>console.log("[PandaScore Debug]", ' . json_encode($debug_info) . ');</script>';
+        
+        $api_key = $this->get_api_key();
+        $api_key_status = $api_key ? '<span style="color: green;">✓ Configured</span>' : '<span style="color: red;">✗ Not Set</span>';
         
         ?>
         <div class="wrap">
@@ -79,6 +93,7 @@ class PandaScore_Settings {
                 ?>
             </form>
             <h3>Data Management</h3>
+            <p><strong>API Key Status:</strong> <?php echo $api_key_status; ?></p>
             <p><strong>Last Sync:</strong> <?php echo esc_html($last_sync_text); ?></p>
             <p><strong>Tournaments:</strong> <?php echo esc_html($debug_info['tournaments_count']); ?></p>
             <p><strong>Matches:</strong> <?php echo esc_html($debug_info['matches_count']); ?></p>

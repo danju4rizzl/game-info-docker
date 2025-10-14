@@ -24,6 +24,9 @@ class PandaScore_Shortcode {
      * @return string
      */
     public function handle($atts) {
+        // Trigger action to signal shortcode is being used (for fallback sync)
+        do_action('pandascore_shortcode_loaded');
+        
         $atts = shortcode_atts(['game' => 'lol', 'limit' => 100, 'align' => 'center', 'type' => 'mixed'], $atts, 'pandascore_tracker');
         $this->assets->enqueue_basic_assets();
 
