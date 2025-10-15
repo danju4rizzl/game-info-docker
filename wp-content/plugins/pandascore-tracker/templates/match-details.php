@@ -27,7 +27,9 @@ if ($error) {
     return;
 }
 
-$league_name = $match['league']['name'] ?? 'LCK SPLIT 3, WEEK 12';
+$league_name = $match['league']['name'] ?? 'Unknown League';
+$tournament_name = $match['tournament']['name'] ?? '';
+$match_name = $match['name'] ?? '';
 $scheduled_at = $match['scheduled_at'] ?? '';
 $opponents = $match['opponents'] ?? [];
 $results = $match['results'] ?? [];
@@ -74,7 +76,19 @@ console.log('Match Details Data:', <?php echo json_encode($match, JSON_PRETTY_PR
 
 <div class="match-page">
     <div class="match-header" data-scheduled-at="<?php echo esc_attr($scheduled_at); ?>">
-        <h1><?php echo esc_html(strtoupper($league_name)); ?></h1>
+        <h1 class="match-league">
+            <span>
+                <?php echo esc_html(strtoupper($league_name));
+             ?>
+            </span>
+            <?php if ($tournament_name): ?>
+            <span>
+                <?php echo esc_html($tournament_name); ?></span>
+            <?php endif; ?>
+            <?php if ($match_name): ?>
+                <span><?php echo esc_html($match_name); ?></span>
+                <?php endif; ?>        
+        </h1>
         <div class="match-time">Loading...</div>
     </div>
 
