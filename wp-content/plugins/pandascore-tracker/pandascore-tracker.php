@@ -20,6 +20,7 @@ $router_file = plugin_dir_path(__FILE__) . 'includes/class-pandascore-router.php
 $assets_file = plugin_dir_path(__FILE__) . 'includes/class-pandascore-assets.php';
 $renderer_file = plugin_dir_path(__FILE__) . 'includes/class-pandascore-renderer.php';
 $shortcode_file = plugin_dir_path(__FILE__) . 'includes/class-pandascore-shortcode.php';
+$match_details_file = plugin_dir_path(__FILE__) . 'includes/class-pandascore-match-details.php';
 
 // Verify file existence before including
 $required_files = [
@@ -30,7 +31,8 @@ $required_files = [
     'router' => $router_file,
     'assets' => $assets_file,
     'renderer' => $renderer_file,
-    'shortcode' => $shortcode_file
+    'shortcode' => $shortcode_file,
+    'match_details' => $match_details_file
 ];
 
 foreach ($required_files as $name => $file) {

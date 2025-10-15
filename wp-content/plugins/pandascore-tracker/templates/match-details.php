@@ -7,67 +7,35 @@ wp_enqueue_style('pandascore-match-details-style');
 wp_enqueue_script('pandascore-timezone-js');
 
 $match_id = intval(get_query_var('match'));
-$match = null;
-$error = '';
 
 if (!$match_id) {
-    $error = 'Invalid match ID.';
-} else {
-    $database = new PandaScore_Database();
-    $match = $database->get_match_by_id($match_id);
-    
-    if (!$match) {
-        $error = 'Match not found.';
-    }
-}
-
-if ($error) {
-    echo '<div class="pandascore-error">' . esc_html($error) . '</div>';
+    echo '<div class="pandascore-error">Invalid match ID.</div>';
     get_footer();
     return;
 }
 
-$league_name = $match['league']['name'] ?? 'Unknown League';
-$tournament_name = $match['tournament']['name'] ?? '';
-$match_name = $match['name'] ?? '';
-$scheduled_at = $match['scheduled_at'] ?? '';
-$opponents = $match['opponents'] ?? [];
-$results = $match['results'] ?? [];
-$teamA = $opponents[0]['opponent'] ?? ['name' => 'T1', 'acronym' => 'T1'];
-$teamB = $opponents[1]['opponent'] ?? ['name' => 'DRX', 'acronym' => 'DRX'];
-$scoreA = $results[0]['score'] ?? 3;
-$scoreB = $results[1]['score'] ?? 4;
+$match_details = new PandaScore_Match_Details($match_id);
+$match = $match_details->get_match();
 
-// Get players from tournament's expected_roster
-$players = [];
-if (isset($match['tournament_id'])) {
-    $tournament = $database->get_tournament_by_id($match['tournament_id']);
-    if ($tournament && isset($tournament['expected_roster'])) {
-        $teamA_id = $teamA['id'] ?? null;
-        $teamB_id = $teamB['id'] ?? null;
-        
-        foreach ($tournament['expected_roster'] as $roster) {
-            if (isset($roster['team']['id']) && isset($roster['players'])) {
-                if ($roster['team']['id'] == $teamA_id) {
-                    $players = array_merge($players, $roster['players']);
-                } elseif ($roster['team']['id'] == $teamB_id) {
-                    $players = array_merge($players, $roster['players']);
-                }
-            }
-        }
-    }
+if (!$match) {
+    echo '<div class="pandascore-error">Match not found.</div>';
+    get_footer();
+    return;
 }
 
-$streams = $match['streams_list'] ?? [];
-$main_stream = null;
-foreach($streams as $stream) {
-    if ($stream['main'] === true) {
-        $main_stream = $stream['embed_url'];
-        break;
-    }
-}
+$league_info = $match_details->get_league_info();
+$teams = $match_details->get_teams();
+$players = $match_details->get_sorted_players();
+$main_stream = $match_details->get_main_stream();
 
-// echo '<pre>' . print_r($players, true) . '</pre>';
+$league_name = $league_info['name'];
+$tournament_name = $league_info['tournament_name'];
+$match_name = $league_info['match_name'];
+$scheduled_at = $league_info['scheduled_at'];
+$teamA = $teams['teamA'];
+$teamB = $teams['teamB'];
+$scoreA = $teams['scoreA'];
+$scoreB = $teams['scoreB'];
 ?>
 
 <script>
@@ -95,8 +63,7 @@ console.log('Match Details Data:', <?php echo json_encode($match, JSON_PRETTY_PR
     <div class="match-layout">
         <div class="sidebar">
             <?php 
-            $team1_players = array_slice($players, 0, 5);
-            foreach($team1_players as $player): 
+            foreach($players['team1'] as $player): 
             ?>
             <div class="player-card">
                 <img src="<?php echo esc_url($player['image_url'] ?: 'https://via.placeholder.com/40/666/fff?text=' . substr($player['name'], 0, 1)); ?>" class="player-avatar">
@@ -178,8 +145,7 @@ console.log('Match Details Data:', <?php echo json_encode($match, JSON_PRETTY_PR
 
         <div class="sidebar">
             <?php 
-            $team2_players = array_slice($players, 5, 5);
-            foreach($team2_players as $player): 
+            foreach($players['team2'] as $player): 
             ?>
             <div class="player-card">
                 <img src="<?php echo esc_url($player['image_url'] ?: 'https://via.placeholder.com/40/666/fff?text=' . substr($player['name'], 0, 1)); ?>" class="player-avatar">
