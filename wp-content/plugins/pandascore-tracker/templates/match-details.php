@@ -4,6 +4,7 @@ if (!defined('ABSPATH')) { exit; }
 get_header();
 wp_enqueue_style('pandascore-tracker-style');
 wp_enqueue_style('pandascore-match-details-style');
+wp_enqueue_script('pandascore-timezone-js');
 
 $match_id = intval(get_query_var('match'));
 $match = null;
@@ -72,9 +73,9 @@ console.log('Match Details Data:', <?php echo json_encode($match, JSON_PRETTY_PR
 </script>
 
 <div class="match-page">
-    <div class="match-header">
+    <div class="match-header" data-scheduled-at="<?php echo esc_attr($scheduled_at); ?>">
         <h1><?php echo esc_html(strtoupper($league_name)); ?></h1>
-        <div class="match-time"><?php echo $scheduled_at ? date('H:i - jS \of F Y', strtotime($scheduled_at)) : '12:00 - 7th of August 2025'; ?></div>
+        <div class="match-time">Loading...</div>
     </div>
 
     <div class="match-layout">
@@ -104,7 +105,9 @@ console.log('Match Details Data:', <?php echo json_encode($match, JSON_PRETTY_PR
                     <div class="team-logo">
                         <img src="<?php echo esc_url($teamA['image_url'] ?? 'https://via.placeholder.com/80/ff0000/fff?text=T1'); ?>" alt="<?php echo esc_attr($teamA['name']); ?>">
                     </div>
-                    <div class="vs-section"><img src="<?php echo plugin_dir_url(__DIR__) . 'images/VS.png'; ?>" alt="VS"></div>
+                    <div class="vs-section">
+                        <img src="<?php echo plugin_dir_url(__DIR__) . 'images/VS.png'; ?>" alt="VS">
+                    </div>
                     <div class="team-logo">
                         <img src="<?php echo esc_url($teamB['image_url'] ?? 'https://via.placeholder.com/80/0066ff/fff?text=DRX'); ?>" alt="<?php echo esc_attr($teamB['name']); ?>">
                     </div>
